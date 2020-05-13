@@ -15,10 +15,14 @@ import NewQuestionContainer from './question/new_question_container';
 import QuestionContainer from './question/question_container'; 
 import EditQuestionContainer from './question/edit_question_container'; 
  
+import SearchContainer from './search/search_container'; 
 
 const App = () => (
     <>
         <NavbarContainer />
+        
+        <SearchContainer />
+
         <Switch>
             <AuthRoute exact path="/signup" component={SignUpFormContainer} />
             <AuthRoute exact path="/login" component={LoginFormContainer} />

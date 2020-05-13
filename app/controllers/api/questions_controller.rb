@@ -1,6 +1,10 @@
 class Api::QuestionsController < ApplicationController
     def index 
-        @questions = Question.all 
+        if params[:q]
+            @questions = Question.search(params[:q])
+        else
+            @questions = Question.all 
+        end
     end
 
     def create 

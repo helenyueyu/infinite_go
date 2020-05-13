@@ -6,7 +6,8 @@ Rails.application.routes.draw do
       resources :users, only: [:index, :create, :show]
       resource :session, only: [:create, :destroy]
 
-      resources :questions, only: [:index, :create, :show, :update, :destroy]
+      resources :questions, only: [:index, :create, :show, :update, :destroy] 
+      get 'questions/:search', to: 'questions#index'
     end
     
 end

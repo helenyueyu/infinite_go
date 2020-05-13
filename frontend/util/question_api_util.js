@@ -5,6 +5,13 @@ export const getQuestions = () => (
     })
 )
 
+export const getFilteredQuestions = (query) => (
+    $.ajax({
+        method: 'GET', 
+        url: `/api/questions/?q=${query}`
+    })
+)
+
 export const getQuestion = (id) => (
     $.ajax({
         method: 'GET', 
