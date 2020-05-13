@@ -8,26 +8,27 @@ class Questions extends React.Component {
 
     render() {
         let {questions} = this.props; 
+        if (!this.props.questions) return null; 
+
         if (questions) {
             return (
                 <div>
                     <Link to="/questions/new"><button>Create Question</button></Link>
 
                     {questions.map((question, idx) => {
+                        let {id, title, body, user} = question; 
                         return (
-                            <Link to={`/questions/${question.id}`} key={idx}>
-                                <div>
-                                    {question.title}
-                                    {question.body}
-                                </div>
-                            </Link>
+                            <div key={idx}>
+                                <div><Link to={`/questions/${id}`}>{title}</Link></div>
+                                <div>{body}</div>
+                                <div>{user.username}</div>
+                                <br/>
+                            </div>
                         )
                     })}
                 </div>
             )
-        } else {
-            return null; 
-        }
+        } 
     }
 }
 

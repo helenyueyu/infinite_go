@@ -8,13 +8,18 @@ export const fetchAllQuestions = () => dispatch => (
         .then(questions => dispatch(receiveAllQuestions(questions)))
 )
 
+export const fetchQuestion = id => dispatch => (
+    questionAPIUtil.getQuestion(id)
+        .then(question => dispatch(receiveQuestion(question)))
+)
+
 export const createQuestion = question => dispatch => (
     questionAPIUtil.createQuestion(question)
         .then(question => dispatch(receiveQuestion(question)))
 )
 
-export const fetchQuestion = id => dispatch => (
-    questionAPIUtil.getQuestion(id)
+export const updateQuestion = question => dispatch => (
+    questionAPIUtil.updateQuestion(question)
         .then(question => dispatch(receiveQuestion(question)))
 )
 

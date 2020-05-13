@@ -16,6 +16,17 @@ class Api::QuestionsController < ApplicationController
         @question = Question.find(params[:id])
     end
 
+    def update 
+        # debugger 
+        @question = Question.find(params[:id])
+    
+        if @question.update_attributes(question_params)
+            render :show 
+        else
+            render json: @question.errors.full_messages, status: 422 
+        end
+    end
+
     private 
     def question_params 
         params.require(:question).permit(:user_id, :title, :body)

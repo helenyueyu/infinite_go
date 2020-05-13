@@ -8,11 +8,16 @@ class Question extends React.Component {
 
     render() {
         if (!this.props.question) return null; 
+
+        let { currentUser } = this.props; 
+        let { id, title, body, user } = this.props.question;
         return (
             <div>
-                {this.props.question.title}
-                {this.props.question.body}
-                <Link to="/questions">Back</Link>
+                <div>{title}</div>
+                <div>{body}</div>
+                <div>{user.username}</div>
+                <div><Link to="/questions">Back</Link></div>
+                <div>{currentUser.id === user.id ? <Link to={`/questions/${id}/edit`}>Edit</Link> : null}</div>
             </div>
         )
     }
