@@ -17,13 +17,22 @@ class Api::QuestionsController < ApplicationController
     end
 
     def update 
-        # debugger 
         @question = Question.find(params[:id])
     
         if @question.update_attributes(question_params)
             render :show 
         else
             render json: @question.errors.full_messages, status: 422 
+        end
+    end
+
+    def destroy
+        @question = Question.find(params[:id])
+
+        if @question.destroy 
+            render :show 
+        else
+            render json: @question.errors.full_messages, status: 422
         end
     end
 

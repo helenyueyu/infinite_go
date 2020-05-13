@@ -21,10 +21,16 @@ export const createQuestion = question => {
 }
 
 export const updateQuestion = question => {
-    // debugger; 
     return $.ajax({
         method: 'PATCH', 
         url: `/api/questions/${question.id}`, 
         data: { question }
+    })
+}
+
+export const deleteQuestion = id => {
+    return $.ajax({
+        method: 'DELETE', 
+        url: `/api/questions/${id}`
     })
 }

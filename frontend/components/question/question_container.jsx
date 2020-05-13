@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'; 
 import Question from './question'; 
-import { fetchQuestion } from '../../actions/question_actions'; 
+import { fetchQuestion, deleteQuestion } from '../../actions/question_actions'; 
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -9,7 +9,8 @@ const mapStateToProps = (state, ownProps) => {
 }}
 
 const mapDispatchToProps = dispatch => ({
-    fetchQuestion: id => dispatch(fetchQuestion(id))
+    fetchQuestion: id => dispatch(fetchQuestion(id)), 
+    deleteQuestion: id => dispatch(deleteQuestion(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Question); 
