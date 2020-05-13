@@ -12,12 +12,15 @@ class Questions extends React.Component {
             return (
                 <div>
                     <Link to="/questions/new"><button>Create Question</button></Link>
+
                     {questions.map((question, idx) => {
                         return (
-                            <div key={idx}>
-                                {question.title}
-                                {question.body}
-                            </div>
+                            <Link to={`/questions/${question.id}`} key={idx}>
+                                <div>
+                                    {question.title}
+                                    {question.body}
+                                </div>
+                            </Link>
                         )
                     })}
                 </div>

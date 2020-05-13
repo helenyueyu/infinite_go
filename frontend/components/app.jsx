@@ -11,6 +11,7 @@ import NavbarContainer from './user/nav/navbar_container';
 import ProfileContainer from './user/profile/profile_container'; 
 
 import QuestionsContainer from './question/questions_container'; 
+import QuestionContainer from './question/question_container'; 
 import NewQuestionContainer from './question/new_question_container'; 
 
 const App = () => (
@@ -22,6 +23,7 @@ const App = () => (
 
             <Route exact path="/questions" component={QuestionsContainer} />
             <ProtectedRoute exact path="/questions/new" component={NewQuestionContainer} />
+            <Route exact path="/questions/:questionId" component={QuestionContainer} />
 
             <ProtectedRoute exact path="/profile" component={ProfileContainer} />
         </Switch>

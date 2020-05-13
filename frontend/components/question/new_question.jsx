@@ -4,7 +4,7 @@ class NewQuestion extends React.Component {
     constructor(props) {
         super(props); 
         this.state = {
-            author_id: this.props.authorId, 
+            user_id: this.props.authorId, 
             title: "", 
             body: ""
         }

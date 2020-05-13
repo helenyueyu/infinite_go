@@ -5,6 +5,13 @@ export const getQuestions = () => (
     })
 )
 
+export const getQuestion = (id) => (
+    $.ajax({
+        method: 'GET', 
+        url: `/api/questions/${id}`
+    })
+)
+
 export const createQuestion = question => {
     return $.ajax({
         method: 'POST', 

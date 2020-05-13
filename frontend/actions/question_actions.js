@@ -13,6 +13,11 @@ export const createQuestion = question => dispatch => (
         .then(question => dispatch(receiveQuestion(question)))
 )
 
+export const fetchQuestion = id => dispatch => (
+    questionAPIUtil.getQuestion(id)
+        .then(question => dispatch(receiveQuestion(question)))
+)
+
 const receiveAllQuestions = questions => ({
     type: RECEIVE_ALL_QUESTIONS,
     questions
