@@ -25,10 +25,10 @@ export const fetchAllQuestions = () => dispatch => (
         .then(questions => dispatch(receiveAllQuestions(questions)))
 )
 
-export const fetchFilteredQuestions = (query) => dispatch => (
-    questionAPIUtil.getFilteredQuestions(query)
+export const fetchFilteredQuestions = (pageNumber, pageLimit, query) => dispatch => {
+    return questionAPIUtil.getFilteredQuestions(pageNumber, pageLimit, query)
         .then(questions => dispatch(receiveAllQuestions(questions)))
-)
+}
 
 export const fetchQuestion = id => dispatch => (
     questionAPIUtil.getQuestion(id)

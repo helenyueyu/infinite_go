@@ -1,4 +1,6 @@
 import React from 'react'; 
+import moment from 'moment'; 
+
 import { Link } from 'react-router-dom'; 
 
 class Question extends React.Component {
@@ -26,6 +28,7 @@ class Question extends React.Component {
                 <div>{title}</div>
                 <div>{body}</div>
                 <div>{user.username}</div>
+                <div>{moment(user.createdAt).fromNow()}</div>
                 <div><Link to="/questions">Back</Link></div>
                 <div>{currentUser.id === user.id ? <button onClick={this.handleDelete}>delete</button> : null}</div>
                 <div>{currentUser.id === user.id ? <Link to={`/questions/${id}/edit`}>Edit</Link> : null}</div>

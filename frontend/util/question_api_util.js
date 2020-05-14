@@ -5,12 +5,13 @@ export const getQuestions = () => (
     })
 )
 
-export const getFilteredQuestions = (query) => (
-    $.ajax({
+export const getFilteredQuestions = (page, pageLimit, query) => {
+    // debugger 
+    return $.ajax({
         method: 'GET', 
-        url: `/api/questions/?q=${query}`
+        url: `/api/questions/?page=${page}&page_limit=${pageLimit}&query=${query}`
     })
-)
+}
 
 export const getQuestion = (id) => (
     $.ajax({

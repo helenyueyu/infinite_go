@@ -1,13 +1,15 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom'; 
 
 class Search extends React.Component {
-
     constructor(props) {
         super(props); 
         this.state = {
-            query: ""
+            query: null, 
+            pageLimit: null, 
+            pageNumber: null  
         }
-
+        
         this.handleChange = this.handleChange.bind(this); 
         this.handleSubmit = this.handleSubmit.bind(this); 
     }
@@ -18,20 +20,40 @@ class Search extends React.Component {
         })
     }
 
-    handleSubmit() {
-        this.props.fetchFilteredQuestions(this.state.query); 
+    handleSubmit(e) {
+        e.preventDefault(); 
+        this.props.receiveQuery(this.state.query); 
     }
 
     render() {
         return (
-           <h1>
+           <div>
                <form onSubmit={this.handleSubmit}>
                    <input onChange={this.handleChange} />   
                    <button type="submit">Submit</button>            
                 </form>
-           </h1>
+
+
+                <div>
+                    Change Page Number: {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num =>
+                        <button key={num} onClick={() => this.props.changePageNumber(num)}>
+                            {num}
+                        </button>
+                    )}
+                </div>
+
+                <div>
+                    Change Page Limit: {[5, 10, 15].map(num =>
+                        <button key={num} onClick={() => this.props.changePageLimit(num)}>
+                            {num}
+                        </button>
+                    )}
+                </div>
+
+           </div>
        )
     }
 }
 
-export default Search; 
+export default withRouter(Search); 
+

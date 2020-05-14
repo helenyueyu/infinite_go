@@ -3,11 +3,12 @@ Rails.application.routes.draw do
     root to: 'static_pages#root'
 
     namespace :api, defaults: {format: :json} do 
+      get 'questions(search/:search)', to: 'questions#search', search: /.*/
+
       resources :users, only: [:index, :create, :show]
       resource :session, only: [:create, :destroy]
 
       resources :questions, only: [:index, :create, :show, :update, :destroy] 
-      get 'questions/:search', to: 'questions#index'
     end
     
 end
