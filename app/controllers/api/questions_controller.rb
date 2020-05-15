@@ -6,6 +6,7 @@ class Api::QuestionsController < ApplicationController
     def search 
         params = ensure_search_params
         @questions = Question.search(*ensure_search_params)
+        # debugger 
     end
 
     def create 
@@ -60,16 +61,13 @@ end
 
 
 
-
-
-        # debugger 
-        # if params[:q] 
-        #     # debugger 
-        #     if params[:q] == "\"\"" 
-        #         params[:q] = ""
-        #     end
-        #     @questions = Question.search(params[:page].to_i, 2, params[:q])
-        # else
-        #     # @questions = Question.search(1, 2)
-        #     @questions = Question.all 
-        # end
+# @questions.each do |question|
+#     json.set! question.id do 
+#         json.extract! question, :id, 
+#                                 :title, 
+#                                 :body, 
+#                                 :user, 
+#                                 :created_at, 
+#                                 :updated_at
+#     end 
+# end
