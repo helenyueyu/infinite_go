@@ -6,7 +6,6 @@ class Api::QuestionsController < ApplicationController
     def search 
         params = ensure_search_params
         @questions = Question.search(*ensure_search_params)
-        # debugger 
     end
 
     def create 
@@ -58,16 +57,3 @@ end
 
 
 
-
-
-
-# @questions.each do |question|
-#     json.set! question.id do 
-#         json.extract! question, :id, 
-#                                 :title, 
-#                                 :body, 
-#                                 :user, 
-#                                 :created_at, 
-#                                 :updated_at
-#     end 
-# end

@@ -11,6 +11,11 @@ class User < ApplicationRecord
         class_name: :Question, 
         foreign_key: :user_id, 
         dependent: :destroy 
+    
+    has_many :answers, 
+        class_name: :Answer, 
+        foreign_key: :user_id, 
+        dependent: :destroy 
 
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email) 

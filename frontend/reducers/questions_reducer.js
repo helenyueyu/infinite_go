@@ -1,4 +1,4 @@
-import { RECEIVE_ALL_QUESTIONS, RECEIVE_QUESTION, REMOVE_QUESTION } from '../actions/question_actions';
+import { RECEIVE_ALL_QUESTIONS, RECEIVE_QUESTION, REMOVE_QUESTION } from '../actions/questions_actions';
 
 const questionsReducer = (state = {}, action) => {
     Object.freeze(state);

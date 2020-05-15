@@ -5,7 +5,7 @@ const Navbar = ({currentUser, logout}) => {
     if (currentUser.username !== undefined) {
         return (
             <>
-                <h1>{currentUser.username}</h1>
+                <h1><Link to="/profile">{currentUser.username}</Link></h1>
                 <button onClick={logout}>Logout</button>
             </>
         )

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import QuestionForm from './question_form'; 
 
-import { fetchQuestion, updateQuestion } from '../../actions/question_actions';
+import { fetchQuestion, updateQuestion } from '../../actions/questions_actions';
 
 const mapStateToProps = (state, ownProps) => {
     return {

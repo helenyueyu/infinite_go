@@ -33,23 +33,6 @@ class Search extends React.Component {
                    <button type="submit">Submit</button>            
                 </form>
 
-
-                <div>
-                    Change Page Number: {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num =>
-                        <button key={num} onClick={() => this.props.changePageNumber(num)}>
-                            {num}
-                        </button>
-                    )}
-                </div>
-
-                <div>
-                    Change Page Limit: {[5, 10, 15].map(num =>
-                        <button key={num} onClick={() => this.props.changePageLimit(num)}>
-                            {num}
-                        </button>
-                    )}
-                </div>
-
            </div>
        )
     }

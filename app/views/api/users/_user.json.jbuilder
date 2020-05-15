@@ -1,1 +1,3 @@
-json.extract! user, :id, :username, :email, :created_at, :updated_at 
+json.key_format! camelize: :lower 
+
+json.extract! user, :id, :username, :email, :questions, :created_at, :updated_at 

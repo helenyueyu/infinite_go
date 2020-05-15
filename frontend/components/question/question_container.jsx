@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'; 
 import Question from './question'; 
-import { fetchQuestion, deleteQuestion } from '../../actions/question_actions'; 
+import { fetchQuestion, deleteQuestion } from '../../actions/questions_actions'; 
 
 const mapStateToProps = (state, ownProps) => {
     return {
