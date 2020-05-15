@@ -1,3 +1,30 @@
 .nav {
-    background: red; 
+    background: $black; 
+    padding: 0.5rem; 
+    display: flex; 
+    justify-content: space-between; 
+}
+
+.nav-username {
+    color: $white; 
+    text-decoration: none; 
+}
+
+.nav-logout-button {
+    background-color: $red; 
+    color: $white; 
+    border: none; 
+    border-radius: 5px; 
+}
+
+.nav-login-button {
+    background-color: $white; 
+    color: $black; 
+    border-radius: 5px; 
+}
+
+.nav-signup-button {
+    background-color: $black; 
+    color: $white; 
+    border-radius: 5px; 
 }

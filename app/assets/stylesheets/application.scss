@@ -20,3 +20,19 @@
  @import "base/fonts.scss";
 
  @import "components/user/navbar/*";
+ @import "components/menu/*";
+
+ .app {
+     display: flex; 
+     flex-direction: row; 
+     justify-content: space-between; 
+ }
+
+ .app-middle {
+     flex: 4 1 0; 
+ }
+
+ 
+ body {
+     font-family: Arial, Helvetica, sans-serif; 
+ }
