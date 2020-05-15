@@ -1,6 +1,11 @@
 class Question < ApplicationRecord
     belongs_to :user 
 
+    has_many :answers, 
+        foreign_key: :question_id, 
+        class_name: :Answer, 
+        dependent: :destroy 
+
     def self.search(page, page_limit, query)
         if query.length > 0 
             res = where('title LIKE ?', "%#{query}%")

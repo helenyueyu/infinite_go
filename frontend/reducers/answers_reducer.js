@@ -9,7 +9,7 @@ const answersReducer = (state = {}, action) => {
         case RECEIVE_ANSWERS: 
             return action.answers; 
         case RECEIVE_ANSWER: 
-            newState[action.questionId] = action.answer; 
+            newState[action.answer.id] = action.answer; 
             return newState; 
         default: 
             return state; 

@@ -18,7 +18,9 @@ const receiveAnswer = answer => {
 
 export const fetchAnswers = questionId => dispatch => {
     return answerAPIUtil.getAnswers(questionId)
-                    .then(answers => dispatch(receiveAnswers(answers))); 
+                    .then(answers => {
+                        dispatch(receiveAnswers(answers))
+                    }); 
 }
 
 export const createAnswer = answer => dispatch => {

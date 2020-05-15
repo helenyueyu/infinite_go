@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment'; 
 
 import NewAnswerContainer from '../answer/new_answer_container'; 
-
+import AnswersContainer from '../answer/answers_container'; 
 
 class Question extends React.Component {
     constructor(props) {
@@ -31,10 +31,15 @@ class Question extends React.Component {
                 <div>{body}</div>
                 <div>{user.username}</div>
                 <div>{moment(createdAt).fromNow()}</div>
+
                 <NewAnswerContainer question={question} />
-                <div><Link to="/questions">Back</Link></div>
+                <AnswersContainer question={question} />
+
                 <div>{currentUser.id === user.id ? <button onClick={this.handleDelete}>delete</button> : null}</div>
                 <div>{currentUser.id === user.id ? <Link to={`/questions/${id}/edit`}>Edit</Link> : null}</div>
+
+                <div><Link to="/questions">Back</Link></div>
+
             </div>
         )
     }

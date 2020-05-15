@@ -1,6 +1,6 @@
 class Api::AnswersController < ApplicationController
     def index 
-        @answers = Question.find(params[:id]).answers 
+        @answers = Question.find(params[:question_id]).answers 
     end
 
     def create 

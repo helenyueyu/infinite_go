@@ -5,9 +5,11 @@ class AnswerForm extends React.Component {
         super(props);
         this.state = {
             user_id: this.props.userId,
+            question_id: this.props.question.id, 
             body: ""
         }
 
+        this.handleChange = this.handleChange.bind(this); 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
