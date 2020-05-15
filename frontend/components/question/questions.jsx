@@ -3,6 +3,7 @@ import moment from 'moment';
 
 import { Link } from 'react-router-dom'; 
 import FilterQuestion from './filter_question'; 
+import QuestionItem from './question_item'; 
 
 class Questions extends React.Component {
     componentDidMount() {
@@ -45,13 +46,14 @@ class Questions extends React.Component {
                     {questions.map((question, idx) => {
                         let {id, title, body, user} = question; 
                         return (
-                            <div key={idx}>
-                                <div><Link to={`/questions/${id}`}>{title}</Link></div>
-                                <div>{body}</div>
-                                <div>{user.username}</div>
-                                <div>{moment(question.createdAt).fromNow()}</div>
-                                <br/>
-                            </div>
+                            <QuestionItem 
+                                key={idx}
+                                idx={idx} 
+                                id={id}
+                                title={title} 
+                                body={body} 
+                                user={user} 
+                                question={question} />
                         )
                     })}
 

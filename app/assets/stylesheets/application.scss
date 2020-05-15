@@ -20,7 +20,9 @@
  @import "base/fonts.scss";
 
  @import "components/user/navbar/*";
+ @import "components/question/*";
  @import "components/menu/*";
+
 
  .app {
      display: flex; 
