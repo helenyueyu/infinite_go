@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment'; 
 
 import { Link } from 'react-router-dom'; 
+import FilterQuestion from './filter_question'; 
 
 class Questions extends React.Component {
     componentDidMount() {
@@ -31,21 +32,15 @@ class Questions extends React.Component {
                 <div>
                     <Link to="/questions/new"><button>Create Question</button></Link>
 
-                    <div>
-                        Change Page Number: {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num =>
-                        <button key={num} onClick={() => this.props.changePageNumber(num)}>
-                            {num}
-                        </button>
-                    )}
-                    </div>
-
-                    <div>
-                        Change Page Limit: {[5, 10, 15].map(num =>
-                        <button key={num} onClick={() => this.props.changePageLimit(num)}>
-                            {num}
-                        </button>
-                    )}
-                    </div>
+                    <FilterQuestion 
+                        type="Change Page Number" 
+                        values={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+                        action={this.props.changePageNumber} />
+                    
+                    <FilterQuestion 
+                        type="Change Page Limit"
+                        values={[5, 10, 15]}
+                        action={this.props.changePageLimit} />
                     
                     {questions.map((question, idx) => {
                         let {id, title, body, user} = question; 
