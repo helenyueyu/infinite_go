@@ -7,8 +7,10 @@ class QuestionItem extends React.Component {
         let {idx, id, title, body, user, question} = this.props; 
         return (
             <div className="question_item">
-                <div><Link to={`/questions/${id}`}>{title}</Link></div>
-                <div>{body}</div>
+                <div className="question_item-title-div">
+                    <Link to={`/questions/${id}`} className="question_item-title">{title}</Link>
+                </div>
+                <div className="question_item-body">{body}</div>
                 <div>{user.username}</div>
                 <div>{moment(question.createdAt).fromNow()}</div>
                 <br />

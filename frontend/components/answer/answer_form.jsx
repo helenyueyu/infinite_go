@@ -27,10 +27,10 @@ class AnswerForm extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="answer_form">
                 <form onSubmit={this.handleSubmit}>
 
-                    <label>Body
+                    <label>Your Answer 
                         <input
                             onChange={this.handleChange}
                             value={this.state.body} />

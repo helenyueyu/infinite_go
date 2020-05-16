@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 
 import moment from 'moment'; 
 
+import ProfileSnippet from '../user/profile/profile_snippet'; 
+
 import NewAnswerContainer from '../answer/new_answer_container'; 
 import AnswersContainer from '../answer/answers_container'; 
-import EditAnswerContainer from '../answer/edit_answer_container'; 
 
 class Question extends React.Component {
     constructor(props) {
@@ -29,19 +30,21 @@ class Question extends React.Component {
         let { id, title, body, user, createdAt } = this.props.question;
         return (
             <div>
-                <div>{title}</div>
+                <div className="question-title">{title}</div>
                 <div>{body}</div>
-                <div>{user.username}</div>
-                <div>{moment(createdAt).fromNow()}</div>
+
+                <div className="question-footer">
+                    <div className="question-button-console">
+                        <div>{currentUser.id === user.id ? <button onClick={this.handleDelete}>delete</button> : null}</div>
+                        <div>{currentUser.id === user.id ? <Link to={`/questions/${id}/edit`}>Edit</Link> : null}</div>
+                    </div>
+                    <ProfileSnippet username={user.username} timestamp={moment(createdAt).fromNow()} />
+                </div>
 
                 <NewAnswerContainer question={question} />
                 <AnswersContainer question={question} />
 
-                <div>{currentUser.id === user.id ? <button onClick={this.handleDelete}>delete</button> : null}</div>
-                <div>{currentUser.id === user.id ? <Link to={`/questions/${id}/edit`}>Edit</Link> : null}</div>
-
-                <div><Link to="/questions">Back</Link></div>
-
+                <Link to="/questions">Back</Link>
             </div>
         )
     }

@@ -1,0 +1,16 @@
+.question-title {
+    color: $red; 
+    font-size: $big-title-size; 
+    padding-top: 2rem; 
+    padding-bottom: 2rem; 
+}
+
+.question-footer {
+    padding-top: 1rem; 
+    display: flex; 
+    justify-content: space-between; 
+}
+
+.question-button-console {
+    display: flex; 
+}

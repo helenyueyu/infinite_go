@@ -1,3 +1,21 @@
 .question_item {
     border-top: 1px solid $black;  
 }
+
+.question_item-title-div {
+    padding-top: 1rem; 
+}
+.question_item-title {
+    color: $red; 
+    text-decoration: none; 
+    font-size: $title-size; 
+}
+
+.question_item-title:hover {
+    color: $focus-red; 
+}
+
+.question_item-body {
+    padding-top: 1rem; 
+    padding-bottom: 1rem; 
+}
