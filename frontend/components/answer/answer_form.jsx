@@ -6,7 +6,7 @@ class AnswerForm extends React.Component {
         this.state = {
             user_id: this.props.userId,
             question_id: this.props.question.id, 
-            body: ""
+            body: "" 
         }
 
         this.handleChange = this.handleChange.bind(this); 

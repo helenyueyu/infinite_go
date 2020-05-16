@@ -37,6 +37,7 @@ export const createAnswer = answer => dispatch => {
 }
 
 export const updateAnswer = answer => dispatch => {
+    // debugger; 
     return answerAPIUtil.updateAnswer(answer)
                 .then(answer => dispatch(receiveAnswer(answer))); 
 }

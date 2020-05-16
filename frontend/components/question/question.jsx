@@ -1,9 +1,11 @@
 import React from 'react'; 
 import { Link } from 'react-router-dom'; 
+
 import moment from 'moment'; 
 
 import NewAnswerContainer from '../answer/new_answer_container'; 
 import AnswersContainer from '../answer/answers_container'; 
+import EditAnswerContainer from '../answer/edit_answer_container'; 
 
 class Question extends React.Component {
     constructor(props) {

@@ -3,8 +3,9 @@ import Answers from './answers';
 
 import { fetchAnswers, deleteAnswer } from '../../actions/answers_actions';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, {question}) => {
     return {
+    question: question, 
     answers: Object.values(state.entities.answers), 
     currentUser: state.entities.currentUser 
 }}

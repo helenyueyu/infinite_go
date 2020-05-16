@@ -18,7 +18,9 @@ import QuestionsContainer from './question/questions_container';
 import NewQuestionContainer from './question/new_question_container';
 import QuestionContainer from './question/question_container'; 
 import EditQuestionContainer from './question/edit_question_container'; 
- 
+
+import EditAnswerContainer from './answer/edit_answer_container';
+
 const App = () => (
     <>
         <NavbarContainer />
@@ -36,6 +38,8 @@ const App = () => (
                     <ProtectedRoute exact path="/questions/new" component={NewQuestionContainer} />
                     <ProtectedRoute exact path="/questions/:questionId/edit" component={EditQuestionContainer} />
                     <Route exact path="/questions/:questionId" component={QuestionContainer} />
+
+                    <ProtectedRoute exact path="/questions/:questionId/answers/:answerId/edit" component={EditAnswerContainer} />
 
                     <ProtectedRoute exact path="/profile" component={ProfileContainer} />
                 </Switch>

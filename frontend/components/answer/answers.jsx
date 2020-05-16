@@ -12,14 +12,15 @@ class Answers extends React.Component {
 
     render() {
         if (!this.props.answers) return null; 
-        const { answers, currentUser } = this.props; 
+        const { question, answers, currentUser } = this.props; 
         return (
             <div>
                 {answers.map((answer, idx) => <div key={idx}>
                         {answer.body}
                         {answer.user.username}
                         {currentUser.id === answer.user.id ? 
-                            <button onClick={() => this.handleDelete(answer.id)}>Delete</button> : null}
+                        <button onClick={() => this.handleDelete(answer.id)}>Delete</button> : null}
+                        <Link to={`/questions/${question.id}/answers/${answer.id}/edit`}>Edit</Link>
                     </div>)}
             </div>
         )
