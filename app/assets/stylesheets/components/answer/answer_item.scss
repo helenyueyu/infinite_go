@@ -1,0 +1,16 @@
+.answer_item {
+    border-top: 1px solid $black;  
+    padding-top: 1rem; 
+    padding-bottom: 1rem; 
+}
+
+.answer_item-footer {
+    padding-top: 1rem; 
+    display: flex; 
+    justify-content: space-between;
+    align-items: flex-end;  
+}
+
+.answer_item-button-console {
+    display: flex; 
+}

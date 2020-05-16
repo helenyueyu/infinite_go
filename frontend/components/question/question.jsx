@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import moment from 'moment'; 
 
 import ProfileSnippet from '../user/profile/profile_snippet'; 
+import DeleteButton from '../buttons/delete_button'; 
+import EditButton from '../buttons/edit_button'; 
 
 import NewAnswerContainer from '../answer/new_answer_container'; 
 import AnswersContainer from '../answer/answers_container'; 
@@ -35,8 +37,8 @@ class Question extends React.Component {
 
                 <div className="question-footer">
                     <div className="question-button-console">
-                        <div>{currentUser.id === user.id ? <button onClick={this.handleDelete}>delete</button> : null}</div>
-                        <div>{currentUser.id === user.id ? <Link to={`/questions/${id}/edit`}>Edit</Link> : null}</div>
+                        <DeleteButton authorized={currentUser.id === user.id} handleDelete={this.handleDelete} />
+                        <EditButton authorized={currentUser.id === user.id} link={`/questions/${id}/edit`} />
                     </div>
                     <ProfileSnippet username={user.username} timestamp={moment(createdAt).fromNow()} />
                 </div>

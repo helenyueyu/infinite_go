@@ -1,9 +1,12 @@
 import React from 'react'; 
-import { Link } from 'react-router-dom'; 
+
+import AnswerItem from './answer_item'; 
 
 class Answers extends React.Component {
     componentDidMount() { 
         this.props.fetchAnswers(this.props.question.id)
+
+        this.handleDelete = this.handleDelete.bind(this); 
     }
 
     handleDelete(id) {
@@ -15,13 +18,17 @@ class Answers extends React.Component {
         const { question, answers, currentUser } = this.props; 
         return (
             <div>
-                {answers.map((answer, idx) => <div key={idx}>
-                        {answer.body}
-                        {answer.user.username}
-                        {currentUser.id === answer.user.id ? 
-                        <button onClick={() => this.handleDelete(answer.id)}>Delete</button> : null}
-                        <Link to={`/questions/${question.id}/answers/${answer.id}/edit`}>Edit</Link>
-                    </div>)}
+                {answers.map((answer, idx) => (
+                    <AnswerItem key={idx}
+                        questionId={question.id}
+                        id={answer.id}
+                        body={answer.body}
+                        createdAt={answer.createdAt}
+                        username={answer.user.username}
+                        authorized={currentUser.id === answer.user.id}
+                        handleDelete={(id) => this.handleDelete(id)}
+                    />
+                ))}   
             </div>
         )
     }

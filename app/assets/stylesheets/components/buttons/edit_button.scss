@@ -1,0 +1,21 @@
+.edit_button {
+    background: none; 
+    border: none; 
+    margin: 0; 
+    padding-left: 0; 
+    padding-top: 0; 
+    padding-bottom: 0; 
+
+    text-decoration: none; 
+    font-size: 1rem; 
+}
+
+.edit_button_text {
+    text-decoration: none; 
+    color: $gray; 
+}
+
+.edit_button_text:hover {
+    color: $focus-gray; 
+}
+
