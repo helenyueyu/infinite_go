@@ -4,6 +4,8 @@ import moment from 'moment';
 import { Link } from 'react-router-dom'; 
 
 import FilterQuestion from './filter_question'; 
+import VoteContainer from '../vote/vote_container'; 
+
 import QuestionItem from './question_item'; 
 
 
@@ -48,17 +50,18 @@ class Questions extends React.Component {
                     {questions.map((question, idx) => {
                         let {id, title, body, user} = question; 
                         return (
-                            <QuestionItem 
-                                key={idx}
-                                idx={idx} 
-                                id={id}
-                                title={title} 
-                                body={body} 
-                                user={user} 
-                                question={question} />
+                            <div key={idx} className="questions-item">
+                                <VoteContainer question_id={id} />
+                                <QuestionItem 
+                                    idx={idx} 
+                                    id={id}
+                                    title={title} 
+                                    body={body} 
+                                    user={user} 
+                                    question={question} />
+                            </div>
                         )
                     })}
-
                 </div>
             )
         } 
