@@ -10,16 +10,20 @@ import QuestionItem from './question_item';
 
 
 class Questions extends React.Component {
+    constructor(props) {
+        super(props); 
+        this.fetchQuestions = this.fetchQuestions.bind(this); 
+
+    }
     componentDidMount() {
-        this.fetchQuestions();  
+        this.fetchQuestions(this.props.search);  
     }
 
     componentDidUpdate(prevProps) {
-        if (this.newSearchParams(prevProps.search, this.props.search)) this.fetchQuestions(); 
+        if (this.newSearchParams(prevProps.search, this.props.search)) this.fetchQuestions(this.props.search); 
     }
 
-    fetchQuestions() {
-        let { pageNumber, pageLimit, query } = this.props.search; 
+    fetchQuestions({pageNumber, pageLimit, query}) {
         this.props.fetchFilteredQuestions(pageNumber, pageLimit, query); 
     }
 
@@ -48,10 +52,14 @@ class Questions extends React.Component {
                         action={this.props.changePageLimit} />
                     
                     {questions.map((question, idx) => {
-                        let {id, title, body, user} = question; 
+                        let {id, title, body, user, votes} = question; 
                         return (
                             <div key={idx} className="questions-item">
-                                <VoteContainer question_id={id} />
+                                <VoteContainer 
+                                    question_id={id} 
+                                    count={votes.length} 
+                                    fetchQuestions={this.fetchQuestions} 
+                                    search={this.props.search} />
                                 <QuestionItem 
                                     idx={idx} 
                                     id={id}

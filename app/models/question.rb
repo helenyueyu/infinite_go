@@ -6,6 +6,10 @@ class Question < ApplicationRecord
         class_name: :Answer, 
         dependent: :destroy 
 
+    has_many :votes, 
+        as: :voteable, 
+        dependent: :destroy 
+
     def self.search(page, page_limit, query)
         if query.length > 0 
             res = where('title LIKE ?', "%#{query}%")
