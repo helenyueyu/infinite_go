@@ -12,7 +12,7 @@ Rails.application.routes.draw do
         resources :answers, only: [:index]
       end
 
-      resources :answers, only: [:create]
+      resources :answers, only: [:create, :update, :destroy]
     end
     
 end

@@ -13,3 +13,18 @@ export const createAnswer = answer => {
     })
 }
 
+export const updateAnswer = answer => {
+    return $.ajax({
+        method: 'PATCH', 
+        url: `/api/answers/${answer.id}`, 
+        data: { answer }
+    })
+}
+
+export const deleteAnswer = id => {
+    return $.ajax({
+        method: 'DELETE', 
+        url: `/api/answers/${id}`
+    })
+}
+
