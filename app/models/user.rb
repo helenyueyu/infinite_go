@@ -17,6 +17,15 @@ class User < ApplicationRecord
         foreign_key: :user_id, 
         dependent: :destroy 
 
+    has_many :voted_questions, 
+        through: :questions,  
+        source: :votes 
+
+    has_many :commented_questions, 
+        through: :questions,  
+        source: :comments 
+
+
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email) 
         user && user.is_password?(password) ? user : nil 

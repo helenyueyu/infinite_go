@@ -5,6 +5,7 @@ import { fetchQuestion, deleteQuestion } from '../../actions/questions_actions';
 const mapStateToProps = (state, ownProps) => {
     return {
     question: state.entities.questions[ownProps.match.params.questionId], 
+    comments: state.entities.comments, 
     currentUser: state.entities.currentUser 
 }}
 

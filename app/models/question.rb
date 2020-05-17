@@ -9,6 +9,14 @@ class Question < ApplicationRecord
     has_many :votes, 
         as: :voteable, 
         dependent: :destroy 
+    
+    has_many :comments, 
+        as: :commentable, 
+        dependent: :destroy
+
+    has_many :comment_owners, 
+        through: :comments, 
+        source: :user 
 
     def vote_count  
         self.votes.where('value = 1').count - self.votes.where('value = -1').count

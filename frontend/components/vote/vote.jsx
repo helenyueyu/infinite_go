@@ -26,13 +26,13 @@ class Vote extends React.Component {
     render() {
         return (
             <div className="vote">
-                <div onClick={this.upVote}>
+                <div className="vote-symbol" onClick={this.upVote}>
                     +
                 </div>
-                <div>
+                <div className="vote-count">
                     {this.props.count}
                 </div>
-                <div onClick={this.downVote}>
+                <div className="vote-symbol" onClick={this.downVote}>
                     -
                 </div>
             </div>
