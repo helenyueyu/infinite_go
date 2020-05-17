@@ -52,14 +52,17 @@ class Questions extends React.Component {
                         action={this.props.changePageLimit} />
                     
                     {questions.map((question, idx) => {
-                        let {id, title, body, user, votes} = question; 
+                        let {id, title, body, user, voteCount} = question; 
                         return (
                             <div key={idx} className="questions-item">
+                                
                                 <VoteContainer 
-                                    question_id={id} 
-                                    count={votes.length} 
+                                    voteable_id={id} 
+                                    voteable_type="Question"
+                                    count={voteCount} 
                                     fetchQuestions={this.fetchQuestions} 
                                     search={this.props.search} />
+                                
                                 <QuestionItem 
                                     idx={idx} 
                                     id={id}

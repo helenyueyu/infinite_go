@@ -3,11 +3,11 @@ import Vote from './vote';
 
 import { createVote, deleteVote } from '../../actions/votes_actions'; 
 
-const mapStateToProps = (state, {question_id, count}) => ({
+const mapStateToProps = (state, {voteable_id, voteable_type, count}) => ({
     user_id: state.entities.currentUser.id, 
     count: count, 
-    voteable_id: question_id, 
-    voteable_type: 'Question'
+    voteable_id: voteable_id, 
+    voteable_type: voteable_type 
 })
 
 const mapDispatchToProps = (dispatch) => ({

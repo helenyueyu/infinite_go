@@ -10,6 +10,10 @@ class Question < ApplicationRecord
         as: :voteable, 
         dependent: :destroy 
 
+    def vote_count  
+        self.votes.where('value = 1').count - self.votes.where('value = -1').count
+    end
+
     def self.search(page, page_limit, query)
         if query.length > 0 
             res = where('title LIKE ?', "%#{query}%")
