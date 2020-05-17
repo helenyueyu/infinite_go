@@ -12,9 +12,6 @@ class Api::VotesController < ApplicationController
         end
     end
 
-    def destroy 
-    end
-
     private 
     def vote_params
         params.require(:vote).permit(:value, :user_id, :voteable_id, :voteable_type)

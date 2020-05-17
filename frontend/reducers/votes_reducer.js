@@ -1,4 +1,4 @@
-import { RECEIVE_VOTE, REMOVE_VOTE } from '../actions/votes_actions'; 
+import { RECEIVE_VOTE } from '../actions/votes_actions'; 
 
 const votesReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -9,9 +9,6 @@ const votesReducer = (state = {}, action) => {
         case RECEIVE_VOTE:
             newState[action.vote.id] = action.vote; 
             return newState; 
-        case REMOVE_VOTE:
-            delete newState[action.vote.id];
-            return newState;
         default:
             return state;
     }

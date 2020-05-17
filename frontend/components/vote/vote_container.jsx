@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'; 
 import Vote from './vote'; 
 
-import { createVote, deleteVote } from '../../actions/votes_actions'; 
+import { createVote } from '../../actions/votes_actions'; 
 
 const mapStateToProps = (state, {voteable_id, voteable_type, count}) => ({
     user_id: state.entities.currentUser.id, 
@@ -11,8 +11,7 @@ const mapStateToProps = (state, {voteable_id, voteable_type, count}) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    createVote: vote => dispatch(createVote(vote)), 
-    deleteVote: vote => dispatch(deleteVote(vote))
+    createVote: vote => dispatch(createVote(vote)) 
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Vote)

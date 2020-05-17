@@ -6,6 +6,6 @@ json.extract! @question,
     :body, 
     :vote_count, 
     :user, 
-    :get_votes, 
+    :vote_count, 
     :created_at, 
     :updated_at

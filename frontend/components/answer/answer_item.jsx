@@ -11,7 +11,7 @@ class AnswerItem extends React.Component {
     render() {
         let { id, questionId, body, username, createdAt, authorized, handleDelete } = this.props;
         return (
-            <div className="answer_item">
+            <div>
                 {body}
 
                 <div className="answer_item-footer">

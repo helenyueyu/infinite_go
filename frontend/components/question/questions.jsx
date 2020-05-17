@@ -1,5 +1,4 @@
 import React from 'react'; 
-import moment from 'moment'; 
 
 import { Link } from 'react-router-dom'; 
 
@@ -36,6 +35,7 @@ class Questions extends React.Component {
     render() {
         let {questions} = this.props; 
         if (!this.props.questions) return null; 
+
         if (questions) {
             return (
                 <div>
@@ -60,8 +60,8 @@ class Questions extends React.Component {
                                     voteable_id={id} 
                                     voteable_type="Question"
                                     count={voteCount} 
-                                    fetchQuestions={this.fetchQuestions} 
-                                    search={this.props.search} />
+                                    action={this.fetchQuestions} 
+                                    info={this.props.search} />
                                 
                                 <QuestionItem 
                                     idx={idx} 
