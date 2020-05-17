@@ -4,9 +4,10 @@ import { Route, Switch } from 'react-router-dom';
 
 import { AuthRoute, ProtectedRoute } from '../util/routes_util'
 
+import Footer from '../components/user/footer/footer'; 
+
 import Menu from './menu/menu'; 
 import RightMenu from './menu/right_menu'; 
-
 
 import SignUpFormContainer from './user/auth/sign_up_form_container';
 import LoginFormContainer from './user/auth/login_form_container';
@@ -46,6 +47,8 @@ const App = () => (
             </div>
             <RightMenu />
         </div>
+
+        <Footer />
     </>
 ); 
 

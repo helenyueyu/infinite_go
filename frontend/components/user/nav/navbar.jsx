@@ -18,8 +18,11 @@ const Navbar = ({currentUser, logout}) => {
     } else {
         return (
             <div className="nav">
-                <Link to="/login"><button className="nav-login-button">Log In</button></Link>
-                <Link to="/signup" ><button className="nav-signup-button">Sign Up </button></Link>
+                <div className="nav-logo">SO</div>
+                <div>
+                    <Link to="/login"><button className="nav-login-button">Log In</button></Link>
+                    <Link to="/signup" ><button className="nav-signup-button">Sign Up </button></Link>
+                </div>
             </div>
         )
     }
