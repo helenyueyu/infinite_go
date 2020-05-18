@@ -1,4 +1,9 @@
 class Api::TagsController < ApplicationController
+    def index 
+        # @tags = Tag.all 
+        @tags = Tag.question_count(1, 5)
+    end
+
     def create 
         @tag = Tag.new(tag_params)
         if @tag.save 
