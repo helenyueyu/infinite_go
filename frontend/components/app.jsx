@@ -12,6 +12,8 @@ import RightMenu from './menu/right_menu';
 import SignUpFormContainer from './user/auth/sign_up_form_container';
 import LoginFormContainer from './user/auth/login_form_container';
 
+import ProfileIndexContainer from './user/profile/profile_index_container'; 
+
 import NavbarContainer from './user/nav/navbar_container'; 
 import ProfileContainer from './user/profile/profile_container'; 
 
@@ -33,6 +35,7 @@ const App = () => (
                     <AuthRoute exact path="/signup" component={SignUpFormContainer} />
                     <AuthRoute exact path="/login" component={LoginFormContainer} />
 
+                    <ProtectedRoute exact path="/users" component={ProfileIndexContainer} />
                     
                     <Route exact path="/questions" component={QuestionsContainer} />
                     <Route exact path="/questions/?q=:query" component={QuestionsContainer} />

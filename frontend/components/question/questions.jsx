@@ -52,7 +52,7 @@ class Questions extends React.Component {
                         action={this.props.changePageLimit} />
                     
                     {questions.map((question, idx) => {
-                        let {id, title, body, user, voteCount} = question; 
+                        let {id, title, body, user, voteCount, tags} = question; 
                         return (
                             <div key={idx} className="questions-item">
                                 
@@ -69,7 +69,8 @@ class Questions extends React.Component {
                                     title={title} 
                                     body={body} 
                                     user={user} 
-                                    question={question} />
+                                    question={question}
+                                    tags={tags} />
                             </div>
                         )
                     })}

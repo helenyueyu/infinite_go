@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import currentUserReducer from './current_user_reducer';
+import usersReducer from './users_reducer'; 
 import questionsReducer from './questions_reducer'; 
 import searchReducer from './search/search_reducer';
 import answersReducer from './answers_reducer'; 
@@ -10,6 +11,7 @@ import votesReducer from './votes_reducer';
 
 const entitiesReducer = combineReducers({
     currentUser: currentUserReducer, 
+    users: usersReducer, 
     questions: questionsReducer, 
     answers: answersReducer, 
     votes: votesReducer, 

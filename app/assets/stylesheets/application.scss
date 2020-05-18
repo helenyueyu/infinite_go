@@ -22,6 +22,8 @@
  @import "components/user/footer/*";
  @import "components/user/navbar/*";
  @import "components/user/auth/*";
+ @import "components/user/profile/*";
+
  @import "components/buttons/*";
  @import "components/question/*";
  @import "components/answer/*"; 
@@ -32,7 +34,6 @@
 
 
  .app {
-     padding: 2rem 1rem 2rem 1rem;  
      display: flex; 
      flex-direction: row; 
      justify-content: space-between; 

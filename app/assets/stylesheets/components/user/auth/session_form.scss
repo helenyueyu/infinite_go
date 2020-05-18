@@ -7,7 +7,7 @@
 
 .session_form {
     background: $black; 
-    height: 80vh; 
+    height: 100vh; 
     width: 35vw; 
     display: flex; 
     flex-direction: column; 
@@ -15,6 +15,7 @@
     align-items: center; 
     border-radius: 5px; 
     box-shadow: 0 0 0pt 3pt $gray; 
+    box-sizing: border-box; 
 }
 
 .session_form-title {
