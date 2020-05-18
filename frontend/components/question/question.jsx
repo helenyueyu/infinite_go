@@ -43,7 +43,8 @@ class Question extends React.Component {
                 <div className="question-title">{title}</div>
                 <div>{body}</div>
 
-                <NewTagContainer taggable_id={question.id}
+                <NewTagContainer fetchQuestion={this.props.fetchQuestion}
+                                taggable_id={question.id}
                                 taggable_type="Question" />
                                 
                 <div>{tags.map((tag, idx) => <div key={idx}>{tag.name}</div>)}</div>
@@ -59,7 +60,8 @@ class Question extends React.Component {
 
                 <CommentsContainer comments={Object.values(comments)} />
 
-                <NewCommentContainer commentable_id={question.id} 
+                <NewCommentContainer fetchQuestion={this.props.fetchQuestion}
+                                    commentable_id={question.id} 
                                     commentable_type="Question" />
                 
                 <AnswersContainer question={question} />

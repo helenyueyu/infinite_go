@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_18_012856) do
+ActiveRecord::Schema.define(version: 2020_05_18_031812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 2020_05_18_012856) do
     t.string "commentable_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id", "commentable_id", "commentable_type"], name: "user_commentable_index", unique: true
   end
 
   create_table "questions", force: :cascade do |t|
@@ -51,7 +50,6 @@ ActiveRecord::Schema.define(version: 2020_05_18_012856) do
     t.string "taggable_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id", "taggable_id", "taggable_type"], name: "user_taggable_index", unique: true
   end
 
   create_table "users", force: :cascade do |t|
