@@ -1,3 +1,75 @@
+.session_form-container {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: center; 
+    align-items: center; 
+}
+
 .session_form {
-    background: red; 
+    background: $black; 
+    height: 80vh; 
+    width: 35vw; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    border-radius: 5px; 
+    box-shadow: 0 0 0pt 3pt $gray; 
+}
+
+.session_form-title {
+    font-size: $title-size;
+    color: $white; 
+    padding: 2rem 0rem 2rem 0rem;  
+}
+
+.session_form-form {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+}
+
+.session_form-label {
+    display: flex; 
+    color: $white; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: flex-start; 
+    font-size: 1.15rem; 
+}
+
+.session_form-input {
+    margin: 0.25rem 0rem 1rem 0rem; 
+    padding: 0.25rem; 
+    font-size: 1rem; 
+    border-radius: 5px; 
+    border: none; 
+    width: 25vw; 
+}
+
+.session_form-input:focus {
+    outline: none; 
+    border-radius: 5px; 
+    border: 1px solid $black; 
+    box-shadow: 0 0 0pt 3pt $gray; 
+}
+
+.session_form-submit {
+    margin: 0rem 0.25rem 0rem 0.25rem; 
+    padding: 0.5rem; 
+    background-color: $black; 
+    color: $white; 
+    border: 1px solid $white; 
+    border-radius: 5px; 
+    font-size: 1rem; 
+}
+
+.session_form-submit:hover {
+    background-color: $white; 
+    color: $black; 
+    cursor: pointer; 
+}
+
+.session_form-submit:focus {
+    outline: none; 
 }

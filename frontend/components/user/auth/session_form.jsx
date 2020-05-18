@@ -28,19 +28,21 @@ class SessionForm extends React.Component {
     render() {
         let {type} = this.props; 
         return (
-            <div className="session_form">
-                <h1>{type}</h1>
-                <form onSubmit={this.handleSubmit}>
-                    {["username", "email", "password"].map(type => 
-                        <label key={type}>{type}
-                            <input 
-                                onChange={(e) => this.handleChange(e, type)} 
-                                value={this.state[type]} />
-                        </label>
-                    )}
-                    
-                    <button type="submit">Submit</button>
-                </form>
+            <div className="session_form-container">
+                <div className="session_form">
+                    <h1 className="session_form-title">{type}</h1>
+                    <form className="session_form-form" onSubmit={this.handleSubmit}>
+                        {["username", "email", "password"].map(type => 
+                            <label className="session_form-label" key={type}>{type}
+                                <input className="session_form-input"
+                                    onChange={(e) => this.handleChange(e, type)} 
+                                    value={this.state[type]} />
+                            </label>
+                        )}
+                        
+                        <button className="session_form-submit" type="submit">Submit</button>
+                    </form>
+                </div>
             </div>
         )
     }
