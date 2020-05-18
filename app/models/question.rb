@@ -14,6 +14,10 @@ class Question < ApplicationRecord
         as: :commentable, 
         dependent: :destroy
 
+    has_many :tags, 
+        as: :taggable, 
+        dependent: :destroy 
+
     has_many :comment_owners, 
         through: :comments, 
         source: :user 

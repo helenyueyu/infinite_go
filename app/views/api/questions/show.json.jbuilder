@@ -12,6 +12,18 @@ json.extract! @question,
     :created_at, 
     :updated_at
 
+
+json.set! 'tags', {} 
+
+json.set! 'tags' do 
+    json.array! @question.tags, 
+                :name, 
+                :created_at, 
+                :taggable_id, 
+                :taggable_type 
+end
+
+
 json.set! 'comments', {} 
 
 json.set! 'comments' do 

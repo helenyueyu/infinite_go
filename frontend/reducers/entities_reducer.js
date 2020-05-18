@@ -4,6 +4,7 @@ import questionsReducer from './questions_reducer';
 import searchReducer from './search/search_reducer';
 import answersReducer from './answers_reducer'; 
 import commentsReducer from './comments_reducer';  
+import tagsReducer from './tags_reducer';  
 import votesReducer from './votes_reducer'; 
 
 
@@ -13,6 +14,7 @@ const entitiesReducer = combineReducers({
     answers: answersReducer, 
     votes: votesReducer, 
     comments: commentsReducer, 
+    tags: tagsReducer, 
     search: searchReducer
 })
 

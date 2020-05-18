@@ -9,6 +9,9 @@ import EditButton from '../buttons/edit_button';
 
 import CommentsContainer from '../comment/comments_container'; 
 import NewCommentContainer from '../comment/new_comment_container'; 
+
+import NewTagContainer from '../tag/new_tag_container'; 
+
 import NewAnswerContainer from '../answer/new_answer_container'; 
 import AnswersContainer from '../answer/answers_container'; 
 
@@ -30,17 +33,22 @@ class Question extends React.Component {
     render() {
         if (!this.props.question) return null; 
         
-
         let { currentUser, question } = this.props; 
-        let { id, title, body, user, createdAt, comments } = question;
+        let { id, title, body, user, createdAt, comments, tags } = question;
 
-        if (!comments) return null; 
+        if (!comments || !tags) return null; 
 
         return (
             <div>
                 <div className="question-title">{title}</div>
                 <div>{body}</div>
 
+                <NewTagContainer taggable_id={question.id}
+                                taggable_type="Question" />
+                                
+                <div>{tags.map((tag, idx) => <div key={idx}>{tag.name}</div>)}</div>
+
+                
                 <div className="question-footer">
                     <div className="question-button-console">
                         <DeleteButton authorized={currentUser.id === user.id} handleDelete={this.handleDelete} />
