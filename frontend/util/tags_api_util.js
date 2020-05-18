@@ -1,3 +1,11 @@
+
+export const fetchTags = () => {
+    return $.ajax({
+        method: 'GET', 
+        url: '/api/tags'
+    })
+}
+
 export const createTag = tag => {
     return $.ajax({
         method: 'POST',
@@ -7,7 +15,6 @@ export const createTag = tag => {
 }
 
 export const deleteTag = id => {
-    // debugger; 
     return $.ajax({
         method: 'DELETE', 
         url: `/api/tags/${id}`

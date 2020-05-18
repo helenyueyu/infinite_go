@@ -1,4 +1,4 @@
-import { RECEIVE_TAG, REMOVE_TAG } from '../actions/tags_actions';
+import { RECEIVE_TAG, REMOVE_TAG, RECEIVE_TAGS } from '../actions/tags_actions';
 
 const tagsReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -6,8 +6,10 @@ const tagsReducer = (state = {}, action) => {
     let newState = Object.assign({}, state);
 
     switch (action.type) {
+        case RECEIVE_TAGS: 
+            return action.tags; 
         case RECEIVE_TAG:
-            newState[action.tag.id] = action.tag;
+            newState[action.tag.name] = action.tag;
             return newState;
         case REMOVE_TAG: 
             delete newState[action.tag.id]

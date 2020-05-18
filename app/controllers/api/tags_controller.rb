@@ -1,6 +1,5 @@
 class Api::TagsController < ApplicationController
     def index 
-        # @tags = Tag.all 
         @tags = Tag.question_count(1, 5)
     end
 

@@ -7,6 +7,7 @@ class Menu extends React.Component {
             <div className="menu">
                 Menu
                 <Link to='/users'>Users</Link>
+                <Link to='/tags'>Tags</Link>
             </div>
         )
     }
