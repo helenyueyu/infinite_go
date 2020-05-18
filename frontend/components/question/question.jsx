@@ -48,7 +48,9 @@ class Question extends React.Component {
                                 taggable_id={question.id}
                                 taggable_type="Question" />
                                 
-                <TagsContainer tags={tags} />
+                <TagsContainer fetchQuestion={this.props.fetchQuestion} 
+                                taggable_id={question.id}
+                                tags={tags} />
                 
                 <div className="question-footer">
                     <div className="question-button-console">

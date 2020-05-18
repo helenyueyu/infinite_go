@@ -8,6 +8,15 @@ class Api::TagsController < ApplicationController
         end
     end
 
+    def destroy 
+        @tag = Tag.find(params[:id])
+        if @tag.destroy 
+            render :show 
+        else
+            render json: @tag.errors.full_messages 
+        end
+    end
+
     private 
     def tag_params
         params.require(:tag).permit(:name, :user_id, :taggable_id, :taggable_type)

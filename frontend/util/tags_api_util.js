@@ -5,3 +5,12 @@ export const createTag = tag => {
         data: { tag }
     })
 }
+
+export const deleteTag = id => {
+    // debugger; 
+    return $.ajax({
+        method: 'DELETE', 
+        url: `/api/tags/${id}`
+    })
+}
+
