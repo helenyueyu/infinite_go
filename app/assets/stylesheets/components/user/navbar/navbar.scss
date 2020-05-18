@@ -12,11 +12,13 @@
 }
 
 .nav-logout-button {
+    margin: 0rem 0.25rem 0rem 0.25rem; 
     padding: 0.5rem; 
     background-color: $red; 
     color: $white; 
     border: none; 
     border-radius: 5px; 
+    font-size: 1rem; 
 }
 
 .nav-signup-button, .nav-login-button {
@@ -32,6 +34,16 @@
 .nav-signup-button:hover, .nav-login-button:hover {
     background-color: $white; 
     color: $black; 
+    cursor: pointer; 
+}
+
+.nav-signup-button:focus, .nav-login-button:focus {
+    outline: none; 
+}
+
+
+.nav-logout-button:hover {
+    background-color: $focus-red; 
     cursor: pointer; 
 }
 

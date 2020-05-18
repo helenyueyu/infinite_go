@@ -28,7 +28,7 @@ class SessionForm extends React.Component {
     render() {
         let {type} = this.props; 
         return (
-            <>
+            <div className="session_form">
                 <h1>{type}</h1>
                 <form onSubmit={this.handleSubmit}>
                     {["username", "email", "password"].map(type => 
@@ -41,7 +41,7 @@ class SessionForm extends React.Component {
                     
                     <button type="submit">Submit</button>
                 </form>
-            </>
+            </div>
         )
     }
 }
