@@ -9,7 +9,7 @@ const Navbar = ({currentUser, logout}) => {
             <div className="nav">
                 <div>
                     <Link to="/profile" className="nav-username">{currentUser.username}</Link>
-                    <Link to="/questions" className="nav-index-link">SO</Link>
+                    <Link to="/questions" className="nav-index-link">GO</Link>
                 </div>
                 <SearchContainer />
                 <button className="nav-logout-button" onClick={logout}>Logout</button>

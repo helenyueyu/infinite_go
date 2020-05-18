@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => (
     <div className="footer">
-        <div>Bug Mojo</div>
+        <div className="footer-logo">Infinite Go</div>
         <div>@2020 Helen Yu</div>
     </div>
 )

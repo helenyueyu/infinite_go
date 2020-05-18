@@ -1,4 +1,4 @@
-import { RECEIVE_TAG } from '../actions/comments_actions';
+import { RECEIVE_TAG } from '../actions/tags_actions';
 
 const tagsReducer = (state = {}, action) => {
     Object.freeze(state);

@@ -10,6 +10,7 @@ import EditButton from '../buttons/edit_button';
 import CommentsContainer from '../comment/comments_container'; 
 import NewCommentContainer from '../comment/new_comment_container'; 
 
+import TagsContainer from '../tag/tags_container'; 
 import NewTagContainer from '../tag/new_tag_container'; 
 
 import NewAnswerContainer from '../answer/new_answer_container'; 
@@ -47,8 +48,7 @@ class Question extends React.Component {
                                 taggable_id={question.id}
                                 taggable_type="Question" />
                                 
-                <div>{tags.map((tag, idx) => <div key={idx}>{tag.name}</div>)}</div>
-
+                <TagsContainer tags={tags} />
                 
                 <div className="question-footer">
                     <div className="question-button-console">

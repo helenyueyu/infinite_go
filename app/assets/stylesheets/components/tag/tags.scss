@@ -1,0 +1,11 @@
+.tags {
+    display: flex; 
+    flex-direction: row; 
+}
+
+.tag-item {
+    background: $tag-red; 
+    color: $red; 
+    padding: 0.35rem; 
+    margin: 0.2rem 0.25rem 0.2rem 0rem; 
+}

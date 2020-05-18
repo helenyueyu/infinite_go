@@ -1,8 +1,6 @@
 import { connect } from 'react-redux';
 import Comments from './comments';
 
-import { createComment } from '../../actions/comments_actions';
-
 const mapStateToProps = (state) => ({
 
 })
