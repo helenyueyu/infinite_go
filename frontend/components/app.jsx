@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/routes_util'
 
 import Footer from '../components/user/footer/footer'; 
+import Splash from '../components/user/splash'; 
 
 import Menu from './menu/menu'; 
 import RightMenu from './menu/right_menu'; 
@@ -35,6 +36,8 @@ const App = () => (
                 <Switch>
                     <AuthRoute exact path="/signup" component={SignUpFormContainer} />
                     <AuthRoute exact path="/login" component={LoginFormContainer} />
+
+                    <Route exact path="/" component={Splash} />
 
                     <Route exact path="/users" component={ProfileIndexContainer} />
                     <Route exact path="/tags" component={TagIndexContainer} />

@@ -1,0 +1,2 @@
+class TagDescription < ApplicationRecord
+end

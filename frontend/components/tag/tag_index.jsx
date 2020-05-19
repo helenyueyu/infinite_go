@@ -7,10 +7,9 @@ class TagIndex extends React.Component {
     render() {
         if (!this.props.tags) return null;
         const { tags } = this.props;
-        console.log(tags); 
         return (
             <div>
-                {tags.map(tag => <div>{tag.name}{tag.count}</div>)}
+                {tags.map((tag, idx) => <div key={idx}>{tag.name}{tag.count}</div>)}
             </div>
         )
     }
