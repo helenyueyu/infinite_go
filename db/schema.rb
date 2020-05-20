@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_20_051338) do
+ActiveRecord::Schema.define(version: 2020_05_20_051515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,13 +50,11 @@ ActiveRecord::Schema.define(version: 2020_05_20_051338) do
   end
 
   create_table "taggables", force: :cascade do |t|
-    t.string "name", null: false
     t.integer "user_id", null: false
     t.integer "taggable_id", null: false
     t.string "taggable_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name", "user_id", "taggable_id", "taggable_type"], name: "user_taggable_index", unique: true
   end
 
   create_table "users", force: :cascade do |t|
