@@ -15,12 +15,12 @@ class Tags extends React.Component {
 
     render() {
         let { tags } = this.props;
-        console.log('tags', tags); 
         return (
             <div className="tags">
                 {tags.map((tag, idx) => 
                     <div key={idx} className="tag-item">
-                        {tag.name}<button onClick={() => this.handleDelete(tag.id)}>Delete</button>
+                        <div>{tag.name}</div>
+                        <button className="tag-button" onClick={() => this.handleDelete(tag.id)}>x</button>
                     </div>
                 )}
             </div>

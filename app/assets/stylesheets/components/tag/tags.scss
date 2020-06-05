@@ -4,8 +4,25 @@
 }
 
 .tag-item {
+    display: flex; 
+    flex-direction: horizontal; 
     background: $tag-red; 
     color: $red; 
-    padding: 0.35rem; 
     margin: 0.2rem 0.25rem 0.2rem 0rem; 
+}
+
+.tag-item:hover {
+    background: $tag-red-lite; 
+    cursor: pointer; 
+}
+
+.tag-button {
+    background: $red; 
+    color: $white; 
+    border-radius: 25%; 
+    border: none; 
+}
+
+.tag-button:hover {
+    cursor: pointer; 
 }
