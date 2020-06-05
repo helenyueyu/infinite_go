@@ -14,13 +14,13 @@ class Question < ApplicationRecord
         as: :commentable, 
         dependent: :destroy
 
-    has_many :tags, 
+    has_many :taggables, 
         as: :taggable, 
         dependent: :destroy 
 
-    has_many :comment_owners, 
-        through: :comments, 
-        source: :user 
+    has_many :tags, 
+        through: :taggables, 
+        source: :tags
 
     def vote_count  
         self.votes.where('value = 1').count - self.votes.where('value = -1').count

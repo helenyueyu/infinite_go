@@ -1,12 +1,9 @@
 class Tag < ApplicationRecord
-    belongs_to :taggable, polymorphic: true 
-    
-    belongs_to :user
+    validates :name, presence: true 
+    validates :description, presence: true 
 
-    def self.question_count(page_number, page_limit)
-        Tag.group(:name)
-            .offset((page_number-1)*page_limit)
-            .limit(page_limit)
-            .order('count_name DESC').count(:name)
-    end
+    has_many :taggables, 
+        as: :taggable, 
+        dependent: :destroy 
+
 end
