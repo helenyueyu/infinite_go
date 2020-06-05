@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_05_012203) do
+ActiveRecord::Schema.define(version: 2020_06_05_232419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,30 @@ ActiveRecord::Schema.define(version: 2020_06_05_012203) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "companies", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "location", null: false
+    t.text "description", null: false
+    t.string "experience_level", default: [], null: false, array: true
+    t.string "industry", default: [], null: false, array: true
+    t.string "job_type", null: false
+    t.string "company_size", null: false
+    t.string "company_type", null: false
+    t.integer "company_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_jobs_on_company_id"
+    t.index ["user_id"], name: "index_jobs_on_user_id"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.string "title", null: false
     t.text "body", null: false
@@ -49,6 +73,7 @@ ActiveRecord::Schema.define(version: 2020_06_05_012203) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "tag_id", null: false
+    t.index ["tag_id"], name: "index_taggables_on_tag_id"
   end
 
   create_table "tags", force: :cascade do |t|
