@@ -7,7 +7,7 @@ class Tags extends React.Component {
     }
 
     handleDelete(id) {
-        this.props.deleteTag(id)
+        this.props.deleteTaggable(id)
             .then(() => {
                 this.props.fetchQuestion(this.props.taggable_id)
             })
@@ -15,6 +15,7 @@ class Tags extends React.Component {
 
     render() {
         let { tags } = this.props;
+        console.log('tags', tags); 
         return (
             <div className="tags">
                 {tags.map((tag, idx) => 

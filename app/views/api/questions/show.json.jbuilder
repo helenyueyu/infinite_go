@@ -13,14 +13,17 @@ json.extract! @question,
     :updated_at
 
 
-json.set! 'tags', {} 
+json.set! 'tags', {}
 
-json.set! 'tags' do 
-    json.array! @question.tags, 
-                :id, 
-                :name, 
-                :created_at
-end
+json.set! 'tags' do
+    json.array! @question.taggables.each do |taggable|
+        json.extract! taggable, :id, :tag_id, :taggable_id, :taggable_type 
+        json.extract! taggable.tag, :name
+    end
+end 
+
+
+
 
 
 json.set! 'comments', {} 

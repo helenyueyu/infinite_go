@@ -1,14 +1,12 @@
 import { connect } from 'react-redux';
 import Tags from './tags';
 
-import { deleteTag } from '../../actions/tags_actions'; 
+import { deleteTaggable } from '../../actions/taggable_actions'; 
 
-const mapStateToProps = (state) => ({
-
-})
+const mapStateToProps = () => ({})
 
 const mapDispatchToProps = dispatch => ({
-    deleteTag: id => dispatch(deleteTag(id))
+    deleteTaggable: id => dispatch(deleteTaggable(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tags)

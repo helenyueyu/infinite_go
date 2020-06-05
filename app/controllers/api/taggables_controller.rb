@@ -14,6 +14,16 @@ class Api::TaggablesController < ApplicationController
         end             
     end
 
+     def destroy 
+        @taggable = Taggable.find(params[:id])
+        if @taggable.destroy 
+            render :show 
+        else
+            render json: @taggable.errors.full_messages 
+        end
+    end
+
+
     def taggable_params
         params.require(:taggable).permit(:name, :taggable_id, :taggable_type)
     end

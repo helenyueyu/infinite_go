@@ -5,3 +5,12 @@ export const createTaggable = taggable => {
         data: { taggable }
     })
 }
+
+
+export const deleteTaggable = id => {
+    return $.ajax({
+        method: 'DELETE',
+        url: `/api/taggables/${id}`
+    })
+}
+
