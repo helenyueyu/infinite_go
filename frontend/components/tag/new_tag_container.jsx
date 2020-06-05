@@ -2,6 +2,8 @@ import { connect } from 'react-redux';
 import NewTag from './new_tag';
 
 import { createTag } from '../../actions/tags_actions';
+import { createTaggable } from '../../actions/taggable_actions';
+
 
 const mapStateToProps = (state, { taggable_id, taggable_type }) => {
     return {
@@ -12,7 +14,8 @@ const mapStateToProps = (state, { taggable_id, taggable_type }) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    createTag: tag => dispatch(createTag(tag))
+    createTag: tag => dispatch(createTag(tag)), 
+    createTaggable: taggable => dispatch(createTaggable(taggable))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewTag)

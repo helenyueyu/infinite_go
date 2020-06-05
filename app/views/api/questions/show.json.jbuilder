@@ -19,9 +19,7 @@ json.set! 'tags' do
     json.array! @question.tags, 
                 :id, 
                 :name, 
-                :created_at, 
-                :taggable_id, 
-                :taggable_type 
+                :created_at
 end
 
 

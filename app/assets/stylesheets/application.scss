@@ -33,12 +33,17 @@
  @import "components/vote/*";
  @import "components/menu/*";
 
-
+#root {
+    height: inherit; 
+    display: flex; 
+    flex-direction: column; 
+}
  .app {
      display: flex; 
      flex-direction: row; 
      justify-content: space-between; 
-     background: $white; 
+     background: $white;
+     flex: 4 1 0;  
  }
 
  .app-middle {
@@ -46,6 +51,7 @@
  }
 
  
- body {
+ html, body {
+     height: 100vh; 
      font-family: Arial, Helvetica, sans-serif; 
  }

@@ -22,7 +22,17 @@ class NewComment extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.createTag(this.state)
+        let newTag = {
+            name: this.state.name, 
+            user_id: this.state.user_id 
+        }
+        let newTaggable = {
+            name: this.state.name, 
+            taggable_id: this.state.taggable_id, 
+            taggable_type: this.state.taggable_type 
+        }
+        this.props.createTag(newTag)
+            .then(() => this.props.createTaggable(newTaggable))
             .then(() => this.props.fetchQuestion(this.state.taggable_id))
     }
 

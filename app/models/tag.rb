@@ -7,4 +7,8 @@ class Tag < ApplicationRecord
         class_name: :Taggable, 
         dependent: :destroy 
 
+    def self.exists?(name)
+        tag = where('name LIKE ?', "#{name}")
+        tag.size == 1 
+    end
 end

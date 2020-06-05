@@ -2,8 +2,7 @@ json.key_format! camelize: :lower
 
 json.extract! @tag, :id, 
                     :name, 
+                    :description, 
                     :user_id, 
-                    :taggable_id, 
-                    :taggable_type, 
                     :created_at, 
                     :updated_at

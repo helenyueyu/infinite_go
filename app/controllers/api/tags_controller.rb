@@ -3,12 +3,23 @@ class Api::TagsController < ApplicationController
         @tags = Tag.question_count(1, 5)
     end
 
-    def create 
-        @tag = Tag.new(tag_params)
-        if @tag.save 
+    def create
+        name = tag_params[:name]
+        if Tag.exists?(name)
+            @tag = Tag.find_by(name: name)
             render :show 
         else
-            render json: @tag.errors.full_messages, status: 401 
+            tag = {
+                name: name, 
+                description: tag_params[:description] == nil ? "default description" : tag_params[:description], 
+                user_id: tag_params[:user_id]
+            }
+            @tag = Tag.new(tag)
+            if @tag.save 
+                render :show 
+            else
+                render json: @tag.errors.full_messages, status: 401 
+            end
         end
     end
 
@@ -23,6 +34,6 @@ class Api::TagsController < ApplicationController
 
     private 
     def tag_params
-        params.require(:tag).permit(:name, :user_id, :taggable_id, :taggable_type)
+        params.require(:tag).permit(:name, :description, :user_id)
     end
 end
