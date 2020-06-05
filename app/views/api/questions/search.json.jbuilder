@@ -16,9 +16,8 @@ json.key_format! camelize: :lower
             json.array! question.tags, 
                         :id, 
                         :name, 
-                        :created_at, 
-                        :taggable_id, 
-                        :taggable_type 
+                        :description, 
+                        :created_at
         end
     end 
 end

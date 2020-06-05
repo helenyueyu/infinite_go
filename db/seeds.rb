@@ -225,3 +225,7 @@ taggables = [
         tag_id: chocolate_tag.id 
     }
 ]
+
+taggables.each do |taggable|
+    Taggable.create!(taggable)
+end

@@ -3,7 +3,8 @@ class Tag < ApplicationRecord
     validates :description, presence: true 
 
     has_many :taggables, 
-        as: :taggable, 
+        foreign_key: :tag_id, 
+        class_name: :Taggable, 
         dependent: :destroy 
 
 end

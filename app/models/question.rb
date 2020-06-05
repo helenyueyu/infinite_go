@@ -20,7 +20,7 @@ class Question < ApplicationRecord
 
     has_many :tags, 
         through: :taggables, 
-        source: :tags
+        source: :tag
 
     def vote_count  
         self.votes.where('value = 1').count - self.votes.where('value = -1').count
