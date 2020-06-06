@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       resources :taggables, only: [:create, :destroy]
 
       resources :tags, only: [:create, :destroy, :show, :index]
+      resources :metas, only: [:index]
     end
     
 end

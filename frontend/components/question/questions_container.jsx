@@ -3,15 +3,17 @@ import Questions from './questions';
 import { fetchAllQuestions, fetchFilteredQuestions } from '../../actions/questions_actions';
 import { sortByNewest } from '../../selectors/sort_selectors'; 
 import { changePageNumber, changePageLimit } from '../../actions/search_actions'; 
-
+import { fetchMetas } from '../../actions/metas_actions'; 
 
 const mapStateToProps = state => {
     return {
     questions: sortByNewest(Object.values(state.entities.questions)),
-    search: state.entities.search 
+    search: state.entities.search, 
+    metas: state.entities.metas 
 }}
 
 const mapDispatchToProps = dispatch => ({
+    fetchMetas: () => dispatch(fetchMetas()), 
     fetchAllQuestions: () => dispatch(fetchAllQuestions()), 
     fetchFilteredQuestions: (page, perPage, query) => dispatch(fetchFilteredQuestions(page, perPage, query)), 
     changePageNumber: num => dispatch(changePageNumber(num)),

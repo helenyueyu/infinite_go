@@ -7,7 +7,7 @@ import answersReducer from './answers_reducer';
 import commentsReducer from './comments_reducer';  
 import tagsReducer from './tags_reducer';  
 import votesReducer from './votes_reducer'; 
-
+import metasReducer from './metas_reducer'; 
 
 const entitiesReducer = combineReducers({
     currentUser: currentUserReducer, 
@@ -17,7 +17,8 @@ const entitiesReducer = combineReducers({
     votes: votesReducer, 
     comments: commentsReducer, 
     tags: tagsReducer, 
-    search: searchReducer
+    search: searchReducer, 
+    metas: metasReducer 
 })
 
 export default entitiesReducer; 

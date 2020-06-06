@@ -2,6 +2,8 @@ class Tag < ApplicationRecord
     validates :name, presence: true 
     validates :description, presence: true 
 
+    attr_reader :question_count 
+    
     has_many :taggables, 
         foreign_key: :tag_id, 
         class_name: :Taggable, 

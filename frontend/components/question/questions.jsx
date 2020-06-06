@@ -15,7 +15,8 @@ class Questions extends React.Component {
 
     }
     componentDidMount() {
-        this.fetchQuestions(this.props.search);  
+        this.props.fetchMetas(); 
+        this.fetchQuestions(this.props.search); 
     }
 
     componentDidUpdate(prevProps) {
@@ -32,18 +33,28 @@ class Questions extends React.Component {
             h1.query !== h2.query 
     }
 
-    render() {
-        let {questions} = this.props; 
-        if (!this.props.questions) return null; 
+    generatePageNumbers(numQuestions, perPage) {
+        let count = Math.floor(numQuestions/perPage); 
+        let arr = []; 
+        for (let i = 1; i <= count; i++) {
+            arr.push(i); 
+        }
+        return arr; 
+    }
 
+    render() {
+        let {questions, search, metas: { questionCount }} = this.props; 
+        if (!questions || !questionCount || !search) return null; 
+        const pages = this.generatePageNumbers(questionCount, search.pageLimit); 
+        
         if (questions) {
             return (
                 <div>
                     <Link to="/questions/new"><button>Create Question</button></Link>
-
+                    {questionCount}
                     <FilterQuestion 
                         type="Change Page Number" 
-                        values={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+                        values={pages}
                         action={this.props.changePageNumber} />
                     
                     <FilterQuestion 
