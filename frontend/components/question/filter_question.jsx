@@ -1,15 +1,20 @@
 import React from 'react'; 
 
 class FilterQuestion extends React.Component {
+    
     render() {
-        const { type, values, action } = this.props; 
+        console.log("filter question", this.props); 
+
+        const { type, values, action, active } = this.props; 
         return (
             <div>
-                {type}: {values.map(num =>
-                <button key={num} onClick={() => action(num)}>
-                    {num}
+                {values.map(num =>
+                <button key={num} 
+                    onClick={() => action(num)} 
+                    className={num === active ? "filter_question filter_question-active" : "filter_question filter_question-non_active"}>
+                        {num}
                 </button>
-            )}
+            )} {type}
             </div>
         )
     }

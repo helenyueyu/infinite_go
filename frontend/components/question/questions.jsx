@@ -47,20 +47,24 @@ class Questions extends React.Component {
         if (!questions || !questionCount || !search) return null; 
         const pages = this.generatePageNumbers(questionCount, search.pageLimit); 
         
+        console.log('search', search); 
+
         if (questions) {
             return (
                 <div>
                     <Link to="/questions/new"><button>Create Question</button></Link>
                     {questionCount}
                     <FilterQuestion 
-                        type="Change Page Number" 
+                        type="next" 
                         values={pages}
-                        action={this.props.changePageNumber} />
+                        action={this.props.changePageNumber}
+                        active={search.pageNumber} />
                     
                     <FilterQuestion 
-                        type="Change Page Limit"
+                        type="per page"
                         values={[5, 10, 15]}
-                        action={this.props.changePageLimit} />
+                        action={this.props.changePageLimit}
+                        active={search.pageLimit} />
                     
                     {questions.map((question, idx) => {
                         let {id, title, body, user, voteCount, tags} = question; 
