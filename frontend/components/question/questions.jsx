@@ -33,19 +33,50 @@ class Questions extends React.Component {
             h1.query !== h2.query 
     }
 
-    generatePageNumbers(numQuestions, perPage) {
-        let count = Math.floor(numQuestions/perPage); 
+    generatePageNumbers(numQuestions, perPage, pageNumber) {
+        /*
+        check if the pageNumber is within the first four or the last four   
+        */
+        let max = Math.floor(numQuestions/perPage); 
         let arr = []; 
-        for (let i = 1; i <= count; i++) {
-            arr.push(i); 
+        if (pageNumber >= 1 && pageNumber <= 4) {
+            for (let i = 1; i <= 5; i++) {
+                arr.push(i); 
+            }
+            arr.push('...'); 
+            arr.push(max); 
+        } else if (pageNumber >= max - 3 && pageNumber <= max) {
+            arr.push(1); 
+            arr.push('...'); 
+            for (let i = max-4; i <= max; i++) {
+                arr.push(i); 
+            }
+        } else {
+            arr.push(1); 
+            arr.push('...'); 
+            for (let i = pageNumber-2; i <= pageNumber+2; i++) {
+                arr.push(i); 
+            }
+            arr.push('...'); 
+            arr.push(max); 
         }
+        // for (let i = pageNumber-2; i <= pageNumber+2; i++) {
+        //     if (i >= 0 && i <= max) {
+        //         arr.push(i); 
+        //     }
+        // }
+        // for (let i = 1; i <= count; i++) {
+        //     arr.push(i); 
+        // }
+        console.log('arr', arr)        
         return arr; 
     }
 
     render() {
         let {questions, search, metas: { questionCount }} = this.props; 
         if (!questions || !questionCount || !search) return null; 
-        const pages = this.generatePageNumbers(questionCount, search.pageLimit); 
+
+        const pages = this.generatePageNumbers(questionCount, search.pageLimit, search.pageNumber); 
         
         console.log('search', search); 
 
