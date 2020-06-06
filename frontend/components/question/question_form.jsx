@@ -41,15 +41,17 @@ class QuestionForm extends React.Component {
         if (!this.props.question && this.props.type === "edit") return null;
 
         return (
-            <div>
+            <div className="question_form">
                 <form onSubmit={this.handleSubmit}>
 
                     {["title", "body"].map(type =>
-                        <label key={type}>{type}
-                            <input
-                                onChange={(e) => this.handleChange(e, type)}
-                                value={this.state[type]} />
-                        </label>
+                        <div key={type} className="question_form-element">
+                            <label>{type}
+                                <input
+                                    onChange={(e) => this.handleChange(e, type)}
+                                    value={this.state[type]} />
+                            </label>
+                        </div>
                     )}
 
                     <button type="submit">Submit</button>

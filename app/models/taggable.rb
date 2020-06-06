@@ -5,6 +5,7 @@ class Taggable < ApplicationRecord
         class_name: :Tag, 
         foreign_key: :tag_id  
 
+    belongs_to :taggable, polymorphic: true     
 
     def self.question_count(page_number, page_limit)
         Tag.group(:name)

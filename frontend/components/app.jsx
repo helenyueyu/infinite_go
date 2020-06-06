@@ -31,7 +31,7 @@ const App = () => (
         <NavbarContainer />
         
         <div className="app">
-            <ProtectedRoute path="/" component={Menu} />
+            <ProtectedRoute path="/questions" component={Menu} />
             <div className="app-middle">
                 <Switch>
                     <AuthRoute exact path="/signup" component={SignUpFormContainer} />
@@ -54,7 +54,7 @@ const App = () => (
                     <ProtectedRoute exact path="/profile" component={ProfileContainer} />
                 </Switch>
             </div>
-            <ProtectedRoute path="/" component={RightMenu} />
+            <ProtectedRoute path="/questions" component={RightMenu} />
         </div>
 
         <Footer />

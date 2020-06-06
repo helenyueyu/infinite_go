@@ -7,6 +7,15 @@ class Tag < ApplicationRecord
         class_name: :Taggable, 
         dependent: :destroy 
 
+    has_many :tagged_questions, 
+        through: :taggables, 
+        source: :taggable, 
+        source_type: :Question 
+
+    def question_count
+        self.tagged_questions.size 
+    end
+
     def self.exists?(name)
         tag = where('name LIKE ?', "#{name}")
         tag.size == 1 
