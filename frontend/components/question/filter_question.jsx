@@ -1,19 +1,29 @@
 import React from 'react'; 
 
 class FilterQuestion extends React.Component {
-    
-    render() {
-        console.log("filter question", this.props); 
-
-        const { type, values, action, active } = this.props; 
+    generateButton(num, action, active) {
         return (
-            <div>
-                {values.map(num =>
-                <button key={num} 
-                    onClick={() => action(num)} 
-                    className={num === active ? "filter_question filter_question-active" : "filter_question filter_question-non_active"}>
-                        {num}
-                </button>
+            <button key={num}
+                onClick={() => action(num)}
+                className={num === active ? "filter_question filter_question-active" : "filter_question filter_question-non_active"}>
+                {num}
+            </button> 
+        )
+    }
+    render() {
+        const { type, values, bp1, bp2, action, active } = this.props; 
+        return (
+            <div className="filter_question-list">
+                {values.map((num, idx) =>
+                num === bp1 || num === bp2 ? 
+                    <div className="filter_question-list-item" key={idx}>
+                        {this.generateButton(num, action, active)}
+                        <span className="filter_question-dots">...</span>
+                    </div>
+                    : 
+                    <div key={idx}>
+                        {this.generateButton(num, action, active)}
+                    </div>
             )} {type}
             </div>
         )

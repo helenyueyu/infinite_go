@@ -21,6 +21,9 @@ class Questions extends React.Component {
 
     componentDidUpdate(prevProps) {
         if (this.newSearchParams(prevProps.search, this.props.search)) this.fetchQuestions(this.props.search); 
+        // if (this.props.search.pageNumber !== prevProps.search.pageNumber) {
+        //     this.generatePageNumbers(this.props.metas.questionCount, this.props.search.pageLimit, this.props.search.pageNumber); 
+        // }
     }
 
     fetchQuestions({pageNumber, pageLimit, query}) {
@@ -34,68 +37,48 @@ class Questions extends React.Component {
     }
 
     generatePageNumbers(numQuestions, perPage, pageNumber) {
-        /*
-        check if the pageNumber is within the first four or the last four   
-        */
+        let bp1 = null; 
+        let bp2 = null; 
+
         let max = Math.floor(numQuestions/perPage); 
         let arr = []; 
         if (pageNumber >= 1 && pageNumber <= 4) {
+            arr = []; 
             for (let i = 1; i <= 5; i++) {
                 arr.push(i); 
             }
-            arr.push('...'); 
+            bp1 = 5; 
             arr.push(max); 
-        } else if (pageNumber >= max - 3 && pageNumber <= max) {
+        } else if (pageNumber >= max-3 && pageNumber <= max) {
+            arr = []; 
             arr.push(1); 
-            arr.push('...'); 
             for (let i = max-4; i <= max; i++) {
                 arr.push(i); 
             }
+            bp1 = 1; 
         } else {
+            arr = []; 
             arr.push(1); 
-            arr.push('...'); 
             for (let i = pageNumber-2; i <= pageNumber+2; i++) {
                 arr.push(i); 
             }
-            arr.push('...'); 
             arr.push(max); 
-        }
-        // for (let i = pageNumber-2; i <= pageNumber+2; i++) {
-        //     if (i >= 0 && i <= max) {
-        //         arr.push(i); 
-        //     }
-        // }
-        // for (let i = 1; i <= count; i++) {
-        //     arr.push(i); 
-        // }
-        console.log('arr', arr)        
-        return arr; 
+            bp1 = 1; 
+            bp2 = pageNumber+2; 
+        }      
+        return [arr, bp1, bp2]; 
     }
 
     render() {
         let {questions, search, metas: { questionCount }} = this.props; 
         if (!questions || !questionCount || !search) return null; 
-
-        const pages = this.generatePageNumbers(questionCount, search.pageLimit, search.pageNumber); 
-        
-        console.log('search', search); 
-
+        const [pages, bp1, bp2] = this.generatePageNumbers(questionCount, search.pageLimit, search.pageNumber); 
         if (questions) {
             return (
                 <div>
                     <Link to="/questions/new"><button>Create Question</button></Link>
                     {questionCount}
-                    <FilterQuestion 
-                        type="next" 
-                        values={pages}
-                        action={this.props.changePageNumber}
-                        active={search.pageNumber} />
                     
-                    <FilterQuestion 
-                        type="per page"
-                        values={[5, 10, 15]}
-                        action={this.props.changePageLimit}
-                        active={search.pageLimit} />
                     
                     {questions.map((question, idx) => {
                         let {id, title, body, user, voteCount, tags} = question; 
@@ -120,6 +103,22 @@ class Questions extends React.Component {
                             </div>
                         )
                     })}
+
+                    <div className="questions-filter">
+                        <FilterQuestion
+                            type="next"
+                            values={pages.slice(0)}
+                            action={this.props.changePageNumber}
+                            active={search.pageNumber} 
+                            bp1 = {bp1} 
+                            bp2 = {bp2} />
+
+                        <FilterQuestion
+                            type="per page"
+                            values={[5, 10, 15]}
+                            action={this.props.changePageLimit}
+                            active={search.pageLimit} />
+                    </div>
                 </div>
             )
         } 

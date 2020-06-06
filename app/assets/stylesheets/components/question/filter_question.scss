@@ -30,3 +30,18 @@
     background: $tag-red; 
     cursor: pointer; 
 }
+
+.filter_question-dots {
+    padding-left: 0.6rem; 
+    padding-right: 0.6rem; 
+}
+
+.filter_question-list {
+    display: flex; 
+    align-items: center; 
+}
+
+.filter_question-list-item {
+    display: flex; 
+    align-items: center; 
+}
