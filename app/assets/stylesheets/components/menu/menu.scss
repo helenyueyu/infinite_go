@@ -1,13 +1,34 @@
 .menu {
     flex: 1 1 0; 
     border-right: 1px dotted $focus-gray;  
+    padding: 0.5rem; 
+    display: flex; 
+    flex-direction: column; 
 }
+// .menu-home {
+//     padding-top: 2rem; 
+//     padding-bottom: 1rem; 
+// }
 
-.menu-item {
-    padding: 1rem; 
+// .menu-category {
+//     color: $gray; 
+//     padding-top: 1rem; 
+//     padding-bottom: 0.5rem; 
+// }
+
+// .menu-item {
+//     display: flex; 
+//     flex-direction: row; 
+//     padding: 0.5rem; 
+// }
+
+.menu-item-indent {
+    width: 20px; 
 }
-
 .menu-item-link {
     text-decoration: none; 
     color: $gray; 
+}
+.menu-item-link-active {
+    background: $red;  
 }

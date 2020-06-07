@@ -6,6 +6,7 @@ class Api::QuestionsController < ApplicationController
     def search 
         params = ensure_search_params
         @questions = Question.search(*ensure_search_params)
+        @question_count = @questions.size 
     end
 
     def create 

@@ -31,8 +31,8 @@ const App = () => (
         <NavbarContainer />
         
         <div className="app">
-            <ProtectedRoute path="/questions" component={Menu} />
-            <ProtectedRoute path="/tags" component={Menu} />
+            <ProtectedRoute path="/questions" component={Menu}/>
+            <ProtectedRoute path="/tags" component={Menu}/>
 
             <div className="app-middle">
                 <Switch>

@@ -3,28 +3,23 @@ import { Link } from 'react-router-dom';
 
 class Menu extends React.Component {
     render() {
+        const { location: {pathname} } = this.props; 
         return (
-            <div className="menu">
-                <span>PUBLIC</span>
-                <div className="menu-item">
-                    <i class="fa fa-globe" aria-hidden="true"></i>
+            <ul className="menu">
+                <li><Link className="menu-item-link" to='/questions'>Home</Link></li>
+                <li>PUBLIC</li>
+       
+                <li>
+                    <i className="fa fa-globe" aria-hidden="true"></i>
                     <Link className="menu-item-link" to='/questions'>Infinite Go</Link>
-                </div>
-                <div className="menu-item">
-                    <Link to='/users'>Users</Link>
-                </div>
-                <div className="menu-item">
-                    <Link to='/tags'>Tags</Link>
-                </div>
+                </li>
+                <li><Link className="menu-item-link" to='/users'>Users</Link></li>
+                <li><Link className={pathname === "/tags" ? "menu-item-link-active" : "menu-item-link"} to='/tags'>Tags</Link></li>
 
-                <span>FIND A JOB</span>
-                <div className="menu-item">
-                    <Link to='/'>Jobs</Link>
-                </div>
-                <div className="menu-item">
-                    <Link to='/'>Companies</Link>
-                </div>
-            </div>
+                <li>FIND A JOB</li>
+                <li><Link className="menu-item-link" to='/'>Jobs</Link></li>
+                <li><Link className="menu-item-link" to='/'>Companies</Link></li>
+            </ul>
         )
     }
 }

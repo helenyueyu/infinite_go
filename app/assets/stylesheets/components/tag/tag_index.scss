@@ -1,15 +1,13 @@
 .tag_index {
     display: flex; 
     flex-direction: column; 
-    align-items: center; 
-    justify-content: center; 
+    align-items: flex-start; 
+    justify-content: flex-start; 
     margin: 0.5rem 2rem 0.5rem 2rem;  
 }
 .tag_index-row {
     display: flex; 
     flex-direction: row; 
-    justify-content: flex-start; 
-    align-items: flex-start; 
 }
 
 .tag_index-item {
