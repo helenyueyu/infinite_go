@@ -6,16 +6,15 @@
     justify-content: space-between; 
 }
 
-.nav-username {
-    color: $white; 
-    text-decoration: none; 
+.nav-links {
+    display: flex; 
+    justify-content: space-between; 
 }
 
-.nav-index-link {
+.nav-link {
     color: $white; 
     text-decoration: none; 
-    font-size: 1rem; 
-    padding: 2rem; 
+    padding: 0 0.5rem 0 0.5rem; 
 }
 
 .nav-logout-button {
@@ -26,6 +25,10 @@
     border: none; 
     border-radius: 5px; 
     font-size: 1rem; 
+}
+
+.nav-logout-button:focus {
+    outline: none; 
 }
 
 .nav-signup-button, .nav-login-button {

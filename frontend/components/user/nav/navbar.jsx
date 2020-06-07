@@ -7,12 +7,17 @@ const Navbar = ({currentUser, logout}) => {
     if (currentUser.username !== undefined) {
         return (
             <div className="nav">
-                <div>
-                    <Link to="/profile" className="nav-username">{currentUser.username}</Link>
-                    <Link to="/questions" className="nav-index-link">GO</Link>
+                <div className="nav-links">
+                    <Link to="/questions" className="nav-link" >InfiniteGO</Link>
+                    <Link to="/" className="nav-link">Github</Link>
+                    <Link to="/" className="nav-link">LinkedIn</Link>
                 </div>
                 <SearchContainer />
-                <button className="nav-logout-button" onClick={logout}>Logout</button>
+                <div>
+                    <Link to="/profile" className="nav-link">{currentUser.username}</Link>
+                    <button className="nav-logout-button" onClick={logout}>Logout</button>
+                </div>
+                
             </div>
         )
     } else {

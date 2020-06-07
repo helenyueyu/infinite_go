@@ -15,7 +15,7 @@ class QuestionItem extends React.Component {
                 </div>
                 <div className="question_item-body">{body}</div>
 
-                <TagsContainer tags={tags} />
+                <TagsContainer tags={tags} showDelete={false}/>
                 <ProfileSnippet username={user.username} timestamp={moment(question.createdAt).fromNow()} />
             </div>
         )

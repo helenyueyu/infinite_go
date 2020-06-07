@@ -8,6 +8,8 @@
 .tag_index-row {
     display: flex; 
     flex-direction: row; 
+    justify-content: flex-start; 
+    align-items: flex-start; 
 }
 
 .tag_index-item {
@@ -16,10 +18,9 @@
     width: 25vw; 
     margin: 0.5rem; 
     padding: 0.5rem; 
-
     border: 1px dotted gray; 
-    // align-items: flex-start; 
 }
+
 .tag_index_item-name-container {
     display: flex; 
     justify-content: flex-start; 
@@ -30,6 +31,11 @@
     color: $red; 
     display: flex; 
     padding: 0.3rem; 
+}
+
+.tag_index-item-name:hover {
+    background: $light-red; 
+    cursor: pointer; 
 }
 
 .tag_index-item-description {

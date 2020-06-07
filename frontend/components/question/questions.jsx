@@ -21,9 +21,6 @@ class Questions extends React.Component {
 
     componentDidUpdate(prevProps) {
         if (this.newSearchParams(prevProps.search, this.props.search)) this.fetchQuestions(this.props.search); 
-        // if (this.props.search.pageNumber !== prevProps.search.pageNumber) {
-        //     this.generatePageNumbers(this.props.metas.questionCount, this.props.search.pageLimit, this.props.search.pageNumber); 
-        // }
     }
 
     fetchQuestions({pageNumber, pageLimit, query}) {
@@ -76,7 +73,7 @@ class Questions extends React.Component {
         if (questions) {
             return (
                 <div>
-                    <Link to="/questions/new"><button>Create Question</button></Link>
+                    <Link to="/questions/new"><button className="questions-create-question">Create Question</button></Link>
                     {questionCount}
                     
                     

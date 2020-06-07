@@ -14,13 +14,13 @@ class Tags extends React.Component {
     }
 
     render() {
-        let { tags } = this.props;
+        let { tags, showDelete } = this.props;
         return (
             <div className="tags">
                 {tags.map((tag, idx) => 
                     <div key={idx} className="tag-item">
                         <div>{tag.name}</div>
-                        <button className="tag-button" onClick={() => this.handleDelete(tag.id)}>x</button>
+                        {showDelete === true ? <button className="tag-button" onClick={() => this.handleDelete(tag.id)}>x</button> : null}
                     </div>
                 )}
             </div>

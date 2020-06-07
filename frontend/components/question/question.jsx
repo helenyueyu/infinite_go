@@ -50,7 +50,8 @@ class Question extends React.Component {
                                 
                 <TagsContainer fetchQuestion={this.props.fetchQuestion} 
                                 taggable_id={question.id}
-                                tags={tags} />
+                                tags={tags} 
+                                showDelete={true} />
                 
                 <div className="question-footer">
                     <div className="question-button-console">
