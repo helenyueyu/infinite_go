@@ -12,7 +12,8 @@ class Tag < ApplicationRecord
     has_many :tagged_questions, 
         through: :taggables, 
         source: :taggable, 
-        source_type: :Question 
+        source_type: :Question, 
+        dependent: :destroy 
 
     def question_count
         self.tagged_questions.size 
