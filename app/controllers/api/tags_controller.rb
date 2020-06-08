@@ -14,12 +14,12 @@ class Api::TagsController < ApplicationController
             @tag = Tag.find_by(name: name)
             render :show 
         else
-            tag = {
-                name: name, 
-                description: tag_params[:description] == nil ? "default description" : tag_params[:description], 
-                user_id: tag_params[:user_id]
-            }
-            @tag = Tag.new(tag)
+            # tag = {
+            #     name: name, 
+            #     description: tag_params[:description] == nil ? "default description" : tag_params[:description], 
+            #     user_id: tag_params[:user_id]
+            # }
+            @tag = Tag.new(tag_params)
             if @tag.save 
                 render :show 
             else
