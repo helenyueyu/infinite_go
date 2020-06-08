@@ -24,15 +24,25 @@ class Search extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        let prevUrl = prevProps.search.query; 
-        let url = this.props.search.query; 
+        let prevUrl = prevProps.location.pathname; 
+        let url = this.props.location.pathname; 
 
-        if (prevUrl !== url) {
+        let prevSearchQuery = prevProps.search.query; 
+        let currentSearchQuery = this.props.search.query; 
+
+        if (prevSearchQuery !== currentSearchQuery) {
             let url = this.props.history.location.pathname; 
             this.setState({
                 query: url.slice(url.lastIndexOf('/') + 1)
             })
+        } 
+        if (prevUrl !== url && url === "/tags") {
+            this.setState({
+                query: ""
+            })
+            this.props.receiveQuery(this.state.query); 
         }
+
     }
 
     handleChange(e) {
@@ -47,7 +57,6 @@ class Search extends React.Component {
     }
 
     render() {
-        console.log(this.state.query); 
         return (
            <div>
                <form onSubmit={this.handleSubmit}>
