@@ -17,7 +17,11 @@ class Tag < ApplicationRecord
     end
 
     def self.clean_name(name)
-        name.gsub!(' ', '-').downcase! 
+        if name.include?(' ')
+            return name.gsub(' ', '-').downcase
+        else
+            return name.downcase
+        end
     end
 
     attr_reader :question_count 
