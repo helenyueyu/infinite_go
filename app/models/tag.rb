@@ -3,6 +3,18 @@ class Tag < ApplicationRecord
     validates :name, uniqueness: true   
     
     validates_length_of :name, maximum: 35
+    validate :clean_name? 
+
+    def clean_name?
+        alpha = 'abcdefghijklmnopqrstuvwxyz' 
+        digits = '0123456789'
+        special_chars = '+#-.'
+        self.name.chars.each do |c|
+            if !(alpha + digits + special_chars).include?(c) 
+                errors.add(:name, "Tag name includes invalid character")
+            end
+        end  
+    end
 
     attr_reader :question_count 
     
