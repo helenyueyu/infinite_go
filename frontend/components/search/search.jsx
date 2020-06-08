@@ -14,6 +14,15 @@ class Search extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this); 
     }
 
+    componentDidMount() {
+        let url = this.props.history.location.pathname; 
+        if (url.includes('tagged')) {
+            this.setState({
+                query: url.slice(url.lastIndexOf('/') + 1)
+            }, () => this.props.receiveQuery(this.state.query))
+        }
+    }
+
     handleChange(e) {
         this.setState({
             query: e.target.value 
@@ -26,6 +35,7 @@ class Search extends React.Component {
     }
 
     render() {
+        console.log(this.state.query); 
         return (
            <div>
                <form onSubmit={this.handleSubmit}>

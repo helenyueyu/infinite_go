@@ -16,6 +16,11 @@ class Questions extends React.Component {
     }
     componentDidMount() {
         this.props.fetchMetas(); 
+        let url = this.props.history.location.pathname;
+        if (url.includes('tagged')) {
+            let query = url.slice(url.lastIndexOf('/') + 1); 
+            this.props.receiveQuery(query)
+        }
         this.fetchQuestions(this.props.search); 
     }
 
@@ -67,6 +72,7 @@ class Questions extends React.Component {
     }
 
     render() {
+        // console.log("my props", this.props.history.location)
         let {questions, search, metas: { questionCount }} = this.props; 
         if (!questions || !questionCount || !search) return null; 
         const [pages, bp1, bp2] = this.generatePageNumbers(questionCount, search.pageLimit, search.pageNumber); 

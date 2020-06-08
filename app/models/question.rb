@@ -1,7 +1,7 @@
 class Question < ApplicationRecord
     validates :title, presence: true 
     validates :body, presence: true 
-    
+
     belongs_to :user 
 
     has_many :answers, 
@@ -28,7 +28,8 @@ class Question < ApplicationRecord
     def vote_count  
         self.votes.where('value = 1').count - self.votes.where('value = -1').count
     end
-
+    # Question.joins(:tags).where(tags: {name: 'the-strokes'})
+    
     def self.search(page, page_limit, query)
         if query.length > 0 
             res = where('title LIKE ?', "%#{query}%")

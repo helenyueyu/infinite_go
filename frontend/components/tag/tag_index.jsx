@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; 
 
 import moment from 'moment'; 
 
@@ -22,8 +23,7 @@ class TagIndex extends React.Component {
         const { tags } = this.props;
         
         const rowifiedTags = this.rowify(tags, 3); 
-        console.log('tags', rowifiedTags); 
-
+        
         return (
             <div className="tag_index">
                 {rowifiedTags.map((row, idx) => (
@@ -31,7 +31,9 @@ class TagIndex extends React.Component {
                         {row.map((tag, idx) => (
                             <div key={idx} className="tag_index-item">
                                 <div className="tag_index_item-name-container">
-                                    <div className="tag_index-item-name">{tag.name}</div>
+                                    <div className="tag_index-item-name">
+                                        <Link to={`/questions/tagged/${tag.name}`}>{tag.name}</Link>
+                                    </div>
                                 </div>
                                 <div className="tag_index-item-description">{tag.description}</div>
                                 <div className="tag_index-item-details">

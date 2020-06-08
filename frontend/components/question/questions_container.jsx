@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
 import Questions from './questions';
-import { fetchAllQuestions, fetchFilteredQuestions } from '../../actions/questions_actions';
+import { fetchFilteredQuestions } from '../../actions/questions_actions';
 import { sortByNewest } from '../../selectors/sort_selectors'; 
 import { changePageNumber, changePageLimit } from '../../actions/search_actions'; 
 import { fetchMetas } from '../../actions/metas_actions'; 
+import { receiveQuery } from '../../actions/search_actions'; 
 
 const mapStateToProps = state => {
     return {
@@ -14,7 +15,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
     fetchMetas: () => dispatch(fetchMetas()), 
-    fetchAllQuestions: () => dispatch(fetchAllQuestions()), 
+    receiveQuery: query => dispatch(receiveQuery(query)), 
     fetchFilteredQuestions: (page, perPage, query) => dispatch(fetchFilteredQuestions(page, perPage, query)), 
     changePageNumber: num => dispatch(changePageNumber(num)),
     changePageLimit: num => dispatch(changePageLimit(num))

@@ -47,6 +47,8 @@ const App = () => (
                     <Route exact path="/questions" component={QuestionsContainer} />
                     <Route exact path="/questions/?q=:query" component={QuestionsContainer} />
 
+                    <Route exact path="/questions/tagged/:tagName" component={QuestionsContainer} />
+
                     <ProtectedRoute exact path="/questions/new" component={NewQuestionContainer} />
                     <ProtectedRoute exact path="/questions/:questionId/edit" component={EditQuestionContainer} />
                     <Route exact path="/questions/:questionId" component={QuestionContainer} />
