@@ -14,7 +14,7 @@ import SignUpFormContainer from './user/auth/sign_up_form_container';
 import LoginFormContainer from './user/auth/login_form_container';
 
 import ProfileIndexContainer from './user/profile/profile_index_container'; 
-import TagIndexContainer from './tag/tag_index_container'; 
+import TagIndexContainer from './tag/tags_index_container'; 
 
 import NavbarContainer from './user/nav/navbar_container'; 
 import ProfileContainer from './user/profile/profile_container'; 
