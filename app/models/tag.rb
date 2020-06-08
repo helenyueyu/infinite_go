@@ -1,6 +1,8 @@
 class Tag < ApplicationRecord
     validates :name, presence: true 
-    validates :name, uniqueness: true     
+    validates :name, uniqueness: true   
+    
+    validates_length_of :name, maximum: 35
 
     attr_reader :question_count 
     
