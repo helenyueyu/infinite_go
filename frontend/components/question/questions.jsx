@@ -81,24 +81,23 @@ class Questions extends React.Component {
                     <Link to="/questions/new"><button className="questions-create-question">Create Question</button></Link>
                     {questionCount}
                     
-                    
                     {questions.map((question, idx) => {
                         let {id, title, body, user, voteCount, viewCount, answerCount, tags} = question; 
                         return (
                             <div key={idx} className="questions-item">
                                 
                                 <div className="questions-statistics">
-                                    <div>
+                                    <div className="questions-statistics">
                                         <div>{voteCount}</div>
                                         <div>vote{voteCount === 1 ? "" : "s"}</div>
                                     </div>
-                                    <div>
+                                    <div className="questions-statistics">
                                         <div>{answerCount}</div>
-                                        answer{answerCount === 1 ? "" : "s"}
+                                        <div>answer{answerCount === 1 ? "" : "s"}</div>
                                     </div>
-                                    <div>
-                                        {viewCount}
-                                        view{viewCount === 1 ? "" : "s"}
+                                    <div className="questions-statistics">
+                                        <div>{viewCount}</div>
+                                        <div>view{viewCount === 1 ? "" : "s"}</div>
                                     </div>
                                 </div>
                                 

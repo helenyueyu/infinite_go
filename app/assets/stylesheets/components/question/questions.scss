@@ -24,9 +24,15 @@
     font-size: 1rem; 
 }
 
+.questions-create-question:hover {
+    background-color: $focus-red; 
+    cursor: pointer; 
+}
+
 .questions-statistics {
     display: flex; 
     flex-direction: column; 
     align-items: center; 
     justify-content: center; 
 }
+
