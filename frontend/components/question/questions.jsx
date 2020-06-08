@@ -18,7 +18,7 @@ class Questions extends React.Component {
         this.props.fetchMetas(); 
         let url = this.props.history.location.pathname;
         if (url.includes('tagged')) {
-            let query = url.slice(url.lastIndexOf('/') + 1); 
+            let query = '[' + url.slice(url.lastIndexOf('/') + 1) + ']'; 
             this.props.receiveQuery(query); 
         }
     }

@@ -18,7 +18,7 @@ class Search extends React.Component {
         let url = this.props.history.location.pathname; 
         if (url.includes('tagged')) {
             this.setState({
-                query: url.slice(url.lastIndexOf('/') + 1)
+                query: url.includes("tagged") ? '[' + url.slice(url.lastIndexOf('/') + 1) + ']' : "" 
             })
         }
     }
@@ -33,7 +33,7 @@ class Search extends React.Component {
         if (prevSearchQuery !== currentSearchQuery) {
             let url = this.props.history.location.pathname; 
             this.setState({
-                query: url.slice(url.lastIndexOf('/') + 1)
+                query: url.includes("tagged") ? '[' + url.slice(url.lastIndexOf('/') + 1) + ']' : ""
             })
         } 
         if (prevUrl !== url && url === "/tags") {
