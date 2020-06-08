@@ -5,7 +5,7 @@ class Search extends React.Component {
     constructor(props) {
         super(props); 
         this.state = {
-            query: null, 
+            query: "", 
             pageLimit: null, 
             pageNumber: null  
         }
@@ -19,7 +19,19 @@ class Search extends React.Component {
         if (url.includes('tagged')) {
             this.setState({
                 query: url.slice(url.lastIndexOf('/') + 1)
-            }, () => this.props.receiveQuery(this.state.query))
+            })
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        let prevUrl = prevProps.search.query; 
+        let url = this.props.search.query; 
+
+        if (prevUrl !== url) {
+            let url = this.props.history.location.pathname; 
+            this.setState({
+                query: url.slice(url.lastIndexOf('/') + 1)
+            })
         }
     }
 
@@ -39,7 +51,7 @@ class Search extends React.Component {
         return (
            <div>
                <form onSubmit={this.handleSubmit}>
-                   <input className="search-input" onChange={this.handleChange} />   
+                   <input className="search-input" onChange={this.handleChange} value={this.state.query}/>   
                 </form>
 
            </div>

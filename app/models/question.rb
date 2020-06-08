@@ -29,8 +29,9 @@ class Question < ApplicationRecord
         self.votes.where('value = 1').count - self.votes.where('value = -1').count
     end
     # Question.joins(:tags).where(tags: {name: 'the-strokes'})
-    
+
     def self.search(page, page_limit, query)
+        # debugger 
         if query.length > 0 
             res = where('title LIKE ?', "%#{query}%")
             if res.length > 0 
