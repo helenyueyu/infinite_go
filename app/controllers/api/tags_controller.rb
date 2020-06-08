@@ -3,22 +3,12 @@ class Api::TagsController < ApplicationController
         @tags = Tag.all
     end
 
-    def search
-        name = params[:name]
-        @tags = Tag.search(name)
-    end
-
     def create
         name = tag_params[:name]
         if Tag.exists?(name)
             @tag = Tag.find_by(name: name)
             render :show 
         else
-            # tag = {
-            #     name: name, 
-            #     description: tag_params[:description] == nil ? "default description" : tag_params[:description], 
-            #     user_id: tag_params[:user_id]
-            # }
             @tag = Tag.new(tag_params)
             if @tag.save 
                 render :show 

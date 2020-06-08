@@ -16,8 +16,18 @@ class Api::TaggablesController < ApplicationController
 
      def destroy 
         @taggable = Taggable.find(params[:id])
-        if @taggable.destroy 
-            render :show 
+        count = Taggable.where(tag_id: @taggable.tag_id).size
+        if @taggable.destroy
+            if count === 1
+                @tag = Tag.find(@taggable.tag_id)
+                if @tag.destroy
+                    render :show 
+                else
+                    render @tag.errors.full_messages 
+                end
+            else
+                render :show 
+            end 
         else
             render json: @taggable.errors.full_messages 
         end
