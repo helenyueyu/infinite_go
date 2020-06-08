@@ -1,4 +1,6 @@
 class Question < ApplicationRecord
+    is_impressionable 
+
     validates :title, presence: true 
     validates :body, presence: true 
 
@@ -24,6 +26,10 @@ class Question < ApplicationRecord
     has_many :tags, 
         through: :taggables, 
         source: :tag
+
+    def view_count
+        self.impressionist_count  
+    end
 
     def vote_count  
         self.votes.where('value = 1').count - self.votes.where('value = -1').count
