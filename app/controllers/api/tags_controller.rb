@@ -4,7 +4,7 @@ class Api::TagsController < ApplicationController
     end
 
     def create
-        name = tag_params[:name]
+        name = Tag.clean_name(tag_params[:name])
         if Tag.exists?(name)
             @tag = Tag.find_by(name: name)
             render :show 

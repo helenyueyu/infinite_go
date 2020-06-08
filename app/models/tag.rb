@@ -16,6 +16,10 @@ class Tag < ApplicationRecord
         end  
     end
 
+    def self.clean_name(name)
+        name.gsub!(' ', '-').downcase! 
+    end
+
     attr_reader :question_count 
     
     has_many :taggables, 

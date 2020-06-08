@@ -1,6 +1,6 @@
 class Api::TaggablesController < ApplicationController
-    def create 
-        tag_id = Tag.find_by(name: taggable_params[:name]).id 
+    def create
+        tag_id = Tag.find_by(name: Tag.clean_name(taggable_params[:name])).id 
         taggable = {
             tag_id: tag_id, 
             taggable_id: taggable_params[:taggable_id], 
