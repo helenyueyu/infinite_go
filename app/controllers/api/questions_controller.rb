@@ -1,4 +1,6 @@
 class Api::QuestionsController < ApplicationController
+    impressionist actions: [:show]
+    
     def index 
         @questions = Question.all 
     end
@@ -20,6 +22,7 @@ class Api::QuestionsController < ApplicationController
 
     def show 
         @question = Question.find(params[:id])
+        @question.view_count = @question.impressionist_count  
     end
 
     def update 

@@ -32,7 +32,34 @@
 .questions-statistics {
     display: flex; 
     flex-direction: column; 
-    align-items: center; 
-    justify-content: center; 
+    align-items: space-between; 
+    justify-content: space-between; 
+    padding: 1rem; 
 }
 
+.questions-statistics-votes {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 0.5rem; 
+}
+
+.questions-statistics-answers {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 0.5rem; 
+}
+
+.questions-statistics-views {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 0.5rem; 
+}
+.questions-statistics-votes-number {
+    font-size: 1.7rem; 
+}
