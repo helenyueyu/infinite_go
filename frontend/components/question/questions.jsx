@@ -3,7 +3,6 @@ import React from 'react';
 import { Link } from 'react-router-dom'; 
 
 import FilterQuestion from './filter_question'; 
-import VoteContainer from '../vote/vote_container'; 
 
 import QuestionItem from './question_item'; 
 
@@ -21,6 +20,7 @@ class Questions extends React.Component {
             let query = '[' + url.slice(url.lastIndexOf('/') + 1) + ']'; 
             this.props.receiveQuery(query); 
         }
+        if (this.props.search.query === "") this.fetchQuestions(this.props.search)
     }
 
     componentDidUpdate(prevProps) {
@@ -83,16 +83,16 @@ class Questions extends React.Component {
                     
                     
                     {questions.map((question, idx) => {
-                        let {id, title, body, user, voteCount, tags} = question; 
+                        let {id, title, body, user, voteCount, answerCount, tags} = question; 
                         return (
                             <div key={idx} className="questions-item">
                                 
-                                <VoteContainer 
-                                    voteable_id={id} 
-                                    voteable_type="Question"
-                                    count={voteCount} 
-                                    action={this.fetchQuestions} 
-                                    info={this.props.search} />
+                                <div className="questions-statistics">
+                                    <div>{voteCount}</div>
+                                    <div>{answerCount}</div>
+                                </div>
+                                
+
                                 
                                 <QuestionItem 
                                     idx={idx} 
