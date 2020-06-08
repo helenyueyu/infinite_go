@@ -10,6 +10,8 @@ import EditButton from '../buttons/edit_button';
 import CommentsContainer from '../comment/comments_container'; 
 import NewCommentContainer from '../comment/new_comment_container'; 
 
+import VoteContainer from '../vote/vote_container'; 
+
 import TagsContainer from '../tag/tags_container'; 
 import NewTagContainer from '../tag/new_tag_container'; 
 
@@ -35,12 +37,19 @@ class Question extends React.Component {
         if (!this.props.question) return null; 
         
         let { currentUser, question } = this.props; 
-        let { id, title, body, user, createdAt, comments, tags } = question;
+        let { id, title, body, user, createdAt, comments, tags, voteCount } = question;
 
         if (!comments || !tags) return null; 
 
         return (
             <div>
+                <VoteContainer
+                    voteable_id={id}
+                    voteable_type="Question"
+                    count={voteCount}
+                    action={this.props.fetchQuestion}
+                    info={this.props.search} />
+
                 <div className="question-title">{title}</div>
                 <div>{body}</div>
 

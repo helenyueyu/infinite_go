@@ -32,7 +32,7 @@ class TagIndex extends React.Component {
                             <div key={idx} className="tag_index-item">
                                 <div className="tag_index_item-name-container">
                                     <div className="tag_index-item-name">
-                                        <Link to={`/questions/tagged/${tag.name}`}>{tag.name}</Link>
+                                        <Link className="tag_index-item-name-link" to={`/questions/tagged/${tag.name}`}>{tag.name}</Link>
                                     </div>
                                 </div>
                                 <div className="tag_index-item-description">{tag.description}</div>

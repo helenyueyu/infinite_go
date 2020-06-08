@@ -1,4 +1,5 @@
 import React from 'react'; 
+import { withRouter } from 'react-router-dom'; 
 
 class Vote extends React.Component {
     constructor(props) {
@@ -15,12 +16,12 @@ class Vote extends React.Component {
 
     upVote() {
         let newState = Object.assign({}, this.state, {value: 1})
-        this.props.createVote(newState).then(() => this.props.action(this.props.info))
+        this.props.createVote(newState).then(() => this.props.action(this.props.match.params.questionId))
     }
 
     downVote() {
         let newState = Object.assign({}, this.state, {value: -1})
-        this.props.createVote(newState).then(() => this.props.action(this.props.info))
+        this.props.createVote(newState).then(() => this.props.action(this.props.match.params.questionId))
     }
 
     render() {
@@ -40,4 +41,4 @@ class Vote extends React.Component {
     }
 }
 
-export default Vote; 
+export default withRouter(Vote); 
