@@ -89,15 +89,15 @@ class Questions extends React.Component {
                                 <div className="questions-statistics">
                                     <div className="questions-statistics-votes">
                                         <div className="questions-statistics-votes-number">{voteCount}</div>
-                                        <div>vote{voteCount === 1 ? "" : "s"}</div>
+                                        <div className="questions-statistics-votes-count">vote{voteCount === 1 ? "" : "s"}</div>
                                     </div>
-                                    <div className="questions-statistics-answers">
-                                        <div>{answerCount}</div>
-                                        <div>answer{answerCount === 1 ? "" : "s"}</div>
+                                    <div className={answerCount === 0 ? "questions-statistics-answers" : "questions-statistics-answers-greater"}>
+                                        <div className="questions-statistics-answers-number">{answerCount}</div>
+                                        <div className="questions-statistics-answers-count">answer{answerCount === 1 ? "" : "s"}</div>
                                     </div>
                                     <div className="questions-statistics-views">
-                                        <div>{viewCount}</div>
-                                        <div>view{viewCount === 1 ? "" : "s"}</div>
+                                        <div className="questions-statistics-views-number">{viewCount}</div>
+                                        <div className="questions-statistics-views-count">view{viewCount === 1 ? "" : "s"}</div>
                                     </div>
                                 </div>
                                 
