@@ -23,7 +23,7 @@ const Navbar = ({currentUser, logout}) => {
     } else {
         return (
             <div className="nav">
-                <div className="nav-logo">SO</div>
+                <div className="nav-logo">IG</div>
                 <div>
                     <Link to="/login"><button className="nav-login-button">Log In</button></Link>
                     <Link to="/signup" ><button className="nav-signup-button">Sign Up </button></Link>

@@ -1,8 +1,22 @@
 .splash {
     background: $red; 
-    color: $black; 
+    color: $black;
+    height: 100%; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;  
 }
 
-.splash > h1 {
+.splash-title {
     font-size: $title-size; 
+    font-weight: bold; 
+}
+
+.splash-description {
+    padding-top: 1rem; 
+}
+
+.splash-name {
+    font-weight: bold; 
 }
