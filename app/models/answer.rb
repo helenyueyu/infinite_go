@@ -19,8 +19,8 @@ end
 
 def up
   add_column :answers, :accepted, :boolean 
-  Order.reset_column_information
-  Order.update_all(accepted: false)
+  Answer.reset_column_information
+  Answer.update_all(accepted: false)
 end
 
 def down

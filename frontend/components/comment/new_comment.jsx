@@ -24,6 +24,9 @@ class NewComment extends React.Component {
         e.preventDefault(); 
         this.props.createComment(this.state)
             .then(() => this.props.fetchQuestion(this.state.commentable_id))
+            .then(() => this.setState({
+                body: ""
+            }))
     }
 
     render() {

@@ -5,6 +5,7 @@ class Api::AnswersController < ApplicationController
 
     def create 
         @answer = Answer.new(answer_params)
+        @answer.accepted = false 
         if @answer.save 
             render :show 
         else
@@ -33,6 +34,6 @@ class Api::AnswersController < ApplicationController
 
     private 
     def answer_params 
-        params.require(:answer).permit(:body, :question_id, :user_id)
+        params.require(:answer).permit(:id, :body, :question_id, :user_id, :accepted)
     end
 end

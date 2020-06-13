@@ -20,7 +20,7 @@ class Answers extends React.Component {
         return (
             <div>
                 {answers.map((answer, idx) => {
-                    let { id, voteCount, questionId } = answer; 
+                    let { id, voteCount, questionId, accepted } = answer; 
                     return (<div key={idx} className="answers-item">
                         <VoteContainer
                             voteable_id={id}
@@ -30,6 +30,7 @@ class Answers extends React.Component {
                             info={questionId} />
 
                         <AnswerItem key={idx}
+                            accepted={accepted}
                             questionId={question.id}
                             id={answer.id}
                             body={answer.body}
@@ -37,6 +38,7 @@ class Answers extends React.Component {
                             username={answer.user.username}
                             authorized={currentUser.id === answer.user.id}
                             handleDelete={(id) => this.handleDelete(id)}
+                            handleUpdate={(answer) => this.props.updateAnswer(answer)}
                         />
                     </div>)
                 })}   

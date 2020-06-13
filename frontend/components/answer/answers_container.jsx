@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Answers from './answers';
 
-import { fetchAnswers, deleteAnswer } from '../../actions/answers_actions';
+import { fetchAnswers, deleteAnswer, updateAnswer } from '../../actions/answers_actions';
 
 const mapStateToProps = (state, {question}) => {
     return {
@@ -11,6 +11,7 @@ const mapStateToProps = (state, {question}) => {
 }}
 
 const mapDispatchToProps = dispatch => ({
+    updateAnswer: answer => dispatch(updateAnswer(answer)), 
     fetchAnswers: (questionId) => dispatch(fetchAnswers(questionId)), 
     deleteAnswer: id => dispatch(deleteAnswer(id))
 })
