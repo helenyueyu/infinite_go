@@ -5,6 +5,10 @@
     padding-bottom: 2rem; 
 }
 
+.question-body {
+    line-height: $big-line-height; 
+}
+
 .question-footer {
     padding-top: 1rem; 
     display: flex; 

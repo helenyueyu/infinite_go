@@ -57,7 +57,7 @@ class Question extends React.Component {
 
                     <div>
                         <div className="question-title">{title}</div>
-                        <div>{body}</div>
+                        <div className="question-body">{body}</div>
 
                         <NewTagContainer fetchQuestion={this.props.fetchQuestion}
                                         taggable_id={question.id}
