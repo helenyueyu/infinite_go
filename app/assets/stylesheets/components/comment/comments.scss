@@ -1,0 +1,26 @@
+.comments {
+    padding-top: 2rem; 
+    padding-left: 5rem; 
+    display: flex; 
+    flex-direction: column; 
+}
+
+.comments-item {
+    border-top: 1px dotted black; 
+    flex-grow: 1; 
+    padding-top: 0.5rem; 
+    padding-bottom: 0.5rem; 
+    font-size: 0.85rem; 
+    line-height: 1.2rem; 
+}
+
+.comments-username {
+    color: $red; 
+}
+.comments-dash {
+    padding-left: 0.25rem; 
+    padding-right: 0.25rem; 
+}
+.comments-date {
+    padding-left: 0.5rem; 
+}
