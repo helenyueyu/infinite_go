@@ -10,7 +10,7 @@
     flex-grow: 1; 
     padding-top: 0.5rem; 
     padding-bottom: 0.5rem; 
-    font-size: 0.85rem; 
+    font-size: $comment-size; 
     line-height: $small-line-height; 
 }
 
@@ -23,4 +23,16 @@
 }
 .comments-date {
     padding-left: 0.5rem; 
+    color: $gray; 
+}
+
+.comments-delete-button {
+    color: $gray; 
+    background: none; 
+    border: none; 
+}
+
+.comments-delete-button:hover {
+    color: $focus-gray; 
+    cursor: pointer; 
 }

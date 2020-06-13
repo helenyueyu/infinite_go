@@ -11,13 +11,17 @@ class Comments extends React.Component {
         let { comments } = this.props; 
         return (
             <div className="comments">
-                {Object.values(comments).map((x, idx) => 
+                {Object.values(comments).map((comment, idx) => 
                     <div key={idx} className="comments-item">
-                        <span className="comments-body">{x.body}</span>
+                        <span className="comments-body">{comment.body}</span>
                         <span className="comments-dash">&mdash;</span>
-                        <span className="comments-username">{x.username}</span>
-                        <span className="comments-date">{displayDate(x.createdAt)}</span>
-                        <button onClick={() => this.handleDelete(x.id, x.commentableId)}>D</button>
+                        <span className="comments-username">{comment.username}</span>
+                        <span className="comments-date">{displayDate(comment.createdAt)}</span>
+                        <button 
+                            className="comments-delete-button"
+                            onClick={() => this.handleDelete(comment.id, comment.commentableId)}>
+                                delete
+                        </button>
                     </div>)}
             </div>
         )
