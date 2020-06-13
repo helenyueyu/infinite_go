@@ -11,6 +11,10 @@ class Api::QuestionsController < ApplicationController
         @question_count = @questions.size 
     end
 
+    def random
+        @questions = Question.get_random(15)
+    end
+
     def create 
         @question = Question.new(question_params) 
         if @question.save 

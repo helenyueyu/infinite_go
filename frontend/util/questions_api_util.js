@@ -12,6 +12,13 @@ export const getFilteredQuestions = (page, pageLimit, query) => {
     })
 }
 
+export const getRandomQuestions = () => {
+    return $.ajax({
+        method: 'GET', 
+        url: '/api/questions/random'
+    })
+}
+
 export const getQuestion = (id) => {
     return $.ajax({
         method: 'GET', 

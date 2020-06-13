@@ -8,7 +8,7 @@ import Footer from '../components/user/footer/footer';
 import Splash from '../components/user/splash'; 
 
 import Menu from './menu/menu'; 
-import RightMenu from './menu/right_menu'; 
+import RightMenuContainer from './menu/right_menu_container'; 
 
 import SignUpFormContainer from './user/auth/sign_up_form_container';
 import LoginFormContainer from './user/auth/login_form_container';
@@ -33,6 +33,7 @@ const App = () => (
         <div className="app">
             <ProtectedRoute path="/questions" component={Menu}/>
             <ProtectedRoute path="/tags" component={Menu}/>
+            <ProtectedRoute path="/users" component={Menu} />
 
             <div className="app-middle">
                 <Switch>
@@ -58,7 +59,7 @@ const App = () => (
                     <ProtectedRoute exact path="/profile" component={ProfileContainer} />
                 </Switch>
             </div>
-            <ProtectedRoute path="/questions" component={RightMenu} />
+            <ProtectedRoute path="/questions" component={RightMenuContainer} />
         </div>
 
         <Footer />

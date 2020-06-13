@@ -45,6 +45,19 @@ class Question < ApplicationRecord
         self.answers.size 
     end
 
+    def self.get_random(num) 
+        chosen = []
+        res = [] 
+        size = Question.all.size 
+        while res.length < num 
+            random_idx = rand(0..size-1)
+            if !chosen.include?(random_idx)
+                res << Question.all[random_idx]
+            end
+        end
+        res 
+    end
+
     def self.search(page, page_limit, query)
         if query.length > 0 
             if query.first == '['

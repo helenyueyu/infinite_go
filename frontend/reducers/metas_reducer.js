@@ -1,13 +1,11 @@
-import { RECEIVE_METAS } from '../actions/metas_actions';
+import statsReducer from './stats_reducer'; 
+import randomQuestionsReducer from './random_questions_reducer'; 
 
-const metasReducer = (state = {}, action) => {
-    Object.freeze(state);
-    switch (action.type) {
-        case RECEIVE_METAS:
-            return action.metas;
-        default:
-            return state;
-    }
-}
+import { combineReducers } from 'redux';
+
+const metasReducer = combineReducers({
+    stats: statsReducer, 
+    randomQuestions: randomQuestionsReducer
+})
 
 export default metasReducer;

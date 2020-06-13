@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
     namespace :api, defaults: {format: :json} do 
       get 'questions(search/:search)', to: 'questions#search', search: /.*/
+      get 'questions/random', :to => 'questions#random'
 
       resources :users, only: [:index, :create, :show]
       resource :session, only: [:create, :destroy]

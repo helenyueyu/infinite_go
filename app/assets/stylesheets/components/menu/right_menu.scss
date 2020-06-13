@@ -1,4 +1,22 @@
 .right_menu {
     flex: 2 1 0; 
-    border-left: 1px dotted gray;  
+    padding: 1rem; 
+}
+
+.right_menu-title {
+    font-size: $title-size; 
+    padding-bottom: 1rem; 
+}
+.right_menu-li {
+    padding-top: 0.25rem; 
+    padding-bottom: 0.25rem; 
+}
+.right_menu-link {
+    text-decoration: none; 
+    color: $red; 
+    font-size: 0.85rem; 
+}
+
+.right_menu-link:hover {
+    color: $focus-red; 
 }

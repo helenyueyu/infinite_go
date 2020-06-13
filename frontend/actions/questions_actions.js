@@ -1,6 +1,7 @@
 import * as questionAPIUtil from '../util/questions_api_util'; 
 
 export const RECEIVE_ALL_QUESTIONS = 'RECEIVE_ALL_QUESTIONS'; 
+export const RECEIVE_RANDOM_QUESTIONS = 'RECEIVE_RANDOM_QUESTIONS'; 
 export const RECEIVE_QUESTION = 'RECEIVE_QUESTION'; 
 export const REMOVE_QUESTION = 'REMOVE_QUESTION'; 
 
@@ -20,9 +21,19 @@ const removeQuestion = question => ({
     question
 })
 
+const receiveRandomQuestions = questions => ({
+    type: RECEIVE_RANDOM_QUESTIONS, 
+    questions 
+})
+
 export const fetchAllQuestions = () => dispatch => (
     questionAPIUtil.getQuestions()
         .then(questions => dispatch(receiveAllQuestions(questions)))
+)
+
+export const fetchRandomQuestions = () => dispatch => (
+    questionAPIUtil.getRandomQuestions()
+        .then(questions => dispatch(receiveRandomQuestions(questions)))
 )
 
 export const fetchFilteredQuestions = (pageNumber, pageLimit, query) => dispatch => {
