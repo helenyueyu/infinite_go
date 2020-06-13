@@ -1,10 +1,17 @@
-
+.answer_item {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    align-items: space-between;     
+    flex-grow: 1; 
+}
 
 .answer_item-footer {
     padding-top: 1rem; 
     display: flex; 
-    justify-content: space-between;
-    align-items: flex-end;  
+    flex-direction: column; 
+
+    align-items: flex-end;
 }
 
 .answer_item-button-console {

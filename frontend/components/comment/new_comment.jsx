@@ -31,9 +31,9 @@ class NewComment extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form className="new_comment" onSubmit={this.handleSubmit}>
                 <label>Add Comment: 
-                    <input onChange={this.handleChange} />
+                    <input value={this.state.body} onChange={this.handleChange} />
                 </label>
                 <button type="submit">Submit</button>
             </form>

@@ -39,14 +39,18 @@ class AnswerItem extends React.Component {
     render() {
         let { id, questionId, body, username, createdAt, authorized, handleDelete, canAccept } = this.props;
         return (
-            <div>
-                {body}
+            <div className="answer_item">
+                <div>
+                    <AcceptButton canAccept={canAccept} action={this.handleAccept} type="accept" />
+                    <AcceptButton canAccept={canAccept} action={this.handleUnaccept} type="unaccept" />
+                </div>
+                
+                <div>
+                    {body}
+                </div>
 
                 <div className="answer_item-footer">
                     <div className="answer_item-button-console">
-                        <AcceptButton canAccept={canAccept} action={this.handleAccept} type="accept" />
-                        <AcceptButton canAccept={canAccept} action={this.handleUnaccept} type="unaccept" />
-
                         <DeleteButton authorized={authorized} id={id} handleDelete={() => handleDelete(id)} />
                         <EditButton authorized={authorized} link={`/questions/${questionId}/answers/${id}/edit`} />
                     </div>
