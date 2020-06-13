@@ -43,32 +43,41 @@ class Question extends React.Component {
 
         return (
             <div>
-                <VoteContainer
-                    voteable_id={id}
-                    voteable_type="Question"
-                    count={voteCount}
-                    action={this.props.fetchQuestion}
-                    info={this.props.search} />
-
-                <div className="question-title">{title}</div>
-                <div>{body}</div>
-
-                <NewTagContainer fetchQuestion={this.props.fetchQuestion}
-                                taggable_id={question.id}
-                                taggable_type="Question" />
-                                
-                <TagsContainer fetchQuestion={this.props.fetchQuestion} 
-                                taggable_id={question.id}
-                                tags={tags} 
-                                showDelete={true} />
                 
-                <div className="question-footer">
-                    <div className="question-button-console">
-                        <DeleteButton authorized={currentUser.id === user.id} handleDelete={this.handleDelete} />
-                        <EditButton authorized={currentUser.id === user.id} link={`/questions/${id}/edit`} />
+
+                <div className="question-info">
+                    <VoteContainer
+                        voteable_id={id}
+                        voteable_type="Question"
+                        count={voteCount}
+                        action={this.props.fetchQuestion}
+                        info={this.props.search} />
+
+
+                    <div>
+                        <div className="question-title">{title}</div>
+                        <div>{body}</div>
+
+                        <NewTagContainer fetchQuestion={this.props.fetchQuestion}
+                                        taggable_id={question.id}
+                                        taggable_type="Question" />
+                                        
+                        <TagsContainer fetchQuestion={this.props.fetchQuestion} 
+                                        taggable_id={question.id}
+                                        tags={tags} 
+                                        showDelete={true} />
+
+                        
+                        <div className="question-footer">
+                            <div className="question-button-console">
+                                <DeleteButton authorized={currentUser.id === user.id} handleDelete={this.handleDelete} />
+                                <EditButton authorized={currentUser.id === user.id} link={`/questions/${id}/edit`} />
+                            </div>
+                            <ProfileSnippet username={user.username} timestamp={moment(createdAt).fromNow()} />
+                        </div>
                     </div>
-                    <ProfileSnippet username={user.username} timestamp={moment(createdAt).fromNow()} />
                 </div>
+
 
                 <CommentsContainer comments={Object.values(comments)} />
 
