@@ -29,6 +29,10 @@
     cursor: pointer; 
 }
 
+.questions-create-question:focus {
+    outline: none; 
+}
+
 .questions-statistics {
     display: flex; 
     flex-direction: column; 
