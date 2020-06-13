@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Editor, EditorState, RichUtils } from 'draft-js';
 
 class QuestionForm extends React.Component {
     constructor(props) {
@@ -10,25 +9,11 @@ class QuestionForm extends React.Component {
             id: this.props.type === "new" ? "" : this.props.match.params.questionId,
             title: "",
             body: "", 
-            // editorState: EditorState.createEmpty()
         }
-
-        // this.onChange = (editorState) => this.setState({ editorState });
-        // this.setEditor = editor => {
-        //     this.editor = editor;
-        // };
-        // this.focusEditor = () => {
-        //     if (this.editor) {
-        //         this.editor.focus();
-        //     }
-        // };
-
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
-        // this.focusEditor();
-
         if (this.props.type === "edit") {
             this.props.fetchQuestion(this.props.match.params.questionId)
                 .then(() => this.setState({
@@ -37,11 +22,6 @@ class QuestionForm extends React.Component {
                 }))
         }
     }
-
-    // _onBoldClick(e) {
-    //     e.preventDefault();
-    //     this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'BOLD'));
-    // }
 
     handleChange(e, field) {
         e.preventDefault();
@@ -71,9 +51,6 @@ class QuestionForm extends React.Component {
 
                     <div key="body" className="question_form-element">
                         <label>Body
-                            {/* <Editor editorState={this.state.editorState} onChange={this.onChange} /> */}
-
-
                             <input
                                 onChange={(e) => this.handleChange(e, 'body')}
                                 value={this.state['body']} />
