@@ -9,8 +9,8 @@ const Navbar = ({currentUser, logout}) => {
             <div className="nav">
                 <div className="nav-links">
                     <Link to="/questions" className="nav-link" >InfiniteGO</Link>
-                    <Link to="/" className="nav-link">Github</Link>
-                    <Link to="/" className="nav-link">LinkedIn</Link>
+                    <a href="https://github.com/helenyueyu/" className="nav-link">Github</a>
+                    <a href="https://www.linkedin.com/in/helen-yu-08b57953/" className="nav-link">LinkedIn</a>
                 </div>
                 <SearchContainer />
                 <div>
