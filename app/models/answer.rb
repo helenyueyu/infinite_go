@@ -16,3 +16,13 @@ class Answer < ApplicationRecord
 
     
 end
+
+def up
+  add_column :answers, :accepted, :boolean 
+  Order.reset_column_information
+  Order.update_all(accepted: false)
+end
+
+def down
+  remove_column :answers, :accepted 
+end

@@ -52,7 +52,9 @@ class Question < ApplicationRecord
         while res.length < num 
             random_idx = rand(0..size-1)
             if !chosen.include?(random_idx)
-                res << Question.all[random_idx]
+                q = Question.all[random_idx]
+                res << q
+                chosen << random_idx 
             end
         end
         res 
