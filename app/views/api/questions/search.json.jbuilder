@@ -1,5 +1,6 @@
-json.key_format! camelize: :lower 
-
+json.key_format! ->(key) { 
+    key.to_s.chomp('?').camelize(:lower)
+}
 
 @questions.each do |question|
     json.set! question.id do 
@@ -7,6 +8,7 @@ json.key_format! camelize: :lower
                                 :title, 
                                 :body, 
                                 :user, 
+                                :has_accepted_answer?, 
                                 :vote_count, 
                                 :answer_count,
                                 :view_count, 

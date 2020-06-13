@@ -73,6 +73,8 @@ class Questions extends React.Component {
     render() {
         let {questions, search, metas: { stats: {questionCount }}} = this.props; 
         if (!questions || !questionCount || !search) return null; 
+        console.log('questions', questions); 
+
         const [pages, bp1, bp2] = this.generatePageNumbers(questionCount, search.pageLimit, search.pageNumber); 
         if (questions) {
             return (
@@ -81,7 +83,8 @@ class Questions extends React.Component {
                     {questionCount}
                     
                     {questions.map((question, idx) => {
-                        let {id, title, body, user, voteCount, viewCount, answerCount, tags} = question; 
+                        let {id, title, body, user, voteCount, viewCount, answerCount, tags, hasAcceptedAnswer } = question; 
+                        console.log('hasAcceptedAnswer', hasAcceptedAnswer) 
                         return (
                             <div key={idx} className="questions-item">
                                 
@@ -90,7 +93,7 @@ class Questions extends React.Component {
                                         <div className="questions-statistics-votes-number">{voteCount}</div>
                                         <div className="questions-statistics-votes-count">vote{voteCount === 1 ? "" : "s"}</div>
                                     </div>
-                                    <div className={answerCount === 0 ? "questions-statistics-answers" : "questions-statistics-answers-greater"}>
+                                    <div className={answerCount === 0 ? "questions-statistics-answers" : (hasAcceptedAnswer ? "questions-statistics-answers-accepted": "questions-statistics-answers-greater")}>
                                         <div className="questions-statistics-answers-number">{answerCount}</div>
                                         <div className="questions-statistics-answers-count">answer{answerCount === 1 ? "" : "s"}</div>
                                     </div>

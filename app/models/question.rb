@@ -45,6 +45,10 @@ class Question < ApplicationRecord
         self.answers.size 
     end
 
+    def has_accepted_answer?
+        self.answers.where('accepted = true').count == 1
+    end
+
     def self.get_random(num) 
         chosen = []
         res = [] 

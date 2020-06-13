@@ -58,6 +58,19 @@
     padding: 0.5rem; 
 }
 
+.questions-statistics-answers-accepted {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 0.5rem;
+    background: green; 
+    color: $red; 
+    border: 1px solid $red;  
+    border-radius: 5px; 
+}
+
+
 .questions-statistics-answers-greater {
     display: flex; 
     flex-direction: column; 
