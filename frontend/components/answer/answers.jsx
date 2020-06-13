@@ -22,15 +22,18 @@ class Answers extends React.Component {
                 {answers.map((answer, idx) => {
                     let { id, voteCount, questionId, accepted } = answer; 
                     return (<div key={idx} className="answers-item">
-                        <div>
-                        <VoteContainer
-                            voteable_id={id}
-                            voteable_type="Answer"
-                            count={voteCount}
-                            action={this.props.fetchAnswers}
-                            info={questionId} />
+                        <div className="answers-vote">
+                            <VoteContainer
+                                voteable_id={id}
+                                voteable_type="Answer"
+                                count={voteCount}
+                                action={this.props.fetchAnswers}
+                                info={questionId} />
                         
-                            {accepted ? <i className="fas fa-check"></i> : null}
+                            <div>
+                                {accepted ? <i className="fas fa-check"></i> : null}
+                            </div>
+                            
                         </div>
 
                         <AnswerItem key={idx}
