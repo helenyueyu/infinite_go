@@ -21,10 +21,16 @@ class AnswerItem extends React.Component {
     }
 
     handleAccept(e) {
-        // debugger 
         e.preventDefault(); 
         this.setState({
             accepted: true 
+        }, () => this.props.handleUpdate(this.state)); 
+    }
+
+    handleUnaccept(e) {
+        e.preventDefault(); 
+        this.setState({
+            accepted: false 
         }, () => this.props.handleUpdate(this.state)); 
     }
 
@@ -38,6 +44,8 @@ class AnswerItem extends React.Component {
                 <div className="answer_item-footer">
                     <div className="answer_item-button-console">
                         <button onClick={(e) => this.handleAccept(e)}>Accept</button>
+                        <button onClick={(e) => this.handleUnaccept(e)}>Unaccept</button>
+
                         <DeleteButton authorized={authorized} id={id} handleDelete={() => handleDelete(id)} />
                         <EditButton authorized={authorized} link={`/questions/${questionId}/answers/${id}/edit`} />
                     </div>
