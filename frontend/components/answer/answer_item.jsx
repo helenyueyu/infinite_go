@@ -31,7 +31,7 @@ class AnswerItem extends React.Component {
     }
 
     render() {
-        let { id, questionId, body, username, createdAt, authorized, handleDelete, accepted } = this.props;
+        let { id, questionId, body, username, createdAt, authorized, handleDelete } = this.props;
         console.log(this.props); 
         return (
             <div>
