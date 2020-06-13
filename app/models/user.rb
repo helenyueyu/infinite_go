@@ -19,12 +19,23 @@ class User < ApplicationRecord
 
     has_many :voted_questions, 
         through: :questions,  
-        source: :votes 
+        source: :votes, 
+        dependent: :destroy 
 
     has_many :commented_questions, 
         through: :questions,  
-        source: :comments 
+        source: :comments, 
+        dependent: :destroy 
 
+    has_many :user_badges, 
+        class_name: :UserBadge, 
+        foreign_key: :user_id, 
+        dependent: :destroy 
+
+    has_many :badges, 
+        through: :user_badges, 
+        source: :badge, 
+        dependent: :destroy 
 
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email) 
