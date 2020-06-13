@@ -41,6 +41,7 @@ class Question extends React.Component {
 
         if (!comments || !tags) return null; 
 
+
         return (
             <div>
                 

@@ -6,6 +6,7 @@ import ProfileSnippet from '../user/profile/profile_snippet';
 
 import DeleteButton from '../buttons/delete_button'; 
 import EditButton from '../buttons/edit_button'; 
+import AcceptButton from '../buttons/accept_button'; 
 
 class AnswerItem extends React.Component {
     constructor(props) {
@@ -18,6 +19,7 @@ class AnswerItem extends React.Component {
         }
 
         this.handleAccept = this.handleAccept.bind(this); 
+        this.handleUnaccept = this.handleUnaccept.bind(this); 
     }
 
     handleAccept(e) {
@@ -35,16 +37,15 @@ class AnswerItem extends React.Component {
     }
 
     render() {
-        let { id, questionId, body, username, createdAt, authorized, handleDelete } = this.props;
-        console.log(this.props); 
+        let { id, questionId, body, username, createdAt, authorized, handleDelete, canAccept } = this.props;
         return (
             <div>
                 {body}
 
                 <div className="answer_item-footer">
                     <div className="answer_item-button-console">
-                        <button onClick={(e) => this.handleAccept(e)}>Accept</button>
-                        <button onClick={(e) => this.handleUnaccept(e)}>Unaccept</button>
+                        <AcceptButton canAccept={canAccept} action={this.handleAccept} type="accept" />
+                        <AcceptButton canAccept={canAccept} action={this.handleUnaccept} type="unaccept" />
 
                         <DeleteButton authorized={authorized} id={id} handleDelete={() => handleDelete(id)} />
                         <EditButton authorized={authorized} link={`/questions/${questionId}/answers/${id}/edit`} />

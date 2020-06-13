@@ -44,6 +44,7 @@ class Answers extends React.Component {
                             createdAt={answer.createdAt}
                             username={answer.user.username}
                             authorized={currentUser.id === answer.user.id}
+                            canAccept={currentUser.id === question.user.id}
                             handleDelete={(id) => this.handleDelete(id)}
                             handleUpdate={(answer) => this.props.updateAnswer(answer)}
                         />
