@@ -1,8 +1,6 @@
 import React from 'react'; 
 
 import { Link } from 'react-router-dom'; 
-// import myImg from 'images/favicon.png'
-
 
 class ProfileIndex extends React.Component {
     componentDidMount() {
@@ -35,16 +33,20 @@ class ProfileIndex extends React.Component {
                             {row.map((user, idx) => (
                                 <div key={idx} className="profile_index-item">
                                     <div>
-                                        <img src="/assets/favicon-32x32.png" />
+                                        <img className="profile_index-image" src="/assets/favicon-512x512.png" />
                                     </div>
 
-                                    <div>
-                                        <Link to={`/users/${user.id}`}>{user.username}</Link>
-                                        <div>{user.reputation}</div>
+                                    <div className="profile_index-item-detail">
+                                        <Link className="profile_index-username" 
+                                                to={`/users/${user.id}`}>
+                                                        {user.username}
+                                        </Link>
+                                        <div className="profile_index-location">{user.location}</div>
+                                        <div className="profile_index-reputation">{user.reputation}</div>
                                         <div className="profile_index-tags">{user.topThreeTags.map((tag, idx) => 
                                                 <Link  key={idx}
                                                         className="profile_index-tag" 
-                                                        to={`/questions/tagged/${tag}`}>{tag}</Link>
+                                                        to={`/questions/tagged/${tag}`}>{tag}{idx === 2 ? '' : ','}</Link>
                                             )}</div>
                                     </div>
                                 </div>

@@ -18,8 +18,45 @@
     width: 25vw; 
     margin: 0.5rem; 
     padding: 0.5rem; 
-    border: 1px dotted gray; 
 }
+
+.profile_index-item-detail {
+    padding-left: 0.5rem; 
+}
+
+.profile_index-username {
+    color: $red; 
+    text-decoration: none; 
+    padding-bottom: 0.2rem; 
+}
+
+.profile_index-username:hover {
+    cursor: pointer; 
+    color: $focus-red; 
+}
+
+.profile_index-image {
+    width: 50px; 
+    height: 50px; 
+    border-radius: 5px; 
+    border: none; 
+}
+
+.profile_index-location {
+    color: $gray; 
+    font-size: $comment-size; 
+    padding-top: 0.1rem; 
+    padding-bottom: 0.1rem; 
+}
+
+.profile_index-reputation {
+    color: $gray; 
+    font-weight: bold; 
+    font-size: $comment-size; 
+    padding-top: 0.1rem; 
+    padding-bottom: 0.4rem; 
+}
+
 
 .profile_index-tags {
     display: flex; 
@@ -30,4 +67,11 @@
 .profile_index-tag {
     padding-left: 0.1rem; 
     padding-right: 0.1rem; 
+    color: $red; 
+    text-decoration: none; 
+}
+
+.profile_index-tag:hover {
+    cursor: pointer; 
+    color: $focus-red; 
 }
