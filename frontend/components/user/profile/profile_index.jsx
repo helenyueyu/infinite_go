@@ -41,8 +41,10 @@ class ProfileIndex extends React.Component {
                                     <div>
                                         <Link to={`/users/${user.id}`}>{user.username}</Link>
                                         <div>{user.reputation}</div>
-                                        <div className="profile_index-tags">{user.topThreeTags.map(tag => 
-                                                <div className="profile_index-tag">{tag}</div>
+                                        <div className="profile_index-tags">{user.topThreeTags.map((tag, idx) => 
+                                                <Link  key={idx}
+                                                        className="profile_index-tag" 
+                                                        to={`/questions/tagged/${tag}`}>{tag}</Link>
                                             )}</div>
                                     </div>
                                 </div>
