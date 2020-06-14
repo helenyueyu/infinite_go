@@ -8,12 +8,18 @@ class Profile extends React.Component {
         this.props.fetchUser(this.props.match.params.userId)
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.match.params.userId !== this.props.match.params.userId) {
+            this.props.fetchUser(this.props.match.params.userId)
+        }
+    }
+
     renderQuestionHeader(n) {
         return n === 1 ? `${n} Question` : `${n} Questions`; 
     }
 
     render() {
-        if (!this.props.users || Object.keys(this.props.users).length === 0) {
+        if (this.props.users[this.props.match.params.userId] === undefined) {
             return null; 
         } 
         let { questions, createdAt } = this.props.users[this.props.match.params.userId]; 
