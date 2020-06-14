@@ -46,9 +46,9 @@ const App = () => (
                     <Route exact path="/tags" component={TagIndexContainer} />
 
                     <Route exact path="/questions" component={QuestionsContainer} />
-                    <Route exact path="/questions/?q=:query" component={QuestionsContainer} />
-
                     <Route exact path="/questions/tagged/:tagName" component={QuestionsContainer} />
+
+                    <Route exact path="/questions/?q=:query" component={QuestionsContainer} />
 
                     <ProtectedRoute exact path="/questions/new" component={NewQuestionContainer} />
                     <ProtectedRoute exact path="/questions/:questionId/edit" component={EditQuestionContainer} />

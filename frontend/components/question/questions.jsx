@@ -3,9 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'; 
 
 import FilterQuestion from './filter_question'; 
-
 import QuestionItem from './question_item'; 
-
 
 class Questions extends React.Component {
     constructor(props) {
@@ -18,13 +16,19 @@ class Questions extends React.Component {
         let url = this.props.history.location.pathname;
         if (url.includes('tagged')) {
             let query = '[' + url.slice(url.lastIndexOf('/') + 1) + ']'; 
-            this.props.receiveQuery(query); 
+            dispatch({
+                type: 'RECEIVE_QUERY', 
+                query: query 
+            })
+        } else {
+            this.fetchQuestions(this.props.search)
         }
-        if (this.props.search.query === "") this.fetchQuestions(this.props.search)
     }
 
     componentDidUpdate(prevProps) {
-        if (this.newSearchParams(prevProps.search, this.props.search)) this.fetchQuestions(this.props.search); 
+        if (this.newSearchParams(prevProps.search, this.props.search)) {
+            this.fetchQuestions(this.props.search); 
+        }
     }
 
     fetchQuestions({pageNumber, pageLimit, query}) {
@@ -73,7 +77,6 @@ class Questions extends React.Component {
     render() {
         let {questions, search, metas: { stats: {questionCount }}} = this.props; 
         if (!questions || !questionCount || !search) return null; 
-        console.log('questions', questions); 
 
         const [pages, bp1, bp2] = this.generatePageNumbers(questionCount, search.pageLimit, search.pageNumber); 
         if (questions) {
@@ -84,7 +87,6 @@ class Questions extends React.Component {
                     
                     {questions.map((question, idx) => {
                         let {id, title, body, user, voteCount, viewCount, answerCount, tags, hasAcceptedAnswer } = question; 
-                        console.log('hasAcceptedAnswer', hasAcceptedAnswer) 
                         return (
                             <div key={idx} className="questions-item">
                                 

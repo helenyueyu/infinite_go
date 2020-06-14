@@ -7,6 +7,7 @@ const questionsReducer = (state = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_ALL_QUESTIONS:
+            // debugger; 
             return action.questions;
         case RECEIVE_QUESTION:
             newState[action.question.id] = action.question;
