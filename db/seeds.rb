@@ -229,3 +229,44 @@ taggables = [
 taggables.each do |taggable|
     Taggable.create!(taggable)
 end
+
+/# 
+Seeding badges 
+
+User.all.each do |user|
+    if user.questions.size >= 1 
+        UserBadge.create!({user_id: user.id, badge_id: Badge.find_by(name: 'First Question').id})
+    end
+end
+
+User.all.each do |user|
+    if user.questions.size >= 5 
+        UserBadge.create!({user_id: user.id, badge_id: Badge.find_by(name: 'Question Newbie').id})
+    end 
+end
+
+User.all.each do |user|
+    if user.questions.size >= 10
+        UserBadge.create!({user_id: user.id, badge_id: Badge.find_by(name: 'Question Enthusiast').id})
+    end 
+end
+
+User.all.each do |user| 
+    if user.questions.size >= 30
+        UserBadge.create!({user_id: user.id, badge_id: Badge.find_by(name: 'Knowledge Seeker').id})
+    end 
+end
+
+User.all.each do |user| 
+    if user.votes.size >= 1
+        UserBadge.create!({user_id: user.id, badge_id: Badge.find_by(name: 'First Upvote').id})
+    end 
+end
+
+User.all.each do |user|
+    if user.votes.size >= 1
+        UserBadge.create!({user_id: user.id, badge_id: Badge.find_by(name: 'Second Upvote').id})
+    end 
+end
+
+#/
