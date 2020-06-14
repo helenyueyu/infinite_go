@@ -22,16 +22,26 @@ class ProfileIndex extends React.Component {
     render() {
         if (!this.props.users) return null; 
         const { users } = this.props; 
+
+        const rowifiedUsers = this.rowify(users, 3); 
+
         return (
             <div className="profile_index">
-                {users.map((user, idx) =>
-                    <div key={idx} className="profile_index-item"> 
-                        <Link to={`/users/${user.id}`}>{user.username}</Link>
-                    </div>
-                )}
+                {
+                    rowifiedUsers.map((row, idx) => (
+                        <div key={idx} className="profile_index-row">
+                            {row.map((user, idx) => (
+                                <div key={idx} className="profile_index-item">
+                                    <Link to={`/users/${user.id}`}>{user.username}</Link>
+                                </div>
+                            ))}
+                        </div>
+                    ))
+                }
             </div>
         )
     }
 }
 
 export default ProfileIndex; 
+
