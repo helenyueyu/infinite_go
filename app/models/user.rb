@@ -43,13 +43,14 @@ class User < ApplicationRecord
         source: :badge, 
         dependent: :destroy 
 
-    # has_many :taggables,
-    #     class_name: :Taggable, 
-    #     foreign_key: :
-
-    # def to_param 
-    #     username 
-    # end
+    has_many :taggables,
+        class_name: :Taggable, 
+        foreign_key: :user_id, 
+        dependent: :destroy
+    
+    has_many :tags, 
+        through: :taggables, 
+        source: :tag 
 
     def medals 
         bronze_medals = self.badges.where(medal_type: 'bronze').size 
