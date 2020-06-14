@@ -1,6 +1,8 @@
 import React from 'react'; 
 
 import { Link } from 'react-router-dom'; 
+// import myImg from 'images/favicon.png'
+
 
 class ProfileIndex extends React.Component {
     componentDidMount() {
@@ -32,7 +34,12 @@ class ProfileIndex extends React.Component {
                         <div key={idx} className="profile_index-row">
                             {row.map((user, idx) => (
                                 <div key={idx} className="profile_index-item">
-                                    <Link to={`/users/${user.id}`}>{user.username}</Link>
+                                    <img src="/assets/favicon-32x32.png" />
+                                    
+                                    <div>
+                                        <Link to={`/users/${user.id}`}>{user.username}</Link>
+                                        <div>{user.reputation}</div>
+                                    </div>
                                 </div>
                             ))}
                         </div>
