@@ -17,6 +17,11 @@ class User < ApplicationRecord
         foreign_key: :user_id, 
         dependent: :destroy 
 
+    has_many :votes, 
+        class_name: :Vote, 
+        foreign_key: :user_id, 
+        dependent: :destroy 
+
     has_many :voted_questions, 
         through: :questions,  
         source: :votes, 
