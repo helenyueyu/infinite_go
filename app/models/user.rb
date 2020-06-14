@@ -5,7 +5,7 @@ class User < ApplicationRecord
     validates :username, :email, :session_token, uniqueness: true 
     validates :password, length: { minimum: 6, allow_nil: true }
     validates :reputation, numericality: { greater_than: 1 } 
-    
+
     after_initialize :ensure_session_token, :ensure_username  
 
     has_many :questions, 
@@ -42,6 +42,10 @@ class User < ApplicationRecord
         through: :user_badges, 
         source: :badge, 
         dependent: :destroy 
+
+    # def to_param 
+    #     username 
+    # end
 
     def medals 
         bronze_medals = self.badges.where(medal_type: 'bronze').size 

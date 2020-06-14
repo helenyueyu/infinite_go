@@ -1,7 +1,9 @@
 .profile_index {
     display: flex; 
     flex-direction: row; 
+    // flex-wrap: wrap; 
 }
 .profile_index-item {
     background: $light-red; 
+    padding: 2rem; 
 }

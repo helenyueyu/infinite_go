@@ -8,17 +8,18 @@ class TagIndex extends React.Component {
         this.props.fetchTags()
     }
 
-    rowify(tags, perRow) {
+    rowify(items, perRow) {
         let arr = []; 
-        for (let i = 0; i < tags.length; i+= perRow) {
+        for (let i = 0; i < items.length; i+= perRow) {
             let row = []; 
             for (let j = i; j < i + perRow; j++) {
-                if (tags[j]) row.push(tags[j]); 
+                if (items[j]) row.push(items[j]); 
             }
             arr.push(row); 
         }
         return arr; 
     }
+
     render() {
         const { tags } = this.props;
         
