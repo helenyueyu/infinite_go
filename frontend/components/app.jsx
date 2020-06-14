@@ -31,9 +31,12 @@ const App = () => (
         <NavbarContainer />
         
         <div className="app">
-            <ProtectedRoute path="/questions" component={Menu}/>
-            <ProtectedRoute path="/tags" component={Menu}/>
-            <ProtectedRoute path="/users" component={Menu} />
+            <div className="app-left">
+                <ProtectedRoute path="/questions" component={Menu} />
+                <ProtectedRoute path="/tags" component={Menu} />
+                <ProtectedRoute path="/users" component={Menu} />
+            </div>
+            
 
             <div className="app-middle">
                 <Switch>
@@ -60,7 +63,12 @@ const App = () => (
                     {/* <ProtectedRoute exact path="/profile" component={ProfileContainer} /> */}
                 </Switch>
             </div>
-            <ProtectedRoute path="/questions" component={RightMenuContainer} />
+
+            <div className="app-right">
+                {/* <Route exact path="/users" component={RightMenuContainer} /> */}
+                <Route exact path="/questions" component={RightMenuContainer} />
+            </div>
+            
         </div>
 
         <Footer />

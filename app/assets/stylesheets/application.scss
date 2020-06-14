@@ -47,8 +47,18 @@
      flex: 4 1 0;  
  }
 
+ .app-left {
+     display: flex; 
+     flex: 0 0 185px; 
+ }
+
  .app-middle {
-     flex: 4 1 550px; 
+     flex: 10 0 550px; 
+ }
+
+ .app-right {
+     display: flex; 
+     flex: 0 10 350px; 
  }
 
  

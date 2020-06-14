@@ -1,52 +1,59 @@
-.tag_index {
+.tags_index {
     display: flex; 
     flex-direction: column; 
     align-items: flex-start; 
     justify-content: flex-start; 
     margin: 0.5rem 2rem 0.5rem 2rem;  
 }
-.tag_index-row {
+
+.tags_index-title {
+    font-size: $big-title-size; 
+    padding-top: 2rem; 
+    padding-bottom: 2rem; 
+}
+
+.tags_index-row {
     display: flex; 
     flex-direction: row; 
 }
 
-.tag_index-item {
+.tags_index-item {
     display: flex; 
     flex-direction: column; 
-    width: 25vw; 
+    // width: 25vw; 
     margin: 0.5rem; 
     padding: 0.5rem; 
     border: 1px dotted gray; 
 }
 
-.tag_index_item-name-container {
+.tags_index_item-name-container {
     display: flex; 
     justify-content: flex-start; 
     padding: 0.3rem; 
 }
-.tag_index-item-name {
+.tags_index-item-name {
     background: $tag-red; 
     color: $red; 
     display: flex; 
     padding: 0.3rem; 
 }
 
-.tag_index-item-name-link {
+.tags_index-item-name-link {
     color: $red; 
     text-decoration: none; 
 }
 
-.tag_index-item-name:hover {
+.tags_index-item-name:hover {
     background: $light-red; 
     cursor: pointer; 
 }
 
-.tag_index-item-description {
+.tags_index-item-description {
     color: $gray; 
     padding: 0.3rem; 
 }
 
-.tag_index-item-details {
+.tags_index-item-details {
     color: $focus-gray; 
     display: flex; 
     flex-direction: row; 

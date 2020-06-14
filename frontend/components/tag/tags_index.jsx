@@ -26,18 +26,20 @@ class TagIndex extends React.Component {
         const rowifiedTags = this.rowify(tags, 3); 
         
         return (
-            <div className="tag_index">
+            <div className="tags_index">
+                <h1 className="tags_index-title">Tags</h1>
+
                 {rowifiedTags.map((row, idx) => (
-                    <div key={idx} className="tag_index-row">
+                    <div key={idx} className="tags_index-row">
                         {row.map((tag, idx) => (
-                            <div key={idx} className="tag_index-item">
-                                <div className="tag_index_item-name-container">
-                                    <div className="tag_index-item-name">
-                                        <Link className="tag_index-item-name-link" to={`/questions/tagged/${tag.name}`}>{tag.name}</Link>
+                            <div key={idx} className="tags_index-item">
+                                <div className="tags_index_item-name-container">
+                                    <div className="tags_index-item-name">
+                                        <Link className="tags_index-item-name-link" to={`/questions/tagged/${tag.name}`}>{tag.name}</Link>
                                     </div>
                                 </div>
-                                <div className="tag_index-item-description">{tag.description}</div>
-                                <div className="tag_index-item-details">
+                                <div className="tags_index-item-description">{tag.description}</div>
+                                <div className="tags_index-item-details">
                                     <div>{tag.questionCount} question{tag.questionCount == 1 ? "" : "s"}</div>
                                     <div>{moment(tag.createdAt).fromNow()}</div>
                                 </div>
