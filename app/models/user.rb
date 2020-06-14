@@ -43,6 +43,10 @@ class User < ApplicationRecord
         source: :badge, 
         dependent: :destroy 
 
+    # has_many :taggables,
+    #     class_name: :Taggable, 
+    #     foreign_key: :
+
     # def to_param 
     #     username 
     # end
