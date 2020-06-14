@@ -13,12 +13,19 @@ class Api::UsersController < ApplicationController
        end 
     end
 
+    def search
+        @users = User.search(search_params)
+    end
+
     def show 
-        # debugger 
         @user = User.find(params[:id])
     end
 
-    private 
+    private
+    def search_params
+        params.require(:search).permit(:query)[:query]
+    end
+
     def user_params
         params.require(:user).permit([:password, :email, :username])
     end

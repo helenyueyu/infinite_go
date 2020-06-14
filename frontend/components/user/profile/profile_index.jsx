@@ -7,6 +7,11 @@ class ProfileIndex extends React.Component {
         this.props.fetchUsers()
     }
 
+    handleChange(e) {
+        e.preventDefault(); 
+        this.props.searchUsers(e.target.value); 
+    }
+
     rowify(items, perRow) {
         let arr = [];
         for (let i = 0; i < items.length; i += perRow) {
@@ -27,6 +32,7 @@ class ProfileIndex extends React.Component {
 
         return (
             <div className="profile_index">
+                Search For Users: <input onChange={(e) => this.handleChange(e)}></input>
                 {
                     rowifiedUsers.map((row, idx) => (
                         <div key={idx} className="profile_index-row">

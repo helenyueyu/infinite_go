@@ -32,3 +32,10 @@ export const fetchUsers = () => dispatch => {
             dispatch(receiveUsers(users))
         });
 }
+
+export const searchUsers = query => dispatch => {
+    return userAPIUtil.searchUsers(query)
+        .then(users => {
+            dispatch(receiveUsers(users))
+        })
+}

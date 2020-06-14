@@ -11,3 +11,14 @@ export const getUser = id => {
         url: `/api/users/${id}`
     })
 }
+
+export const searchUsers = query => {
+    return $.ajax({
+        method: 'GET', 
+        url: `/api/users/search`, 
+        data: { search: {
+            query: query 
+        } }
+    })
+}
+
