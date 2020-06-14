@@ -32,7 +32,8 @@ class ProfileIndex extends React.Component {
 
         return (
             <div className="profile_index">
-                Search For Users: <input onChange={(e) => this.handleChange(e)}></input>
+                <h1 className="profile_index-title">Users</h1>
+                <input onChange={(e) => this.handleChange(e)}></input>
                 {
                     rowifiedUsers.map((row, idx) => (
                         <div key={idx} className="profile_index-row">
