@@ -6,8 +6,32 @@
     margin: 0.5rem 2rem 0.5rem 2rem;  
 }
 
-.profile_index-title {
+.profile_index-search {
+    padding: 0.1rem 0.3rem 0.1rem 0.3rem; 
+    font-size: 1rem;
+    height: 1.5rem; 
+    border-radius: 5px; 
+    border: 1px solid $gray; 
+    margin-bottom: 2rem; 
+}
+
+.profile_index-no-results {
+    color: $red; 
+    font-weight: bold; 
     font-size: $title-size; 
+}
+
+.profile_index-search:focus {
+    outline: none; 
+    border-radius: 5px; 
+    border: 1px solid $focus-red; 
+    box-shadow: 0 0 0pt 3pt $tag-red-lite; 
+}
+
+.profile_index-title {
+    font-size: $big-title-size; 
+    padding-top: 2rem; 
+    padding-bottom: 2rem; 
 }
 
 .profile_index-row {
