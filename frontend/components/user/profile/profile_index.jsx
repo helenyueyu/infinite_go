@@ -34,11 +34,16 @@ class ProfileIndex extends React.Component {
                         <div key={idx} className="profile_index-row">
                             {row.map((user, idx) => (
                                 <div key={idx} className="profile_index-item">
-                                    <img src="/assets/favicon-32x32.png" />
-                                    
+                                    <div>
+                                        <img src="/assets/favicon-32x32.png" />
+                                    </div>
+
                                     <div>
                                         <Link to={`/users/${user.id}`}>{user.username}</Link>
                                         <div>{user.reputation}</div>
+                                        <div className="profile_index-tags">{user.topThreeTags.map(tag => 
+                                                <div className="profile_index-tag">{tag}</div>
+                                            )}</div>
                                     </div>
                                 </div>
                             ))}

@@ -52,6 +52,15 @@ class User < ApplicationRecord
         through: :taggables, 
         source: :tag 
 
+
+    def top_three_tags
+        h = Hash.new(0)
+        self.tags.each do |tag|
+            h[tag.name] += 1
+        end
+        h.sort_by{|_, v| -v }[0..2].map(&:first)
+    end
+
     def medals 
         bronze_medals = self.badges.where(medal_type: 'bronze').size 
         silver_medals = self.badges.where(medal_type: 'silver').size 

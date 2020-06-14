@@ -4,7 +4,6 @@
     align-items: flex-start; 
     justify-content: flex-start; 
     margin: 0.5rem 2rem 0.5rem 2rem;  
-    // flex-wrap: wrap; 
 }
 
 .profile_index-row {
@@ -19,4 +18,15 @@
     margin: 0.5rem; 
     padding: 0.5rem; 
     border: 1px dotted gray; 
+}
+
+.profile_index-tags {
+    display: flex; 
+    flex-direction: row; 
+    font-size: $comment-size; 
+}
+
+.profile_index-tag {
+    padding-left: 0.1rem; 
+    padding-right: 0.1rem; 
 }
