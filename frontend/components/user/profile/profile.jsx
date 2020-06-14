@@ -4,14 +4,19 @@ import moment from 'moment';
 
 
 class Profile extends React.Component {
+    componentDidMount() {
+        this.props.fetchUser(this.props.match.params.userId)
+    }
 
     renderQuestionHeader(n) {
-        return n === 1 ? `${n} Question` : `${n} Questions`
+        return n === 1 ? `${n} Question` : `${n} Questions`; 
     }
 
     render() {
-        if (!this.props.currentUser) return null; 
-        let { questions, createdAt } = this.props.currentUser; 
+        if (!this.props.users || Object.keys(this.props.users).length === 0) {
+            return null; 
+        } 
+        let { questions, createdAt } = this.props.users[this.props.match.params.userId]; 
         
         return (
             <div>

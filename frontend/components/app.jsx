@@ -56,7 +56,8 @@ const App = () => (
 
                     <ProtectedRoute exact path="/questions/:questionId/answers/:answerId/edit" component={EditAnswerContainer} />
 
-                    <ProtectedRoute exact path="/profile" component={ProfileContainer} />
+                    <Route exact path="/users/:userId" component={ProfileContainer} />
+                    {/* <ProtectedRoute exact path="/profile" component={ProfileContainer} /> */}
                 </Switch>
             </div>
             <ProtectedRoute path="/questions" component={RightMenuContainer} />

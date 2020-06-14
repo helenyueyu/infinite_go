@@ -42,6 +42,13 @@ class User < ApplicationRecord
         source: :badge, 
         dependent: :destroy 
 
+    def medals 
+        bronze_medals = self.badges.where(medal_type: 'bronze').size 
+        silver_medals = self.badges.where(medal_type: 'silver').size 
+        gold_medals = self.badges.where(medal_type: 'gold').size 
+        [bronze_medals, silver_medals, gold_medals]
+    end
+
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email) 
         user && user.is_password?(password) ? user : nil 

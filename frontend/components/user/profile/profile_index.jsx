@@ -9,8 +9,8 @@ class ProfileIndex extends React.Component {
         const { users } = this.props; 
         return (
             <div className="profile_index">
-                {users.map(user =>
-                    <div className="profile_index-item"> 
+                {users.map((user, idx) =>
+                    <div key={idx} className="profile_index-item"> 
                         <div>{user.username}</div>
                     </div>
                 )}
