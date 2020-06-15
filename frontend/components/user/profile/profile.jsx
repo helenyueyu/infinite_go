@@ -22,11 +22,36 @@ class Profile extends React.Component {
         if (this.props.users[this.props.match.params.userId] === undefined) {
             return null; 
         } 
-        let { questions, createdAt } = this.props.users[this.props.match.params.userId]; 
+        let { questions, createdAt, username, reputation, medals } = this.props.users[this.props.match.params.userId]; 
         
         return (
-            <div>
-                <div>Member for {moment(createdAt).fromNow(true)}</div>
+            <div className="profile">
+                <div>
+                    <button className="profile-button">Profile</button>
+                    <button className="profile-button">Activity</button>
+                    <button className="profile-button">Developer Story</button>
+                </div>
+                <div className="profile_top">
+                    <div className="profile_top-image-container">
+                        <img className="profile_top-image" src="/assets/favicon-512x512.png" />
+                        <span>{reputation} reputation</span>
+                        <div className="profile_top-medals">
+                            {medals.map(medal => 
+                            <div>
+                                {medal}
+                            </div>)}
+                        </div>
+                    </div>
+                    
+                    <div className="profile_top-snippet">
+                        {username}
+                    </div>
+                    <div>
+                        Member for {moment(createdAt).fromNow(true)}
+                    </div>
+                </div>
+
+                <h1>Posts</h1>
                 <h1>{this.renderQuestionHeader(questions.length)}</h1>
                 <div>
                     {questions.map(question => question.title)}

@@ -1,0 +1,38 @@
+.profile {
+    display: flex; 
+    flex-direction: column; 
+    margin: 1.5rem; 
+}
+
+.profile-button {
+    padding: 0.5rem 1rem 0.5rem 1rem; 
+    background: $red; 
+    color: $white; 
+    border-radius: 15px; 
+    border: none; 
+    margin: 0.25rem; 
+}
+
+.profile_top {
+    display: flex; 
+    flex-direction: row; 
+    align-items: flex-start; 
+}
+
+.profile_top-image-container {
+    background: $light-gray; 
+    padding: 1rem; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+}
+
+.profile_top-image {
+    width: 150px; 
+    height: 150px; 
+}
+
+.profile_top-medals {
+    display: flex; 
+    flex-direction: row; 
+}
