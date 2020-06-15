@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom'; 
 import moment from 'moment'; 
 
+import ProfileImage from './profile_image'; 
+
 import { sortByUpvotes } from '../../../selectors/sort_selectors'; 
 import { displayShortenedDate } from '../../../selectors/date_selectors'; 
 
@@ -51,19 +53,7 @@ class Profile extends React.Component {
                 </div>
 
                 <div className="profile_top">
-                    <div className="profile_top-image-container">
-                        <img className="profile_top-image" src="/assets/favicon-512x512.png" />
-                        <div className="profile-reputation">
-                            <div className="profile-reputation-number">{reputation}</div>
-                            <div className="profile-reputation-text">reputation</div>
-                        </div>
-                        <div className="profile_top-medals">
-                            {medals.map((medal, idx) => 
-                                <div key={idx} className={idx === 0 ? "profile_top-medal-gold" : idx === 1 ? "profile_top-medal-silver" : "profile_top-medal-bronze"}>
-                                    &bull;<span className="profile_top-medal-count">{medal}</span>
-                            </div>)}
-                        </div>
-                    </div>
+                    <ProfileImage reputation={reputation} medals={medals}/>
                     
                     <div className="profile_top-snippet">
                         {username}
@@ -80,7 +70,7 @@ class Profile extends React.Component {
                             </div>
                             <div className="profile_top-stat">
                                 <div className="profile_top-stat-number">{numberOfPeopleReached} </div>
-                                <div className="profile_top-stat-description"> people reached</div>
+                                <div className="profile_top-stat-description">{numberOfPeopleReached === 1 ? 'person' : 'people'} reached</div>
                             </div>
                         </div>
                         
