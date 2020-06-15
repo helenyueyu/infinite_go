@@ -28,3 +28,10 @@ export const displayDate = (date) => {
     const [year, month, day] = chunks; 
     return `${monthMap[month]} ${day} '${year.slice(2)} at ${hours}:${minutes}`; 
 }
+
+export const displayShortenedDate = (date) => {
+    const chunks = date.split('-');
+    chunks[2] = chunks[2].slice(0, 2); 
+    const [year, month, day] = chunks;
+    return `${monthMap[month]} ${day} '${year.slice(2)}`; 
+}

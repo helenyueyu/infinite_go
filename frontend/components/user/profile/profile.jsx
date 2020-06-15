@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom'; 
 import moment from 'moment'; 
 
+import { sortByUpvotes } from '../../../selectors/sort_selectors'; 
+import { displayShortenedDate } from '../../../selectors/date_selectors'; 
 
 class Profile extends React.Component {
     componentDidMount() {
@@ -35,8 +37,8 @@ class Profile extends React.Component {
                 lastSeenAt, 
                 id } = this.props.users[this.props.match.params.userId]; 
         
-        posts = posts.slice(0, 10)
-        
+            
+        posts = sortByUpvotes(posts).slice(0, 10)
         return (
             <div className="profile">
                 <div>
@@ -110,17 +112,29 @@ class Profile extends React.Component {
                 </div>
 
                 <div className="profile_middle">
-                    <h1 className="profile_middle-header">Top Posts ({questionCount + answerCount})</h1>
+                    <h1 className="profile_middle-header">Top Posts <span className="profile_middle-header-count">({questionCount + answerCount})</span></h1>
                     <div className="profile_middle-posts">
                         {posts.map((post, idx) => 
-                        <div key={idx}>
-                            {post.title}
-                        </div>
+                            <div key={idx} className="profile_middle-post">
+                                <div className="profile_middle-post-left">
+                                    <div className={post.hasAcceptedAnswer === true ? "profile-middle-post-left-type" : "profile-middle-post-left-type-empty"}>
+                                        {post.postType === 'answer' ? 'A' : 'Q'}
+                                    </div>
+                                    <div className={post.hasAcceptedAnswer === true ? "profile-middle-post-left-vote" : "profile-middle-post-left-vote-empty"}>
+                                        {post.voteCount}
+                                    </div>
+                                    <Link to={`/questions/${post.id}`} className="profile-middle-post-left-title">{post.title}</Link>
+                                </div>
+                                
+
+                                <div className="profile-middle-post-left-date">
+                                    {displayShortenedDate(post.createdAt)}
+                                </div>
+                            </div>
                         )}
                     </div>
                 </div>
                 
-                <Link to="/questions">Back</Link>
             </div>
         )
     }

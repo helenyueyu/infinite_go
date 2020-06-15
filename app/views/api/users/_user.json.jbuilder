@@ -20,11 +20,11 @@ json.extract! user, :id,
 
 json.set! 'posts' do 
     json.array! user.questions.each do |question|
-        json.extract! question, :title, :vote_count, :created_at, :has_accepted_answer?
+        json.extract! question, :id, :title, :vote_count, :created_at, :has_accepted_answer?
         json.post_type 'question' 
     end
     json.array! user.answers.each do |answer|
-        json.extract! answer.question, :title, :vote_count, :created_at, :has_accepted_answer? 
+        json.extract! answer.question, :id, :title, :vote_count, :created_at, :has_accepted_answer? 
         json.post_type 'answer'
     end
 end

@@ -141,11 +141,79 @@
     display: flex; 
     flex-direction: column; 
     padding-left: 20%; 
+    padding-right: 5%; 
 }
 .profile_middle-header {
     font-weight: bold; 
+    font-size: $comment-size; 
+    padding-bottom: 0.8rem; 
 }
+.profile_middle-header-count {
+    font-weight: normal; 
+    color: $gray; 
+}
+
 .profile_middle-posts {
     display: flex; 
     flex-direction: column; 
+}
+.profile_middle-post {
+    display: flex; 
+    justify-content: space-between; 
+    padding-top: 0.8rem; 
+    padding-bottom: 0.8rem; 
+    border-top: 1px solid $light-gray; 
+    font-size: $info-size; 
+}
+.profile_middle-post-left {
+    display: flex; 
+    align-items: center; 
+}
+.profile-middle-post-left-type {
+    background: $red; 
+    color: $white; 
+    padding: 0.25rem; 
+    font-size: $comment-size; 
+    border-radius: 2px; 
+}
+.profile-middle-post-left-type-empty {
+    background: $focus-gray; 
+    color: $white; 
+    padding: 0.25rem; 
+    font-size: $comment-size; 
+    border-radius: 2px; 
+}
+.profile-middle-post-left-vote {
+    background: $red; 
+    color: $white; 
+    padding: 0.35rem; 
+    padding-left: 0.85rem; 
+    padding-right: 0.85rem; 
+    border-radius: 2px; 
+    margin-left: 0.55rem; 
+    margin-right: 0.55rem; 
+    font-size: $comment-size; 
+}
+.profile-middle-post-left-vote-empty {
+    border: 1px solid $focus-gray; 
+    color: $focus-gray; 
+    padding: 0.35rem; 
+    padding-left: 0.85rem; 
+    padding-right: 0.85rem; 
+    border-radius: 2px; 
+    margin-left: 0.55rem; 
+    margin-right: 0.55rem; 
+    font-size: $comment-size; 
+}
+
+.profile-middle-post-left-title {
+    color: $red; 
+    text-decoration: none; 
+}
+.profile-middle-post-left-title:hover {
+    color: $focus-red; 
+    cursor: pointer; 
+}
+.profile-middle-post-left-date {
+    color: $gray; 
 }
