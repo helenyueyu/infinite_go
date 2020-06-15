@@ -1,9 +1,10 @@
 .profile_index {
     display: flex; 
     flex-direction: column; 
-    align-items: flex-start; 
+    align-items: stretch; 
     justify-content: flex-start; 
     margin: 0.5rem 2rem 0.5rem 2rem;  
+    flex: 1; 
 }
 
 .profile_index-title {
@@ -21,17 +22,18 @@
     margin-bottom: 2rem; 
 }
 
-.profile_index-no-results {
-    color: $red; 
-    font-weight: bold; 
-    font-size: $title-size; 
-}
-
 .profile_index-search:focus {
     outline: none; 
     border-radius: 5px; 
     border: 1px solid $focus-red; 
     box-shadow: 0 0 0pt 3pt $tag-red-lite; 
+}
+
+
+.profile_index-no-results {
+    color: $red; 
+    font-weight: bold; 
+    font-size: $title-size; 
 }
 
 .profile_index-row {
@@ -41,9 +43,9 @@
 
 .profile_index-item {
     display: flex; 
+    flex: 1 1 0px; 
     flex-direction: row; 
     align-items: center; 
-    // width: 25vw; 
     margin: 0.5rem; 
     padding: 0.5rem; 
 }

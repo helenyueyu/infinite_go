@@ -1,9 +1,33 @@
 .tags_index {
     display: flex; 
     flex-direction: column; 
-    align-items: flex-start; 
+    align-items: stretch; 
     justify-content: flex-start; 
     margin: 0.5rem 2rem 0.5rem 2rem;  
+    flex: 1; 
+}
+.tags_index-description {
+    font-size: $description-size; 
+    line-height: $big-line-height; 
+    color: $black; 
+    width: 72.5%; 
+    padding-bottom: 2rem; 
+}
+
+.tags_index-search {
+    padding: 0.1rem 0.3rem 0.1rem 0.3rem; 
+    font-size: 1rem;
+    height: 1.5rem; 
+    border-radius: 5px; 
+    border: 1px solid $gray; 
+    margin-bottom: 2rem; 
+}
+
+.tags_index-search:focus {
+    outline: none; 
+    border-radius: 5px; 
+    border: 1px solid $focus-red; 
+    box-shadow: 0 0 0pt 3pt $tag-red-lite; 
 }
 
 .tags_index-title {
@@ -19,11 +43,12 @@
 
 .tags_index-item {
     display: flex; 
+    flex: 1 1 0px; 
     flex-direction: column; 
-    // width: 25vw; 
     margin: 0.5rem; 
     padding: 0.5rem; 
     border: 1px dotted gray; 
+    font-size: $comment-size; 
 }
 
 .tags_index_item-name-container {

@@ -26,53 +26,53 @@ import EditQuestionContainer from './question/edit_question_container';
 
 import EditAnswerContainer from './answer/edit_answer_container';
 
-const App = () => (
-    <>
-        <NavbarContainer />
-        
-        <div className="app">
-            <div className="app-left">
-                <ProtectedRoute path="/questions" component={Menu} />
-                <ProtectedRoute path="/tags" component={Menu} />
-                <ProtectedRoute path="/users" component={Menu} />
-            </div>
-            
+const App = () => {
+    return (
+        <>
+            <NavbarContainer />
 
-            <div className="app-middle">
-                <Switch>
-                    <AuthRoute exact path="/signup" component={SignUpFormContainer} />
-                    <AuthRoute exact path="/login" component={LoginFormContainer} />
+            <div className="app">
+                <div className="app-left">
+                    <ProtectedRoute path="/questions" component={Menu} />
+                    <ProtectedRoute path="/tags" component={Menu} />
+                    <ProtectedRoute path="/users" component={Menu} />
+                </div>
 
-                    <Route exact path="/" component={Splash} />
 
-                    <Route exact path="/users" component={ProfileIndexContainer} />
-                    <Route exact path="/tags" component={TagIndexContainer} />
+                <div className="app-middle">
+                    <Switch>
+                        <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+                        <AuthRoute exact path="/login" component={LoginFormContainer} />
 
-                    <Route exact path="/questions" component={QuestionsContainer} />
-                    <Route exact path="/questions/tagged/:tagName" component={QuestionsContainer} />
+                        <Route exact path="/" component={Splash} />
 
-                    <Route exact path="/questions/?q=:query" component={QuestionsContainer} />
+                        <Route exact path="/users" component={ProfileIndexContainer} />
+                        <Route exact path="/tags" component={TagIndexContainer} />
 
-                    <ProtectedRoute exact path="/questions/new" component={NewQuestionContainer} />
-                    <ProtectedRoute exact path="/questions/:questionId/edit" component={EditQuestionContainer} />
-                    <Route exact path="/questions/:questionId" component={QuestionContainer} />
+                        <Route exact path="/questions" component={QuestionsContainer} />
+                        <Route exact path="/questions/tagged/:tagName" component={QuestionsContainer} />
 
-                    <ProtectedRoute exact path="/questions/:questionId/answers/:answerId/edit" component={EditAnswerContainer} />
+                        <Route exact path="/questions/?q=:query" component={QuestionsContainer} />
 
-                    <Route exact path="/users/:userId" component={ProfileContainer} />
-                    {/* <ProtectedRoute exact path="/profile" component={ProfileContainer} /> */}
-                </Switch>
-            </div>
+                        <ProtectedRoute exact path="/questions/new" component={NewQuestionContainer} />
+                        <ProtectedRoute exact path="/questions/:questionId/edit" component={EditQuestionContainer} />
+                        <Route exact path="/questions/:questionId" component={QuestionContainer} />
 
-            <div className="app-right">
-                {/* <Route exact path="/users" component={RightMenuContainer} /> */}
+                        <ProtectedRoute exact path="/questions/:questionId/answers/:answerId/edit" component={EditAnswerContainer} />
+
+                        <Route exact path="/users/:userId" component={ProfileContainer} />
+                        {/* <ProtectedRoute exact path="/profile" component={ProfileContainer} /> */}
+                    </Switch>
+                </div>
+
                 <Route exact path="/questions" component={RightMenuContainer} />
+                <Route exact path="/questions/tagged/:tagName" component={RightMenuContainer} />
+                <Route exact path="/questions/:questionId" component={RightMenuContainer} />
             </div>
-            
-        </div>
 
-        <Footer />
-    </>
-); 
+            <Footer />
+        </>
+    )
+}; 
 
 export default App; 

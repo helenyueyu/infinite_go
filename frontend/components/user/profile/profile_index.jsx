@@ -33,8 +33,11 @@ class ProfileIndex extends React.Component {
         return (
             <div className="profile_index">
                 <h1 className="profile_index-title">Users</h1>
-                <input className="profile_index-search"
-                    onChange={(e) => this.handleChange(e)}></input>
+                <div>
+                    <input className="profile_index-search"
+                        onChange={(e) => this.handleChange(e)}></input>
+                </div>
+                
                 {
                     users.length === 0 ? 
                         <div className="profile_index-no-results">

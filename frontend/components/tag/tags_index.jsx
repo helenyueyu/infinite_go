@@ -8,6 +8,11 @@ class TagIndex extends React.Component {
         this.props.fetchTags()
     }
 
+    handleChange(e) {
+        e.preventDefault();
+        // this.props.searchUsers(e.target.value);
+    }
+
     rowify(items, perRow) {
         let arr = []; 
         for (let i = 0; i < items.length; i+= perRow) {
@@ -28,7 +33,13 @@ class TagIndex extends React.Component {
         return (
             <div className="tags_index">
                 <h1 className="tags_index-title">Tags</h1>
-
+                <div className="tags_index-description">
+                    A tag is a keyword or label that categorizes your question with other, similar questions. Using the right tags makes it easier for others to find and answer your question.
+                </div>
+                <div>
+                    <input className="tags_index-search"
+                        onChange={(e) => this.handleChange(e)}></input>
+                </div>
                 {rowifiedTags.map((row, idx) => (
                     <div key={idx} className="tags_index-row">
                         {row.map((tag, idx) => (

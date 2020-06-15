@@ -53,15 +53,14 @@
  }
 
  .app-middle {
-     flex: 10 0 550px; 
+     flex: 1 0 550px; 
  }
 
  .app-right {
-     display: flex; 
+     display: flex;
      flex: 0 10 350px; 
  }
 
- 
  html, body {
      height: 100vh; 
      font-family: Arial, Helvetica, sans-serif; 
