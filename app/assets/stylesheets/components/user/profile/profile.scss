@@ -120,6 +120,7 @@
     flex-direction: column; 
     padding-left: 0.5rem; 
     padding-top: 1.2rem; 
+    color: $gray; 
 }
 .profile-detail {
     padding-top: 0.5rem; 
@@ -134,4 +135,14 @@
 .profile-detail-link:hover {
     cursor: pointer; 
     color: $focus-gray; 
+}
+.profile_middle {
+    display: flex; 
+    flex-direction: column; 
+    padding-left: 20%; 
+}
+
+.profile_middle-posts {
+    display: flex; 
+    flex-direction: column; 
 }

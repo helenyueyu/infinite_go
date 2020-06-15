@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
     helper_method :current_user, :logged_in? 
 
+    before_action :set_last_seen_at, if: proc { logged_in? }
+
     def login(user) 
         session[:session_token] = user.reset_session_token!
         @current_user = user 
@@ -25,5 +27,9 @@ class ApplicationController < ActionController::Base
         current_user.reset_session_token!
         session[:session_token] = nil 
         @current_user = nil
+    end
+
+    def set_last_seen_at
+        current_user.update_attribute(:last_seen_at, Time.current)
     end
 end

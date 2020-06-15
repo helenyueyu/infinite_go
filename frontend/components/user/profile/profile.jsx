@@ -22,8 +22,20 @@ class Profile extends React.Component {
         if (this.props.users[this.props.match.params.userId] === undefined) {
             return null; 
         } 
-        console.log(this.props)
-        let { questions, createdAt, username, location, reputation, medals, questionCount, answerCount, viewCount, numberOfPeopleReached, id } = this.props.users[this.props.match.params.userId]; 
+        let { questions, 
+                createdAt, 
+                username, 
+                location, 
+                reputation, 
+                medals, 
+                questionCount, 
+                answerCount, 
+                viewCount, 
+                numberOfPeopleReached, 
+                lastSeenAt, 
+                id } = this.props.users[this.props.match.params.userId]; 
+        
+        questions = questions.slice(0, 10)
         
         return (
             <div className="profile">
@@ -32,6 +44,7 @@ class Profile extends React.Component {
                     <button className="profile-button">Activity</button>
                     <button className="profile-button">Developer Story</button>
                 </div>
+
                 <div className="profile_top">
                     <div className="profile_top-image-container">
                         <img className="profile_top-image" src="/assets/favicon-512x512.png" />
@@ -88,15 +101,25 @@ class Profile extends React.Component {
                                 <span className="profile-detail-icon"><i className="fas fa-eye"></i></span>
                                 <span>{viewCount} profile view{viewCount === 1 ? '' : 's'}</span>
                             </div>
+                            <div className="profile-detail">
+                                <span className="profile-detail-icon"><i className="fas fa-history"></i></span>
+                                <span>Last seen {moment(lastSeenAt).fromNow()}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <h1>Posts</h1>
-                <h1>{this.renderQuestionHeader(questions.length)}</h1>
-                <div>
-                    {questions.map(question => question.title)}
+                <div className="profile_middle">
+                    <h1>Top Posts</h1>
+                    <div className="profile_middle-posts">
+                        {questions.map((question, idx) => 
+                        <div key={idx}>
+                            {question.title}
+                        </div>
+                        )}
+                    </div>
                 </div>
+                
                 <Link to="/questions">Back</Link>
             </div>
         )
