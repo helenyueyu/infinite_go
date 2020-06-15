@@ -50,7 +50,8 @@ class TagIndex extends React.Component {
                                 <div className="tags_index-item-description">{tag.description}</div>
                                 <div className="tags_index-item-details">
                                     <div>{tag.questionCount} question{tag.questionCount == 1 ? "" : "s"}</div>
-                                    <div>{moment(tag.createdAt).fromNow()}</div>
+                                    <div>{tag.dailyQuestionCount} asked today,</div>
+                                    <div>{tag.weeklyQuestionCount} this week</div>
                                 </div>
                                 
                             </div>

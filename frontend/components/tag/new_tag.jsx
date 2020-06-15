@@ -36,7 +36,8 @@ class NewComment extends React.Component {
         let newTaggable = {
             name: this.state.name, 
             taggable_id: this.state.taggable_id, 
-            taggable_type: this.state.taggable_type 
+            taggable_type: this.state.taggable_type, 
+            user_id: this.state.user_id 
         }
         this.props.createTag(newTag)
             .then(() => this.props.createTaggable(newTaggable), err => this.handleErrors(err.responseJSON))

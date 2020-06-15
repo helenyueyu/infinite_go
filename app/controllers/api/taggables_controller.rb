@@ -4,7 +4,8 @@ class Api::TaggablesController < ApplicationController
         taggable = {
             tag_id: tag_id, 
             taggable_id: taggable_params[:taggable_id], 
-            taggable_type: taggable_params[:taggable_type]
+            taggable_type: taggable_params[:taggable_type], 
+            user_id: taggable_params[:user_id]
         }
         @taggable = Taggable.new(taggable)
         if @taggable.save! 
@@ -35,6 +36,6 @@ class Api::TaggablesController < ApplicationController
 
 
     def taggable_params
-        params.require(:taggable).permit(:name, :taggable_id, :taggable_type)
+        params.require(:taggable).permit(:name, :user_id, :taggable_id, :taggable_type)
     end
 end

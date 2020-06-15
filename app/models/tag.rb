@@ -41,6 +41,14 @@ class Tag < ApplicationRecord
         source_type: :Question, 
         dependent: :destroy 
 
+    def weekly_question_count
+        self.tagged_questions.where('questions.created_at BETWEEN ? AND ?', 1.week.ago, Time.now).size 
+    end
+
+    def daily_question_count
+        self.tagged_questions.where('questions.created_at BETWEEN ? AND ?', 1.day.ago.beginning_of_day, Time.now).size 
+    end
+
     def question_count
         self.tagged_questions.size 
     end
