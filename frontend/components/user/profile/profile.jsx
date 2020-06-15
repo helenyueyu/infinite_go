@@ -1,19 +1,26 @@
 import React from 'react'; 
 import { Link } from 'react-router-dom'; 
-import moment from 'moment'; 
 
 import ProfileImage from './profile_image'; 
 import ProfileStats from './profile_stats'; 
 
 import { sortByUpvotes } from '../../../selectors/sort_selectors'; 
+import { filterByType } from '../../../selectors/filter_selectors'; 
+
 import { displayShortenedDate } from '../../../selectors/date_selectors'; 
 
 class Profile extends React.Component {
     constructor(props) {
         super(props); 
+        this.state = {
+            posts: null 
+        }
     }
     componentDidMount() {
         this.props.fetchUser(this.props.match.params.userId)
+            .then(() => this.setState({
+                posts: this.props.users[this.props.match.params.userId].posts 
+            }))
     }
 
     componentDidUpdate(prevProps) {
@@ -24,6 +31,13 @@ class Profile extends React.Component {
 
     renderQuestionHeader(n) {
         return n === 1 ? `${n} Question` : `${n} Questions`; 
+    }
+
+    filter(e, type) {
+        e.preventDefault(); 
+        this.setState({
+            posts: filterByType(this.state.posts, type)
+        })
     }
 
     render() {
@@ -43,6 +57,10 @@ class Profile extends React.Component {
                 lastSeenAt, 
                 id } = this.props.users[this.props.match.params.userId]; 
         
+        // let { posts } = this.state; 
+        // if (!posts) return null; 
+        console.log(this.state)
+
         posts = sortByUpvotes(posts).slice(0, 10)
         return (
             <div className="profile">
@@ -58,7 +76,6 @@ class Profile extends React.Component {
                     <div className="profile_top-snippet">
                         {username}
                     </div>
-                    {/* questionCount, answerCount, viewCount, numberOfPeopleReached, location, lastSeenAt */} 
                     <ProfileStats id={id}
                             createdAt={createdAt}
                             questionCount={questionCount}
@@ -68,50 +85,7 @@ class Profile extends React.Component {
                             location={location}
                             lastSeenAt={lastSeenAt}
                             matchUrl={this.props.match.url.toString()}/>
-                    {/* <div>
-                        <div className="profile_top-stats">
-                            <div className="profile_top-stat">
-                                <div className="profile_top-stat-number">{questionCount} </div>
-                                <div className="profile_top-stat-description">question{questionCount === 1 ? '' : 's'}</div>
-                            </div>
-                            <div className="profile_top-stat">
-                                <div className="profile_top-stat-number">{answerCount} </div>
-                                <div className="profile_top-stat-description">answer{answerCount === 1 ? '' : 's'} </div>
-                            </div>
-                            <div className="profile_top-stat">
-                                <div className="profile_top-stat-number">{numberOfPeopleReached} </div>
-                                <div className="profile_top-stat-description">{numberOfPeopleReached === 1 ? 'person' : 'people'} reached</div>
-                            </div>
-                        </div>
-                        
-                        <div className="profile-details">
-                            <div className="profile-detail">
-                                <span className="profile-detail-icon"><i className="fas fa-map-marker"></i></span>
-                                <span>{location}</span>
-                            </div>
-                            <div className="profile-detail">
-                                <span className="profile-detail-icon"><i className="fas fa-link"></i></span>
-                                <span>
-                                    <Link className="profile-detail-link" 
-                                        to={`/users/${id}`}>
-                                            {this.props.match.url}
-                                    </Link>
-                                </span>
-                            </div>
-                            <div className="profile-detail">
-                                <span className="profile-detail-icon"><i className="fas fa-history"></i></span>
-                                <span>Member for {moment(createdAt).fromNow(true)}</span>
-                            </div>
-                            <div className="profile-detail">
-                                <span className="profile-detail-icon"><i className="fas fa-eye"></i></span>
-                                <span>{viewCount} profile view{viewCount === 1 ? '' : 's'}</span>
-                            </div>
-                            <div className="profile-detail">
-                                <span className="profile-detail-icon"><i className="fas fa-history"></i></span>
-                                <span>Last seen {moment(lastSeenAt).fromNow()}</span>
-                            </div>
-                        </div>
-                    </div> */}
+                
                 </div>
 
                 <div className="profile_middle">
@@ -120,7 +94,7 @@ class Profile extends React.Component {
                         <div className="profile_middle-head-buttons">
                             <div className="profile_middle-head-buttons-group">
                                 <button className="profile_middle-head-button">All</button>
-                                <button className="profile_middle-head-button">Questions</button>
+                                <button onClick={(e) => this.filter(e, 'question')} className="profile_middle-head-button">Questions</button>
                                 <button className="profile_middle-head-button">Answers</button>
                             </div>
                             <div className="profile_middle-head-buttons-group">
