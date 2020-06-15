@@ -13,7 +13,10 @@ class Profile extends React.Component {
     constructor(props) {
         super(props); 
         this.state = {
-            posts: null 
+            posts: null, 
+            tab1: true, 
+            tab2: false, 
+            tab3: false  
         }
     }
     componentDidMount() {
@@ -35,9 +38,22 @@ class Profile extends React.Component {
 
     filter(e, type) {
         e.preventDefault(); 
+        let types = [['all', 'tab1'], ['question', 'tab2'], ['answer', 'tab3']]; 
         this.setState({
             posts: filterByType(this.props.users[this.props.match.params.userId].posts, type)
         })
+        for (let i = 0; i < types.length; i++) {
+            const [theType, tab] = types[i]; 
+            if (theType === type) {
+                this.setState({
+                    [tab]: true 
+                })
+            } else {
+                this.setState({
+                    [tab]: false 
+                })
+            }
+        }
     }
 
     render() {
@@ -59,8 +75,8 @@ class Profile extends React.Component {
         let { posts } = this.state; 
         if (!posts) return null; 
 
-        console.log(this.state); 
-        posts = sortByUpvotes(posts).slice(0, 10)
+        let shownPosts = sortByUpvotes(posts).slice(0, 10)
+        console.log('state', this.state); 
         return (
             <div className="profile">
                 <div>
@@ -89,9 +105,10 @@ class Profile extends React.Component {
 
                 <div className="profile_middle">
                     <div className="profile_middle-head">
-                        <h1 className="profile_middle-header">Top Posts <span className="profile_middle-header-count">({questionCount + answerCount})</span></h1>
+                        <h1 className="profile_middle-header">Top Posts <span className="profile_middle-header-count">({posts.length})</span></h1>
                         <div className="profile_middle-head-buttons">
                             <div className="profile_middle-head-buttons-group">
+
                                 <button onClick={(e) => this.filter(e, 'all')}
                                         className="profile_middle-head-button">All</button>
                                 <button onClick={(e) => this.filter(e, 'question')} 
@@ -107,7 +124,7 @@ class Profile extends React.Component {
                         </div>
                     </div>
                     <div className="profile_middle-posts">
-                        {posts.map((post, idx) => 
+                        {shownPosts.map((post, idx) => 
                             <div key={idx} className="profile_middle-post">
                                 <div className="profile_middle-post-left">
                                     <div className={post.hasAcceptedAnswer === true ? "profile-middle-post-left-type" : "profile-middle-post-left-type-empty"}>
