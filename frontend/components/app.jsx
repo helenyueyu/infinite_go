@@ -32,11 +32,11 @@ const App = () => {
             <NavbarContainer />
 
             <div className="app">
-                <div className="app-left">
+                {/* <div className="app-left"> */}
                     <ProtectedRoute path="/questions" component={Menu} />
                     <ProtectedRoute path="/tags" component={Menu} />
                     <ProtectedRoute path="/users" component={Menu} />
-                </div>
+                {/* </div> */}
 
 
                 <div className="app-middle">

@@ -137,11 +137,14 @@
     color: $focus-gray; 
 }
 .profile_middle {
+    padding-top: 5rem; 
     display: flex; 
     flex-direction: column; 
     padding-left: 20%; 
 }
-
+.profile_middle-header {
+    font-weight: bold; 
+}
 .profile_middle-posts {
     display: flex; 
     flex-direction: column; 

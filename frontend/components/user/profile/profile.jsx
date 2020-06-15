@@ -22,7 +22,7 @@ class Profile extends React.Component {
         if (this.props.users[this.props.match.params.userId] === undefined) {
             return null; 
         } 
-        let { questions, 
+        let { posts, 
                 createdAt, 
                 username, 
                 location, 
@@ -35,7 +35,7 @@ class Profile extends React.Component {
                 lastSeenAt, 
                 id } = this.props.users[this.props.match.params.userId]; 
         
-        questions = questions.slice(0, 10)
+        posts = posts.slice(0, 10)
         
         return (
             <div className="profile">
@@ -110,11 +110,11 @@ class Profile extends React.Component {
                 </div>
 
                 <div className="profile_middle">
-                    <h1>Top Posts</h1>
+                    <h1 className="profile_middle-header">Top Posts ({questionCount + answerCount})</h1>
                     <div className="profile_middle-posts">
-                        {questions.map((question, idx) => 
+                        {posts.map((post, idx) => 
                         <div key={idx}>
-                            {question.title}
+                            {post.title}
                         </div>
                         )}
                     </div>

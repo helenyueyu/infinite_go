@@ -1,4 +1,6 @@
-json.key_format! camelize: :lower 
+json.key_format! ->(key) { 
+    key.to_s.chomp('?').camelize(:lower)
+}
 
 json.extract! user, :id, 
                     :username, 
@@ -12,6 +14,17 @@ json.extract! user, :id,
                     :top_three_tags, 
                     :question_count, 
                     :answer_count, 
-                    :questions, 
                     :created_at, 
-                    :updated_at 
+                    :updated_at
+
+
+json.set! 'posts' do 
+    json.array! user.questions.each do |question|
+        json.extract! question, :title, :vote_count, :created_at, :has_accepted_answer?
+        json.post_type 'question' 
+    end
+    json.array! user.answers.each do |answer|
+        json.extract! answer.question, :title, :vote_count, :created_at, :has_accepted_answer? 
+        json.post_type 'answer'
+    end
+end
