@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment'; 
 
 import ProfileImage from './profile_image'; 
+import ProfileStats from './profile_stats'; 
 
 import { sortByUpvotes } from '../../../selectors/sort_selectors'; 
 import { displayShortenedDate } from '../../../selectors/date_selectors'; 
@@ -42,7 +43,6 @@ class Profile extends React.Component {
                 lastSeenAt, 
                 id } = this.props.users[this.props.match.params.userId]; 
         
-            
         posts = sortByUpvotes(posts).slice(0, 10)
         return (
             <div className="profile">
@@ -58,7 +58,17 @@ class Profile extends React.Component {
                     <div className="profile_top-snippet">
                         {username}
                     </div>
-                    <div>
+                    {/* questionCount, answerCount, viewCount, numberOfPeopleReached, location, lastSeenAt */} 
+                    <ProfileStats id={id}
+                            createdAt={createdAt}
+                            questionCount={questionCount}
+                            answerCount={answerCount}
+                            viewCount={viewCount}
+                            numberOfPeopleReached={numberOfPeopleReached}
+                            location={location}
+                            lastSeenAt={lastSeenAt}
+                            matchUrl={this.props.match.url.toString()}/>
+                    {/* <div>
                         <div className="profile_top-stats">
                             <div className="profile_top-stat">
                                 <div className="profile_top-stat-number">{questionCount} </div>
@@ -101,7 +111,7 @@ class Profile extends React.Component {
                                 <span>Last seen {moment(lastSeenAt).fromNow()}</span>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className="profile_middle">
