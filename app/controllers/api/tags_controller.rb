@@ -18,6 +18,11 @@ class Api::TagsController < ApplicationController
         end
     end
 
+    def search
+        # debugger
+        @tags = Tag.search(search_params)
+    end
+
     def destroy 
         @tag = Tag.find(params[:id])
         if @tag.destroy 
@@ -27,7 +32,11 @@ class Api::TagsController < ApplicationController
         end
     end
 
-    private 
+    private
+    def search_params
+        params.require(:search).permit(:query)[:query]
+    end
+ 
     def tag_params
         params.require(:tag).permit(:name, :description, :user_id)
     end

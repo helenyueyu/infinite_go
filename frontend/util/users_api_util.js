@@ -18,7 +18,7 @@ export const searchUsers = query => {
         url: `/api/users/search`, 
         data: { search: {
             query: query 
-        } }
+        }}
     })
 }
 

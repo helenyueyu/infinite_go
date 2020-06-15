@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get 'questions(search/:search)', to: 'questions#search', search: /.*/
       get 'questions/random', :to => 'questions#random'
       get 'users/search', :to => 'users#search'
+      get 'tags/search', :to => 'tags#search'
 
       resources :users, only: [:index, :create, :show]
       resource :session, only: [:create, :destroy]

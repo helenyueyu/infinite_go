@@ -5,6 +5,10 @@ class Tag < ApplicationRecord
     validates_length_of :name, maximum: 35
     validate :clean_name? 
 
+    def self.search(query)
+        Tag.where('name LIKE ?', "%#{query}%")
+    end
+
     def clean_name?
         alpha = 'abcdefghijklmnopqrstuvwxyz' 
         digits = '0123456789'

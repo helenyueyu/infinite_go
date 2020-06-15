@@ -38,3 +38,10 @@ export const deleteTag = id => dispatch => {
                 dispatch(removeTag(tag));
             })
 }
+
+export const searchTags = query => dispatch => {
+    return tagAPIUtil.searchTags(query)
+        .then(tags => {
+            dispatch(receiveTags(tags.tags))
+        })
+}

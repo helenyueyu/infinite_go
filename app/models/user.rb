@@ -52,7 +52,10 @@ class User < ApplicationRecord
         through: :taggables, 
         source: :tag 
 
-
+    def self.search(query)
+        User.where('username LIKE ?', "%#{query}%")
+    end
+    
     def top_three_tags
         h = Hash.new(0)
         self.tags.each do |tag|
@@ -72,10 +75,6 @@ class User < ApplicationRecord
         user = User.find_by(email: email) 
         user && user.is_password?(password) ? user : nil 
     end 
-
-    def self.search(query)
-        User.where('username LIKE ?', "%#{query}%")
-    end
 
     def password=(password)
         @password = password 

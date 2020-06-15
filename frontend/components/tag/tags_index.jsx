@@ -10,7 +10,7 @@ class TagIndex extends React.Component {
 
     handleChange(e) {
         e.preventDefault();
-        // this.props.searchUsers(e.target.value);
+        this.props.searchTags(e.target.value);
     }
 
     rowify(items, perRow) {
@@ -27,9 +27,7 @@ class TagIndex extends React.Component {
 
     render() {
         const { tags } = this.props;
-        
         const rowifiedTags = this.rowify(tags, 3); 
-        
         return (
             <div className="tags_index">
                 <h1 className="tags_index-title">Tags</h1>
