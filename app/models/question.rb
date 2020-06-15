@@ -33,6 +33,7 @@ class Question < ApplicationRecord
         through: :taggables, 
         source: :tag
 
+
     def view_count
         self.impressionist_count  
     end

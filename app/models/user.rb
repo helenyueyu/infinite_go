@@ -16,6 +16,11 @@ class User < ApplicationRecord
     has_many :answers, 
         class_name: :Answer, 
         foreign_key: :user_id, 
+        dependent: :destroy
+
+    has_many :comments, 
+        class_name: :Comment, 
+        foreign_key: :user_id, 
         dependent: :destroy 
 
     has_many :votes, 
@@ -55,13 +60,36 @@ class User < ApplicationRecord
     def self.search(query)
         User.where('username LIKE ?', "%#{query}%")
     end
+
+    def number_of_people_reached
+        question_ids = self.questions.map{|question| question.id}.to_set 
+        question_view_count = self.questions.map{|question| question.view_count}.reduce(0){|a,b| a + b}
+
+        answer_view_count = 0
+        self.answers.each do |answer|
+            if !question_ids.include?(answer.question_id)
+                question_ids.add(answer.question_id)
+                answer_view_count += 1
+            end
+        end
+
+        comment_view_count = 0 
+        self.comments.each do |comment|
+            if comment.commentable_type == 'Question' && !question_ids.include?(comment.commentable_id)
+                question_ids.add(comment.commentable_id)
+                comment_view_count += 1 
+            end
+        end
+
+        question_view_count + answer_view_count + comment_view_count
+    end
     
     def top_three_tags
         h = Hash.new(0)
         self.tags.each do |tag|
             h[tag.name] += 1
         end
-        h.sort_by{|_, v| -v }[0..2].map(&:first)
+        h.sort_by{|_, v| -v}[0..2].map(&:first)
     end
 
     def medals 

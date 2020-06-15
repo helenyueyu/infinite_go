@@ -26,7 +26,7 @@ class Api::QuestionsController < ApplicationController
 
     def show 
         @question = Question.find(params[:id])
-        @question.view_count = @question.impressionist_count  
+        @question.view_count = @question.view_count  
     end
 
     def update 
