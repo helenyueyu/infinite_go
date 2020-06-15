@@ -36,6 +36,20 @@
     display: flex; 
     flex-direction: row; 
 }
-.profile_top-medal {
+.profile_top-medal-bronze {
     padding: 0.5rem; 
+    color: $bronze; 
+}
+.profile_top-medal-silver {
+    padding: 0.5rem; 
+    color: $silver; 
+}
+.profile_top-medal-gold {
+    padding: 0.5rem; 
+    color: $gold; 
+    background: $gold-background; 
+    border: 1px solid $gold; 
+}
+.profile_top-medal-count {
+    color: $gray; 
 }

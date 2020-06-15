@@ -37,8 +37,8 @@ class Profile extends React.Component {
                         <span>{reputation} reputation</span>
                         <div className="profile_top-medals">
                             {medals.map((medal, idx) => 
-                            <div className={idx === 0 ? "profile_top-medal-bronze" : idx === 1 ? "profile_top-medal-silver" : "profile_top-medal-gold"}>
-                                    &bull;{medal}
+                                <div className={idx === 0 ? "profile_top-medal-gold" : idx === 1 ? "profile_top-medal-silver" : "profile_top-medal-bronze"}>
+                                    &bull;<span className="profile_top-medal-count">{medal}</span>
                             </div>)}
                         </div>
                     </div>
