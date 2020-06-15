@@ -36,9 +36,9 @@ class Profile extends React.Component {
                         <img className="profile_top-image" src="/assets/favicon-512x512.png" />
                         <span>{reputation} reputation</span>
                         <div className="profile_top-medals">
-                            {medals.map(medal => 
-                            <div>
-                                {medal}
+                            {medals.map((medal, idx) => 
+                            <div className={idx === 0 ? "profile_top-medal-bronze" : idx === 1 ? "profile_top-medal-silver" : "profile_top-medal-gold"}>
+                                    &bull;{medal}
                             </div>)}
                         </div>
                     </div>
