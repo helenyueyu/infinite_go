@@ -6,6 +6,9 @@ import { sortByUpvotes } from '../../../selectors/sort_selectors';
 import { displayShortenedDate } from '../../../selectors/date_selectors'; 
 
 class Profile extends React.Component {
+    constructor(props) {
+        super(props); 
+    }
     componentDidMount() {
         this.props.fetchUser(this.props.match.params.userId)
     }
@@ -112,7 +115,21 @@ class Profile extends React.Component {
                 </div>
 
                 <div className="profile_middle">
-                    <h1 className="profile_middle-header">Top Posts <span className="profile_middle-header-count">({questionCount + answerCount})</span></h1>
+                    <div className="profile_middle-head">
+                        <h1 className="profile_middle-header">Top Posts <span className="profile_middle-header-count">({questionCount + answerCount})</span></h1>
+                        <div className="profile_middle-head-buttons">
+                            <div className="profile_middle-head-buttons-group">
+                                <button className="profile_middle-head-button">All</button>
+                                <button className="profile_middle-head-button">Questions</button>
+                                <button className="profile_middle-head-button">Answers</button>
+                            </div>
+                            <div className="profile_middle-head-buttons-group">
+                                <button className="profile_middle-head-button">Votes</button>
+                                <button className="profile_middle-head-button">Newest</button>
+                            </div>
+                        
+                        </div>
+                    </div>
                     <div className="profile_middle-posts">
                         {posts.map((post, idx) => 
                             <div key={idx} className="profile_middle-post">
