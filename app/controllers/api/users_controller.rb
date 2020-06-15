@@ -1,4 +1,6 @@
 class Api::UsersController < ApplicationController
+    impressionist actions: [:show]
+
     def index 
         @users = User.all 
     end
@@ -19,6 +21,7 @@ class Api::UsersController < ApplicationController
 
     def show 
         @user = User.find(params[:id])
+        @user.view_count = @user.view_count  
     end
 
     private

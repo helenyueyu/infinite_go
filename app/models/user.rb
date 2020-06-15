@@ -1,5 +1,17 @@
 class User < ApplicationRecord
+    is_impressionable 
     attr_reader :password 
+    attr_accessor :view_count 
+
+    def impression_count 
+        impressions.size 
+    end
+
+    def view_count
+        self.impressionist_count  
+    end
+
+    
 
     validates :username, :email, :password_digest, :session_token, presence: true 
     validates :username, :email, :session_token, uniqueness: true 
@@ -59,6 +71,14 @@ class User < ApplicationRecord
 
     def self.search(query)
         User.where('username LIKE ?', "%#{query}%")
+    end
+
+    def question_count
+        self.questions.size 
+    end
+
+    def answer_count 
+        self.answers.size 
     end
 
     def number_of_people_reached
