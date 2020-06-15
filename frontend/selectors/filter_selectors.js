@@ -1,3 +1,3 @@
 export const filterByType = (posts, type) => {
-    return posts.filter(post => post.postType === type);
+    return type==='all' ? posts : posts.filter(post => post.postType === type);
 }

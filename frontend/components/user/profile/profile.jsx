@@ -36,7 +36,7 @@ class Profile extends React.Component {
     filter(e, type) {
         e.preventDefault(); 
         this.setState({
-            posts: filterByType(this.state.posts, type)
+            posts: filterByType(this.props.users[this.props.match.params.userId].posts, type)
         })
     }
 
@@ -44,8 +44,7 @@ class Profile extends React.Component {
         if (this.props.users[this.props.match.params.userId] === undefined) {
             return null; 
         } 
-        let { posts, 
-                createdAt, 
+        let { createdAt, 
                 username, 
                 location, 
                 reputation, 
@@ -57,10 +56,10 @@ class Profile extends React.Component {
                 lastSeenAt, 
                 id } = this.props.users[this.props.match.params.userId]; 
         
-        // let { posts } = this.state; 
-        // if (!posts) return null; 
-        console.log(this.state)
+        let { posts } = this.state; 
+        if (!posts) return null; 
 
+        console.log(this.state); 
         posts = sortByUpvotes(posts).slice(0, 10)
         return (
             <div className="profile">
@@ -93,9 +92,12 @@ class Profile extends React.Component {
                         <h1 className="profile_middle-header">Top Posts <span className="profile_middle-header-count">({questionCount + answerCount})</span></h1>
                         <div className="profile_middle-head-buttons">
                             <div className="profile_middle-head-buttons-group">
-                                <button className="profile_middle-head-button">All</button>
-                                <button onClick={(e) => this.filter(e, 'question')} className="profile_middle-head-button">Questions</button>
-                                <button className="profile_middle-head-button">Answers</button>
+                                <button onClick={(e) => this.filter(e, 'all')}
+                                        className="profile_middle-head-button">All</button>
+                                <button onClick={(e) => this.filter(e, 'question')} 
+                                        className="profile_middle-head-button">Questions</button>
+                                <button onClick={(e) => this.filter(e, 'answer')}
+                                        className="profile_middle-head-button">Answers</button>
                             </div>
                             <div className="profile_middle-head-buttons-group">
                                 <button className="profile_middle-head-button">Votes</button>
