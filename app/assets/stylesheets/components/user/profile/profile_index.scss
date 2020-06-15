@@ -6,6 +6,24 @@
     margin: 0.5rem 2rem 0.5rem 2rem;  
     flex: 1; 
 }
+.profile_index-row {
+    display: flex; 
+    flex-direction: row; 
+}
+.profile_index-item {
+    display: flex; 
+    flex: 1 1 0px; 
+    flex-direction: row; 
+    align-items: center; 
+    margin: 0.5rem; 
+    padding: 0.5rem; 
+}
+
+
+
+
+
+
 
 .profile_index-title {
     font-size: $big-title-size; 
@@ -34,20 +52,6 @@
     color: $red; 
     font-weight: bold; 
     font-size: $title-size; 
-}
-
-.profile_index-row {
-    display: flex; 
-    flex-direction: row; 
-}
-
-.profile_index-item {
-    display: flex; 
-    flex: 1 1 0px; 
-    flex-direction: row; 
-    align-items: center; 
-    margin: 0.5rem; 
-    padding: 0.5rem; 
 }
 
 .profile_index-item-detail {
