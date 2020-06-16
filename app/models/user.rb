@@ -69,6 +69,11 @@ class User < ApplicationRecord
         through: :taggables, 
         source: :tag 
 
+    def add_reputation(num)
+        self.reputation += num 
+        self.save!
+    end
+
     def self.search(query)
         User.where('username LIKE ?', "%#{query}%")
     end
