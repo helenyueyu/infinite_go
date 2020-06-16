@@ -1,6 +1,7 @@
 import React from 'react'; 
 import { Link } from 'react-router-dom'; 
 
+import ProfileButtons from '../../buttons/profile_buttons'; 
 import ProfileImage from './profile_image'; 
 import ProfileStats from './profile_stats'; 
 
@@ -91,15 +92,17 @@ class Profile extends React.Component {
         if (!posts) return null; 
 
         let shownPosts = sortByUpvotes(posts).slice(0, 10)
-        console.log('state', this.state.posts); 
-        console.log('shownPosts', shownPosts); 
+   
         return (
             <div className="profile">
-                <div>
+                <ProfileButtons id={id}/>
+                {/* <div>
                     <button className="profile-button">Profile</button>
-                    <button className="profile-button">Activity</button>
+                    <button className="profile-button">
+                        <Link to={`/users/${id}/activity`}>Activity</Link>
+                    </button>
                     <button className="profile-button">Developer Story</button>
-                </div>
+                </div> */}
 
                 <div className="profile_top">
                     <ProfileImage reputation={reputation} medals={medals}/>

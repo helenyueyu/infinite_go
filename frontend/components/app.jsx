@@ -18,6 +18,7 @@ import TagIndexContainer from './tag/tags_index_container';
 
 import NavbarContainer from './user/nav/navbar_container'; 
 import ProfileContainer from './user/profile/profile_container'; 
+import ProfileActivityContainer from './user/profile/profile_activity_container'; 
 
 import QuestionsContainer from './question/questions_container'; 
 import NewQuestionContainer from './question/new_question_container';
@@ -32,12 +33,9 @@ const App = () => {
             <NavbarContainer />
 
             <div className="app">
-                {/* <div className="app-left"> */}
-                    <ProtectedRoute path="/questions" component={Menu} />
-                    <ProtectedRoute path="/tags" component={Menu} />
-                    <ProtectedRoute path="/users" component={Menu} />
-                {/* </div> */}
-
+                <ProtectedRoute path="/questions" component={Menu} />
+                <ProtectedRoute path="/tags" component={Menu} />
+                <ProtectedRoute path="/users" component={Menu} />
 
                 <div className="app-middle">
                     <Switch>
@@ -61,6 +59,8 @@ const App = () => {
                         <ProtectedRoute exact path="/questions/:questionId/answers/:answerId/edit" component={EditAnswerContainer} />
 
                         <Route exact path="/users/:userId" component={ProfileContainer} />
+                        <Route exact path="/users/:userId/activity" component={ProfileActivityContainer} />
+
                         {/* <ProtectedRoute exact path="/profile" component={ProfileContainer} /> */}
                     </Switch>
                 </div>
