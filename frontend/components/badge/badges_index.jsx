@@ -48,7 +48,7 @@ class BadgesIndex extends React.Component {
                                                     ? "badges_index-silver-coin" : "badges_index-bronze-coin"}>
                                                 &#x25cf;
                                             </div> 
-                                            <div>
+                                            <div className="badges_index-item-name-name">
                                                 {name}
                                             </div>
                                         </div>
@@ -63,9 +63,12 @@ class BadgesIndex extends React.Component {
                     <div className="badges_index-right">
                         <div className="badges_index-bronze">
                             <div className="badges_index-item-name"> 
-                                <span className="badges_index-bronze-coin">
+                                <div className="badges_index-bronze-coin">
                                     &#x25cf;
-                                </span> Bronze Badge 
+                                </div>
+                                <div className="badges_index-item-name-name">
+                                    Bronze Badge
+                                </div>
                             </div>
                             <div className="badges_index-item-description">
                                 Bronze badges encourage users to try out new features on the site. They are easy to get if you try!
@@ -74,9 +77,12 @@ class BadgesIndex extends React.Component {
 
                         <div className="badges_index-silver">
                             <div className="badges_index-item-name">
-                                <span className="badges_index-silver-coin">
+                                <div className="badges_index-silver-coin">
                                     &#x25cf;
-                                </span> Silver Badge
+                                </div> 
+                                <div className="badges_index-item-name-name">
+                                    Silver Badge
+                                </div>
                             </div>
                             <div className="badges_index-item-description">
                                 Silver badges are less common than bronze ones. You'll need to plan your strategy to get one of these.
@@ -85,9 +91,12 @@ class BadgesIndex extends React.Component {
 
                         <div className="badges_index-gold">
                             <div className="badges_index-item-name">
-                                <span className="badges_index-gold-coin">
+                                <div className="badges_index-gold-coin">
                                     &#x25cf;
-                                </span> Gold Badge
+                                </div>
+                                <div className="badges_index-item-name-name">
+                                    Gold Badge
+                                </div>
                             </div>
                             <div className="badges_index-item-description">
                                 Gold badges recognize important contributions from members of the community. They are rarely awarded.
