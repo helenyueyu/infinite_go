@@ -14,7 +14,8 @@ import SignUpFormContainer from './user/auth/sign_up_form_container';
 import LoginFormContainer from './user/auth/login_form_container';
 
 import ProfileIndexContainer from './user/profile/profile_index_container'; 
-import TagIndexContainer from './tag/tags_index_container'; 
+import BadgesIndexContainer from './badge/badges_index_container'; 
+import TagsIndexContainer from './tag/tags_index_container'; 
 
 import NavbarContainer from './user/nav/navbar_container'; 
 import ProfileContainer from './user/profile/profile_container'; 
@@ -36,6 +37,8 @@ const App = () => {
                 <ProtectedRoute path="/questions" component={Menu} />
                 <ProtectedRoute path="/tags" component={Menu} />
                 <ProtectedRoute path="/users" component={Menu} />
+                <ProtectedRoute path="/badges" component={Menu} />
+
 
                 <div className="app-middle">
                     <Switch>
@@ -45,7 +48,8 @@ const App = () => {
                         <Route exact path="/" component={Splash} />
 
                         <Route exact path="/users" component={ProfileIndexContainer} />
-                        <Route exact path="/tags" component={TagIndexContainer} />
+                        <Route exact path="/tags" component={TagsIndexContainer} />
+                        <Route exact path="/badges" component={BadgesIndexContainer} />
 
                         <Route exact path="/questions" component={QuestionsContainer} />
                         <Route exact path="/questions/tagged/:tagName" component={QuestionsContainer} />

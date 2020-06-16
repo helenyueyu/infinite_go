@@ -8,6 +8,7 @@ import commentsReducer from './comments_reducer';
 import tagsReducer from './tags_reducer';  
 import votesReducer from './votes_reducer'; 
 import metasReducer from './metas_reducer'; 
+import badgesReducer from './badges_reducer'; 
 
 const entitiesReducer = combineReducers({
     currentUser: currentUserReducer, 
@@ -18,7 +19,8 @@ const entitiesReducer = combineReducers({
     comments: commentsReducer, 
     tags: tagsReducer, 
     search: searchReducer, 
-    metas: metasReducer 
+    metas: metasReducer, 
+    badges: badgesReducer 
 })
 
 export default entitiesReducer; 

@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; 
 
-import moment from 'moment'; 
-
 class TagIndex extends React.Component {
     componentDidMount() {
         this.props.fetchTags()
