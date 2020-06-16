@@ -55,7 +55,7 @@ class BadgesIndex extends React.Component {
                                     </div>
 
                                     <div className="badges_index-item-description">{description}</div>
-                                    <div>0 awarded</div>
+                                    <div className="badges_index-item-awarded">0 awarded</div>
                                 </div>
                             )
                         })}

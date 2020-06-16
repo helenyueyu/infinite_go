@@ -22,6 +22,17 @@
     flex: 0.3 1 0px; 
     padding-left: 0.5rem; 
 }
+.badges_index-item {
+    display: flex; 
+    align-items: center; 
+    padding-left: 2rem; 
+    padding-right: 0.5rem; 
+    padding-top: 0.5rem; 
+    padding-bottom: 0.5rem; 
+    font-size: $comment-size; 
+    border-top: 1px solid $light-gray; 
+}
+
 .badges_index-description {
     font-size: $description-size; 
     line-height: $big-line-height; 
@@ -44,17 +55,6 @@
     justify-content: flex-start; 
     flex: 1 1 0px; 
 }
-.badges_index-item-description {
-    flex: 3 1 0px; 
-    font-size: $comment-size; 
-    line-height: $small-line-height; 
-}
-.badges_index-item {
-    display: flex; 
-    padding: 1rem; 
-    // align-items: center; 
-    font-size: $comment-size; 
-}
 .badges_index-item-name {
     color: $white; 
     background: $black;
@@ -66,6 +66,14 @@
     font-size: $comment-size; 
     display: flex; 
     align-items: center; 
+}
+.badges_index-item-description {
+    flex: 3 1 0px; 
+    font-size: $comment-size; 
+    line-height: $small-line-height; 
+}
+.badges_index-item-awarded {
+    color: $focus-gray; 
 }
 .badges_index-bronze, .badges_index-silver, .badges_index-gold {
     display: flex; 
