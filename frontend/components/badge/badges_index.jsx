@@ -31,24 +31,71 @@ class BadgesIndex extends React.Component {
         return (
             <div className="badges_index">
                 <h1 className="badges_index-title">Badges</h1>
-                <div className="badges_index-description">
-                    Besides gaining reputation with your questions and answers, you receive badges for being especially helpful. Badges appear on your profile page, flair, and your posts.
-                </div>
-                {Object.values(badges).map((badge, idx) => {
-                    const { name, description, category, medalType } = badge; 
-                    return (
-                        <div className="badges_index-item" key={idx}>
-                            <div className="badges_index-item-name">
-                                <span className="badges_index-gold"> &#x25cf;</span> {name}
-                            </div>
-                            <div>{description}</div>
-                            <div>{category}</div>
-                            <div>{medalType}</div>
+                <div className="badges_index-main">
+                    <div className="badges_index-left">
+                        <div className="badges_index-description">
+                            Besides gaining reputation with your questions and answers, you receive badges for being especially helpful. Badges appear on your profile page, flair, and your posts.
                         </div>
-                    )
-                }
-                    
-                )}
+                        {Object.values(badges).map((badge, idx) => {
+                            const { name, description, medalType } = badge;
+                            return (
+                                <div className="badges_index-item" key={idx}>
+                                    <div className="badges_index-item-name-container">
+                                        <div className="badges_index-item-name">
+                                            <div className={medalType === "gold"
+                                                ? "badges_index-gold-coin" :
+                                                medalType === "silver"
+                                                    ? "badges_index-silver-coin" : "badges_index-bronze-coin"}>
+                                                &#x25cf;
+                                            </div> 
+                                            <div>
+                                                {name}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="badges_index-item-description">{description}</div>
+                                    <div>0 awarded</div>
+                                </div>
+                            )
+                        })}
+                    </div>
+                    <div className="badges_index-right">
+                        <div className="badges_index-bronze">
+                            <div className="badges_index-item-name"> 
+                                <span className="badges_index-bronze-coin">
+                                    &#x25cf;
+                                </span> Bronze Badge 
+                            </div>
+                            <div className="badges_index-item-description">
+                                Bronze badges encourage users to try out new features on the site. They are easy to get if you try!
+                            </div>
+                        </div>
+
+                        <div className="badges_index-silver">
+                            <div className="badges_index-item-name">
+                                <span className="badges_index-silver-coin">
+                                    &#x25cf;
+                                </span> Silver Badge
+                            </div>
+                            <div className="badges_index-item-description">
+                                Silver badges are less common than bronze ones. You'll need to plan your strategy to get one of these.
+                            </div>
+                        </div>
+
+                        <div className="badges_index-gold">
+                            <div className="badges_index-item-name">
+                                <span className="badges_index-gold-coin">
+                                    &#x25cf;
+                                </span> Gold Badge
+                            </div>
+                            <div className="badges_index-item-description">
+                                Gold badges recognize important contributions from members of the community. They are rarely awarded.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
 
                 <form onSubmit={(e) => this.handleSubmit(e)}>
                     <label>
