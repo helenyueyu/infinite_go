@@ -12,9 +12,8 @@ class ProfileActivity extends React.Component {
             return null;
         } 
         let { id } = this.props.users[this.props.match.params.userId]; 
-        console.log(this.props)
         return (
-            <div>
+            <div className="profile_activity">
                 <ProfileButtons id={id}
                         activeIdx={1} />
             </div>

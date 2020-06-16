@@ -75,7 +75,6 @@ class Profile extends React.Component {
         if (this.props.users[this.props.match.params.userId] === undefined) {
             return null; 
         } 
-        console.log(this.props)
         let { createdAt, 
                 username, 
                 description,
@@ -92,19 +91,12 @@ class Profile extends React.Component {
         let { posts } = this.state; 
         if (!posts) return null; 
 
-        let shownPosts = sortByUpvotes(posts).slice(0, 10)
+        let shownPosts = sortByUpvotes(posts).slice(0, 10); 
    
         return (
             <div className="profile">
                 <ProfileButtons id={id}
                         activeIdx={0} />
-                {/* <div>
-                    <button className="profile-button">Profile</button>
-                    <button className="profile-button">
-                        <Link to={`/users/${id}/activity`}>Activity</Link>
-                    </button>
-                    <button className="profile-button">Developer Story</button>
-                </div> */}
 
                 <div className="profile_top">
                     <ProfileImage reputation={reputation} medals={medals}/>
