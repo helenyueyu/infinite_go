@@ -1,7 +1,13 @@
 .question_item {
     padding-right: 0.5rem; 
+    // width: 200px; 
+    flex: 1 1 0px; 
+    // justify-content: flex-end; 
 }
-
+.question_item-profile {
+    display: flex; 
+    justify-content: flex-end; 
+}
 .question_item-title-div {
     padding-top: 1rem; 
 }

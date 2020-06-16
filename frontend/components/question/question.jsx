@@ -74,7 +74,10 @@ class Question extends React.Component {
                                 <DeleteButton authorized={currentUser.id === user.id} handleDelete={this.handleDelete} />
                                 <EditButton authorized={currentUser.id === user.id} link={`/questions/${id}/edit`} />
                             </div>
-                            <ProfileSnippet username={user.username} timestamp={moment(createdAt).fromNow()} />
+                            <ProfileSnippet username={user.username} 
+                                            reputation={user.reputation}
+                                            medals={user.medals}
+                                            timestamp={moment(createdAt).fromNow()} />
                         </div>
                     </div>
                 </div>

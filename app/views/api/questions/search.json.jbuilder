@@ -7,13 +7,24 @@ json.key_format! ->(key) {
         json.extract! question, :id, 
                                 :title, 
                                 :body, 
-                                :user, 
                                 :has_accepted_answer?, 
                                 :vote_count, 
                                 :answer_count,
                                 :view_count, 
                                 :created_at, 
                                 :updated_at
+
+        json.set! 'user' do 
+            json.extract! question.user, :id, 
+                                        :created_at, 
+                                        :description, 
+                                        :email, 
+                                        :last_seen_at, 
+                                        :location, 
+                                        :reputation, 
+                                        :username, 
+                                        :medals 
+        end
 
         json.set! 'tags', {} 
 

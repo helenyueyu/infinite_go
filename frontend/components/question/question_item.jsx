@@ -1,13 +1,13 @@
 import React from 'react'; 
 import { Link } from 'react-router-dom'; 
 
-import moment from 'moment'; 
+import { displayDate } from '../../selectors/date_selectors'; 
 import TagsContainer from '../tag/tags_container'; 
 import ProfileSnippet from '../user/profile/profile_snippet'; 
 
 class QuestionItem extends React.Component {
     render() {
-        let {id, title, body, user, question, tags} = this.props; 
+        let {id, title, body, user, question, tags, reputation, medals} = this.props; 
         return (
             <div className="question_item">
                 <div className="question_item-title-div">
@@ -16,7 +16,13 @@ class QuestionItem extends React.Component {
                 <div className="question_item-body">{body}</div>
 
                 <TagsContainer tags={tags} showDelete={false}/>
-                <ProfileSnippet username={user.username} timestamp={moment(question.createdAt).fromNow()} />
+                <div className="question_item-profile">
+                    <ProfileSnippet username={user.username}
+                        reputation={user.reputation}
+                        medals={user.medals}
+                        timestamp={displayDate(question.createdAt)} />
+                </div>
+                
             </div>
         )
     }

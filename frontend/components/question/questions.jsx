@@ -106,15 +106,16 @@ class Questions extends React.Component {
                                 </div>
                                 
 
-                                
-                                <QuestionItem 
-                                    idx={idx} 
+                                <QuestionItem
+                                    idx={idx}
                                     id={id}
-                                    title={title} 
-                                    body={body} 
-                                    user={user} 
+                                    title={title}
+                                    body={body}
+                                    user={user}
                                     question={question}
                                     tags={tags} />
+                                
+                               
                             </div>
                         )
                     })}

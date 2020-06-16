@@ -2,7 +2,7 @@ class User < ApplicationRecord
     is_impressionable 
     attr_reader :password 
     attr_accessor :view_count 
-
+    attr_reader :medals
     def impression_count 
         impressions.size 
     end

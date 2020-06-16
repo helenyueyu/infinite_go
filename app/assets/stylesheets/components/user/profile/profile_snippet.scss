@@ -1,0 +1,54 @@
+.profile_snippet {
+    background-color: $tag-red; 
+    padding: 0.5rem; 
+    font-size: $comment-size; 
+    color: $gray; 
+    border-radius: 2.5px; 
+}
+.profile_snippet-date {
+    font-size: $little-size; 
+}
+
+.profile_snippet-username {
+    color: $red; 
+    padding-bottom: 0.2rem; 
+}
+
+.profile_snippet-stats {
+    display: flex; 
+    align-items: center; 
+}
+
+.profile_snippet-stats-rep {
+    font-weight: bold; 
+    color: $focus-gray; 
+}
+
+.profile_snippet-main {
+    display: flex; 
+    align-items: center; 
+    padding-top: 0.35rem; 
+}
+.profile_snippet-pic {
+    width: 25px; 
+    height: 25px; 
+    padding-right: 0.4rem; 
+}
+
+.profile_snippet-stats-gold {
+    color: $gold; 
+    padding-left: 0.3rem; 
+    padding-right: 0.1rem;  
+}
+
+.profile_snippet-stats-silver {
+    color: $silver;
+    padding-left: 0.3rem;  
+    padding-right: 0.1rem;  
+}
+
+.profile_snippet-stats-bronze {
+    color: $bronze; 
+    padding-left: 0.3rem; 
+    padding-right: 0.1rem;  
+}
