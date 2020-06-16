@@ -32,6 +32,13 @@
     width: 50%; 
     padding-left: 2rem;
 }
+.profile_top-snippet-username {
+    font-size: $title-size; 
+    font-weight: bold; 
+    padding-bottom: 1rem; 
+}
+
+
 .profile_top-stats {
     display: flex; 
 }

@@ -76,6 +76,7 @@ class Profile extends React.Component {
         } 
         let { createdAt, 
                 username, 
+                description,
                 location, 
                 reputation, 
                 medals, 
@@ -104,8 +105,10 @@ class Profile extends React.Component {
                     <ProfileImage reputation={reputation} medals={medals}/>
                     
                     <div className="profile_top-snippet">
-                        {username}
+                        <div className="profile_top-snippet-username">{username}</div>
+                        <div>{description}</div>
                     </div>
+
                     <ProfileStats id={id}
                             createdAt={createdAt}
                             questionCount={questionCount}

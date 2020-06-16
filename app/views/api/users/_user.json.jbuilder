@@ -5,6 +5,7 @@ json.key_format! ->(key) {
 json.extract! user, :id, 
                     :username, 
                     :email, 
+                    :description,
                     :view_count, 
                     :last_seen_at, 
                     :number_of_people_reached,
