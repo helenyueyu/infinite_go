@@ -59,7 +59,9 @@ class BadgesIndex extends React.Component {
                                     </div>
 
                                     <div className="badges_index-item-description">{description}</div>
-                                    <div className="badges_index-item-awarded">0 awarded<button onClick={(e) => this.handleDelete(e, id)}>X</button></div>
+                                    <div className="badges_index-item-awarded">0 awarded
+                                        <button className="badges_index-item-delete" onClick={(e) => this.handleDelete(e, id)}>X</button>
+                                    </div>
                                 </div>
                             )
                         })}

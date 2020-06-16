@@ -4,12 +4,18 @@ class Api::BadgesController < ApplicationController
     end
 
     def create 
-       @badge = Badge.new(badge_params)
-       if @badge.save 
-            render :show 
-       else
-            render json: @badge.errors.full_messages, status: 401 
-       end 
+        badge = {
+            name: badge_params[:name].capitalize, 
+            description: badge_params[:description].capitalize, 
+            medal_type: badge_params[:medal_type].downcase, 
+            category: badge_params[:category].downcase
+        }
+        @badge = Badge.new(badge)
+        if @badge.save 
+                render :show 
+        else
+                render json: @badge.errors.full_messages, status: 401 
+        end 
     end
 
     def destroy
