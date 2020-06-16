@@ -69,7 +69,7 @@ class User < ApplicationRecord
         through: :taggables, 
         source: :tag 
 
-    def add_reputation(num)
+    def change_reputation(num)
         self.reputation += num 
         self.save!
     end

@@ -1,8 +1,12 @@
 class Api::VotesController < ApplicationController
     def create 
         @vote = Vote.new(vote_params)
-        # when I create a vote, I want to give 10 points to the user whose 
-        @vote.add_reputation 
+        # when I create a vote, I want to give 10 points to the user whose
+        if @vote.value == 1 
+            @vote.add_reputation
+        else
+            @vote.subtract_reputation
+        end
         
         if @vote.validate_vote(*destructure_vote_params) 
             if @vote.save 

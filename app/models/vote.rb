@@ -9,18 +9,13 @@ class Vote < ApplicationRecord
     belongs_to :user 
 
     def add_reputation
-        id = self.voteable_id 
-        type = self.voteable_type
+        post = self.voteable_type.constantize.find(self.voteable_id)
+        post.user.change_reputation(10)
+    end
 
-        if type == 'Question'
-            question = Question.find(id)
-            question.user.add_reputation(10)
-        end
-
-        if type == 'Answer'
-            answer = Answer.find(id)
-            answer.user.add_reputation(10)
-        end
+    def subtract_reputation
+        post = self.voteable_type.constantize.find(self.voteable_id)
+        post.user.change_reputation(-2)
     end
 
     def validate_vote(value, user_id, voteable_id, voteable_type)
