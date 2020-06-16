@@ -7,9 +7,20 @@ json.extract! @question,
     :title, 
     :body, 
     :vote_count,  
-    :user,   
     :created_at, 
     :updated_at
+
+json.set! 'user' do 
+    json.extract! @question.user, :id, 
+                                :created_at, 
+                                :description, 
+                                :email, 
+                                :last_seen_at, 
+                                :location, 
+                                :reputation, 
+                                :username, 
+                                :medals 
+end
 
 
 json.set! 'tags', {}

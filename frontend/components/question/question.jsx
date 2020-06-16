@@ -39,6 +39,7 @@ class Question extends React.Component {
         let { currentUser, question } = this.props; 
         let { id, title, body, user, createdAt, comments, tags, voteCount } = question;
 
+        // debugger; 
         if (!comments || !tags) return null; 
 
 
