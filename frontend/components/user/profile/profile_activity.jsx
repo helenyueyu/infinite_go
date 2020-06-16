@@ -29,7 +29,7 @@ class ProfileActivity extends React.Component {
                             {medals.map((medal, idx) =>
                                 <div key={idx} className={idx === 0 ? "profile_top-medal-gold" : idx === 1 ? "profile_top-medal-silver" : "profile_top-medal-bronze"}>
                                     <div>
-                                        &bull;<span className="profile_top-medal-count">{medal}</span>
+                                        &#x25cf;<span className="profile_top-medal-count">{medal}</span>
                                     </div>
                                 </div>)}
                         </div>

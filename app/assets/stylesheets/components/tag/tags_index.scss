@@ -6,6 +6,19 @@
     margin: 0.5rem 2rem 0.5rem 2rem;  
     flex: 1; 
 }
+.tags_index-title {
+    font-size: $big-title-size; 
+    padding-top: 2rem; 
+    padding-bottom: 2rem; 
+}
+.tags_index-description {
+    font-size: $description-size; 
+    line-height: $big-line-height; 
+    color: $black; 
+    width: 72.5%; 
+    padding-bottom: 2rem; 
+}
+
 .tags_index-row {
     display: flex; 
     flex-direction: row; 
@@ -22,14 +35,6 @@
     font-size: $comment-size; 
 }
 
-.tags_index-description {
-    font-size: $description-size; 
-    line-height: $big-line-height; 
-    color: $black; 
-    width: 72.5%; 
-    padding-bottom: 2rem; 
-}
-
 .tags_index-search {
     padding: 0.1rem 0.3rem 0.1rem 0.3rem; 
     font-size: 1rem;
@@ -44,12 +49,6 @@
     border-radius: 5px; 
     border: 1px solid $focus-red; 
     box-shadow: 0 0 0pt 3pt $tag-red-lite; 
-}
-
-.tags_index-title {
-    font-size: $big-title-size; 
-    padding-top: 2rem; 
-    padding-bottom: 2rem; 
 }
 
 .tags_index_item-name-container {

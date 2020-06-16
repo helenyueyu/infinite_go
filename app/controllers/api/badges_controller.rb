@@ -5,7 +5,6 @@ class Api::BadgesController < ApplicationController
 
     def create 
        @badge = Badge.new(badge_params)
-    #    debugger 
        if @badge.save 
             render :show 
        else

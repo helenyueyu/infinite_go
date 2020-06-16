@@ -1,0 +1,36 @@
+.badges_index {
+    display: flex; 
+    flex-direction: column; 
+    align-items: stretch; 
+    justify-content: stretch; 
+    margin: 0.5rem 2rem 0.5rem 2rem;  
+    flex: 1; 
+}
+.badges_index-title {
+    font-size: $big-title-size; 
+    padding-top: 2rem; 
+    padding-bottom: 2rem; 
+}
+.badges_index-description {
+    font-size: $description-size; 
+    line-height: $big-line-height; 
+    color: $black; 
+    width: 72.5%; 
+    padding-bottom: 2rem; 
+}
+
+
+.badges_index-item {
+    display: flex; 
+    padding: 1rem; 
+}
+.badges_index-item-name {
+    color: $white; 
+    background: $black;
+    border-radius: 2.5px; 
+    padding-left: 0.5rem; 
+    padding-right: 0.5rem;  
+    padding-top: 0.4rem; 
+    padding-bottom: 0.4rem; 
+    font-size: $comment-size; 
+}

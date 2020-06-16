@@ -26,10 +26,29 @@ class BadgesIndex extends React.Component {
     }
 
     render() {
-        console.log('badges', this.props.badges); 
+        const { badges } = this.props; 
+        // console.log('badges', this.props.badges); 
         return (
-            <div>
-                badges
+            <div className="badges_index">
+                <h1 className="badges_index-title">Badges</h1>
+                <div className="badges_index-description">
+                    Besides gaining reputation with your questions and answers, you receive badges for being especially helpful. Badges appear on your profile page, flair, and your posts.
+                </div>
+                {Object.values(badges).map((badge, idx) => {
+                    const { name, description, category, medalType } = badge; 
+                    return (
+                        <div className="badges_index-item" key={idx}>
+                            <div className="badges_index-item-name">
+                                <span className="badges_index-gold"> &#x25cf;</span> {name}
+                            </div>
+                            <div>{description}</div>
+                            <div>{category}</div>
+                            <div>{medalType}</div>
+                        </div>
+                    )
+                }
+                    
+                )}
 
                 <form onSubmit={(e) => this.handleSubmit(e)}>
                     <label>

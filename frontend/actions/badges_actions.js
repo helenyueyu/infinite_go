@@ -23,7 +23,6 @@ export const fetchBadges = () => dispatch => {
 export const createBadge = badge => dispatch => {
     return badgeAPIUtil.createTag(badge)
             .then(badge => {
-                // debugger; 
                 dispatch(receiveBadge(badge))
             })
 }
