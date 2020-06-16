@@ -96,6 +96,24 @@
     padding-left: 0.5rem; 
     padding-right: 0.5rem; 
 }
+.profile_middle-head-button-active {
+    color: $black; 
+    background: $silver; 
+    border: 1px solid $focus-gray; 
+    border-radius: 2.5px; 
+    padding-top: 0.2rem; 
+    padding-bottom: 0.2rem; 
+    padding-left: 0.5rem; 
+    padding-right: 0.5rem; 
+}
+.profile_middle-head-button:hover, .profile_middle-head-button-active:hover  {
+    background: $light-silver; 
+    cursor: pointer; 
+}
+.profile_middle-head-button:focus, .profile_middle-head-button-active:focus  {
+    outline: none; 
+}
+
 .profile_middle-head-buttons-group {
     margin-left: 0.5rem; 
 }

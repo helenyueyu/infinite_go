@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import ProfileImage from './profile_image'; 
 import ProfileStats from './profile_stats'; 
 
-import { sortByUpvotes } from '../../../selectors/sort_selectors'; 
+import { sortByUpvotes, sortByNewest } from '../../../selectors/sort_selectors'; 
 import { filterByType } from '../../../selectors/filter_selectors'; 
 
 import { displayShortenedDate } from '../../../selectors/date_selectors'; 
@@ -56,6 +56,20 @@ class Profile extends React.Component {
         }
     }
 
+    sort(e, type) {
+        e.preventDefault(); 
+        if (type === 'upvotes') {
+            this.setState({
+                posts: sortByUpvotes(this.props.users[this.props.match.params.userId].posts)
+            })
+        }
+        if (type === 'newest') {
+            this.setState({
+                posts: sortByNewest(this.props.users[this.props.match.params.userId].posts)
+            })
+        }
+    }
+
     render() {
         if (this.props.users[this.props.match.params.userId] === undefined) {
             return null; 
@@ -76,7 +90,8 @@ class Profile extends React.Component {
         if (!posts) return null; 
 
         let shownPosts = sortByUpvotes(posts).slice(0, 10)
-        console.log('state', this.state); 
+        console.log('state', this.state.posts); 
+        console.log('shownPosts', shownPosts); 
         return (
             <div className="profile">
                 <div>
@@ -110,15 +125,17 @@ class Profile extends React.Component {
                             <div className="profile_middle-head-buttons-group">
 
                                 <button onClick={(e) => this.filter(e, 'all')}
-                                        className="profile_middle-head-button">All</button>
+                                    className={this.state.tab1 === true ? "profile_middle-head-button-active" : "profile_middle-head-button"}>All</button>
                                 <button onClick={(e) => this.filter(e, 'question')} 
-                                        className="profile_middle-head-button">Questions</button>
+                                    className={this.state.tab2 === true ? "profile_middle-head-button-active" : "profile_middle-head-button"}>Questions</button>
                                 <button onClick={(e) => this.filter(e, 'answer')}
-                                        className="profile_middle-head-button">Answers</button>
+                                    className={this.state.tab3 === true ? "profile_middle-head-button-active" : "profile_middle-head-button"}>Answers</button>
                             </div>
                             <div className="profile_middle-head-buttons-group">
-                                <button className="profile_middle-head-button">Votes</button>
-                                <button className="profile_middle-head-button">Newest</button>
+                                <button onClick={(e) => this.sort(e, 'upvotes')}
+                                        className="profile_middle-head-button">Votes</button>
+                                <button onClick={(e) => this.sort(e, 'newest')}
+                                        className="profile_middle-head-button">Newest</button>
                             </div>
                         
                         </div>

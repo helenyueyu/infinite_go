@@ -1,5 +1,6 @@
-export const sortByNewest = questions => {
-    return questions.sort((a,b) => b.createdAt < a.createdAt ? -1 : 1); 
+export const sortByNewest = posts => {
+    // debugger; 
+    return posts.sort((a,b) => new Date(b.createdAt) < new Date(a.createdAt) ? -1 : 1); 
 }
 
 export const sortByUpvotes = posts => {
