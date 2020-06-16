@@ -34,9 +34,9 @@
 }
 
 .badges_index-description {
-    font-size: $description-size; 
-    line-height: $big-line-height; 
-    color: $black; 
+    font-size: $info-size; 
+    line-height: $small-line-height; 
+    color: $gray; 
     width: 72.5%; 
     padding-bottom: 2rem; 
 }
@@ -95,4 +95,9 @@
     background: none; 
     border: none; 
     color: $red; 
+}
+.badges_index-group {
+    font-size: $description-size; 
+    padding-top: 1rem; 
+    padding-bottom: 1rem; 
 }

@@ -5,7 +5,7 @@ class Api::BadgesController < ApplicationController
 
     def create 
         badge = {
-            name: badge_params[:name].capitalize, 
+            name: badge_params[:name].split(' ').map{|x| x.capitalize}.join(' '), 
             description: badge_params[:description].capitalize, 
             medal_type: badge_params[:medal_type].downcase, 
             category: badge_params[:category].downcase

@@ -19,7 +19,6 @@ class Api::TagsController < ApplicationController
     end
 
     def search
-        # debugger
         @tags = Tag.search(search_params)
     end
 
