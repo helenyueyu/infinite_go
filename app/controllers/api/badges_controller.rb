@@ -4,9 +4,10 @@ class Api::BadgesController < ApplicationController
     end
 
     def create 
-       @badge = User.new(badge_params)
+       @badge = Badge.new(badge_params)
+    #    debugger 
        if @badge.save 
-            render :index 
+            render :show 
        else
             render json: @badge.errors.full_messages, status: 401 
        end 

@@ -1,10 +1,14 @@
 json.key_format! camelize: :lower 
 
-json.tags @badges do |badge|
-    json.extract! badge, :name, 
-                    :medal_type, 
-                    :description,  
-                    :created_at, 
-                    :updated_at 
+@badges.each do |badge|
+    json.set! badge.id do 
+        json.extract! badge, :id, 
+                :name, 
+                :medal_type, 
+                :description,  
+                :created_at, 
+                :updated_at 
+    end 
 end
+
 

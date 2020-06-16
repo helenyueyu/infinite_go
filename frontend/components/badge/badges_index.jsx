@@ -1,14 +1,17 @@
 import React from 'react'; 
 
 class BadgesIndex extends React.Component {
+    constructor(props) {
+        super(props); 
+        this.state = {
+            name: "",
+            description: "",
+            category: "",
+            medal_type: ""
+        }
+    }
     componentDidMount() {
         this.props.fetchBadges(); 
-        this.state = {
-            name: "", 
-            description: "", 
-            category: "", 
-            medalType: "" 
-        }
     }
 
     handleChange(e, field) {
@@ -19,7 +22,7 @@ class BadgesIndex extends React.Component {
     }
     handleSubmit(e) {
         e.preventDefault(); 
-        this.createBadge(this.state); 
+        this.props.createBadge(this.state); 
     }
 
     render() {
@@ -33,22 +36,24 @@ class BadgesIndex extends React.Component {
                         Name 
                         <input onChange={(e) => this.handleChange(e, 'name')} />
                     </label>
-                    
+                    <br />
                     <label>
                         Description 
                         <input onChange={(e) => this.handleChange(e, 'description')} />
                     </label>
-
+                    <br />
                     <label>
                         Medal Type 
-                        <input onChange={(e) => this.handleChange(e, 'medalType')} />
+                        <input onChange={(e) => this.handleChange(e, 'medal_type')} />
                     </label>
-
+                    <br />
                     <label>
                         Category
                         <input onChange={(e) => this.handleChange(e, 'category')} />
                     </label>
-                    
+                    <br />
+                    <button type="submit">Submit</button>
+
                 </form>
             </div>
         )

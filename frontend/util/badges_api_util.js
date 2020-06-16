@@ -5,6 +5,7 @@ export const fetchBadges = () => {
     })
 }
 export const createTag = badge => {
+    // debugger 
     return $.ajax({
         method: 'POST',
         url: '/api/badges',
