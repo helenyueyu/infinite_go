@@ -39,7 +39,6 @@ const App = () => {
                 <ProtectedRoute path="/users" component={Menu} />
                 <ProtectedRoute path="/badges" component={Menu} />
 
-
                 <div className="app-middle">
                     <Switch>
                         <AuthRoute exact path="/signup" component={SignUpFormContainer} />
