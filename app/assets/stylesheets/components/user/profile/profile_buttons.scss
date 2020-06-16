@@ -1,0 +1,23 @@
+.profile-button {
+    padding: 0.5rem 1rem 0.5rem 1rem; 
+    border: 1px solid $red; 
+    color: $red; 
+    border-radius: 15px; 
+    border: none; 
+    margin: 0.25rem; 
+}
+.profile-button-active {
+    padding: 0.5rem 1rem 0.5rem 1rem; 
+    background: $red; 
+    color: $white; 
+    border-radius: 15px; 
+    border: none; 
+    margin: 0.25rem; 
+}
+.profile-button:hover {
+    background: $focus-red; 
+    cursor: pointer; 
+}
+.profile-button:focus {
+    outline: none; 
+}

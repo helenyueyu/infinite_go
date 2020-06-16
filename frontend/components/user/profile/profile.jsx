@@ -75,6 +75,7 @@ class Profile extends React.Component {
         if (this.props.users[this.props.match.params.userId] === undefined) {
             return null; 
         } 
+        console.log(this.props)
         let { createdAt, 
                 username, 
                 description,
@@ -95,7 +96,8 @@ class Profile extends React.Component {
    
         return (
             <div className="profile">
-                <ProfileButtons id={id}/>
+                <ProfileButtons id={id}
+                        activeIdx={0} />
                 {/* <div>
                     <button className="profile-button">Profile</button>
                     <button className="profile-button">

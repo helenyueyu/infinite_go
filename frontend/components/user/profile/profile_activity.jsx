@@ -8,14 +8,15 @@ class ProfileActivity extends React.Component {
     }
 
     render() {
-        // debugger; 
         if (this.props.users[this.props.match.params.userId] === undefined) {
             return null;
         } 
         let { id } = this.props.users[this.props.match.params.userId]; 
+        console.log(this.props)
         return (
             <div>
-                <ProfileButtons id={id}/>
+                <ProfileButtons id={id}
+                        activeIdx={1} />
             </div>
         )
     }
