@@ -23,6 +23,7 @@ class AnswerForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.action(this.state)
+        // .then(() => this.props.fetchUser(this.state.user_id))
     }
 
     render() {

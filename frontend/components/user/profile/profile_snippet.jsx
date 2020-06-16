@@ -1,7 +1,7 @@
 import React from 'react'; 
 
 const ProfileSnippet = ({username, timestamp, reputation, medals, type}) => {
-    console.log('medals', medals); 
+    if (!medals) return null; 
     return (
         <div className="profile_snippet">
             <div className="profile_snippet-date">{type} {timestamp}</div>
