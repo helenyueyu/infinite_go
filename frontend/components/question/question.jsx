@@ -76,6 +76,7 @@ class Question extends React.Component {
                                 <EditButton authorized={currentUser.id === user.id} link={`/questions/${id}/edit`} />
                             </div>
                             <ProfileSnippet username={user.username} 
+                                            type="asked"
                                             reputation={user.reputation}
                                             medals={user.medals}
                                             timestamp={moment(createdAt).fromNow()} />

@@ -5,7 +5,18 @@
     padding-top: 1rem; 
     padding-bottom: 1rem; 
 }
-
+.questions-header {
+    margin-left: 2rem; 
+    margin-top: 1rem; 
+    margin-bottom: 2rem; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+.questions-title {
+    font-size: $title-size; 
+    color: $red; 
+}
 
 .questions-filter {
     display: flex; 

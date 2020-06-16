@@ -43,6 +43,8 @@ class Answers extends React.Component {
                             body={answer.body}
                             createdAt={answer.createdAt}
                             username={answer.user.username}
+                            reputation={answer.user.reputation}
+                            medals={answer.user.medals}
                             authorized={currentUser.id === answer.user.id}
                             canAccept={currentUser.id === question.user.id}
                             handleDelete={(id) => this.handleDelete(id)}

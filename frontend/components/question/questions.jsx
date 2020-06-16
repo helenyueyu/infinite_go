@@ -82,8 +82,13 @@ class Questions extends React.Component {
         if (questions) {
             return (
                 <div>
-                    <Link to="/questions/new"><button className="questions-create-question">Create Question</button></Link>
-                    {questionCount}
+                    <div className="questions-header">
+                        <div className="questions-title">
+                            {questionCount} question{questionCount === 1 ? '' : 's'}
+                        </div>
+                        <Link to="/questions/new"><button className="questions-create-question">Create Question</button></Link>
+                    </div>
+                    
                     
                     {questions.map((question, idx) => {
                         let {id, title, body, user, voteCount, viewCount, answerCount, tags, hasAcceptedAnswer } = question; 
