@@ -24,6 +24,10 @@ class BadgesIndex extends React.Component {
         e.preventDefault(); 
         this.props.createBadge(this.state); 
     }
+    handleDelete(e, id) {
+        e.preventDefault(); 
+        this.props.deleteBadge(id).then(() => this.props.fetchBadges())
+    }
 
     render() {
         const { badges } = this.props; 
@@ -37,7 +41,7 @@ class BadgesIndex extends React.Component {
                             Besides gaining reputation with your questions and answers, you receive badges for being especially helpful. Badges appear on your profile page, flair, and your posts.
                         </div>
                         {Object.values(badges).map((badge, idx) => {
-                            const { name, description, medalType } = badge;
+                            const { name, description, medalType, id } = badge;
                             return (
                                 <div className="badges_index-item" key={idx}>
                                     <div className="badges_index-item-name-container">
@@ -49,13 +53,13 @@ class BadgesIndex extends React.Component {
                                                 &#x25cf;
                                             </div> 
                                             <div className="badges_index-item-name-name">
-                                                {name}
+                                                {name} 
                                             </div>
                                         </div>
                                     </div>
 
                                     <div className="badges_index-item-description">{description}</div>
-                                    <div className="badges_index-item-awarded">0 awarded</div>
+                                    <div className="badges_index-item-awarded">0 awarded<button onClick={(e) => this.handleDelete(e, id)}>X</button></div>
                                 </div>
                             )
                         })}
@@ -70,7 +74,7 @@ class BadgesIndex extends React.Component {
                                     Bronze Badge
                                 </div>
                             </div>
-                            <div className="badges_index-item-description">
+                            <div className="badges_index-item-description-sidebar">
                                 Bronze badges encourage users to try out new features on the site. They are easy to get if you try!
                             </div>
                         </div>
@@ -84,7 +88,7 @@ class BadgesIndex extends React.Component {
                                     Silver Badge
                                 </div>
                             </div>
-                            <div className="badges_index-item-description">
+                            <div className="badges_index-item-description-sidebar">
                                 Silver badges are less common than bronze ones. You'll need to plan your strategy to get one of these.
                             </div>
                         </div>
@@ -98,7 +102,7 @@ class BadgesIndex extends React.Component {
                                     Gold Badge
                                 </div>
                             </div>
-                            <div className="badges_index-item-description">
+                            <div className="badges_index-item-description-sidebar">
                                 Gold badges recognize important contributions from members of the community. They are rarely awarded.
                             </div>
                         </div>

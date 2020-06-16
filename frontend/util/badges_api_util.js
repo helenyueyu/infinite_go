@@ -4,10 +4,17 @@ export const fetchBadges = () => {
         url: '/api/badges'
     })
 }
-export const createTag = badge => {
+export const createBadge = badge => {
     return $.ajax({
         method: 'POST',
         url: '/api/badges',
         data: { badge }
+    })
+}
+
+export const deleteBadge = id => {
+    return $.ajax({
+        method: 'DELETE',
+        url: `/api/badges/${id}`
     })
 }

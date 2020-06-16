@@ -12,6 +12,15 @@ class Api::BadgesController < ApplicationController
        end 
     end
 
+    def destroy
+        @badge = Badge.find(params[:id])
+        if @badge.destroy 
+            render :show 
+        else
+            render json: @badge.errors.full_messages 
+        end
+    end
+
     private
     def badge_params
         params.require(:badge).permit(:name, :description, :medal_type, :category)
