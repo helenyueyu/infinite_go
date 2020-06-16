@@ -28,6 +28,7 @@
 .profile_top-medals {
     display: flex; 
     flex-direction: row; 
+    font-size: $comment-size; 
 }
 .profile_top-medal-bronze {
     border-radius: 5px; 
@@ -37,6 +38,9 @@
     color: $bronze; 
     background: $bronze-background; 
     border: 1px solid $bronze; 
+    display: flex; 
+    justify-content: center; 
+    flex: 1 1 0px; 
 }
 .profile_top-medal-silver {
     border-radius: 5px; 
@@ -46,6 +50,9 @@
     color: $silver; 
     background: $silver-background; 
     border: 1px solid $silver; 
+    display: flex; 
+    justify-content: center; 
+    flex: 1 1 0px; 
 }
 .profile_top-medal-gold {
     border-radius: 5px; 
@@ -55,6 +62,9 @@
     color: $gold; 
     background: $gold-background; 
     border: 1px solid $gold; 
+    display: flex; 
+    justify-content: center; 
+    flex: 1 1 0px; 
 }
 .profile_top-medal-count {
     color: $gray; 

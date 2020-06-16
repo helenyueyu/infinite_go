@@ -3,3 +3,40 @@
     flex-direction: column; 
     margin: 1.5rem; 
 }
+
+.profile_activity-boxes {
+    display: flex; 
+    margin-top: 1rem; 
+}
+
+.profile_activity-box_1 {
+    background: $lightest-silver; 
+    border: 1px solid $lighter-silver; 
+    padding: 1rem; 
+    margin: 0.25rem; 
+    flex: 1 1 0px; 
+}
+
+.profile_activity-box_2 {
+    background: $lightest-silver; 
+    border: 1px solid $lighter-silver; 
+    padding: 1rem; 
+    margin: 0.25rem; 
+    flex: 1 1 0px; 
+}
+
+.profile_activity-box_3 {
+    background: $lightest-silver; 
+    border: 1px solid $lighter-silver; 
+    padding: 1rem; 
+    margin: 0.25rem; 
+    flex: 0.5 1 0px; 
+}
+
+.activity_box_title {
+    text-transform: uppercase; 
+    font-weight: bold; 
+    color: $silver;  
+    font-size: $little-size; 
+    padding-bottom: 0.5rem; 
+}
