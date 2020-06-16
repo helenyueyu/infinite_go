@@ -6,7 +6,19 @@ json.extract! @answer,
     :user_id, 
     :question_id, 
     :accepted, 
-    :user, 
     :vote_count, 
     :created_at, 
     :updated_at
+    
+json.set! 'user' do
+            json.extract! @answer.user, :id, 
+                                        :created_at, 
+                                        :description, 
+                                        :email, 
+                                        :last_seen_at, 
+                                        :location, 
+                                        :reputation, 
+                                        :username, 
+                                        :medals
+                            
+        end
