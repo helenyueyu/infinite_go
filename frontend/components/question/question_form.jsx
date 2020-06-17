@@ -51,7 +51,8 @@ class QuestionForm extends React.Component {
 
                     <div key="body" className="question_form-element">
                         <label>Body
-                            <input
+                            <textarea
+                                className="question_form-textarea"
                                 onChange={(e) => this.handleChange(e, 'body')}
                                 value={this.state['body']} />
                         </label>
