@@ -50,9 +50,12 @@ export const fetchQuestion = id => dispatch => (
 )
 
 export const createQuestion = question => dispatch => {
-    debugger; 
+    // debugger; 
     questionAPIUtil.createQuestion(question)
-        .then(question => dispatch(receiveQuestion(question)))
+        .then(question => {
+            // debugger; 
+            dispatch(receiveQuestion(question))
+        })
 }
 
 export const updateQuestion = question => dispatch => (

@@ -60,10 +60,9 @@ class QuestionForm extends React.Component {
         title: this.state.title, 
         body: JSON.stringify(convertToRaw(contentState))
     }
-    // console.log('post', post); 
-    this.props
-        .action(post)
-        .then(() => this.props.history.push(`/questions/${this.state.id}`))
+    this.props.action(post)
+    this.props.history.push(`/questions/${this.state.id}`);
+    // .then(() => this.props.history.push(`/questions/${this.state.id}`))
   }
 
   handleKeyCommand = command => {
