@@ -9,10 +9,10 @@ import { Editor, EditorState, convertFromRaw } from "draft-js";
 class QuestionItem extends React.Component {
     render() {
         let {id, title, body, user, question, tags} = this.props; 
-        // const currentContent = EditorState.createWithContent(
-        //   convertFromRaw(JSON.parse(body))
-        // );
-        console.log(body); 
+        const currentContent = EditorState.createWithContent(
+          convertFromRaw(JSON.parse(body))
+        );
+        // console.log(body); 
         // console.log(JSON.parse(body)); 
         return (
           <div className="question_item">
@@ -22,8 +22,8 @@ class QuestionItem extends React.Component {
               </Link>
             </div>
             <div className="question_item-body">
-              {body}
-              {/* <Editor editorState={currentContent} readOnly={true} /> */}
+              {/* {body} */}
+              <Editor editorState={currentContent} readOnly={true} />
             </div>
 
             <TagsContainer tags={tags} showDelete={false} />
