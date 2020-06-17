@@ -1,6 +1,8 @@
 import React from 'react'; 
 
-const ProfileSnippet = ({username, timestamp, reputation, medals, type}) => {
+import { Link } from 'react-router-dom'; 
+
+const ProfileSnippet = ({username, timestamp, reputation, medals, type, id}) => {
     if (!medals) return null; 
     return (
         <div className="profile_snippet">
@@ -9,7 +11,10 @@ const ProfileSnippet = ({username, timestamp, reputation, medals, type}) => {
             <div className="profile_snippet-main">
                 <img className="profile_snippet-pic" src="/assets/favicon-512x512.png"></img>
                 <div>
-                    <div className="profile_snippet-username">{username}</div>
+                    <Link to={`/users/${id}`}>
+                        <div className="profile_snippet-username">{username}</div>
+                    </Link>
+                    
                     <div className="profile_snippet-stats">
                         <div className="profile_snippet-stats-rep">{reputation}</div>
                         {medals.map((medal, idx) =>

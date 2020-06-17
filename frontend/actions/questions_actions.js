@@ -49,10 +49,11 @@ export const fetchQuestion = id => dispatch => (
         .then(question => dispatch(receiveQuestion(question)))
 )
 
-export const createQuestion = question => dispatch => (
+export const createQuestion = question => dispatch => {
+    debugger; 
     questionAPIUtil.createQuestion(question)
         .then(question => dispatch(receiveQuestion(question)))
-)
+}
 
 export const updateQuestion = question => dispatch => (
     questionAPIUtil.updateQuestion(question)

@@ -75,7 +75,8 @@ class Question extends React.Component {
                                 <DeleteButton authorized={currentUser.id === user.id} handleDelete={this.handleDelete} />
                                 <EditButton authorized={currentUser.id === user.id} link={`/questions/${id}/edit`} />
                             </div>
-                            <ProfileSnippet username={user.username} 
+                            <ProfileSnippet id={user.id}
+                                            username={user.username} 
                                             type="asked"
                                             reputation={user.reputation}
                                             medals={user.medals}

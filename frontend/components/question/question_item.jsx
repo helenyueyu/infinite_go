@@ -17,7 +17,8 @@ class QuestionItem extends React.Component {
 
                 <TagsContainer tags={tags} showDelete={false}/>
                 <div className="question_item-profile">
-                    <ProfileSnippet username={user.username}
+                    <ProfileSnippet id={user.id}
+                        username={user.username}
                         type="asked"
                         reputation={user.reputation}
                         medals={user.medals}

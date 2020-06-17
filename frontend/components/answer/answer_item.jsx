@@ -38,7 +38,8 @@ class AnswerItem extends React.Component {
     }
 
     render() {
-        let { id, questionId, body, username, createdAt, authorized, handleDelete, canAccept, reputation, medals } = this.props;
+        // debugger; 
+        let { id, questionId, body, username, createdAt, authorized, handleDelete, canAccept, reputation, medals, user } = this.props;
         return (
             <div className="answer_item">
                 <div>
@@ -55,7 +56,8 @@ class AnswerItem extends React.Component {
                         <DeleteButton authorized={authorized} id={id} handleDelete={() => handleDelete(id)} />
                         <EditButton authorized={authorized} link={`/questions/${questionId}/answers/${id}/edit`} />
                     </div>
-                    <ProfileSnippet username={username} 
+                    <ProfileSnippet id={user.id}
+                                username={username} 
                                 type="answered"
                                 medals={medals}
                                 reputation={reputation}
