@@ -28,7 +28,7 @@ class QuestionForm extends React.Component {
         this.props.fetchQuestion(this.props.match.params.questionId).then(() =>
             this.setState({
                 title: this.props.question.title,
-                body: this.props.question.body
+                body: EditorState.createWithContent(convertFromRaw(JSON.parse(this.props.question.body)))
             })
       );
     }
