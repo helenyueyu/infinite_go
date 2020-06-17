@@ -76,7 +76,7 @@ class Questions extends React.Component {
 
     render() {
         let {questions, search, metas: { stats: {questionCount }}} = this.props; 
-        if (!questions || !questionCount || !search) return null; 
+        if (!questions || !search) return null; 
 
         const [pages, bp1, bp2] = this.generatePageNumbers(questionCount, search.pageLimit, search.pageNumber); 
         if (questions) {

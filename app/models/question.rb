@@ -50,7 +50,8 @@ class Question < ApplicationRecord
         self.answers.where('accepted = true').count == 1
     end
 
-    def self.get_random(num) 
+    def self.get_random(num)
+        return [] if self.all.size < num 
         chosen = []
         res = [] 
         size = Question.all.size 
