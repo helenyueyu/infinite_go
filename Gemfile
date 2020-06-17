@@ -5,6 +5,7 @@ ruby '2.5.1'
 
 ### newly added 
 gem 'jquery-rails'
+gem 'seed_dump'
 ###
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

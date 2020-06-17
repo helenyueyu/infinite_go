@@ -27,12 +27,7 @@ class Question extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchQuestion(this.props.match.params.questionId)
-            .then(question => {
-                // console.log(question)
-                // console.log(question.question.body)
-                console.log(convertFromRaw(JSON.parse(question.question.body)))
-            })
+        this.props.fetchQuestion(this.props.match.params.questionId); 
     }
 
     handleDelete() {
@@ -45,18 +40,11 @@ class Question extends React.Component {
         
         let { currentUser, question } = this.props; 
         let { id, title, body, user, createdAt, comments, tags, voteCount } = question;
-
-        // debugger; 
         if (!comments || !tags) return null; 
 
-        console.log('body', body); 
-        console.log('JSON body', JSON.parse(body)); 
-        console.log('raw JSON body', convertFromRaw(JSON.parse(body))); 
-        console.log("current content", EditorState.createWithContent(convertFromRaw(JSON.parse(body)))); 
         const currentContent = EditorState.createWithContent(
           convertFromRaw(JSON.parse(body))
         );
-        // const storedState = convertFromRaw(JSON.parse(body));
 
         return (
           <div>
