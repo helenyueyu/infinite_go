@@ -46,9 +46,9 @@ class QuestionForm extends React.Component {
         body: editorState 
     });
 
-    const contentState = editorState.getCurrentContent();
-    console.log(this.state); 
-    console.log(JSON.stringify(convertToRaw(contentState)));
+    // const contentState = editorState.getCurrentContent();
+    // console.log(this.state); 
+    // console.log(JSON.stringify(convertToRaw(contentState)));
   }
 
   handleSubmit(e) {
@@ -60,7 +60,7 @@ class QuestionForm extends React.Component {
         title: this.state.title, 
         body: JSON.stringify(convertToRaw(contentState))
     }
-    console.log('post', post); 
+    // console.log('post', post); 
     this.props
         .action(post)
         .then(() => this.props.history.push(`/questions/${this.state.id}`))
