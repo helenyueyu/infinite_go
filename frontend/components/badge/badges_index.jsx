@@ -7,11 +7,22 @@ class BadgesIndex extends React.Component {
             name: "",
             description: "",
             category: "",
-            medal_type: ""
+            medal_type: "", 
+            badges: []  
         }
     }
     componentDidMount() {
-        this.props.fetchBadges(); 
+        this.props.fetchBadges()
+    }
+
+    componentDidUpdate(prevProps) {
+        console.log(prevProps.badges); 
+        console.log(this.props.badges); 
+        if (Object.values(prevProps.badges).length !== Object.values(this.props.badges).length) {
+            this.setState({
+                badges: Object.values(this.props.badges)
+            })
+        }
     }
 
     handleChange(e, field) {
@@ -49,13 +60,17 @@ class BadgesIndex extends React.Component {
         return h; 
     }
 
-    render() {
-        const { badges } = this.props; 
-        const badgeGroups = this.groupBadges(Object.values(badges)); 
-        if (Object.keys(badgeGroups).length === 0) return null; 
+    filterBadges(type) {
+        this.setState({
+            badges: type === "" ? Object.values(this.props.badges) : Object.values(this.props.badges).filter(badge => badge.medalType === type)
+        })
+    }
 
-        // console.log(this.groupBadges(Object.values(badges)))
-        // console.log('badges', this.props.badges); 
+    render() {
+        // const { badges } = this.props; 
+        // console.log('state', this.state)
+        const badgeGroups = this.groupBadges(Object.values(this.state.badges)); 
+        if (Object.keys(badgeGroups).length === 0) return null;  
         return (
             <div className="badges_index">
                 <h1 className="badges_index-title">Badges</h1>
@@ -63,6 +78,12 @@ class BadgesIndex extends React.Component {
                     <div className="badges_index-left">
                         <div className="badges_index-description">
                             Besides gaining reputation with your questions and answers, you receive badges for being especially helpful. Badges appear on your profile page, flair, and your posts.
+                        </div>
+                        <div>
+                            <button onClick={() => this.filterBadges('')}>All</button>
+                            <button onClick={() => this.filterBadges('gold')}>Gold</button>
+                            <button onClick={() => this.filterBadges('silver')}>Silver</button>
+                            <button onClick={() => this.filterBadges('bronze')}>Bronze</button>
                         </div>
                         {Object.keys(badgeGroups).map((group, idx) => 
                             <div key={idx}>
