@@ -12,76 +12,87 @@ import Editor from "draft-js-plugins-editor";
 
 
 class QuestionForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            user_id: this.props.userId,
-            id: this.props.type === "new" ? "" : this.props.match.params.questionId,
-            title: "",
-            body: EditorState.createEmpty()
-        };
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    componentDidMount() {
-        if (this.props.type === "edit") {
-            this.props.fetchQuestion(this.props.match.params.questionId).then(() =>
-                this.setState({
-                    title: this.props.question.title,
-                    body: EditorState.createWithContent(convertFromRaw(JSON.parse(this.props.question.body)))
-                })
-        );
-        }
-    }
-
-    handleTitle(e) {
-        e.preventDefault();
-        this.setState({
-            title: e.target.value
-        });
-    }
-
-    onChange = editorState => {
-        this.setState({
-            body: editorState 
-        });
-
-        // const contentState = editorState.getCurrentContent();
-        // console.log(this.state); 
-        // console.log(JSON.stringify(convertToRaw(contentState)));
-    }
-
-    handleSubmit(e) {
-        e.preventDefault();
-        const contentState = this.state.body.getCurrentContent();
-        let post = {
-            user_id: this.props.userId,
-            id: this.props.type === "new" ? "" : this.props.match.params.questionId, 
-            title: this.state.title, 
-            body: JSON.stringify(convertToRaw(contentState))
-        }
-        this.props.action(post)
-        this.props.history.push(`/questions/${this.state.id}`);
-        // .then(() => this.props.history.push(`/questions/${this.state.id}`))
-    }
-
-    handleKeyCommand = command => {
-        const newState = RichUtils.handleKeyCommand(
-            this.state.editorState,
-            command
-        );
-        if (newState) {
-            this.onChange(newState);
-            return "handled";
-        }
-        return "not-handled";
+  constructor(props) {
+    super(props);
+    this.state = {
+      user_id: this.props.userId,
+      id: this.props.type === "new" ? "" : this.props.match.params.questionId,
+      title: "",
+      body: EditorState.createEmpty()
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-  	onBoldClick = (e) => {
-        e.preventDefault(); 
-		this.onChange(RichUtils.toggleInlineStyle(this.state.body, "BOLD"));
-	};
+  componentDidMount() {
+    if (this.props.type === "edit") {
+      this.props.fetchQuestion(this.props.match.params.questionId).then(() =>
+        this.setState({
+          title: this.props.question.title,
+          body: EditorState.createWithContent(
+            convertFromRaw(JSON.parse(this.props.question.body))
+          )
+        })
+      );
+    }
+  }
 
+  handleTitle(e) {
+    e.preventDefault();
+    this.setState({
+      title: e.target.value
+    });
+  }
+
+  onChange = editorState => {
+    this.setState({
+      body: editorState
+    });
+
+    // const contentState = editorState.getCurrentContent();
+    // console.log(this.state);
+    // console.log(JSON.stringify(convertToRaw(contentState)));
+  };
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const contentState = this.state.body.getCurrentContent();
+    let post = {
+      user_id: this.props.userId,
+      id: this.props.type === "new" ? "" : this.props.match.params.questionId,
+      title: this.state.title,
+      body: JSON.stringify(convertToRaw(contentState))
+    };
+    this.props.action(post);
+    this.props.history.push(`/questions/${this.state.id}`);
+    // .then(() => this.props.history.push(`/questions/${this.state.id}`))
+  }
+
+  handleKeyCommand = command => {
+    const newState = RichUtils.handleKeyCommand(
+      this.state.editorState,
+      command
+    );
+    if (newState) {
+      this.onChange(newState);
+      return "handled";
+    }
+    return "not-handled";
+  };
+
+  onBoldClick = e => {
+    e.preventDefault();
+    this.onChange(RichUtils.toggleInlineStyle(this.state.body, "BOLD"));
+  };
+
+  onItalicClick = e => {
+    e.preventDefault();
+    this.onChange(RichUtils.toggleInlineStyle(this.state.body, "ITALIC"));
+  };
+
+  onUnderlineClick = e => {
+    e.preventDefault(); 
+    this.onChange(RichUtils.toggleInlineStyle(this.state.body, "UNDERLINE"));
+  };
 
   render() {
     if (!this.props.question && this.props.type === "edit") return null;
@@ -103,6 +114,11 @@ class QuestionForm extends React.Component {
               Body
               <div>
                 <button onClick={this.onBoldClick}>B</button>
+                <button onClick={this.onItalicClick}>
+                  <em>I</em>
+                </button>
+                <button onClick={this.onUnderlineClick}>U</button>
+
                 <div className="editors">
                   <Editor
                     editorState={this.state.body}
@@ -112,10 +128,10 @@ class QuestionForm extends React.Component {
                 </div>
               </div>
               {/* <textarea
-                    className="question_form-textarea"
-                    onChange={e => this.handleChange(e, "body")}
-                    value={this.state["body"]}
-                  /> */}
+                        className="question_form-textarea"
+                        onChange={e => this.handleChange(e, "body")}
+                        value={this.state["body"]}
+                    /> */}
             </label>
           </div>
 
