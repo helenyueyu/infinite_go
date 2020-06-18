@@ -46,6 +46,8 @@ class Question extends React.Component {
           convertFromRaw(JSON.parse(body))
         );
 
+        // console.log("questionContent", currentContent); 
+
         return (
           <div cLassName="question">
             <div className="question-info">

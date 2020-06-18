@@ -25,6 +25,10 @@
   margin-top: 10px;
 }
 
+// .RichEditor-editor > li {
+//   display: circle; 
+// }
+
 .RichEditor-editor .public-DraftEditorPlaceholder-root,
 .RichEditor-editor .public-DraftEditor-content {
   margin: 0 -15px -15px;
@@ -50,14 +54,18 @@
 
 pre {
   overflow-x: scroll; 
-  margin-right: 2rem; 
+  // margin-right: 2rem; 
+  background: $code;
+  border-radius: 2.5px; 
+  padding-left: 0.25rem;  
+  padding-right: 0.25rem;  
 }
 .RichEditor-editor .public-DraftStyleDefault-pre > pre {
-  background-color: rgba(0, 0, 0, 0.05);
-  font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
-  font-size: 16px;
-  padding: 20px;
-  margin-bottom: 20px;
+  // background-color: rgba(0, 0, 0, 0.05);
+  // font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
+  // font-size: 16px;
+  // padding: 20px;
+  // margin-bottom: 20px;
 }
 
 .RichEditor-controls {
