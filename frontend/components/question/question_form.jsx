@@ -140,7 +140,7 @@ class QuestionForm extends React.Component {
       user_id: this.props.userId,
       id: this.props.type === "new" ? "" : this.props.match.params.questionId,
       title: "",
-      editorState: EditorState.createWithContent(contentState, decorator)
+      editorState: EditorState.createEmpty(decorator)
     };
     this.focus = () => this.refs.editor.focus();
     this.onChange = editorState => this.setState({ editorState });
