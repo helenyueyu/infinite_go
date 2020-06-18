@@ -67,7 +67,13 @@ class User < ApplicationRecord
     
     has_many :tags, 
         through: :taggables, 
-        source: :tag 
+        source: :tag, 
+        dependent: :destroy 
+
+    has_many :bookmarks, 
+        class_name: :Bookmark, 
+        foreign_key: :user_id, 
+        dependent: :destroy 
 
     def change_reputation(num)
         self.reputation += num 

@@ -20,10 +20,13 @@ Rails.application.routes.draw do
       resources :votes, only: [:create]
       resources :comments, only: [:create, :destroy]
       
+      resources :tags, only: [:create, :destroy, :show, :index]
       resources :taggables, only: [:create, :destroy]
 
-      resources :tags, only: [:create, :destroy, :show, :index]
       resources :badges, only: [:index, :create, :destroy]
+
+      resources :bookmarks, only: [:create, :destroy]
+
       resources :metas, only: [:index]
     end
     

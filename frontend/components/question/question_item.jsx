@@ -8,15 +8,17 @@ import { Editor, EditorState, convertFromRaw, ContentBlock } from "draft-js";
 
 class QuestionItem extends React.Component {
     renderQuestionSnippet(body) {
-      return JSON.parse(body).blocks.map(x => new ContentBlock(x)).map(x => x.getText()).join(' '); 
+      let x = JSON.parse(body).blocks; 
+      console.log(x); 
+      // console.log(y); 
+      // return x; 
     }
 
     render() {
         let {id, title, body, user, question, tags} = this.props; 
-        console.log("JSON.parse", JSON.parse(body).blocks.map(x => {
-          let temp = new ContentBlock(x); 
-          return temp.getText(); 
-        }))
+        this.renderQuestionSnippet(body); 
+
+        // console.log("JSON.parse", convertFromRaw(JSON.parse(body))); 
 
         // const contentBlock = {
         //   blocks: JSON.parse(body), 
@@ -40,7 +42,7 @@ class QuestionItem extends React.Component {
               </Link>
             </div>
             <div className="question_item-body">
-              {this.renderQuestionSnippet(body)}
+              {/* {this.renderQuestionSnippet(body)} */}
               {/* <Editor editorState={currentContent} readOnly={true} /> */}
             </div>
 
