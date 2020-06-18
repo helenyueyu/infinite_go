@@ -1,14 +1,115 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { EditorState, 
+import { Editor, 
+        EditorState, 
         RichUtils, 
-        AtomicBlockUtils, 
-        SelectionState, 
         convertToRaw, 
-        convertFromRaw, 
-        CompositeDecorator } from 'draft-js'; 
-import Editor from "draft-js-plugins-editor";
+        convertFromRaw } from 'draft-js'; 
+
+const styleMap = {
+  CODE: {
+    backgroundColor: "rgba(0, 0, 0, 0.1)",
+    fontFamily: '"Consolas", monospace',
+    fontSize: 16,
+    padding: 2
+  }
+};
+
+function getBlockStyle(block) {
+  switch (block.getType()) {
+    case "blockquote":
+      return "RichEditor-blockquote";
+    default:
+      return null;
+  }
+}
+
+class StyleButton extends React.Component {
+  constructor() {
+    super();
+    this.onToggle = e => {
+      e.preventDefault();
+      this.props.onToggle(this.props.style);
+    };
+  }
+
+  render() {
+    let className = "RichEditor-styleButton";
+    if (this.props.active) {
+      className += " RichEditor-activeButton";
+    }
+
+    return (
+      <span className={className} onMouseDown={this.onToggle}>
+        {this.props.label}
+      </span>
+    );
+  }
+}
+
+const BLOCK_TYPES = [
+  { label: "H1", style: "header-one" },
+  { label: "H2", style: "header-two" },
+  { label: "H3", style: "header-three" },
+  { label: "H4", style: "header-four" },
+  { label: "H5", style: "header-five" },
+  { label: "H6", style: "header-six" },
+  { label: "Blockquote", style: "blockquote" },
+  { label: "UL", style: "unordered-list-item" },
+  { label: "OL", style: "ordered-list-item" },
+  { label: "Code Block", style: "code-block" }
+];
+
+const BlockStyleControls = props => {
+  const { editorState } = props;
+  const selection = editorState.getSelection();
+  const blockType = editorState
+    .getCurrentContent()
+    .getBlockForKey(selection.getStartKey())
+    .getType();
+
+  return (
+    <div className="RichEditor-controls">
+      {BLOCK_TYPES.map(type => (
+        <StyleButton
+          key={type.label}
+          active={type.style === blockType}
+          label={type.label}
+          onToggle={props.onToggle}
+          style={type.style}
+        />
+      ))}
+    </div>
+  );
+};
+
+const INLINE_STYLES = [
+  { label: "Bold", style: "BOLD" },
+  { label: "Italic", style: "ITALIC" },
+  { label: "Underline", style: "UNDERLINE" },
+  { label: "Monospace", style: "CODE" }
+];
+
+const InlineStyleControls = props => {
+  var currentStyle = props.editorState.getCurrentInlineStyle();
+  return (
+    <div className="RichEditor-controls">
+      {INLINE_STYLES.map(type => (
+        <StyleButton
+          key={type.label}
+          active={currentStyle.has(type.style)}
+          label={type.label}
+          onToggle={props.onToggle}
+          style={type.style}
+        />
+      ))}
+    </div>
+  );
+};
+
+
+
 
 
 class QuestionForm extends React.Component {
@@ -18,8 +119,17 @@ class QuestionForm extends React.Component {
       user_id: this.props.userId,
       id: this.props.type === "new" ? "" : this.props.match.params.questionId,
       title: "",
-      body: EditorState.createEmpty()
+      editorState: EditorState.createEmpty()
     };
+    this.focus = () => this.refs.editor.focus();
+    this.onChange = editorState => this.setState({ editorState });
+
+    this.handleKeyCommand = command => this._handleKeyCommand(command);
+    this.onTab = e => this._onTab(e);
+
+    this.toggleBlockType = type => this._toggleBlockType(type);
+    this.toggleInlineStyle = style => this._toggleInlineStyle(style);
+
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -28,12 +138,40 @@ class QuestionForm extends React.Component {
       this.props.fetchQuestion(this.props.match.params.questionId).then(() =>
         this.setState({
           title: this.props.question.title,
-          body: EditorState.createWithContent(
+          editorState: EditorState.createWithContent(
             convertFromRaw(JSON.parse(this.props.question.body))
           )
         })
       );
     }
+  }
+
+  _onTab(e) {
+    const maxDepth = 4;
+    this.onChange(RichUtils.onTab(e, this.state.editorState, maxDepth));
+  }
+
+  _toggleBlockType(blockType) {
+    this.onChange(RichUtils.toggleBlockType(this.state.editorState, blockType));
+  }
+
+  _toggleInlineStyle(inlineStyle) {
+    this.onChange(
+      RichUtils.toggleInlineStyle(this.state.editorState, inlineStyle)
+    );
+  }
+
+  _handleKeyCommand(command) {
+    const { editorState } = this.state;
+    const newState = RichUtils.handleKeyCommand(
+      editorState,
+      command
+    );
+    if (newState) {
+      this.onChange(newState);
+      return true;
+    }
+    return false;
   }
 
   handleTitle(e) {
@@ -43,19 +181,9 @@ class QuestionForm extends React.Component {
     });
   }
 
-  onChange = editorState => {
-    this.setState({
-      body: editorState
-    });
-
-    // const contentState = editorState.getCurrentContent();
-    // console.log(this.state);
-    // console.log(JSON.stringify(convertToRaw(contentState)));
-  };
-
   handleSubmit(e) {
     e.preventDefault();
-    const contentState = this.state.body.getCurrentContent();
+    const contentState = this.state.editorState.getCurrentContent();
     let post = {
       user_id: this.props.userId,
       id: this.props.type === "new" ? "" : this.props.match.params.questionId,
@@ -64,38 +192,23 @@ class QuestionForm extends React.Component {
     };
     this.props.action(post);
     this.props.history.push(`/questions/${this.state.id}`);
-    // .then(() => this.props.history.push(`/questions/${this.state.id}`))
   }
-
-  handleKeyCommand = command => {
-    const newState = RichUtils.handleKeyCommand(
-      this.state.editorState,
-      command
-    );
-    if (newState) {
-      this.onChange(newState);
-      return "handled";
-    }
-    return "not-handled";
-  };
-
-  onBoldClick = e => {
-    e.preventDefault();
-    this.onChange(RichUtils.toggleInlineStyle(this.state.body, "BOLD"));
-  };
-
-  onItalicClick = e => {
-    e.preventDefault();
-    this.onChange(RichUtils.toggleInlineStyle(this.state.body, "ITALIC"));
-  };
-
-  onUnderlineClick = e => {
-    e.preventDefault(); 
-    this.onChange(RichUtils.toggleInlineStyle(this.state.body, "UNDERLINE"));
-  };
 
   render() {
     if (!this.props.question && this.props.type === "edit") return null;
+    const { editorState } = this.state;
+    let className = "RichEditor-editor";
+    const contentState = editorState.getCurrentContent();
+    if (!contentState.hasText()) {
+      if (
+        contentState
+          .getBlockMap()
+          .first()
+          .getType() !== "unstyled"
+      ) {
+        className += " RichEditor-hidePlaceholder";
+      }
+    }
     return (
       <div className="question_form">
         <form onSubmit={this.handleSubmit}>
@@ -109,29 +222,33 @@ class QuestionForm extends React.Component {
             </label>
           </div>
 
-          <div key="body" className="question_form-element">
+          <div key="unique_editor" className="question_form-element">
             <label>
               Body
-              <div>
-                <button onClick={this.onBoldClick}>B</button>
-                <button onClick={this.onItalicClick}>
-                  <em>I</em>
-                </button>
-                <button onClick={this.onUnderlineClick}>U</button>
+              <div className="RichEditor-root">
+                <BlockStyleControls
+                  editorState={editorState}
+                  onToggle={this.toggleBlockType}
+                />
+                <InlineStyleControls
+                  editorState={editorState}
+                  onToggle={this.toggleInlineStyle}
+                />
 
-                <div className="editors">
+                <div className={className} onClick={this.focus}>
                   <Editor
-                    editorState={this.state.body}
+                    blockStyleFn={getBlockStyle}
+                    customStyleMap={styleMap}
+                    editorState={editorState}
                     handleKeyCommand={this.handleKeyCommand}
                     onChange={this.onChange}
+                    onTab={this.onTab}
+                    placeholder="Tell a story..."
+                    ref="editor"
+                    spellCheck={true}
                   />
                 </div>
               </div>
-              {/* <textarea
-                        className="question_form-textarea"
-                        onChange={e => this.handleChange(e, "body")}
-                        value={this.state["body"]}
-                    /> */}
             </label>
           </div>
 
@@ -146,3 +263,4 @@ class QuestionForm extends React.Component {
 }
 
 export default QuestionForm; 
+
