@@ -8,7 +8,9 @@
 .profile_snippet-date {
     font-size: $little-size; 
 }
-
+.profile_snippet-username-link {
+    text-decoration: none; 
+}
 .profile_snippet-username {
     color: $red; 
     padding-bottom: 0.2rem; 

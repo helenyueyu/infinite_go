@@ -11,7 +11,7 @@ const ProfileSnippet = ({username, timestamp, reputation, medals, type, id}) => 
             <div className="profile_snippet-main">
                 <img className="profile_snippet-pic" src="/assets/bug_mojo.png"></img>
                 <div>
-                    <Link to={`/users/${id}`}>
+                    <Link className="profile_snippet-username-link" to={`/users/${id}`}>
                         <div className="profile_snippet-username">{username}</div>
                     </Link>
                     

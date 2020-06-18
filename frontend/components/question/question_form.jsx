@@ -14,27 +14,7 @@ const {
 } = Draft; 
 
 import InlineStyleControls from '../editor/inline_style_controls'; 
-import BlockStyleControls from '../editor/block_style_controls'; 
-
-const styleMap = {
-  CODE: {
-    backgroundColor: "rgba(0, 0, 0, 0.1)",
-    fontFamily: '"Consolas", monospace',
-    fontSize: 16,
-    padding: 2
-  }
-};
-
-
-function getBlockStyle(block) {
-  switch (block.getType()) {
-    case "blockquote":
-      return "RichEditor-blockquote";
-    default:
-      return null;
-  }
-}
-
+import BlockStyleControls, { getBlockStyle } from '../editor/block_style_controls'; 
 
 class QuestionForm extends React.Component {
   constructor(props) {
@@ -112,15 +92,12 @@ class QuestionForm extends React.Component {
   _handleKeyCommand(command) {
     const { editorState } = this.state;
     let newState;
-
     if (CodeUtils.hasSelectionInBlock(editorState)) {
       newState = CodeUtils.handleKeyCommand(editorState, command);
     }
-
     if (!newState) {
       newState = RichUtils.handleKeyCommand(editorState, command);
     }
-
     if (newState) {
       this.onChange(newState);
       return true;
@@ -178,16 +155,13 @@ class QuestionForm extends React.Component {
                   editorState={editorState}
                   onToggle={this.toggleBlockType}
                 />
-
                 <InlineStyleControls
                   editorState={editorState}
                   onToggle={this.toggleInlineStyle}
                 />
-
                 <div className={className} onClick={this.focus}>
                   <Editor
                     blockStyleFn={getBlockStyle}
-                    customStyleMap={styleMap}
                     editorState={editorState}
                     handleKeyCommand={this.handleKeyCommand}
                     keyBindingFn={this.keyBindingFn}
@@ -202,7 +176,6 @@ class QuestionForm extends React.Component {
               </div>
             </label>
           </div>
-
           <button type="submit">Submit</button>
         </form>
         <div>

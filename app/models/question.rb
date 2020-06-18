@@ -31,7 +31,8 @@ class Question < ApplicationRecord
 
     has_many :tags, 
         through: :taggables, 
-        source: :tag
+        source: :tag, 
+        dependent: :destroy 
 
 
     def view_count
