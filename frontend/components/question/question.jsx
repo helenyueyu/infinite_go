@@ -47,7 +47,7 @@ class Question extends React.Component {
         );
 
         return (
-          <div>
+          <div cLassName="question">
             <div className="question-info">
               <VoteContainer
                 voteable_id={id}

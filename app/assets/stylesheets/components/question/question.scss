@@ -1,3 +1,11 @@
+.question {
+    padding-right: 5rem; 
+}
+
+.question-info {
+    display: flex; 
+    align-items: flex-start; 
+}
 .question-title {
     color: $red; 
     font-size: $big-title-size; 
@@ -22,4 +30,10 @@
 
 .question-info {
     display: flex; 
+}
+
+.DraftEditor-root {
+    width: 50vw; 
+    // padding-left: 1rem; 
+    // padding-right: 1rem; 
 }

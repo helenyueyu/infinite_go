@@ -17,15 +17,21 @@ class StyleButton extends React.Component {
     const { label } = this.props;
     return (
       <span className={className} onMouseDown={this.onToggle}>
-        {label === "Bold" ? (
-          <i class="fas fa-bold"></i>
+        {label === "Code Block" ? (
+          <i className="fas fa-code"></i>
+        ) : label === "OL" ? (
+          <i className="fas fa-list-ol"></i>
+        ) : label === "UL" ? (
+          <i className="fas fa-list"></i>
+        ) : label === "Blockquote" ? (
+          <i className="fas fa-quote-right"></i>
+        ) : label === "Bold" ? (
+          <i className="fas fa-bold"></i>
         ) : label === "Italic" ? (
-          <i class="fas fa-italic"></i>
+          <i className="fas fa-italic"></i>
         ) : label === "Underline" ? (
-          <i class="fas fa-underline"></i>
-        ) : (
-          <i class="fas fa-code"></i>
-        )}
+          <i className="fas fa-underline"></i>
+        ) : label}
       </span>
     );
   }

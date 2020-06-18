@@ -1,11 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Editor, 
-        EditorState, 
-        RichUtils, 
-        convertToRaw, 
-        convertFromRaw } from 'draft-js'; 
+import Draft from 'draft-js'; 
+import PrismDraftDecorator from 'draft-js-prism'; 
+import CodeUtils from 'draft-js-code'; 
+
+const { 
+  Editor, 
+  EditorState, 
+  RichUtils, 
+  convertToRaw, 
+  convertFromRaw 
+} = Draft; 
+
+// import { Editor, 
+//         EditorState, 
+//         RichUtils, 
+//         convertToRaw, 
+//         convertFromRaw } from 'draft-js'; 
 
 import StyleButton from '../editor/style_button'; 
 
@@ -18,6 +30,13 @@ const styleMap = {
   }
 };
 
+const FIRST_CODE =
+  'var message = "Hello World"\n    + "with four spaces indentation"\n\nconsole.log(message);';
+const SECOND_CODE =
+  'var message = "Hello World"\n  + "with 2 spaces indentation"\n\nconsole.log(message);';
+
+
+
 function getBlockStyle(block) {
   switch (block.getType()) {
     case "blockquote":
@@ -26,8 +45,6 @@ function getBlockStyle(block) {
       return null;
   }
 }
-
-
 
 const BLOCK_TYPES = [
   { label: "H1", style: "header-one" },
@@ -92,17 +109,47 @@ const InlineStyleControls = props => {
 class QuestionForm extends React.Component {
   constructor(props) {
     super(props);
+    const decorator = new PrismDraftDecorator();
+    const contentState = convertFromRaw({
+      entityMap: {},
+      blocks: [
+        {
+          type: "header-one",
+          text: "Demo for draft-js-code"
+        },
+        {
+          type: "unstyled",
+          text: "4 spaces indentation"
+        },
+        {
+          type: "code-block",
+          text: FIRST_CODE
+        },
+        {
+          type: "unstyled",
+          text: "2 spaces indentation"
+        },
+        {
+          type: "code-block",
+          text: SECOND_CODE
+        }
+      ]
+    });
+
     this.state = {
       user_id: this.props.userId,
       id: this.props.type === "new" ? "" : this.props.match.params.questionId,
       title: "",
-      editorState: EditorState.createEmpty()
+      editorState: EditorState.createWithContent(contentState, decorator)
     };
     this.focus = () => this.refs.editor.focus();
     this.onChange = editorState => this.setState({ editorState });
 
     this.handleKeyCommand = command => this._handleKeyCommand(command);
+    this.keyBindingFn = e => this._keyBindingFn(e);
+
     this.onTab = e => this._onTab(e);
+    this.onReturn = e => this._onReturn(e);
 
     this.toggleBlockType = type => this._toggleBlockType(type);
     this.toggleInlineStyle = style => this._toggleInlineStyle(style);
@@ -123,9 +170,18 @@ class QuestionForm extends React.Component {
     }
   }
 
-  _onTab(e) {
-    const maxDepth = 4;
-    this.onChange(RichUtils.onTab(e, this.state.editorState, maxDepth));
+  _keyBindingFn(e) {
+    const { editorState } = this.state;
+    let command;
+
+    if (CodeUtils.hasSelectionInBlock(editorState)) {
+      command = CodeUtils.getKeyBinding(e);
+    }
+    if (command) {
+      return command;
+    }
+
+    return Draft.getDefaultKeyBinding(e);
   }
 
   _toggleBlockType(blockType) {
@@ -138,17 +194,44 @@ class QuestionForm extends React.Component {
     );
   }
 
+  _onTab(e) {
+    const { editorState } = this.state;
+
+    if (!CodeUtils.hasSelectionInBlock(editorState)) {
+      return;
+    }
+
+    this.onChange(CodeUtils.onTab(e, editorState));
+  }
+
+  _onReturn(e) {
+    const { editorState } = this.state;
+
+    if (!CodeUtils.hasSelectionInBlock(editorState)) {
+      return;
+    }
+
+    this.onChange(CodeUtils.handleReturn(e, editorState));
+    return true;
+  }
+
   _handleKeyCommand(command) {
     const { editorState } = this.state;
-    const newState = RichUtils.handleKeyCommand(
-      editorState,
-      command
-    );
+    let newState;
+
+    if (CodeUtils.hasSelectionInBlock(editorState)) {
+      newState = CodeUtils.handleKeyCommand(editorState, command);
+    }
+
+    if (!newState) {
+      newState = RichUtils.handleKeyCommand(editorState, command);
+    }
+
     if (newState) {
       this.onChange(newState);
       return true;
     }
-    return false;
+    return false; 
   }
 
   handleTitle(e) {
@@ -170,8 +253,6 @@ class QuestionForm extends React.Component {
     this.props.action(post);
     this.props.history.push(`/questions/${this.state.id}`);
   }
-
-    
 
   render() {
     if (!this.props.question && this.props.type === "edit") return null;
@@ -205,7 +286,11 @@ class QuestionForm extends React.Component {
             <label>
               Body
               <div className="RichEditor-root">
-    
+                <BlockStyleControls
+                  editorState={editorState}
+                  onToggle={this.toggleBlockType}
+                />
+
                 <InlineStyleControls
                   editorState={editorState}
                   onToggle={this.toggleInlineStyle}
@@ -217,11 +302,13 @@ class QuestionForm extends React.Component {
                     customStyleMap={styleMap}
                     editorState={editorState}
                     handleKeyCommand={this.handleKeyCommand}
+                    keyBindingFn={this.keyBindingFn}
                     onChange={this.onChange}
-                    onTab={this.onTab}
-                    placeholder="Tell a story..."
+                    placeholder="Write a question..."
                     ref="editor"
                     spellCheck={true}
+                    handleReturn={this.onReturn}
+                    onTab={this.onTab}
                   />
                 </div>
               </div>
