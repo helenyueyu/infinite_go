@@ -49,7 +49,7 @@ class ProfileIndex extends React.Component {
                             {row.map((user, idx) => (
                                 <div key={idx} className="profile_index-item">
                                     <div>
-                                        <img className="profile_index-image" src="/assets/favicon-512x512.png" />
+                                        <img className="profile_index-image" src="/assets/bug_mojo.png" />
                                     </div>
 
                                     <div className="profile_index-item-detail">

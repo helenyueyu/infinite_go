@@ -9,7 +9,7 @@ const ProfileSnippet = ({username, timestamp, reputation, medals, type, id}) => 
             <div className="profile_snippet-date">{type} {timestamp}</div>
 
             <div className="profile_snippet-main">
-                <img className="profile_snippet-pic" src="/assets/favicon-512x512.png"></img>
+                <img className="profile_snippet-pic" src="/assets/bug_mojo.png"></img>
                 <div>
                     <Link to={`/users/${id}`}>
                         <div className="profile_snippet-username">{username}</div>

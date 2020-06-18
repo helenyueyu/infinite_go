@@ -2,7 +2,7 @@ import React from 'react';
 
 const ProfileImage = ({reputation, medals}) => (
     <div className="profile_top-image-container">
-        <img className="profile_top-image" src="/assets/favicon-512x512.png" />
+        <img className="profile_top-image" src="/assets/bug_mojo.png" />
         <div className="profile-reputation">
             <div className="profile-reputation-number">{reputation}</div>
             <div className="profile-reputation-text">reputation</div>
