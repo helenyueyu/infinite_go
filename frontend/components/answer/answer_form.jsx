@@ -1,4 +1,5 @@
 import React from 'react';
+import PrismEditorExample from './test'; 
 
 class AnswerForm extends React.Component {
     constructor(props) {
@@ -29,6 +30,7 @@ class AnswerForm extends React.Component {
     render() {
         return (
             <div className="answer_form">
+                <PrismEditorExample />
                 <form onSubmit={this.handleSubmit}>
 
                     <label>Your Answer 

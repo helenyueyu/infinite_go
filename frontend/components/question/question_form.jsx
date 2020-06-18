@@ -7,6 +7,8 @@ import { Editor,
         convertToRaw, 
         convertFromRaw } from 'draft-js'; 
 
+import StyleButton from '../editor/style_button'; 
+
 const styleMap = {
   CODE: {
     backgroundColor: "rgba(0, 0, 0, 0.1)",
@@ -25,28 +27,7 @@ function getBlockStyle(block) {
   }
 }
 
-class StyleButton extends React.Component {
-  constructor() {
-    super();
-    this.onToggle = e => {
-      e.preventDefault();
-      this.props.onToggle(this.props.style);
-    };
-  }
 
-  render() {
-    let className = "RichEditor-styleButton";
-    if (this.props.active) {
-      className += " RichEditor-activeButton";
-    }
-
-    return (
-      <span className={className} onMouseDown={this.onToggle}>
-        {this.props.label}
-      </span>
-    );
-  }
-}
 
 const BLOCK_TYPES = [
   { label: "H1", style: "header-one" },
@@ -85,7 +66,7 @@ const BlockStyleControls = props => {
 };
 
 const INLINE_STYLES = [
-  { label: "Bold", style: "BOLD" },
+  { label: "Bold",  style: "BOLD" },
   { label: "Italic", style: "ITALIC" },
   { label: "Underline", style: "UNDERLINE" },
   { label: "Monospace", style: "CODE" }
@@ -107,10 +88,6 @@ const InlineStyleControls = props => {
     </div>
   );
 };
-
-
-
-
 
 class QuestionForm extends React.Component {
   constructor(props) {
@@ -194,6 +171,8 @@ class QuestionForm extends React.Component {
     this.props.history.push(`/questions/${this.state.id}`);
   }
 
+    
+
   render() {
     if (!this.props.question && this.props.type === "edit") return null;
     const { editorState } = this.state;
@@ -226,10 +205,7 @@ class QuestionForm extends React.Component {
             <label>
               Body
               <div className="RichEditor-root">
-                <BlockStyleControls
-                  editorState={editorState}
-                  onToggle={this.toggleBlockType}
-                />
+    
                 <InlineStyleControls
                   editorState={editorState}
                   onToggle={this.toggleInlineStyle}

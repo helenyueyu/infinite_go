@@ -1,5 +1,12 @@
+/* 
+Note: 
+	* Comment out list-tyle for ul & ol in order to get the block item buttons to successfully show (from the editor) 
+	* Remove the following: h1, h2, h3, h4, h5, h6, blockquote, pre (for editor reasons) 
+
+*/
+
 html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+p, 
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
@@ -14,7 +21,7 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 100%;
+	// font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
 }
@@ -27,7 +34,7 @@ body {
 	line-height: 1;
 }
 ol, ul {
-	list-style: none;
+	// list-style: none;
 }
 blockquote, q {
 	quotes: none;
