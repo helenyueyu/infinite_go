@@ -51,13 +51,17 @@ class Question extends React.Component {
         return (
           <div className="question">
             <div className="question-info">
-              <VoteContainer
-                voteable_id={id}
-                voteable_type="Question"
-                count={voteCount}
-                action={this.props.fetchQuestion}
-                info={this.props.search}
-              />
+              <div>
+                <VoteContainer
+                  voteable_id={id}
+                  voteable_type="Question"
+                  count={voteCount}
+                  action={this.props.fetchQuestion}
+                  info={this.props.search}
+                />
+                {/* <BookmarkContainer /> */}
+              </div>
+              
 
               <div>
                 <div className="question-title">{title}</div>
