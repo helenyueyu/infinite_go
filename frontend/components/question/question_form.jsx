@@ -110,31 +110,6 @@ class QuestionForm extends React.Component {
   constructor(props) {
     super(props);
     const decorator = new PrismDraftDecorator();
-    const contentState = convertFromRaw({
-      entityMap: {},
-      blocks: [
-        {
-          type: "header-one",
-          text: "Demo for draft-js-code"
-        },
-        {
-          type: "unstyled",
-          text: "4 spaces indentation"
-        },
-        {
-          type: "code-block",
-          text: FIRST_CODE
-        },
-        {
-          type: "unstyled",
-          text: "2 spaces indentation"
-        },
-        {
-          type: "code-block",
-          text: SECOND_CODE
-        }
-      ]
-    });
 
     this.state = {
       user_id: this.props.userId,
