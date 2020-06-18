@@ -13,13 +13,8 @@ const {
   convertFromRaw 
 } = Draft; 
 
-// import { Editor, 
-//         EditorState, 
-//         RichUtils, 
-//         convertToRaw, 
-//         convertFromRaw } from 'draft-js'; 
-
-import StyleButton from '../editor/style_button'; 
+import InlineStyleControls from '../editor/inline_style_controls'; 
+import BlockStyleControls from '../editor/block_style_controls'; 
 
 const styleMap = {
   CODE: {
@@ -40,65 +35,6 @@ function getBlockStyle(block) {
   }
 }
 
-const BLOCK_TYPES = [
-  { label: "H1", style: "header-one" },
-  { label: "H2", style: "header-two" },
-  { label: "H3", style: "header-three" },
-  { label: "H4", style: "header-four" },
-  { label: "H5", style: "header-five" },
-  { label: "H6", style: "header-six" },
-  { label: "Blockquote", style: "blockquote" },
-  { label: "UL", style: "unordered-list-item" },
-  { label: "OL", style: "ordered-list-item" },
-  { label: "Code Block", style: "code-block" }
-];
-
-const BlockStyleControls = props => {
-  const { editorState } = props;
-  const selection = editorState.getSelection();
-  const blockType = editorState
-    .getCurrentContent()
-    .getBlockForKey(selection.getStartKey())
-    .getType();
-
-  return (
-    <div className="RichEditor-controls">
-      {BLOCK_TYPES.map(type => (
-        <StyleButton
-          key={type.label}
-          active={type.style === blockType}
-          label={type.label}
-          onToggle={props.onToggle}
-          style={type.style}
-        />
-      ))}
-    </div>
-  );
-};
-
-const INLINE_STYLES = [
-  { label: "Bold",  style: "BOLD" },
-  { label: "Italic", style: "ITALIC" },
-  { label: "Underline", style: "UNDERLINE" },
-  { label: "Monospace", style: "CODE" }
-];
-
-const InlineStyleControls = props => {
-  var currentStyle = props.editorState.getCurrentInlineStyle();
-  return (
-    <div className="RichEditor-controls">
-      {INLINE_STYLES.map(type => (
-        <StyleButton
-          key={type.label}
-          active={currentStyle.has(type.style)}
-          label={type.label}
-          onToggle={props.onToggle}
-          style={type.style}
-        />
-      ))}
-    </div>
-  );
-};
 
 class QuestionForm extends React.Component {
   constructor(props) {
@@ -146,10 +82,7 @@ class QuestionForm extends React.Component {
     if (CodeUtils.hasSelectionInBlock(editorState)) {
       command = CodeUtils.getKeyBinding(e);
     }
-    if (command) {
-      return command;
-    }
-
+    if (command) return command;
     return Draft.getDefaultKeyBinding(e);
   }
 
@@ -165,21 +98,13 @@ class QuestionForm extends React.Component {
 
   _onTab(e) {
     const { editorState } = this.state;
-
-    if (!CodeUtils.hasSelectionInBlock(editorState)) {
-      return;
-    }
-
+    if (!CodeUtils.hasSelectionInBlock(editorState)) return;
     this.onChange(CodeUtils.onTab(e, editorState));
   }
 
   _onReturn(e) {
     const { editorState } = this.state;
-
-    if (!CodeUtils.hasSelectionInBlock(editorState)) {
-      return;
-    }
-
+    if (!CodeUtils.hasSelectionInBlock(editorState)) return;
     this.onChange(CodeUtils.handleReturn(e, editorState));
     return true;
   }
@@ -229,12 +154,7 @@ class QuestionForm extends React.Component {
     let className = "RichEditor-editor";
     const contentState = editorState.getCurrentContent();
     if (!contentState.hasText()) {
-      if (
-        contentState
-          .getBlockMap()
-          .first()
-          .getType() !== "unstyled"
-      ) {
+      if (contentState.getBlockMap().first().getType() !== "unstyled") {
         className += " RichEditor-hidePlaceholder";
       }
     }
@@ -253,7 +173,6 @@ class QuestionForm extends React.Component {
 
           <div key="unique_editor" className="question_form-element">
             <label>
-              Body
               <div className="RichEditor-root">
                 <BlockStyleControls
                   editorState={editorState}
