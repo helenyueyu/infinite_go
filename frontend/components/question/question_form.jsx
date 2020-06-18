@@ -30,12 +30,6 @@ const styleMap = {
   }
 };
 
-const FIRST_CODE =
-  'var message = "Hello World"\n    + "with four spaces indentation"\n\nconsole.log(message);';
-const SECOND_CODE =
-  'var message = "Hello World"\n  + "with 2 spaces indentation"\n\nconsole.log(message);';
-
-
 
 function getBlockStyle(block) {
   switch (block.getType()) {
