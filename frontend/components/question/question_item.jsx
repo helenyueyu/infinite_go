@@ -27,7 +27,7 @@ class QuestionItem extends React.Component {
             </div>
             <div className="question_item-body">
               {displayQuestion(this.renderQuestionSnippet(body), 150)}
-              ... 
+              &nbsp; ... 
             </div>
 
             <TagsContainer tags={tags} showDelete={false} />

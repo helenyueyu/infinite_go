@@ -22,6 +22,7 @@ const removeTag = tag => ({
 export const fetchTags = () => dispatch => {
     return tagAPIUtil.fetchTags()
                 .then(tags => {
+                    // debugger; 
                     const tagsDestructured = tags['tags']; 
                     dispatch(receiveTags(tagsDestructured)); 
                 })

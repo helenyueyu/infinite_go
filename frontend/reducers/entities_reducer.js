@@ -22,7 +22,7 @@ const entitiesReducer = combineReducers({
     search: searchReducer, 
     metas: metasReducer, 
     badges: badgesReducer, 
-    bookmarks: bookmarksReducer  
+    // bookmarks: bookmarksReducer  
 })
 
 export default entitiesReducer; 

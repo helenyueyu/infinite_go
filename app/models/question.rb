@@ -5,7 +5,7 @@ class Question < ApplicationRecord
         impressions.size 
     end
 
-    attr_accessor :view_count 
+    attr_accessor :current_vote 
 
     validates :title, presence: true 
     validates :body, presence: true 
@@ -34,6 +34,12 @@ class Question < ApplicationRecord
         source: :tag, 
         dependent: :destroy 
 
+    def current_user_vote(current_user)
+        vote = self.votes.where('user_id = ?', current_user.id)[0]
+        return nil if vote.nil? 
+        # debugger
+        vote.value 
+    end
 
     def view_count
         self.impressionist_count  
