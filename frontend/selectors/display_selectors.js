@@ -1,8 +1,12 @@
 export const displayQuestion = (question, limit) => {
-    if (question[limit] === ' ' || question[limit-1] === ' ') {
+    if (question[limit] === ' ') {
         return question.slice(0, limit); 
+    } else {
+        let i = limit; 
+        while (question[i] !== ' ') {
+            i--; 
+        }
+        return question.slice(0, i); 
     }
-    console.log('thing here', question[limit]); 
-    return question.slice(0, limit); 
 }
 
