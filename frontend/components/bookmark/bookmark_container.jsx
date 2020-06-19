@@ -3,14 +3,12 @@ import Bookmark from './bookmark';
 
 import { createBookmark } from '../../actions/bookmarks_actions'; 
 
-const mapStateToProps = (state, { bookmarkable_id, bookmarkable_type }) => ({
-    user_id: state.entities.currentUser.id,
-    bookmarkable_id: bookmarkable_id,
-    bookmarkable_type: bookmarkable_type
+const mapStateToProps = (state) => ({
+    user_id: state.entities.currentUser.id
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    createVote: vote => dispatch(createVote(vote))
+    createBookmark: bookmark => dispatch(createBookmark(bookmark))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Vote)
+export default connect(mapStateToProps, mapDispatchToProps)(Bookmark)

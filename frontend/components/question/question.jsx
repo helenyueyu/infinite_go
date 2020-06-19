@@ -11,6 +11,7 @@ import CommentsContainer from '../comment/comments_container';
 import NewCommentContainer from '../comment/new_comment_container'; 
 
 import VoteContainer from '../vote/vote_container'; 
+import BookmarkContainer from '../bookmark/bookmark_container'; 
 
 import TagsContainer from '../tag/tags_container'; 
 import NewTagContainer from '../tag/new_tag_container'; 
@@ -59,7 +60,10 @@ class Question extends React.Component {
                   action={this.props.fetchQuestion}
                   info={this.props.search}
                 />
-                {/* <BookmarkContainer /> */}
+                <BookmarkContainer 
+                  bookmarkable_id={id}
+                  bookmarkable_type="Question"
+                />
               </div>
               
 
