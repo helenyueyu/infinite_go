@@ -36,8 +36,7 @@ class Question < ApplicationRecord
 
     def current_user_vote(current_user)
         vote = self.votes.where('user_id = ?', current_user.id)[0]
-        return nil if vote.nil? 
-        # debugger
+        return 0 if vote.nil? 
         vote.value 
     end
 

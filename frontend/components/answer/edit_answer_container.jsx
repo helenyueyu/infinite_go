@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-// import AnswerForm from './answer_form';
-import EditAnswer from './edit_answer'; 
+import AnswerForm from './answer_form';
+// import EditAnswer from './edit_answer'; 
 
 import { fetchQuestion } from '../../actions/questions_actions'; 
-import { fetchAnswers, updateAnswer } from '../../actions/answers_actions';
+import { fetchAnswer, fetchAnswers, updateAnswer } from '../../actions/answers_actions';
 
 const mapStateToProps = (state, ownProps) => {
     // debugger; 
@@ -16,8 +16,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
     action: answer => dispatch(updateAnswer(answer)), 
+    fetchAnswer: id => dispatch(fetchAnswer(id)), 
     fetchQuestion: id => dispatch(fetchQuestion(id)), 
     fetchAnswers: (questionId) => dispatch(fetchAnswers(questionId))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditAnswer)
+export default connect(mapStateToProps, mapDispatchToProps)(AnswerForm)

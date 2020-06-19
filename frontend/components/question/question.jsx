@@ -40,7 +40,7 @@ class Question extends React.Component {
         if (!this.props.question) return null; 
         
         let { currentUser, question } = this.props; 
-        let { id, title, body, user, createdAt, comments, tags, voteCount } = question;
+        let { id, title, body, user, createdAt, comments, tags, voteCount, currentVote } = question;
         if (!comments || !tags) return null; 
 
         const currentContent = EditorState.createWithContent(

@@ -1,7 +1,5 @@
 import React from 'react';
 
-import moment from 'moment'; 
-
 import ProfileSnippet from '../user/profile/profile_snippet'; 
 import { displayShortenedDate } from '../../selectors/date_selectors'; 
 
@@ -40,6 +38,7 @@ class AnswerItem extends React.Component {
     render() {
         // debugger; 
         let { id, questionId, body, username, createdAt, authorized, handleDelete, canAccept, reputation, medals, user } = this.props;
+        const answerId = id; 
         return (
             <div className="answer_item">
                 <div>
@@ -54,7 +53,7 @@ class AnswerItem extends React.Component {
                 <div className="answer_item-footer">
                     <div className="answer_item-button-console">
                         <DeleteButton authorized={authorized} id={id} handleDelete={() => handleDelete(id)} />
-                        <EditButton authorized={authorized} link={`/questions/${questionId}/answers/${id}/edit`} />
+                        <EditButton authorized={authorized} link={`/questions/${questionId}/answers/${answerId}/edit`} />
                     </div>
                     <ProfileSnippet id={user.id}
                                 username={username} 

@@ -5,7 +5,6 @@ export const RECEIVE_ANSWER = 'RECEIVE_ANSWER';
 export const REMOVE_ANSWER = 'REMOVE_ANSWER'; 
 
 const receiveAnswers = answers => {
-    // debugger; 
     return ({
         type: RECEIVE_ANSWERS, 
         answers 
@@ -28,9 +27,15 @@ const removeAnswer = answer => {
 export const fetchAnswers = questionId => dispatch => {
     return answerAPIUtil.getAnswers(questionId)
                     .then(answers => {
-                        // debugger; 
                         dispatch(receiveAnswers(answers))
                     }); 
+}
+
+export const fetchAnswer = answerId => dispatch => {
+    return answerAPIUtil.getAnswer(answerId)
+        .then(answer => {
+            dispatch(receiveAnswer(answer)); 
+        })
 }
 
 export const createAnswer = answer => dispatch => {
@@ -39,7 +44,6 @@ export const createAnswer = answer => dispatch => {
 }
 
 export const updateAnswer = answer => dispatch => {
-    // debugger; 
     return answerAPIUtil.updateAnswer(answer)
                 .then(answer => dispatch(receiveAnswer(answer))); 
 }

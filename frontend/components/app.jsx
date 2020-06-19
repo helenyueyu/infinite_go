@@ -37,9 +37,9 @@ const routes = [
     createRoute('/questions', QuestionsContainer), 
     createRoute('/questions/:questionId', QuestionContainer), 
     createRoute('/questions/:questionId/edit', EditQuestionContainer), 
-    createRoute('/questions/new', NewQuestionContainer)
+    createRoute('/questions/new', NewQuestionContainer), 
+    createRoute('/questions/:questionId/answers/:answerId/edit', EditAnswerContainer)
 ] 
-
 
 const App = () => {
     return (

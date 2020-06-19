@@ -5,6 +5,14 @@ export const getAnswers = questionId => {
     })
 }
 
+export const getAnswer = answerId => {
+    return $.ajax({
+        method: "GET",
+        url: `/api/answers/${answerId}`
+    });
+};
+
+
 export const createAnswer = answer => {
     return $.ajax({
         method: 'POST',
