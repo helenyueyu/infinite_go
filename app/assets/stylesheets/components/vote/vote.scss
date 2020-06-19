@@ -10,14 +10,18 @@
     font-size: 1.5rem; 
 }
 .vote-symbol {
-    font-size: 2.5rem; 
+    font-size: 3rem; 
 }
 
-
-i.fas.fa-sort-up::before {
-    padding: 0; 
-    margin: 0; 
+.fa-sort-up {
+    transform: translateY(0.75rem); 
+    height: 0rem !important; 
 }
+.fa-sort-down {
+    transform: translateY(-0.75rem); 
+    height: 0rem !important; 
+}
+
 .vote-symbol:hover {
     color: $red; 
     cursor: pointer; 
