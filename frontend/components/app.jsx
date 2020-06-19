@@ -9,6 +9,7 @@ import Splash from '../components/user/splash';
 
 import Menu from './menu/menu'; 
 import RightMenuContainer from './menu/right_menu_container'; 
+import RightMenu from './menu/right_menu'; 
 
 import SignUpFormContainer from './user/auth/sign_up_form_container';
 import LoginFormContainer from './user/auth/login_form_container';
@@ -28,16 +29,56 @@ import EditQuestionContainer from './question/edit_question_container';
 
 import EditAnswerContainer from './answer/edit_answer_container';
 
+const routes = [
+  {
+    path: "/",
+    exact: true,
+    leftSideBar: Menu, 
+    main: Splash, 
+    rightSideBar: RightMenuContainer
+  }
+] 
+
 const App = () => {
     return (
-        <>
-            <NavbarContainer />
+      <>
+        <NavbarContainer />
 
-            <div className="app">
-                <ProtectedRoute path="/questions" component={Menu} />
-                <ProtectedRoute path="/tags" component={Menu} />
-                <ProtectedRoute path="/users" component={Menu} />
-                <ProtectedRoute path="/badges" component={Menu} />
+        <div className="app">
+          {routes.map((route, index) => (
+            <Route
+              key={index}
+              path={route.path}
+              exact={route.exact}
+              component={route.leftSideBar}
+            />
+          ))}
+          <div className="app-middle">
+            {routes.map((route, index) => (
+              <Route
+                key={index}
+                path={route.path}
+                exact={route.exact}
+                component={route.main}
+              />
+            ))}
+          </div>
+
+          {routes.map((route, index) => (
+            <Route
+              key={index}
+              path={route.path}
+              exact={route.exact}
+              component={route.rightSideBar}
+            />
+          ))}
+          {/* <Switch>
+                    <ProtectedRoute path="/questions" component={Menu} />
+                    <ProtectedRoute path="/badges" component={Menu} />
+                    <ProtectedRoute path="/tags" component={Menu} />
+                    <ProtectedRoute path="/users" component={Menu} />
+                    <ProtectedRoute path="/badges" component={Menu} />
+                </Switch>
 
                 <div className="app-middle">
                     <Switch>
@@ -50,7 +91,7 @@ const App = () => {
                         <Route exact path="/tags" component={TagsIndexContainer} />
                         <Route exact path="/badges" component={BadgesIndexContainer} />
 
-                        <Route exact path="/questions" component={QuestionsContainer} />
+                        <Route exact path="/questions" components={QuestionsContainer} />
                         <Route exact path="/questions/tagged/:tagName" component={QuestionsContainer} />
 
                         <Route exact path="/questions/?q=:query" component={QuestionsContainer} />
@@ -66,16 +107,16 @@ const App = () => {
                     </Switch>
                 </div>
 
-                <Route exact path="/questions/:questionId" component={RightMenuContainer} />
-                <Route exact path="/questions" component={RightMenuContainer} />
+                <Switch> 
+                    <Route exact path="/questions" component={RightMenuContainer} />
+                    <Route exact path="/questions/tagged/:tagName" component={RightMenuContainer} />
+                    <Route exact path="/questions/:questionId" component={RightMenuContainer} />
+                </Switch> */}
+        </div>
 
-                <Route exact path="/questions/tagged/:tagName" component={RightMenuContainer} />
-                <Route exact path="/questions/:questionId" component={RightMenuContainer} />
-            </div>
-
-            <Footer />
-        </>
-    )
+        <Footer />
+      </>
+    );
 }; 
 
 export default App; 
