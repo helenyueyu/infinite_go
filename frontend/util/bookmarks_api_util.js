@@ -1,5 +1,5 @@
 export const createBookmark = bookmark => {
-  debugger; 
+  // debugger; 
   return $.ajax({
     method: "POST",
     url: "/api/bookmarks",
