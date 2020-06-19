@@ -9,12 +9,35 @@
 .nav-links {
     display: flex; 
     justify-content: space-between; 
+    align-items: center; 
 }
 
 .nav-link {
     color: $white; 
     text-decoration: none; 
+    padding: 0 0.25rem 0 0.25rem; 
+    font-size: $title-size; 
+}
+
+.nav-pic {
+    width: 25px; 
+    height: 25px; 
+    transform: translateY(2.5px); 
+}
+
+.nav-link-username {
+    color: $white; 
+    text-decoration: none; 
     padding: 0 0.5rem 0 0.5rem; 
+}
+
+.fa-github-square, .fa-linkedin, .fa-angellist {
+    color: $white; 
+}
+
+.fa-github-square:hover, .fa-linkedin:hover, .fa-angellist:hover {
+    color: $red; 
+    cursor: pointer; 
 }
 
 .nav-logout-button {

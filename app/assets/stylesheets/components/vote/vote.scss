@@ -9,15 +9,30 @@
 .vote-count {
     font-size: 1.5rem; 
 }
+.vote-count.active {
+    color: $red; 
+    font-size: 1.5rem; 
+}
 .vote-symbol {
     font-size: 3rem; 
 }
+
 
 .fa-sort-up {
     transform: translateY(0.75rem); 
     height: 0rem !important; 
 }
+.fa-sort-up.active {
+    color: $red; 
+    transform: translateY(0.75rem); 
+    height: 0rem !important; 
+}
 .fa-sort-down {
+    transform: translateY(-0.75rem); 
+    height: 0rem !important; 
+}
+.fa-sort-down.active {
+    color: $red; 
     transform: translateY(-0.75rem); 
     height: 0rem !important; 
 }

@@ -8,6 +8,7 @@ json.key_format! camelize: :lower
                                 :question_id, 
                                 :accepted, 
                                 :vote_count, 
+                                :current_vote, 
                                 :created_at, 
                                 :updated_at
         

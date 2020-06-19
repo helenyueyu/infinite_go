@@ -1,6 +1,9 @@
 class Api::AnswersController < ApplicationController
     def index 
         @answers = Question.find(params[:question_id]).answers 
+        @answers.each do |answer|
+            answer.current_vote = answer.current_user_vote(current_user)
+        end
     end
 
     def create 

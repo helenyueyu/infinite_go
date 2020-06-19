@@ -57,6 +57,7 @@ class Question extends React.Component {
                   count={voteCount}
                   action={this.props.fetchQuestion}
                   info={this.props.search}
+                  currentVote={currentVote}
                 />
                 <BookmarkContainer 
                   bookmarkable_id={id}

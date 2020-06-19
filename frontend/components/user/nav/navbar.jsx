@@ -8,13 +8,33 @@ const Navbar = ({currentUser, logout}) => {
         return (
             <div className="nav">
                 <div className="nav-links">
-                    <Link to="/questions" className="nav-link" >InfiniteGO</Link>
-                    <a href="https://github.com/helenyueyu/" className="nav-link">Github</a>
-                    <a href="https://www.linkedin.com/in/helen-yu-08b57953/" className="nav-link">LinkedIn</a>
+                    <div className="nav-link">
+                        <Link to="/questions">
+                            <img className="nav-pic" src="/assets/bug_mojo.png" />
+                        </Link>
+                    </div>
+                    <div className="nav-link">
+                        <a href="https://github.com/helenyueyu/">
+                            <i className="fab fa-github-square"></i>
+                        </a>
+                    </div>
+                    <div className="nav-link">
+                        <a href="https://www.linkedin.com/in/helen-yu-08b57953/">
+                            <i className="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                    <div className="nav-link">
+                        <a href="https://angel.co/u/helen-yu-2">
+                            <i className="fab fa-angellist"></i>
+                        </a>
+                    </div>
+
+                    
                 </div>
                 <SearchContainer />
                 <div>
-                    <Link to={`/users/${currentUser.id}`} className="nav-link">{currentUser.username}</Link>
+                    <Link to={`/users/${currentUser.id}`} className="nav-link-username">            {currentUser.username}
+                    </Link>
                     <button className="nav-logout-button" onClick={logout}>Logout</button>
                 </div>
                 

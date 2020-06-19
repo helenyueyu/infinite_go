@@ -35,7 +35,7 @@ class Question < ApplicationRecord
         dependent: :destroy 
 
     def current_user_vote(current_user)
-        vote = self.votes.where('user_id = ?', current_user.id)[0]
+        vote = self.votes.where('user_id = ?', current_user.id).first
         return 0 if vote.nil? 
         vote.value 
     end

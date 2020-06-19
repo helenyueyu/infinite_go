@@ -162,7 +162,7 @@ class AnswerForm extends React.Component {
                                     handleKeyCommand={this.handleKeyCommand}
                                     keyBindingFn={this.keyBindingFn}
                                     onChange={this.onChange}
-                                    placeholder="Write a question..."
+                                    placeholder="Write an answer..."
                                     ref="editor"
                                     spellCheck={true}
                                     handleReturn={this.onReturn}
