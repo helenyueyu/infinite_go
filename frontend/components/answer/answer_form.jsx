@@ -45,6 +45,8 @@ class AnswerForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.action(this.state)
+            .then(() => this.props.history.push(`/questions/${this.state.question_id}`))
+
     }
 
     render() {
