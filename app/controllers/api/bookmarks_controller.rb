@@ -1,6 +1,7 @@
 class Api::BookmarksController < ApplicationController
     def create
         @bookmark = Bookmark.new(bookmark_params)
+        debugger 
         if @bookmark.save 
             render :show 
         else
@@ -10,6 +11,6 @@ class Api::BookmarksController < ApplicationController
 
     private 
     def bookmark_params
-        params.require(:bookmarks).permit(:user_id, :bookmarkable_id, :bookmarkable_type) 
+        params.require(:bookmark).permit(:user_id, :bookmarkable_id, :bookmarkable_type) 
     end
 end

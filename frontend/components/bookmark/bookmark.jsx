@@ -1,6 +1,11 @@
 import React from 'react'; 
 
 class Bookmark extends React.Component {
+    constructor(props) {
+        super(props); 
+        this.addBookmark = this.addBookmark.bind(this); 
+    }
+
     addBookmark(e) {
         e.preventDefault(); 
         const bookmark = {
@@ -8,7 +13,8 @@ class Bookmark extends React.Component {
             bookmarkable_id: this.props.bookmarkable_id, 
             bookmarkable_type: this.props.bookmarkable_type 
         }
-        this.props.addBookmark(bookmark)
+        // debugger 
+        this.props.createBookmark(bookmark)
     }
     render() {
         return (

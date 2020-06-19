@@ -8,4 +8,4 @@ const receiveBookmark = bookmark => ({
 });
 
 export const createBookmark = bookmark => dispatch =>
-  bookmarkAPIUtil.createTag(bookmark).then(bookmark => dispatch(receiveBookmark(bookmark)));
+  bookmarkAPIUtil.createBookmark(bookmark).then(bookmark => dispatch(receiveBookmark(bookmark)));
