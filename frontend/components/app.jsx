@@ -63,12 +63,12 @@ const App = () => {
 
                         <Route exact path="/users/:userId" component={ProfileContainer} />
                         <Route exact path="/users/:userId/activity" component={ProfileActivityContainer} />
-
-                        {/* <ProtectedRoute exact path="/profile" component={ProfileContainer} /> */}
                     </Switch>
                 </div>
 
+                <Route exact path="/questions/:questionId" component={RightMenuContainer} />
                 <Route exact path="/questions" component={RightMenuContainer} />
+
                 <Route exact path="/questions/tagged/:tagName" component={RightMenuContainer} />
                 <Route exact path="/questions/:questionId" component={RightMenuContainer} />
             </div>

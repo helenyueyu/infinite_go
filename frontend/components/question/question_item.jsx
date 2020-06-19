@@ -26,7 +26,7 @@ class QuestionItem extends React.Component {
               </Link>
             </div>
             <div className="question_item-body">
-              {displayQuestion(this.renderQuestionSnippet(body), 111)}
+              {displayQuestion(this.renderQuestionSnippet(body), 150)}
               ... 
             </div>
 

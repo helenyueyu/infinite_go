@@ -14,7 +14,7 @@ const Navbar = ({currentUser, logout}) => {
                 </div>
                 <SearchContainer />
                 <div>
-                    <Link to="/profile" className="nav-link">{currentUser.username}</Link>
+                    <Link to={`/users/${currentUser.id}`} className="nav-link">{currentUser.username}</Link>
                     <button className="nav-logout-button" onClick={logout}>Logout</button>
                 </div>
                 
