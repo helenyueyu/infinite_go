@@ -2,38 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom'; 
 
 import { displayDate } from '../../selectors/date_selectors'; 
+import { displayQuestion } from '../../selectors/display_selectors'; 
+
 import TagsContainer from '../tag/tags_container'; 
 import ProfileSnippet from '../user/profile/profile_snippet'; 
-import { Editor, EditorState, convertFromRaw, ContentBlock } from "draft-js"; 
+import { ContentBlock } from "draft-js"; 
 
 class QuestionItem extends React.Component {
     renderQuestionSnippet(body) {
-      let x = JSON.parse(body).blocks; 
-      console.log(x); 
-      // console.log(y); 
-      // return x; 
+      return JSON.parse(body)
+                  .blocks
+                  .map(block => new ContentBlock(block))
+                  .map(block => block.getText()).join(' '); 
     }
 
     render() {
         let {id, title, body, user, question, tags} = this.props; 
-        this.renderQuestionSnippet(body); 
-
-        // console.log("JSON.parse", convertFromRaw(JSON.parse(body))); 
-
-        // const contentBlock = {
-        //   blocks: JSON.parse(body), 
-        //   entityMap: {} 
-        // }
-        // const currentContent = EditorState.createWithContent(
-        //   convertFromRaw(contentBlock)
-        // ); 
-
-        // console.log("text:", contentBlock); 
-        // const currentContent = EditorState.createWithContent(
-        //   convertFromRaw(JSON.parse(body))
-        // ); 
-        // console.log(body); 
-        // console.log(JSON.parse(body)); 
         return (
           <div className="question_item">
             <div className="question_item-title-div">
@@ -42,8 +26,8 @@ class QuestionItem extends React.Component {
               </Link>
             </div>
             <div className="question_item-body">
-              {/* {this.renderQuestionSnippet(body)} */}
-              {/* <Editor editorState={currentContent} readOnly={true} /> */}
+              {displayQuestion(this.renderQuestionSnippet(body), 200)}
+              ... 
             </div>
 
             <TagsContainer tags={tags} showDelete={false} />
