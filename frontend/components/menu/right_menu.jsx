@@ -7,8 +7,6 @@ class RightMenu extends React.Component {
     }
 
     render() {
-        console.log('props', this.props.questions); 
-
         let { questions } = this.props; 
         if (Object.keys(questions).length === 0) return null; 
         return (

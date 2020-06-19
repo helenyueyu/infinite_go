@@ -1,27 +1,10 @@
 .menu {
-    // flex: 1 1 0; 
     border-right: 1px solid $lighter-silver;  
     padding: 0.5rem; 
     flex-direction: column; 
     display: flex; 
-    flex: 0 0 185px; 
+    flex: 0 0 150px; 
 }
-// .menu-home {
-//     padding-top: 2rem; 
-//     padding-bottom: 1rem; 
-// }
-
-// .menu-category {
-//     color: $gray; 
-//     padding-top: 1rem; 
-//     padding-bottom: 0.5rem; 
-// }
-
-// .menu-item {
-//     display: flex; 
-//     flex-direction: row; 
-//     padding: 0.5rem; 
-// }
 
 .menu-item-indent {
     width: 20px; 

@@ -29,22 +29,17 @@ import EditQuestionContainer from './question/edit_question_container';
 
 import EditAnswerContainer from './answer/edit_answer_container';
 
+const createRoute = (path, main, exact=true, leftSideBar=Menu, rightSideBar=RightMenuContainer) => {
+    return ({ path, exact, leftSideBar, main,  rightSideBar })
+}
 const routes = [
-    {
-        path: "/",
-        exact: true,
-        leftSideBar: null, 
-        main: Splash, 
-        rightSideBar: null 
-    }, 
-    {
-        path: "/questions", 
-        exact: true, 
-        leftSideBar: Menu, 
-        main: QuestionsContainer, 
-        rightSideBar: RightMenuContainer
-    }
+    createRoute('/', Splash, true, null, null), 
+    createRoute('/questions', QuestionsContainer), 
+    createRoute('/questions/:questionId', QuestionContainer), 
+    createRoute('/questions/:questionId/edit', EditQuestionContainer), 
+    createRoute('/questions/new', NewQuestionContainer)
 ] 
+
 
 const App = () => {
     return (
@@ -53,31 +48,16 @@ const App = () => {
 
         <div className="app">
           {routes.map((route, index) => (
-            <Route
-              key={index}
-              path={route.path}
-              exact={route.exact}
-              component={route.leftSideBar}
-            />
+            <Route key={index} path={route.path} exact={route.exact} component={route.leftSideBar} />
           ))}
           <div className="app-middle">
             {routes.map((route, index) => (
-              <Route
-                key={index}
-                path={route.path}
-                exact={route.exact}
-                component={route.main}
-              />
+              <Route key={index} path={route.path} exact={route.exact} component={route.main} />
             ))}
           </div>
 
           {routes.map((route, index) => (
-            <Route
-              key={index}
-              path={route.path}
-              exact={route.exact}
-              component={route.rightSideBar}
-            />
+            <Route key={index} path={route.path} exact={route.exact} component={route.rightSideBar} />
           ))}
           {/* <Switch>
                     <ProtectedRoute path="/questions" component={Menu} />
