@@ -7,6 +7,8 @@ import DeleteButton from '../buttons/delete_button';
 import EditButton from '../buttons/edit_button'; 
 import AcceptButton from '../buttons/accept_button'; 
 
+import { Editor, EditorState, convertFromRaw } from 'draft-js'; 
+
 class AnswerItem extends React.Component {
     constructor(props) {
         super(props);
@@ -39,6 +41,9 @@ class AnswerItem extends React.Component {
         // debugger; 
         let { id, questionId, body, username, createdAt, authorized, handleDelete, canAccept, reputation, medals, user } = this.props;
         const answerId = id; 
+        const currentContent = EditorState.createWithContent(
+            convertFromRaw(JSON.parse(body))
+        );
         return (
             <div className="answer_item">
                 <div>
@@ -47,7 +52,7 @@ class AnswerItem extends React.Component {
                 </div>
                 
                 <div>
-                    {body}
+                    <Editor editorState={currentContent} readOnly={true} />
                 </div>
 
                 <div className="answer_item-footer">
