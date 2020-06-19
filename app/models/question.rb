@@ -52,7 +52,7 @@ class Question < ApplicationRecord
     end
 
     def self.get_random(num)
-        return [] if self.all.size < num 
+        return self.all if self.all.size < num 
         chosen = []
         res = [] 
         size = Question.all.size 

@@ -30,13 +30,20 @@ import EditQuestionContainer from './question/edit_question_container';
 import EditAnswerContainer from './answer/edit_answer_container';
 
 const routes = [
-  {
-    path: "/",
-    exact: true,
-    leftSideBar: Menu, 
-    main: Splash, 
-    rightSideBar: RightMenuContainer
-  }
+    {
+        path: "/",
+        exact: true,
+        leftSideBar: null, 
+        main: Splash, 
+        rightSideBar: null 
+    }, 
+    {
+        path: "/questions", 
+        exact: true, 
+        leftSideBar: Menu, 
+        main: QuestionsContainer, 
+        rightSideBar: RightMenuContainer
+    }
 ] 
 
 const App = () => {

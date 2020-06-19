@@ -3,7 +3,6 @@ import RightMenu from './right_menu';
 
 import { fetchRandomQuestions } from '../../actions/questions_actions';
 
-// debugger; 
 const mapStateToProps = (state) => {
     return {
     questions: state.entities.metas.randomQuestions 
