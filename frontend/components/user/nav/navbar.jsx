@@ -32,8 +32,14 @@ const Navbar = ({currentUser, logout}) => {
                     
                 </div>
                 <SearchContainer />
-                <div>
-                    <Link to={`/users/${currentUser.id}`} className="nav-link-username">            {currentUser.username}
+                <div className="nav-links">
+                    <div className="nav-link">
+                        <Link to="/badges">
+                            <i className="fas fa-question-circle"></i>
+                        </Link>
+                    </div>
+                    <Link to={`/users/${currentUser.id}`} className="nav-link-username">                        
+                        {currentUser.username}
                     </Link>
                     <button className="nav-logout-button" onClick={logout}>Logout</button>
                 </div>

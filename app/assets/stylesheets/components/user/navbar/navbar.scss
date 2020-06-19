@@ -31,11 +31,11 @@
     padding: 0 0.5rem 0 0.5rem; 
 }
 
-.fa-github-square, .fa-linkedin, .fa-angellist {
+.fa-github-square, .fa-linkedin, .fa-angellist, .fa-question-circle {
     color: $white; 
 }
 
-.fa-github-square:hover, .fa-linkedin:hover, .fa-angellist:hover {
+.fa-github-square:hover, .fa-linkedin:hover, .fa-angellist:hover, .fa-question-circle:hover {
     color: $red; 
     cursor: pointer; 
 }
