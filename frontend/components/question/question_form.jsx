@@ -116,8 +116,8 @@ class QuestionForm extends React.Component {
     e.preventDefault();
     const contentState = this.state.editorState.getCurrentContent();
     let post = {
-      user_id: this.props.userId,
-      id: this.props.type === "new" ? "" : this.props.match.params.questionId,
+      user_id: this.state.user_id,
+      id: this.state.id,
       title: this.state.title,
       body: JSON.stringify(convertToRaw(contentState))
     };
@@ -148,7 +148,6 @@ class QuestionForm extends React.Component {
             </label>
           </div>
 
-          <div key="unique_editor" className="question_form-element">
             <label>
               <div className="RichEditor-root">
                 <BlockStyleControls
@@ -175,7 +174,6 @@ class QuestionForm extends React.Component {
                 </div>
               </div>
             </label>
-          </div>
           <button type="submit">Submit</button>
         </form>
         <div>
