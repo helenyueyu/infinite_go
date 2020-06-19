@@ -47,12 +47,10 @@ class Question extends React.Component {
           convertFromRaw(JSON.parse(body))
         );
 
-        // console.log("questionContent", currentContent); 
-
         return (
           <div className="question">
             <div className="question-info">
-              <div>
+              <div className="question-vote-bookmark">
                 <VoteContainer
                   voteable_id={id}
                   voteable_type="Question"
@@ -70,8 +68,6 @@ class Question extends React.Component {
               <div>
                 <div className="question-title">{title}</div>
                 <Editor editorState={currentContent} readOnly={true} />
-
-                {/* <div className="question-body">{body}</div> */}
 
                 <NewTagContainer
                   fetchQuestion={this.props.fetchQuestion}

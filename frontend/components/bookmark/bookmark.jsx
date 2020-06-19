@@ -13,15 +13,14 @@ class Bookmark extends React.Component {
             bookmarkable_id: this.props.bookmarkable_id, 
             bookmarkable_type: this.props.bookmarkable_type 
         }
-        // debugger 
         this.props.createBookmark(bookmark)
     }
     render() {
         return (
-            <div onClick={this.addBookmark}>
-                Book 
+            <div onClick={this.addBookmark} className="bookmark">
+                <i className="fas fa-bookmark"></i>
             </div>
-        )
+        );
     }
 }
 
