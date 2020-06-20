@@ -1,12 +1,18 @@
 .question_form {
-    padding: 1rem; 
-    background: $red; 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background: $black; 
     flex: 1;  
 }
 
 .question_form-form {
-    background: $lightest-silver; 
+    background: $white; 
     padding: 2rem; 
+}
+
+.question_form-section {
+    display: flex; 
+    flex-direction: column; 
 }
 
 .question_form-submit {
@@ -31,18 +37,18 @@
     padding-bottom: 0.4rem; 
 }
 
-.question_form-title {
-  padding: 0.3rem; 
-  font-size: 1rem;
-  height: 1.5rem; 
-  border-radius: 5px; 
-  border: 1px solid $silver; 
-}
 .question_form-title:focus {
   outline: none; 
   border-radius: 5px; 
-  border: 1px solid $lighter-silver; 
-  box-shadow: 0 0 0pt 3pt $lightest-silver; 
+  border: 1px solid $red; 
+  box-shadow: 0 0 0pt 3pt $tag-red-lite; 
+}
+
+.question_form-tags:focus {
+    outline: none; 
+    border-radius: 5px; 
+    border: 1px solid $red; 
+    box-shadow: 0 0 0pt 3pt $tag-red-lite; 
 }
 
 .editor-controls {

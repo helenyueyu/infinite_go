@@ -140,7 +140,7 @@ class QuestionForm extends React.Component {
     return (
       <div className="question_form">
         <form className="question_form-form" onSubmit={this.handleSubmit}>
-            <div>
+            <div className="question_form-section">
                 <div className="question_form-title-text">
                     Title
                 </div>
@@ -187,7 +187,7 @@ class QuestionForm extends React.Component {
                 </div>
             </div>
 
-            <div>
+            <div className="question_form-section">
                 <div className="question_form-title-text">Tags</div>
                 <div className="question_form-title-desc">
                     Add up to 5 tags to describe what your question is about                
