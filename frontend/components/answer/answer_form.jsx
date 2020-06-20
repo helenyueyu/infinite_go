@@ -20,11 +20,8 @@ class AnswerForm extends React.Component {
             id: this.props.type === "new" ? "" : this.props.match.params.answerId, 
             user_id: this.props.userId,
             question_id: this.props.question.id, 
-            // body: "", 
             editorState: EditorState.createEmpty(decorator)
         }; 
-
-        // this.handleChange = this.handleChange.bind(this); 
 
         this.focus = () => this.refs.editor.focus();
         this.onChange = editorState => this.setState({ editorState });
@@ -47,7 +44,6 @@ class AnswerForm extends React.Component {
                 .then(() => this.props.fetchAnswer(this.props.match.params.answerId))
                 .then(() => this.setState({
                     question_id: this.props.question.id, 
-                    // body: this.props.answer.body 
                     editorState: EditorState.createWithContent(
                         convertFromRaw(JSON.parse(this.props.answer.body))
                     )
@@ -103,13 +99,6 @@ class AnswerForm extends React.Component {
         }
         return false; 
     }
-
-    // handleChange(e) {
-    //     e.preventDefault();
-    //     this.setState({
-    //         body: e.target.value
-    //     })
-    // }
 
     handleSubmit(e) {
         e.preventDefault();
@@ -170,9 +159,6 @@ class AnswerForm extends React.Component {
                                 />
                             </div>
                         </div>
-                        {/* <input
-                            onChange={this.handleChange}
-                            value={this.state.body} /> */}
                     </label>
 
                     <button type="submit">Submit</button>
