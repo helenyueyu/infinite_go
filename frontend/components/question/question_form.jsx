@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import Draft from 'draft-js'; 
 import PrismDraftDecorator from 'draft-js-prism'; 
@@ -19,90 +18,91 @@ import { nameExtensionURL, removeSpaces } from '../../selectors/display_selector
 
 class QuestionForm extends React.Component {
   constructor(props) {
-    super(props);
-    const decorator = new PrismDraftDecorator();
+        super(props);
+        const decorator = new PrismDraftDecorator();
 
-    this.state = {
-      user_id: this.props.userId,
-      id: this.props.type === "new" ? "" : this.props.match.params.questionId,
-      title: "",
-      tags: "", 
-      editorState: EditorState.createEmpty(decorator)
-    };
-    this.focus = () => this.refs.editor.focus();
-    this.onChange = editorState => this.setState({ editorState });
+        this.state = {
+            user_id: this.props.userId,
+            id: this.props.type === "new" ? "" : this.props.match.params.questionId,
+            title: "",
+            tags: "", 
+            editorState: EditorState.createEmpty(decorator)
+        };
 
-    this.handleKeyCommand = command => this._handleKeyCommand(command);
-    this.keyBindingFn = e => this._keyBindingFn(e);
+        this.focus = () => this.refs.editor.focus();
+        this.onChange = editorState => this.setState({ editorState });
 
-    this.onTab = e => this._onTab(e);
-    this.onReturn = e => this._onReturn(e);
+        this.handleKeyCommand = command => this._handleKeyCommand(command);
+        this.keyBindingFn = e => this._keyBindingFn(e);
 
-    this.toggleBlockType = type => this._toggleBlockType(type);
-    this.toggleInlineStyle = style => this._toggleInlineStyle(style);
+        this.onTab = e => this._onTab(e);
+        this.onReturn = e => this._onReturn(e);
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+        this.toggleBlockType = type => this._toggleBlockType(type);
+        this.toggleInlineStyle = style => this._toggleInlineStyle(style);
 
-  componentDidMount() {
-    if (this.props.type === "edit") {
-      this.props.fetchQuestion(this.props.match.params.questionId).then(() =>
-        this.setState({
-          title: this.props.question.title,
-          editorState: EditorState.createWithContent(
-            convertFromRaw(JSON.parse(this.props.question.body))
-          )
-        })
-      );
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
-  }
 
-  _keyBindingFn(e) {
-    const { editorState } = this.state;
-    let command;
-
-    if (CodeUtils.hasSelectionInBlock(editorState)) {
-      command = CodeUtils.getKeyBinding(e);
+    componentDidMount() {
+        if (this.props.type === "edit") {
+        this.props.fetchQuestion(this.props.match.params.questionId).then(() =>
+            this.setState({
+            title: this.props.question.title,
+            editorState: EditorState.createWithContent(
+                convertFromRaw(JSON.parse(this.props.question.body))
+            )
+            })
+        );
+        }
     }
-    if (command) return command;
-    return Draft.getDefaultKeyBinding(e);
-  }
 
-  _toggleBlockType(blockType) {
-    this.onChange(RichUtils.toggleBlockType(this.state.editorState, blockType));
-  }
+    _keyBindingFn(e) {
+        const { editorState } = this.state;
+        let command;
 
-  _toggleInlineStyle(inlineStyle) {
-    this.onChange(
-      RichUtils.toggleInlineStyle(this.state.editorState, inlineStyle)
-    );
-  }
+        if (CodeUtils.hasSelectionInBlock(editorState)) {
+        command = CodeUtils.getKeyBinding(e);
+        }
+        if (command) return command;
+        return Draft.getDefaultKeyBinding(e);
+    }
 
-  _onTab(e) {
-    const { editorState } = this.state;
-    if (!CodeUtils.hasSelectionInBlock(editorState)) return;
-    this.onChange(CodeUtils.onTab(e, editorState));
-  }
+    _toggleBlockType(blockType) {
+        this.onChange(RichUtils.toggleBlockType(this.state.editorState, blockType));
+    }
 
-  _onReturn(e) {
-    const { editorState } = this.state;
-    if (!CodeUtils.hasSelectionInBlock(editorState)) return;
-    this.onChange(CodeUtils.handleReturn(e, editorState));
-    return true;
-  }
+    _toggleInlineStyle(inlineStyle) {
+        this.onChange(
+        RichUtils.toggleInlineStyle(this.state.editorState, inlineStyle)
+        );
+    }
+
+    _onTab(e) {
+        const { editorState } = this.state;
+        if (!CodeUtils.hasSelectionInBlock(editorState)) return;
+        this.onChange(CodeUtils.onTab(e, editorState));
+    }
+
+    _onReturn(e) {
+        const { editorState } = this.state;
+        if (!CodeUtils.hasSelectionInBlock(editorState)) return;
+        this.onChange(CodeUtils.handleReturn(e, editorState));
+        return true;
+    }
 
   _handleKeyCommand(command) {
     const { editorState } = this.state;
     let newState;
     if (CodeUtils.hasSelectionInBlock(editorState)) {
-      newState = CodeUtils.handleKeyCommand(editorState, command);
+        newState = CodeUtils.handleKeyCommand(editorState, command);
     }
     if (!newState) {
-      newState = RichUtils.handleKeyCommand(editorState, command);
+        newState = RichUtils.handleKeyCommand(editorState, command);
     }
     if (newState) {
-      this.onChange(newState);
-      return true;
+        this.onChange(newState);
+        return true;
     }
     return false; 
   }
@@ -110,33 +110,56 @@ class QuestionForm extends React.Component {
   handleTitle(e) {
     e.preventDefault();
     this.setState({
-      title: e.target.value
+        title: e.target.value
     });
   }
 
   handleTags(e) {
     e.preventDefault();
     this.setState({
-      tags: e.target.value
+        tags: e.target.value
     });
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const contentState = this.state.editorState.getCurrentContent();
-    let post = {
+    const post = {
         user_id: this.state.user_id,
         id: this.state.id,
         title: this.state.title,
         body: JSON.stringify(convertToRaw(contentState))
     };
-    this.props.action(post).then(() => {
-        if (this.props.type === "edit") {
-            this.props.history.push(`/questions/${this.state.id}/${nameExtensionURL(post.title)}`); 
-        } else {
-            this.props.history.push('/questions'); 
-        }
-    }); 
+    const rawTags = this.state.tags
+                        .split(',')
+                        .map(tag => removeSpaces(tag))
+
+    const tags = rawTags.map(name => ({
+                name: name, 
+                user_id: this.state.user_id
+            }))
+    /* How am I supposed to know the id of what I'm tagging?? */
+    // const taggables = rawTags.map(name => ({
+    //             name: name, 
+    //             taggable_id: s
+    //         }))
+
+    const thunkAction = async(post) => {
+        let res = await this.props.action(post); 
+        console.log("pop", res); 
+        // dispatch(res => console.log(res.json())); 
+    }
+    thunkAction(post); 
+    // this.props.action(post).then(res => console.log('res:', res)); 
+
+    // .then(() => {
+    //     if (this.props.type === "edit") {
+    //         this.props.history.push(`/questions/${this.state.id}/${nameExtensionURL(post.title)}`); 
+    //     } else {
+    //         this.props.history.push('/questions'); 
+    //     }
+    // })
+    
   }
 
   render() {
@@ -213,10 +236,10 @@ class QuestionForm extends React.Component {
 
 export default QuestionForm; 
 
-// let tags = this.state.tags
-//             .split(',')
-//             .map(x => removeSpaces(x))
-// for (let i = 0; i < tags.length; i++) {
-//     this.props.createTag(newTag)
-//     .then(() => this.props.createTaggable(newTaggable), err => this.handleErrors(err.responseJSON))
-// }
+
+    // .then(() => {
+    //     for (let i = 0; i < tags.length; i++) {
+    //         this.props.createTag(tags[i])
+    //         .then(() => this.props.createTaggable(newTaggable), err => this.handleErrors(err.responseJSON))
+    //     }
+    // })

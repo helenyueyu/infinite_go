@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+
 import configureStore from './store/store';
 import Root from './components/root';
 
