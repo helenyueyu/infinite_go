@@ -136,6 +136,7 @@ class QuestionForm extends React.Component {
             <label>
               Title
               <input
+                className="question_form-title"
                 onChange={e => this.handleTitle(e)}
                 value={this.state["title"]}
               />
@@ -144,14 +145,16 @@ class QuestionForm extends React.Component {
 
             <label>
               <div className="RichEditor-root">
-                <BlockStyleControls
-                  editorState={editorState}
-                  onToggle={this.toggleBlockType}
-                />
-                <InlineStyleControls
-                  editorState={editorState}
-                  onToggle={this.toggleInlineStyle}
-                />
+                <div className="editor-controls">
+                  <InlineStyleControls
+                      editorState={editorState}
+                      onToggle={this.toggleInlineStyle}
+                    />
+                  <BlockStyleControls
+                    editorState={editorState}
+                    onToggle={this.toggleBlockType}
+                  />
+                </div>
                 <div className={className} onClick={this.focus}>
                   <Editor
                     blockStyleFn={getBlockStyle}

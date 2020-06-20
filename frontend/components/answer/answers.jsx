@@ -21,7 +21,6 @@ class Answers extends React.Component {
             <div>
                 {answers.map((answer, idx) => {
                     let { id, voteCount, questionId, accepted, currentVote } = answer; 
-                    // debugger; 
                     return (<div key={idx} className="answers-item">
                         <div className="answers-vote">
                             <VoteContainer
