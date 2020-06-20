@@ -33,16 +33,17 @@ const createRoute = (path, main, exact=true, leftSideBar=Menu, rightSideBar=Righ
 }
 const routes = [
     createRoute('/', Splash, true, null, null), 
-    createRoute('/questions', QuestionsContainer), 
-    createRoute('/questions/:questionId', QuestionContainer), 
-    createRoute('/questions/:questionId/edit', EditQuestionContainer), 
-    createRoute('/questions/new', NewQuestionContainer), 
+    createRoute('/questions', QuestionsContainer, true), 
+    createRoute('/questions/new', NewQuestionContainer, true), 
+    createRoute('/questions/:questionId', QuestionContainer, true), 
+    createRoute('/questions/:questionId/edit', EditQuestionContainer, true), 
     createRoute('/questions/:questionId/answers/:answerId/edit', EditAnswerContainer), 
     createRoute('/users', ProfileIndexContainer, true, Menu, null), 
     createRoute('/users/:userId', ProfileContainer, true, Menu, null), 
     createRoute('/users/:userId/activity', ProfileActivityContainer, true, Menu, null), 
     createRoute('/tags', TagsIndexContainer, true, Menu, null), 
-    createRoute('/badges', BadgesIndexContainer, true, Menu, null)
+    createRoute('/badges', BadgesIndexContainer, true, Menu, null), 
+    createRoute('/login', LoginFormContainer, true, null, null)
 ] 
 
 const App = () => {
@@ -51,18 +52,24 @@ const App = () => {
         <NavbarContainer />
 
         <div className="app">
+          <Switch>
           {routes.map((route, index) => (
             <Route key={index} path={route.path} exact={route.exact} component={route.leftSideBar} />
           ))}
-          <div className="app-middle">
-            {routes.map((route, index) => (
-              <Route key={index} path={route.path} exact={route.exact} component={route.main} />
-            ))}
-          </div>
-
+          </Switch>
+          <Switch>
+            <div className="app-middle">
+              {routes.map((route, index) => (
+                <Route key={index} path={route.path} exact={route.exact} component={route.main} />
+              ))}
+            </div>
+          </Switch>
+         
+          <Switch>
           {routes.map((route, index) => (
             <Route key={index} path={route.path} exact={route.exact} component={route.rightSideBar} />
           ))}
+          </Switch>
           {/* <Switch>
                     <ProtectedRoute path="/questions" component={Menu} />
                     <ProtectedRoute path="/badges" component={Menu} />
