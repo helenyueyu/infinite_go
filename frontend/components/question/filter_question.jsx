@@ -2,6 +2,7 @@ import React from 'react';
 
 class FilterQuestion extends React.Component {
     generateButton(num, action, active) {
+        num = num.toString(); 
         return (
             <button key={num}
                 onClick={() => action(num)}

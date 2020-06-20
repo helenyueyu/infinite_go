@@ -49,7 +49,7 @@ export const fetchQuestion = id => dispatch => (
 )
 
 export const createQuestion = question => dispatch => {
-    questionAPIUtil.createQuestion(question)
+    return questionAPIUtil.createQuestion(question)
         .then(question => {
             dispatch(receiveQuestion(question))
         })
@@ -57,7 +57,9 @@ export const createQuestion = question => dispatch => {
 
 export const updateQuestion = question => dispatch => (
     questionAPIUtil.updateQuestion(question)
-        .then(question => dispatch(receiveQuestion(question)))
+        .then(question => {
+            dispatch(receiveQuestion(question))
+        })
 )
 
 export const deleteQuestion = id => dispatch => (

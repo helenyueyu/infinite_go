@@ -15,7 +15,7 @@ const {
 
 import InlineStyleControls from '../editor/inline_style_controls'; 
 import BlockStyleControls, { getBlockStyle } from '../editor/block_style_controls'; 
-import { nameExtensionURL } from '../../selectors/display_selectors'; 
+import { nameExtensionURL, removeSpaces } from '../../selectors/display_selectors'; 
 
 class QuestionForm extends React.Component {
   constructor(props) {
@@ -125,14 +125,28 @@ class QuestionForm extends React.Component {
     e.preventDefault();
     const contentState = this.state.editorState.getCurrentContent();
     let post = {
-      user_id: this.state.user_id,
-      id: this.state.id,
-      title: this.state.title,
-      body: JSON.stringify(convertToRaw(contentState))
+        user_id: this.state.user_id,
+        id: this.state.id,
+        title: this.state.title,
+        body: JSON.stringify(convertToRaw(contentState))
     };
+    // if (this.props.type === "edit") {
+    //     this.props.action(post)
+    //         .then(() => this.props.history.push(`/questions/${this.state.id}/${nameExtensionURL(post.title)}`)); 
+    // } else {
+    //     // delete post.id; 
+    //     this.props.action(post)
+    //         .then(res => console.log(res), err => console.log(err)) 
+    //     // this.props.history.push('/questions/'); 
+    // }
+    // if (this.props.type === "new") {
+    //     delete post.id; 
+    // }
     this.props.action(post)
-        .then(() => this.props.history.push(`/questions/${this.state.id}/${nameExtensionURL(post.title)}`)); 
-    
+        .then((res) => {
+            console.log('res', res); 
+            this.props.history.push(`/questions/${this.state.id}/${nameExtensionURL(post.title)}`)
+        });
   }
 
   render() {
@@ -209,3 +223,10 @@ class QuestionForm extends React.Component {
 
 export default QuestionForm; 
 
+// let tags = this.state.tags
+//             .split(',')
+//             .map(x => removeSpaces(x))
+// for (let i = 0; i < tags.length; i++) {
+//     this.props.createTag(newTag)
+//     .then(() => this.props.createTaggable(newTaggable), err => this.handleErrors(err.responseJSON))
+// }

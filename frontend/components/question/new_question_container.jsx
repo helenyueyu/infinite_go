@@ -8,8 +8,9 @@ const mapStateToProps = state => ({
    type: "new"
 })
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => {
+    return {
     action: question => dispatch(createQuestion(question))
-})
+}}
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuestionForm)

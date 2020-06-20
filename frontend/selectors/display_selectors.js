@@ -34,3 +34,12 @@ export const nameExtensionURL = (title) => {
     return cleanedTitle; 
 }
 
+export const removeSpaces = str => {
+    let res = ""; 
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] === ' ') continue; 
+        res += str[i]; 
+    }
+    return res; 
+}
+

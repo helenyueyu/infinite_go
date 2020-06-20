@@ -10,9 +10,10 @@ const mapStateToProps = (state, ownProps) => {
     type: "edit"
 }}
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => {
+    return {
     fetchQuestion: question => dispatch(fetchQuestion(question)), 
     action: question => dispatch(updateQuestion(question))
-})
+}}
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuestionForm)
