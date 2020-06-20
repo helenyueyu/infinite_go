@@ -53,22 +53,28 @@ const App = () => {
 
         <div className="app">
           <Switch>
-          {routes.map((route, index) => (
-            <Route key={index} path={route.path} exact={route.exact} component={route.leftSideBar} />
-          ))}
+            <>
+                {routes.map((route, index) => (
+                <Route key={index} path={route.path} exact={route.exact} component={route.leftSideBar} />
+                ))}
+            </>
           </Switch>
           <Switch>
-            <div className="app-middle">
-              {routes.map((route, index) => (
-                <Route key={index} path={route.path} exact={route.exact} component={route.main} />
-              ))}
-            </div>
+            <>
+                <div className="app-middle">
+                    {routes.map((route, index) => (
+                        <Route key={index} path={route.path} exact={route.exact} component={route.main} />
+                    ))}
+                </div>
+            </>
           </Switch>
          
           <Switch>
-          {routes.map((route, index) => (
-            <Route key={index} path={route.path} exact={route.exact} component={route.rightSideBar} />
-          ))}
+            <>
+                {routes.map((route, index) => (
+                    <Route key={index} path={route.path} exact={route.exact} component={route.rightSideBar} />
+                ))}
+            </>
           </Switch>
           {/* <Switch>
                     <ProtectedRoute path="/questions" component={Menu} />
