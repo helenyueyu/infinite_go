@@ -2,6 +2,10 @@
     padding: 2rem; 
 }
 
+.editor-controls {
+  display: flex; 
+}
+
 .RichEditor-root {
   background: #fff;
   border: 1px solid #ddd;
@@ -50,14 +54,6 @@ pre {
   padding-left: 0.25rem;  
   padding-right: 0.25rem;  
 }
-.RichEditor-editor .public-DraftStyleDefault-pre > pre {
-  // background-color: rgba(0, 0, 0, 0.05);
-  // font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
-  // font-size: 16px;
-  // padding: 20px;
-  // margin-bottom: 20px;
-}
-
 .RichEditor-controls {
   font-family: 'Helvetica', sans-serif;
   font-size: 14px;

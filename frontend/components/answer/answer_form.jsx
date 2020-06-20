@@ -125,14 +125,16 @@ class AnswerForm extends React.Component {
 
                     <div className="answer_form-title">Your Answer</div>
                     <div className="RichEditor-root">
-                        <BlockStyleControls
-                            editorState={editorState}
-                            onToggle={this.toggleBlockType}
-                        />
-                        <InlineStyleControls
-                            editorState={editorState}
-                            onToggle={this.toggleInlineStyle}
-                        />
+                        <div className="editor-controls">
+                            <BlockStyleControls
+                                editorState={editorState}
+                                onToggle={this.toggleBlockType}
+                            />
+                            <InlineStyleControls
+                                editorState={editorState}
+                                onToggle={this.toggleInlineStyle}
+                            />
+                        </div>
                         <div className={className} onClick={this.focus}>
                             <Editor
                                 blockStyleFn={getBlockStyle}

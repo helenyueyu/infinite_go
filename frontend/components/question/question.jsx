@@ -117,7 +117,6 @@ class Question extends React.Component {
             <AnswersContainer question={question} />
             <NewAnswerContainer question={question} />
 
-            <Link to="/questions">Back</Link>
           </div>
         );
     }
