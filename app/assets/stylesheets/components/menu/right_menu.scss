@@ -1,7 +1,7 @@
 .right_menu {
-    flex: 2 1 0; 
+    // flex: 2 1 0; 
     padding: 1rem; 
-    flex: 0 0 300px; 
+    flex: 0 0 250px; 
 }
 
 .right_menu-title {
@@ -11,6 +11,8 @@
 .right_menu-li {
     padding-top: 0.25rem; 
     padding-bottom: 0.25rem; 
+    list-style: none; 
+    transform: translateX(-2rem); 
 }
 .right_menu-link {
     text-decoration: none; 
@@ -21,3 +23,4 @@
 .right_menu-link:hover {
     color: $focus-red; 
 }
+

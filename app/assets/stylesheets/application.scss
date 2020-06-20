@@ -51,7 +51,10 @@
  }
 
  .app-middle {
-     flex: 1 0 775px; 
+    display: flex; 
+    flex: 1 0 0; 
+    //  align-items: flex-start; 
+    //  justify-content: stretch; 
  }
 
  html, body {

@@ -134,7 +134,8 @@ class QuestionForm extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <div key="title" className="question_form-element">
             <label>
-              Title
+              <div className="question_form-title-text">Title</div>
+              
               <input
                 className="question_form-title"
                 onChange={e => this.handleTitle(e)}
@@ -170,11 +171,8 @@ class QuestionForm extends React.Component {
                 </div>
               </div>
             </label>
-          <button type="submit">Submit</button>
+          <button className="question_form-submit" type="submit">Ask Your Question</button>
         </form>
-        <div>
-          <Link to={`/questions/${this.state.id}`}>Back</Link>
-        </div>
       </div>
     );
   }

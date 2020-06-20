@@ -1,5 +1,24 @@
 .question_form {
-    padding: 2rem; 
+    // padding: 2rem; 
+    border-radius: 5px; 
+    border: 1px solid $black; 
+    box-shadow: 0 0 0pt 3pt $gray; 
+    // width: inherit; 
+    flex: 1;  
+}
+
+.question_form-submit {
+  margin: 0rem 0.25rem 0rem 0.25rem; 
+  padding: 0.5rem; 
+  background-color: $red; 
+  color: $white; 
+  border: none; 
+  border-radius: 5px; 
+  font-size: 1rem; 
+}
+
+.question_form-title-text {
+  font-size: $description-size; 
 }
 
 .question_form-title {
@@ -30,25 +49,22 @@
 }
 
 .RichEditor-editor {
-  border: 1px solid $red;
+  border-top: 1px solid $silver;
   cursor: text;
-  font-size: 16px;
+  font-size: 1rem;
 }
+
+// .RichEditor-editor .public-DraftEditor-container:focus {
+//   outline: none; 
+//   border-radius: 5px; 
+//   border: 1px solid $black; 
+//   box-shadow: 0 0 0pt 3pt $gray; 
+// }
+
 
 .RichEditor-editor .public-DraftEditor-content {
   min-height: 100px;
   padding: 1rem; 
-}
-
-.RichEditor-editor .public-DraftEditor-content:focus {
-  outline: none; 
-  border-radius: 5px; 
-  border: 1px solid $black; 
-  box-shadow: 0 0 0pt 3pt $silver; 
-}
-
-.RichEditor-hidePlaceholder .public-DraftEditorPlaceholder-root {
-  display: none;
 }
 
 .RichEditor-editor .RichEditor-blockquote {
@@ -89,3 +105,4 @@ pre {
 .RichEditor-activeButton {
   color: $red;
 }
+

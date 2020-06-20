@@ -81,7 +81,7 @@ class Questions extends React.Component {
         const [pages, bp1, bp2] = this.generatePageNumbers(questionCount, search.pageLimit, search.pageNumber); 
         if (questions) {
             return (
-                <div>
+                <div className="questions">
                     <div className="questions-header">
                         <div className="questions-title">
                             {questionCount} question{questionCount === 1 ? '' : 's'}
