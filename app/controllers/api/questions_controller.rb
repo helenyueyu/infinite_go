@@ -17,8 +17,8 @@ class Api::QuestionsController < ApplicationController
 
     def create 
         @question = Question.new(question_params)
+        @question.current_vote = @question.current_user_vote(current_user)
         if @question.save
-            @question.current_vote = @question.current_user_vote(current_user)
             render :show 
         else
             render json: @question.errors.full_messages, status: 422
@@ -28,14 +28,14 @@ class Api::QuestionsController < ApplicationController
     def show 
         if params[:id] != nil 
             @question = Question.find(params[:id]) 
-        end 
+        end
         @question.current_vote = @question.current_user_vote(current_user)
     end
 
     def update 
         @question = Question.find(params[:id])
+        @question.current_vote = @question.current_user_vote(current_user)
         if @question.update_attributes(question_params)
-            @question.current_vote = @question.current_user_vote(current_user)
             render :show 
         else
             render json: @question.errors.full_messages, status: 422 

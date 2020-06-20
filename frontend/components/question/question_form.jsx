@@ -130,23 +130,13 @@ class QuestionForm extends React.Component {
         title: this.state.title,
         body: JSON.stringify(convertToRaw(contentState))
     };
-    // if (this.props.type === "edit") {
-    //     this.props.action(post)
-    //         .then(() => this.props.history.push(`/questions/${this.state.id}/${nameExtensionURL(post.title)}`)); 
-    // } else {
-    //     // delete post.id; 
-    //     this.props.action(post)
-    //         .then(res => console.log(res), err => console.log(err)) 
-    //     // this.props.history.push('/questions/'); 
-    // }
-    // if (this.props.type === "new") {
-    //     delete post.id; 
-    // }
-    this.props.action(post)
-        .then((res) => {
-            console.log('res', res); 
-            this.props.history.push(`/questions/${this.state.id}/${nameExtensionURL(post.title)}`)
-        });
+    this.props.action(post).then(() => {
+        if (this.props.type === "edit") {
+            this.props.history.push(`/questions/${this.state.id}/${nameExtensionURL(post.title)}`); 
+        } else {
+            this.props.history.push('/questions'); 
+        }
+    }); 
   }
 
   render() {
