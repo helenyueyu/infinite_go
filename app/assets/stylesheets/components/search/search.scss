@@ -1,5 +1,6 @@
 .search-input {
     padding: 0.1rem; 
+    padding-left: 2rem; 
     font-size: 1rem;
     width: 55vw;  
     height: 1.5rem; 
@@ -12,4 +13,14 @@
     border-radius: 5px; 
     border: 1px solid $black; 
     box-shadow: 0 0 0pt 3pt $gray; 
+}
+.search-form {
+    display: flex; 
+    align-items: center; 
+}
+.fa-search {
+    color: $red; 
+    font-size: 1.25rem; 
+    padding-right: 0.5rem; 
+    transform: translateX(2.25rem); 
 }

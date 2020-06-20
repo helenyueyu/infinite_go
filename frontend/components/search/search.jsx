@@ -59,8 +59,11 @@ class Search extends React.Component {
     render() {
         return (
            <div>
-               <form onSubmit={this.handleSubmit}>
-                   <input className="search-input" onChange={this.handleChange} value={this.state.query}/>   
+               <form onSubmit={this.handleSubmit} className="search-form">
+                   <div>
+                        <i className="fas fa-search"></i>
+                   </div>
+                    <input className="search-input" onChange={this.handleChange} value={this.state.query}/>
                 </form>
 
            </div>
