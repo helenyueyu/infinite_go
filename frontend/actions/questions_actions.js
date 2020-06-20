@@ -39,7 +39,6 @@ export const fetchRandomQuestions = () => dispatch => (
 export const fetchFilteredQuestions = (pageNumber, pageLimit, query) => dispatch => {
     return questionAPIUtil.getFilteredQuestions(pageNumber, pageLimit, query)
         .then(questions => {
-            // debugger; 
             dispatch(receiveAllQuestions(questions))
         })
 }
@@ -50,10 +49,8 @@ export const fetchQuestion = id => dispatch => (
 )
 
 export const createQuestion = question => dispatch => {
-    // debugger; 
     questionAPIUtil.createQuestion(question)
         .then(question => {
-            // debugger; 
             dispatch(receiveQuestion(question))
         })
 }

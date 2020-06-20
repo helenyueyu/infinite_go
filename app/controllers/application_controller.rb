@@ -2,8 +2,6 @@ class ApplicationController < ActionController::Base
     helper_method :current_user, :logged_in? 
 
     before_action :set_last_seen_at, if: proc { logged_in? }
-
-    # debugger 
     def login(user) 
         session[:session_token] = user.reset_session_token!
         @current_user = user 

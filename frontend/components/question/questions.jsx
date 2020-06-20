@@ -12,6 +12,7 @@ class Questions extends React.Component {
 
     }
     componentDidMount() {
+        debugger; 
         this.props.fetchMetas(); 
         let url = this.props.history.location.pathname;
         if (url.includes('tagged')) {
@@ -26,12 +27,14 @@ class Questions extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
+        debugger; 
         if (this.newSearchParams(prevProps.search, this.props.search)) {
             this.fetchQuestions(this.props.search); 
         }
     }
 
     fetchQuestions({pageNumber, pageLimit, query}) {
+        debugger; 
         this.props.fetchFilteredQuestions(pageNumber, pageLimit, query); 
     }
 
@@ -75,6 +78,7 @@ class Questions extends React.Component {
     }
 
     render() {
+        debugger; 
         let {questions, search, metas: { stats: {questionCount }}} = this.props; 
         if (!questions || !search) return null; 
 

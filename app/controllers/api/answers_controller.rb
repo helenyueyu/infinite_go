@@ -8,7 +8,6 @@ class Api::AnswersController < ApplicationController
 
     def create 
         @answer = Answer.new(answer_params)
-        # debugger 
         @answer.accepted = false 
         if @answer.save 
             render :show 
@@ -22,7 +21,6 @@ class Api::AnswersController < ApplicationController
     end
 
     def update 
-        # debugger 
         @answer = Answer.find(params[:id])
         if @answer.update_attributes(answer_params)
             render :show 

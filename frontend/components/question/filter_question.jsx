@@ -2,7 +2,6 @@ import React from 'react';
 
 class FilterQuestion extends React.Component {
     generateButton(num, action, active) {
-        // debugger; 
         return (
             <button key={num}
                 onClick={() => action(num)}
@@ -13,8 +12,6 @@ class FilterQuestion extends React.Component {
     }
     render() {
         const { type, values, bp1, bp2, action, active } = this.props; 
-        // console.log(this.props); 
-        // debugger; 
         return (
             <div className="filter_question-list">
                 {values.map((num, idx) =>

@@ -1,7 +1,6 @@
 class Api::BookmarksController < ApplicationController
     def create
         @bookmark = Bookmark.new(bookmark_params)
-        # debugger 
         if @bookmark.save 
             render :show 
         else

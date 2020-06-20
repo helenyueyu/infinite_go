@@ -38,7 +38,6 @@ class AnswerItem extends React.Component {
     }
 
     render() {
-        // debugger; 
         let { id, questionId, body, username, createdAt, authorized, handleDelete, canAccept, reputation, medals, user } = this.props;
         const answerId = id; 
         const currentContent = EditorState.createWithContent(

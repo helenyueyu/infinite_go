@@ -15,7 +15,6 @@ class Tags extends React.Component {
 
     render() {
         let { tags, showDelete } = this.props;
-        // debugger; 
         return (
             <div className="tags">
                 {tags.map((tag, idx) => 
