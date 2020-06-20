@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 class Menu extends React.Component {
     render() {
         const { location: {pathname} } = this.props; 
+
         return (
             <ul className="menu">
                 <li className={pathname === "/" ? "menu-item-link-active" : "menu-item-link"}>
@@ -12,7 +13,7 @@ class Menu extends React.Component {
                 <li className="menu-public">PUBLIC</li>
        
                 <li className={pathname === "/questions" ? "menu-item-link-active" : "menu-item-link"}>
-                    <i className={pathname === "/questions" ? "fas fa-globe-americas active" : "fas fa-globe-americas"}></i> 
+                    <i className={pathname.startsWith("/questions") ? "fas fa-globe-americas active" : "fas fa-globe-americas"}></i> 
                     <Link className="menu-item-link" to='/questions'>Infinite Go</Link>
                 </li>
                 <li className={pathname === "/users" ? "menu-item-link-active" : "menu-item-link"}>
