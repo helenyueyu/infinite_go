@@ -1,6 +1,4 @@
 import React from 'react'; 
-import { Link } from 'react-router-dom'; 
-
 import moment from 'moment'; 
 
 import ProfileSnippet from '../user/profile/profile_snippet'; 
@@ -18,6 +16,8 @@ import NewTagContainer from '../tag/new_tag_container';
 
 import NewAnswerContainer from '../answer/new_answer_container'; 
 import AnswersContainer from '../answer/answers_container'; 
+
+import { nameExtensionURL } from '../../selectors/display_selectors'; 
 
 import { Editor, EditorState, convertFromRaw } from 'draft-js'; 
 
@@ -91,7 +91,7 @@ class Question extends React.Component {
                     />
                     <EditButton
                       authorized={currentUser.id === user.id}
-                      link={`/questions/${id}/edit`}
+                      link={`/questions/${id}/${nameExtensionURL(title)}/edit`}
                     />
                   </div>
                   <ProfileSnippet

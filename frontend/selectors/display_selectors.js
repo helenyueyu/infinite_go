@@ -12,3 +12,25 @@ export const displayQuestion = (question, limit) => {
     }
 }
 
+export const nameExtensionURL = (title) => {
+    let cleanedTitle = ""; 
+    let alpha = 'abcdefghijklmnopqrstuvwxyz'; 
+    for (let i = 0; i < title.length; i++) {
+        if (title[i] === " ") {
+            cleanedTitle += "-"; 
+        } else if (alpha.includes(title[i].toLowerCase())) {
+            cleanedTitle += title[i].toLowerCase(); 
+        } else {
+            if (cleanedTitle[cleanedTitle.length-1] === '-') {
+                cleanedTitle += ''; 
+            } else {
+                cleanedTitle += '-'; 
+            }
+        } 
+    }
+    while (cleanedTitle[cleanedTitle.length-1] === '-') {
+        cleanedTitle = cleanedTitle.slice(0, cleanedTitle.length-1); 
+    }
+    return cleanedTitle; 
+}
+
