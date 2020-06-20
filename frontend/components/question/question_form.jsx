@@ -6,11 +6,11 @@ import PrismDraftDecorator from 'draft-js-prism';
 import CodeUtils from 'draft-js-code'; 
 
 const { 
-  Editor, 
-  EditorState, 
-  RichUtils, 
-  convertToRaw, 
-  convertFromRaw 
+    Editor, 
+    EditorState, 
+    RichUtils, 
+    convertToRaw, 
+    convertFromRaw 
 } = Draft; 
 
 import InlineStyleControls from '../editor/inline_style_controls'; 
@@ -25,6 +25,7 @@ class QuestionForm extends React.Component {
       user_id: this.props.userId,
       id: this.props.type === "new" ? "" : this.props.match.params.questionId,
       title: "",
+      tags: "", 
       editorState: EditorState.createEmpty(decorator)
     };
     this.focus = () => this.refs.editor.focus();
@@ -112,6 +113,13 @@ class QuestionForm extends React.Component {
     });
   }
 
+  handleTags(e) {
+    e.preventDefault();
+    this.setState({
+      tags: e.target.value
+    });
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const contentState = this.state.editorState.getCurrentContent();
@@ -131,47 +139,66 @@ class QuestionForm extends React.Component {
     let className = "RichEditor-editor";
     return (
       <div className="question_form">
-        <form onSubmit={this.handleSubmit}>
-          <div key="title" className="question_form-element">
-            <label>
-              <div className="question_form-title-text">Title</div>
-              
-              <input
-                className="question_form-title"
-                onChange={e => this.handleTitle(e)}
-                value={this.state["title"]}
-              />
-            </label>
-          </div>
+        <form className="question_form-form" onSubmit={this.handleSubmit}>
+            <div>
+                <div className="question_form-title-text">
+                    Title
+                </div>
+                <div className="question_form-title-desc">
+                    Be specific and imagine you’re asking a question to another person
+                </div>
+                <input
+                    className="question_form-title"
+                    onChange={e => this.handleTitle(e)}
+                    value={this.state["title"]}
+                />
+            </div>
 
-            <label>
-              <div className="RichEditor-root">
-                <div className="editor-controls">
-                  <InlineStyleControls
-                      editorState={editorState}
-                      onToggle={this.toggleInlineStyle}
+            <div>
+                <div className="question_form-title-text">Body</div>
+                <div className="question_form-title-desc">
+                    Include all the information someone would need to answer your question                
+                </div>
+
+                <div className="RichEditor-root">
+                    <div className="editor-controls">
+                    <InlineStyleControls
+                        editorState={editorState}
+                        onToggle={this.toggleInlineStyle}
+                        />
+                    <BlockStyleControls
+                        editorState={editorState}
+                        onToggle={this.toggleBlockType}
                     />
-                  <BlockStyleControls
-                    editorState={editorState}
-                    onToggle={this.toggleBlockType}
-                  />
+                    </div>
+                    <div className={className} onClick={this.focus}>
+                    <Editor
+                        blockStyleFn={getBlockStyle}
+                        editorState={editorState}
+                        handleKeyCommand={this.handleKeyCommand}
+                        keyBindingFn={this.keyBindingFn}
+                        onChange={this.onChange}
+                        ref="editor"
+                        spellCheck={true}
+                        handleReturn={this.onReturn}
+                        onTab={this.onTab}
+                    />
+                    </div>
                 </div>
-                <div className={className} onClick={this.focus}>
-                  <Editor
-                    blockStyleFn={getBlockStyle}
-                    editorState={editorState}
-                    handleKeyCommand={this.handleKeyCommand}
-                    keyBindingFn={this.keyBindingFn}
-                    onChange={this.onChange}
-                    ref="editor"
-                    spellCheck={true}
-                    handleReturn={this.onReturn}
-                    onTab={this.onTab}
-                  />
+            </div>
+
+            <div>
+                <div className="question_form-title-text">Tags</div>
+                <div className="question_form-title-desc">
+                    Add up to 5 tags to describe what your question is about                
                 </div>
-              </div>
-            </label>
-          <button className="question_form-submit" type="submit">Ask Your Question</button>
+                <input
+                    className="question_form-tags"
+                    onChange={e => this.handleTags(e)}
+                    value={this.state["tags"]}
+                />
+            </div>
+            <button className="question_form-submit" type="submit">Ask Your Question</button>
         </form>
       </div>
     );

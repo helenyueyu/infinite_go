@@ -1,14 +1,16 @@
 .question_form {
-    // padding: 2rem; 
-    border-radius: 5px; 
-    border: 1px solid $black; 
-    box-shadow: 0 0 0pt 3pt $gray; 
-    // width: inherit; 
+    padding: 1rem; 
+    background: $red; 
     flex: 1;  
 }
 
+.question_form-form {
+    background: $lightest-silver; 
+    padding: 2rem; 
+}
+
 .question_form-submit {
-  margin: 0rem 0.25rem 0rem 0.25rem; 
+  margin-top: 2rem; 
   padding: 0.5rem; 
   background-color: $red; 
   color: $white; 
@@ -18,7 +20,15 @@
 }
 
 .question_form-title-text {
-  font-size: $description-size; 
+  font-size: $info-size; 
+  font-weight: bold; 
+  padding-top: 1rem; 
+}
+
+.question_form-title-desc {
+    font-size: $comment-size; 
+    padding-top: 0.25rem; 
+    padding-bottom: 0.4rem; 
 }
 
 .question_form-title {
@@ -26,7 +36,7 @@
   font-size: 1rem;
   height: 1.5rem; 
   border-radius: 5px; 
-  border: none; 
+  border: 1px solid $silver; 
 }
 .question_form-title:focus {
   outline: none; 
