@@ -43,13 +43,14 @@ const Navbar = ({currentUser, logout}) => {
                     </div>
                     <button className="nav-logout-button" onClick={logout}>Logout</button>
                 </div>
-                
             </div>
         )
     } else {
         return (
             <div className="nav">
-                <div className="nav-logo">IG</div>
+                <div className="nav-logo">
+                    <img className="nav-pic" src="/assets/bug_mojo.png" />
+                </div>
                 <div>
                     <Link to="/login"><button className="nav-login-button">Log In</button></Link>
                     <Link to="/signup" ><button className="nav-signup-button">Sign Up </button></Link>
