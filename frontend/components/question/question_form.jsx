@@ -15,6 +15,7 @@ const {
 
 import InlineStyleControls from '../editor/inline_style_controls'; 
 import BlockStyleControls, { getBlockStyle } from '../editor/block_style_controls'; 
+import { nameExtensionURL } from '../../selectors/display_selectors'; 
 
 class QuestionForm extends React.Component {
   constructor(props) {
@@ -129,8 +130,9 @@ class QuestionForm extends React.Component {
       title: this.state.title,
       body: JSON.stringify(convertToRaw(contentState))
     };
-    this.props.action(post);
-    this.props.history.push(`/questions/${this.state.id}`);
+    this.props.action(post)
+        .then(() => this.props.history.push(`/questions/${this.state.id}/${nameExtensionURL(post.title)}`)); 
+    
   }
 
   render() {
