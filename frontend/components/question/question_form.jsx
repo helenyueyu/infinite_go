@@ -129,12 +129,6 @@ class QuestionForm extends React.Component {
     if (!this.props.question && this.props.type === "edit") return null;
     const { editorState } = this.state;
     let className = "RichEditor-editor";
-    const contentState = editorState.getCurrentContent();
-    if (!contentState.hasText()) {
-      if (contentState.getBlockMap().first().getType() !== "unstyled") {
-        className += " RichEditor-hidePlaceholder";
-      }
-    }
     return (
       <div className="question_form">
         <form onSubmit={this.handleSubmit}>
@@ -165,7 +159,6 @@ class QuestionForm extends React.Component {
                     handleKeyCommand={this.handleKeyCommand}
                     keyBindingFn={this.keyBindingFn}
                     onChange={this.onChange}
-                    placeholder="Write a question..."
                     ref="editor"
                     spellCheck={true}
                     handleReturn={this.onReturn}
