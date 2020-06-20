@@ -1,3 +1,19 @@
 .answer_form {
     padding: 2rem;  
 }
+
+.answer_form-title {
+    padding-top: 2rem; 
+    padding-bottom: 1rem; 
+    font-size: $description-size; 
+}
+
+.answer_form-submit {
+    margin-top: 1rem; 
+    padding: 0.5rem; 
+    background-color: $red; 
+    color: $white; 
+    border: none; 
+    border-radius: 5px; 
+    font-size: 1rem; 
+}

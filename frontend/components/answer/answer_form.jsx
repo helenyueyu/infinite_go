@@ -134,34 +134,33 @@ class AnswerForm extends React.Component {
             <div className="answer_form">
                 <form onSubmit={this.handleSubmit}>
 
-                    <label>Your Answer 
-                        <div className="RichEditor-root">
-                            <BlockStyleControls
+                    <div className="answer_form-title">Your Answer</div>
+                    <div className="RichEditor-root">
+                        <BlockStyleControls
+                            editorState={editorState}
+                            onToggle={this.toggleBlockType}
+                        />
+                        <InlineStyleControls
+                            editorState={editorState}
+                            onToggle={this.toggleInlineStyle}
+                        />
+                        <div className={className} onClick={this.focus}>
+                            <Editor
+                                blockStyleFn={getBlockStyle}
                                 editorState={editorState}
-                                onToggle={this.toggleBlockType}
+                                handleKeyCommand={this.handleKeyCommand}
+                                keyBindingFn={this.keyBindingFn}
+                                onChange={this.onChange}
+                                placeholder="Write an answer..."
+                                ref="editor"
+                                spellCheck={true}
+                                handleReturn={this.onReturn}
+                                onTab={this.onTab}
                             />
-                            <InlineStyleControls
-                                editorState={editorState}
-                                onToggle={this.toggleInlineStyle}
-                            />
-                            <div className={className} onClick={this.focus}>
-                                <Editor
-                                    blockStyleFn={getBlockStyle}
-                                    editorState={editorState}
-                                    handleKeyCommand={this.handleKeyCommand}
-                                    keyBindingFn={this.keyBindingFn}
-                                    onChange={this.onChange}
-                                    placeholder="Write an answer..."
-                                    ref="editor"
-                                    spellCheck={true}
-                                    handleReturn={this.onReturn}
-                                    onTab={this.onTab}
-                                />
-                            </div>
                         </div>
-                    </label>
+                    </div>
 
-                    <button type="submit">Submit</button>
+                    <button className="answer_form-submit" type="submit">Submit</button>
                 </form>
             </div>
         )
