@@ -20,10 +20,6 @@
   margin-top: 10px;
 }
 
-// .RichEditor-editor > li {
-//   display: circle; 
-// }
-
 .RichEditor-editor .public-DraftEditorPlaceholder-root,
 .RichEditor-editor .public-DraftEditor-content {
   margin: 0 -15px -15px;
@@ -79,5 +75,5 @@ pre {
 }
 
 .RichEditor-activeButton {
-  color: #5890ff;
+  color: $red;
 }

@@ -1,9 +1,19 @@
 .menu {
     border-right: 1px solid $lighter-silver;  
-    padding: 0.5rem; 
+    padding-top: 2rem; 
+    padding-left: 0.75rem; 
+    align-items: stretch; 
     flex-direction: column; 
     display: flex; 
     flex: 0 0 150px; 
+    font-size: $comment-size; 
+    color: $gray; 
+    list-style: none; 
+}
+
+.menu-public {
+    padding-top: 1rem; 
+    font-size: $little-size; 
 }
 
 .menu-item-indent {
@@ -11,8 +21,28 @@
 }
 .menu-item-link {
     text-decoration: none; 
-    color: $gray; 
+    color: $black; 
+    padding-top: 0.5rem; 
+    padding-bottom: 0.5rem; 
 }
+
 .menu-item-link-active {
-    background: $red;  
+    border-right: 3px solid $red; 
+    background: $code;  
+    padding-top: 0.5rem; 
+    padding-bottom: 0.5rem; 
+    font-weight: bold; 
+}
+
+.fa-globe-americas {
+    font-size: $description-size; 
+    color: $gray; 
+    padding-left: 0.25rem; 
+    padding-right: 0.25rem; 
+}
+
+.fa-globe-americas.active {
+    font-size: $description-size; 
+    font-weight: bold; 
+    color: $black; 
 }

@@ -6,20 +6,22 @@ class Menu extends React.Component {
         const { location: {pathname} } = this.props; 
         return (
             <ul className="menu">
-                <li><Link className="menu-item-link" to='/questions'>Home</Link></li>
-                <li>PUBLIC</li>
+                <li className={pathname === "/" ? "menu-item-link-active" : "menu-item-link"}>
+                    <Link className="menu-item-link" to='/'>Home</Link>
+                </li>
+                <li className="menu-public">PUBLIC</li>
        
-                <li>
-                    <i className="fa fa-globe" aria-hidden="true"></i>
+                <li className={pathname === "/questions" ? "menu-item-link-active" : "menu-item-link"}>
+                    <i className={pathname === "/questions" ? "fas fa-globe-americas active" : "fas fa-globe-americas"}></i> 
                     <Link className="menu-item-link" to='/questions'>Infinite Go</Link>
                 </li>
-                <li><Link className="menu-item-link" to='/users'>Users</Link></li>
-                <li><Link className={pathname === "/tags" ? "menu-item-link-active" : "menu-item-link"} to='/tags'>Tags</Link></li>
-                <li><Link className={pathname === "/badges" ? "menu-item-link-active" : "menu-item-link"} to='/badges'>Badges</Link></li>
-
-                <li>FIND A JOB</li>
+                <li className={pathname === "/users" ? "menu-item-link-active" : "menu-item-link"}>
+                    <Link className="menu-item-link" to='/users'>Users</Link>
+                </li>
+                <li className={pathname === "/tags" ? "menu-item-link-active" : "menu-item-link"}>
+                    <Link className="menu-item-link" to='/tags'>Tags</Link>
+                </li>
                 <li><Link className="menu-item-link" to='/'>Jobs</Link></li>
-                <li><Link className="menu-item-link" to='/'>Companies</Link></li>
             </ul>
         )
     }

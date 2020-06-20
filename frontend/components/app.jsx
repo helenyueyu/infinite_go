@@ -9,7 +9,6 @@ import Splash from '../components/user/splash';
 
 import Menu from './menu/menu'; 
 import RightMenuContainer from './menu/right_menu_container'; 
-import RightMenu from './menu/right_menu'; 
 
 import SignUpFormContainer from './user/auth/sign_up_form_container';
 import LoginFormContainer from './user/auth/login_form_container';
@@ -41,7 +40,9 @@ const routes = [
     createRoute('/questions/:questionId/answers/:answerId/edit', EditAnswerContainer), 
     createRoute('/users', ProfileIndexContainer, true, Menu, null), 
     createRoute('/users/:userId', ProfileContainer, true, Menu, null), 
-    createRoute('/users/:userId/activity', ProfileActivityContainer, true, Menu, null)
+    createRoute('/users/:userId/activity', ProfileActivityContainer, true, Menu, null), 
+    createRoute('/tags', TagsIndexContainer, true, Menu, null), 
+    createRoute('/badges', BadgesIndexContainer, true, Menu, null)
 ] 
 
 const App = () => {
