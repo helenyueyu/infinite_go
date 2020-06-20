@@ -16,12 +16,14 @@ class Menu extends React.Component {
                     <Link className="menu-item-link" to='/questions'>Infinite Go</Link>
                 </li>
                 <li className={pathname === "/users" ? "menu-item-link-active" : "menu-item-link"}>
-                    <Link className="menu-item-link" to='/users'>Users</Link>
+                    <Link className="menu-item-link types" to='/users'>Users</Link>
                 </li>
                 <li className={pathname === "/tags" ? "menu-item-link-active" : "menu-item-link"}>
-                    <Link className="menu-item-link" to='/tags'>Tags</Link>
+                    <Link className="menu-item-link types" to='/tags'>Tags</Link>
                 </li>
-                <li><Link className="menu-item-link" to='/'>Jobs</Link></li>
+                <li className={pathname === "/tags" ? "menu-item-link-active" : "menu-item-link"}>
+                    <Link className="menu-item-link types" to='/tags'>Jobs</Link>
+                </li>
             </ul>
         )
     }

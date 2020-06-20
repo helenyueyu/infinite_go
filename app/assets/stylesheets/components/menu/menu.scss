@@ -25,6 +25,10 @@
     padding-top: 0.5rem; 
     padding-bottom: 0.5rem; 
 }
+.menu-item-link.types {
+    padding-left: 1.5rem; 
+}
+
 
 .menu-item-link-active {
     border-right: 3px solid $red; 
@@ -32,6 +36,7 @@
     padding-top: 0.5rem; 
     padding-bottom: 0.5rem; 
     font-weight: bold; 
+    color: $black; 
 }
 
 .fa-globe-americas {

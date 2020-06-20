@@ -51,7 +51,7 @@ class AnswerItem extends React.Component {
                     <AcceptButton canAccept={canAccept} action={this.handleUnaccept} type="unaccept" />
                 </div>
                 
-                <div>
+                <div className="answer_item-snippet">
                     <Editor editorState={currentContent} readOnly={true} />
                 </div>
 
