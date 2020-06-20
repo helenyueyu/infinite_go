@@ -33,9 +33,9 @@ const createRoute = (path, main, exact=true, leftSideBar=Menu, rightSideBar=Righ
 }
 const routes = [
     createRoute('/', Splash, true, null, null), 
-    createRoute('/questions', QuestionsContainer, true), 
-    createRoute('/questions/new', NewQuestionContainer, true), 
-    createRoute('/questions/:questionId', QuestionContainer, true), 
+    createRoute('/questions', QuestionsContainer), 
+    createRoute('/questions/new', NewQuestionContainer), 
+    createRoute('/questions/:questionId/:title', QuestionContainer), 
     createRoute('/questions/:questionId/edit', EditQuestionContainer, true), 
     createRoute('/questions/:questionId/answers/:answerId/edit', EditAnswerContainer), 
     createRoute('/users', ProfileIndexContainer, true, Menu, null), 
