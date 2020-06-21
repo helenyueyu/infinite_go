@@ -171,6 +171,15 @@ class QuestionForm extends React.Component {
             }
         }
     }).then(() => {
+        if (type === 'edit') {
+            const existentTags = this.props.question.tags; 
+            for (let i = 0; i < existentTags.length; i++) {
+                if (!rawTags.includes(existentTags[i].name)) {
+                    this.props.deleteTaggable(existentTags[i].id); 
+                }
+            }
+        }
+    }).then(() => {
         this.props.history.push(`/questions/${type === 'new' ? question.id : this.state.id}/${nameExtensionURL(post.title)}`); 
     }).then(() => {
         if (type === 'new') {
@@ -178,17 +187,9 @@ class QuestionForm extends React.Component {
         } else {
             this.props.fetchQuestion(this.state.id); 
         }
-    }).then(() => {
-        if (type === 'edit') {
-            const existentTags = this.props.question[this.state.id].tags; 
-            for (let i = 0; i < existentTags.length; i++) {
-                if (!rawTags.includes(existentTags[i].name)) {
-                    this.props.deleteTaggable(existentTags[i].id); 
-                }
-            }
-        }
     })
     
+
   }
 
   render() {
