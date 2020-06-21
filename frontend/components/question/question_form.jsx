@@ -138,19 +138,17 @@ class QuestionForm extends React.Component {
                 name: name, 
                 user_id: this.state.user_id
             }))
-    /* How am I supposed to know the id of what I'm tagging?? */
     // const taggables = rawTags.map(name => ({
     //             name: name, 
-    //             taggable_id: s
+    //             taggable_id: this.props
     //         }))
 
-    const thunkAction = async(post) => {
-        let res = await this.props.action(post); 
-        console.log("pop", res); 
-        // dispatch(res => console.log(res.json())); 
-    }
-    thunkAction(post); 
-    // this.props.action(post).then(res => console.log('res:', res)); 
+
+
+    this.props.action(post).then(() => {
+        const question = Object.values(this.props.questions)[0]; 
+        console.log('ques:', question); 
+    }); 
 
     // .then(() => {
     //     if (this.props.type === "edit") {
@@ -159,6 +157,8 @@ class QuestionForm extends React.Component {
     //         this.props.history.push('/questions'); 
     //     }
     // })
+
+    // installed core-js and regenerator-runtimer
     
   }
 

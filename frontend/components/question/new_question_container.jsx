@@ -5,7 +5,8 @@ import { createQuestion } from '../../actions/questions_actions';
 
 const mapStateToProps = state => ({
    userId: state.session.id, 
-   type: "new"
+   type: "new", 
+   questions: state.entities.questions 
 })
 
 const mapDispatchToProps = dispatch => {
