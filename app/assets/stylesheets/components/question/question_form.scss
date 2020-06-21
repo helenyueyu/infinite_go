@@ -25,6 +25,11 @@
   font-size: 1rem; 
 }
 
+.question_form-submit:hover {
+    cursor: pointer; 
+    background: $focus-red; 
+}
+
 .question_form-submit:focus {
     outline: none; 
 }
