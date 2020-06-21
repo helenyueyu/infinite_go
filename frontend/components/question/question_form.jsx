@@ -44,6 +44,7 @@ class QuestionForm extends React.Component {
         this.toggleBlockType = type => this._toggleBlockType(type);
         this.toggleInlineStyle = style => this._toggleInlineStyle(style);
 
+        this.addTag = this.addTag.bind(this); 
         this.handleTag = this.handleTag.bind(this); 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -125,8 +126,17 @@ class QuestionForm extends React.Component {
     this.props.searchTags(query)
         .then(() => this.setState({
             tag: query,
-            searchedTags: this.props.tags.map(tag => tag.name) 
+            searchedTags: this.props.tags.map(tag => tag.name).slice(0,6) 
         }))
+  }
+
+  addTag(e) {
+    e.preventDefault(); 
+    this.setState({
+        tags: this.state.tags.concat(e.target.innerText), 
+        tag: "", 
+        searchedTags: [] 
+    })
   }
 
   handleSubmit(e) {
@@ -138,9 +148,10 @@ class QuestionForm extends React.Component {
         title: this.state.title,
         body: JSON.stringify(convertToRaw(contentState))
     };
-    const rawTags = this.state.tags
-                        .split(',')
-                        .map(tag => removeSpaces(tag))
+    // const rawTags = this.state.tags
+    //                     .split(',')
+    //                     .map(tag => removeSpaces(tag))
+    const rawTags = this.state.tags; 
 
     const tags = rawTags.map(name => ({
                 name: name, 
@@ -204,6 +215,7 @@ class QuestionForm extends React.Component {
     if (!this.props.question && this.props.type === "edit") return null;
     const { editorState } = this.state;
     let className = "RichEditor-editor";
+    console.log(this.state); 
     return (
       <div className="question_form">
         <form className="question_form-form" onSubmit={this.handleSubmit}>
@@ -270,9 +282,9 @@ class QuestionForm extends React.Component {
                     value={this.state.tag}
                 />
 
-                <div className="tags">
+                <div className="tags-search">
                     {this.state.searchedTags.map((tag, idx) => 
-                        <div key={idx} className="tag-item">{tag}</div>)
+                        <div key={idx} className="tag-item" onClick={(e) => this.addTag(e)}>{tag}</div>)
                     }
                 </div>
             </div>
