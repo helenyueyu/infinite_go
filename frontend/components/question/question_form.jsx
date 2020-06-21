@@ -16,6 +16,12 @@ import InlineStyleControls from '../editor/inline_style_controls';
 import BlockStyleControls, { getBlockStyle } from '../editor/block_style_controls'; 
 import { nameExtensionURL, removeSpaces } from '../../selectors/display_selectors'; 
 
+const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' },
+  ];
+
 class QuestionForm extends React.Component {
   constructor(props) {
         super(props);
@@ -256,7 +262,6 @@ class QuestionForm extends React.Component {
                     className="question_form-tags"
                     onChange={e => this.handleTags(e)}
                     value={this.state["tags"]}
-                    selectBoxOptions="Canada;Denmark;Finland;Germany;Mexico"
                 />
             </div>
             <button className="question_form-submit" type="submit">Ask Your Question</button>
