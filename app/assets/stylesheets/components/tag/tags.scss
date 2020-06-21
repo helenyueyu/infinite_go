@@ -7,7 +7,7 @@
 .tag-item {
     display: flex; 
     flex-direction: horizontal; 
-    background: $tag-red; 
+    background: $tag-red-lite; 
     color: $red; 
     margin: 0.25rem; 
     padding: 0.3rem 0.35rem 0.3rem 0.35rem; 
@@ -16,7 +16,7 @@
 }
 
 .tag-item:hover {
-    background: $tag-red-lite; 
+    background: $tag-red; 
     cursor: pointer; 
 }
 
