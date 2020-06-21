@@ -298,7 +298,7 @@ class QuestionForm extends React.Component {
                     value={this.state.tag}
                 />
 
-                <div className="tags-search">
+                <div className="question_form-tags-search">
                     {this.state.searchedTags.map((tag, idx) => 
                         <div key={idx} className="tag-item" onClick={(e) => this.addTag(e, tag)}>{tag}</div>)
                     }
