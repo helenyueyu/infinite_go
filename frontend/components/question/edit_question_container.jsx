@@ -10,8 +10,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
     userId: state.session.id, 
     question: state.entities.questions[ownProps.match.params.questionId], 
-    type: "edit", 
-    tags: state.entities.tags 
+    type: "edit"
 }}
 
 const mapDispatchToProps = dispatch => {

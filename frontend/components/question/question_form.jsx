@@ -145,6 +145,7 @@ class QuestionForm extends React.Component {
                 user_id: this.state.user_id 
             }))
 
+    // debugger; 
     this.props.action(post).then(() => {
         const highestKey = Math.max(...Object.keys(this.props.questions).map(x => parseInt(x))); 
         const question = this.props.questions[highestKey]; 
@@ -156,18 +157,13 @@ class QuestionForm extends React.Component {
                 })
         }
     }).then(() => {
-        const { pageNumber, pageLimit, query } = this.props.search; 
-        this.props.fetchFilteredQuestions(pageNumber, pageLimit, query); 
-    }).then(() => {
         const highestKey = Math.max(...Object.keys(this.props.questions).map(x => parseInt(x))); 
         const question = this.props.questions[highestKey]; 
         this.props.history.push(`/questions/${question.id}/${nameExtensionURL(post.title)}`); 
-
-        // if (this.props.type === "edit") {
-        //     this.props.history.push(`/questions/${this.state.id}/${nameExtensionURL(post.title)}`); 
-        // } else {
-        //     this.props.history.push('/questions'); 
-        // }
+    }).then(() => {
+        const highestKey = Math.max(...Object.keys(this.props.questions).map(x => parseInt(x))); 
+        const question = this.props.questions[highestKey]; 
+        this.props.fetchQuestion(question.id); 
     })
     
   }
