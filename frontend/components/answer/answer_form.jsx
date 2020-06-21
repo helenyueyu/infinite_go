@@ -4,6 +4,8 @@ import Draft from "draft-js";
 import PrismDraftDecorator from "draft-js-prism";
 import CodeUtils from "draft-js-code";
 
+import { withRouter } from 'react-router-dom'; 
+
 import { nameExtensionURL } from "../../selectors/display_selectors"; 
 
 const { Editor, EditorState, ContentState, RichUtils, convertToRaw, convertFromRaw } = Draft;
@@ -156,11 +158,11 @@ class AnswerForm extends React.Component {
                         </div>
                     </div>
 
-                    <button className="answer_form-submit" type="submit">Submit</button>
+                    <button className="answer_form-submit" type="submit">Post Your Answer</button>
                 </form>
             </div>
         )
     }
 }
 
-export default AnswerForm; 
+export default withRouter(AnswerForm); 
