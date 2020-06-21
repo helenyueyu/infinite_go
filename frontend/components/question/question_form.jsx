@@ -149,8 +149,7 @@ class QuestionForm extends React.Component {
     const { type } = this.props; 
     let highestKey; 
     let question; 
-    // any thing not in rawTags should be deleted 
-    
+
     this.props.action(post).then(() => {
         if (type === 'new') {
             highestKey = Math.max(...Object.keys(this.props.questions).map(x => parseInt(x))); 
@@ -169,7 +168,7 @@ class QuestionForm extends React.Component {
                         taggables[i].taggable_id = this.state.id; 
                         this.props.createTaggable(taggables[i])
                     })
-            }   
+            }
         }
     }).then(() => {
         this.props.history.push(`/questions/${type === 'new' ? question.id : this.state.id}/${nameExtensionURL(post.title)}`); 
@@ -179,7 +178,15 @@ class QuestionForm extends React.Component {
         } else {
             this.props.fetchQuestion(this.state.id); 
         }
-        
+    }).then(() => {
+        if (type === 'edit') {
+            const existentTags = this.props.question[this.state.id].tags; 
+            for (let i = 0; i < existentTags.length; i++) {
+                if (!rawTags.includes(existentTags[i].name)) {
+                    this.props.deleteTaggable(existentTags[i].id); 
+                }
+            }
+        }
     })
     
   }

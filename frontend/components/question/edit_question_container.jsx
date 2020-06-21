@@ -3,7 +3,7 @@ import QuestionForm from './question_form';
 
 import { fetchQuestion, updateQuestion } from '../../actions/questions_actions';
 import { createTag } from '../../actions/tags_actions'; 
-import { createTaggable } from '../../actions/taggable_actions';
+import { createTaggable, deleteTaggable } from '../../actions/taggable_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -19,7 +19,8 @@ const mapDispatchToProps = dispatch => {
         fetchQuestion: question => dispatch(fetchQuestion(question)), 
         action: question => dispatch(updateQuestion(question)), 
         createTag: tag => dispatch(createTag(tag)), 
-        createTaggable: taggable => dispatch(createTaggable(taggable))
+        createTaggable: taggable => dispatch(createTaggable(taggable)), 
+        deleteTaggable: id => dispatch(deleteTaggable(id))
     }
 }
 

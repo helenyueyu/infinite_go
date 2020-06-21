@@ -5,8 +5,8 @@ class Taggable < ApplicationRecord
         class_name: :Tag, 
         foreign_key: :tag_id  
 
-    def self.exists?(user_id, taggable_id, taggable_type)
-        taggable = where(user_id: user_id, taggable_id: taggable_id, taggable_type: taggable_type)
+    def self.exists?(tag_id, taggable_id, taggable_type)
+        taggable = where(tag_id: tag_id, taggable_id: taggable_id, taggable_type: taggable_type)
         taggable.size == 1 
     end
 

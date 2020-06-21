@@ -6,9 +6,11 @@ class Api::TaggablesController < ApplicationController
         taggable_type = taggable_params[:taggable_type]
 
         if Taggable.exists?(tag_id, taggable_id, taggable_type)
+            # debugger 
             @taggable = Taggable.find_by(tag_id: tag_id, taggable_id: taggable_id, taggable_type: taggable_type)
             render :show
-        else 
+        else
+            # debugger 
             taggable = {
                 tag_id: tag_id, 
                 taggable_id: taggable_id, 
