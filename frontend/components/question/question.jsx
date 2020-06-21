@@ -12,7 +12,6 @@ import VoteContainer from '../vote/vote_container';
 import BookmarkContainer from '../bookmark/bookmark_container'; 
 
 import TagsContainer from '../tag/tags_container'; 
-import NewTagContainer from '../tag/new_tag_container'; 
 
 import NewAnswerContainer from '../answer/new_answer_container'; 
 import AnswersContainer from '../answer/answers_container'; 
@@ -69,12 +68,6 @@ class Question extends React.Component {
               <div>
                 <div className="question-title">{title}</div>
                 <Editor editorState={currentContent} readOnly={true} />
-
-                <NewTagContainer
-                  fetchQuestion={this.props.fetchQuestion}
-                  taggable_id={question.id}
-                  taggable_type="Question"
-                />
 
                 <TagsContainer
                   fetchQuestion={this.props.fetchQuestion}

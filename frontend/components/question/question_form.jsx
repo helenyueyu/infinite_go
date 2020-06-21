@@ -149,7 +149,8 @@ class QuestionForm extends React.Component {
     const { type } = this.props; 
     let highestKey; 
     let question; 
-
+    // any thing not in rawTags should be deleted 
+    
     this.props.action(post).then(() => {
         if (type === 'new') {
             highestKey = Math.max(...Object.keys(this.props.questions).map(x => parseInt(x))); 
