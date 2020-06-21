@@ -138,27 +138,37 @@ class QuestionForm extends React.Component {
                 name: name, 
                 user_id: this.state.user_id
             }))
-    // const taggables = rawTags.map(name => ({
-    //             name: name, 
-    //             taggable_id: this.props
-    //         }))
-
-
+    const taggables = rawTags.map(name => ({
+                name: name, 
+                taggable_id: "", 
+                taggable_type: 'Question', 
+                user_id: this.state.user_id 
+            }))
 
     this.props.action(post).then(() => {
-        const question = Object.values(this.props.questions)[0]; 
-        console.log('ques:', question); 
-    }); 
+        const highestKey = Math.max(...Object.keys(this.props.questions).map(x => parseInt(x))); 
+        const question = this.props.questions[highestKey]; 
+        for (let i = 0; i < tags.length; i++)  {
+            this.props.createTag(tags[i])
+                .then(() => {
+                    taggables[i].taggable_id = question.id; 
+                    this.props.createTaggable(taggables[i])
+                })
+        }
+    }).then(() => {
+        const { pageNumber, pageLimit, query } = this.props.search; 
+        this.props.fetchFilteredQuestions(pageNumber, pageLimit, query); 
+    }).then(() => {
+        const highestKey = Math.max(...Object.keys(this.props.questions).map(x => parseInt(x))); 
+        const question = this.props.questions[highestKey]; 
+        this.props.history.push(`/questions/${question.id}/${nameExtensionURL(post.title)}`); 
 
-    // .then(() => {
-    //     if (this.props.type === "edit") {
-    //         this.props.history.push(`/questions/${this.state.id}/${nameExtensionURL(post.title)}`); 
-    //     } else {
-    //         this.props.history.push('/questions'); 
-    //     }
-    // })
-
-    // installed core-js and regenerator-runtimer
+        // if (this.props.type === "edit") {
+        //     this.props.history.push(`/questions/${this.state.id}/${nameExtensionURL(post.title)}`); 
+        // } else {
+        //     this.props.history.push('/questions'); 
+        // }
+    })
     
   }
 
@@ -237,9 +247,3 @@ class QuestionForm extends React.Component {
 export default QuestionForm; 
 
 
-    // .then(() => {
-    //     for (let i = 0; i < tags.length; i++) {
-    //         this.props.createTag(tags[i])
-    //         .then(() => this.props.createTaggable(newTaggable), err => this.handleErrors(err.responseJSON))
-    //     }
-    // })
