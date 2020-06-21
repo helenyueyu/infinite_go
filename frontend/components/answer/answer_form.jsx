@@ -6,7 +6,7 @@ import CodeUtils from "draft-js-code";
 
 import { nameExtensionURL } from "../../selectors/display_selectors"; 
 
-const { Editor, EditorState, RichUtils, convertToRaw, convertFromRaw } = Draft;
+const { Editor, EditorState, ContentState, RichUtils, convertToRaw, convertFromRaw } = Draft;
 
 import InlineStyleControls from "../editor/inline_style_controls";
 import BlockStyleControls, {
@@ -112,6 +112,10 @@ class AnswerForm extends React.Component {
             body: JSON.stringify(convertToRaw(contentState))
         }
         this.props.action(post)
+            .then(() => {
+                const editorState = EditorState.push(this.state.editorState, ContentState.createFromText(''));
+                this.setState({ editorState });
+            })
             .then(() => this.props.history.push(`/questions/${this.state.question_id}/${nameExtensionURL(this.props.question.title)}`))
 
     }
