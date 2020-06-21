@@ -25,7 +25,7 @@ class QuestionForm extends React.Component {
             user_id: this.props.userId,
             id: this.props.type === "new" ? "" : this.props.match.params.questionId,
             title: "",
-            tags: this.props.type === "new" ? "" : this.props.tags.join(', '), 
+            tags: "", 
             editorState: EditorState.createEmpty(decorator)
         };
 
@@ -51,7 +51,8 @@ class QuestionForm extends React.Component {
             title: this.props.question.title,
             editorState: EditorState.createWithContent(
                 convertFromRaw(JSON.parse(this.props.question.body))
-            )
+            ), 
+            tags: this.props.question.tags.map(tag => tag.name).join(', ')
             })
         );
         }
@@ -255,6 +256,7 @@ class QuestionForm extends React.Component {
                     className="question_form-tags"
                     onChange={e => this.handleTags(e)}
                     value={this.state["tags"]}
+                    selectBoxOptions="Canada;Denmark;Finland;Germany;Mexico"
                 />
             </div>
             <button className="question_form-submit" type="submit">Ask Your Question</button>
