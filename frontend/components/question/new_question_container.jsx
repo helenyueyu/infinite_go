@@ -9,7 +9,8 @@ import { createTaggable } from '../../actions/taggable_actions';
 const mapStateToProps = state => ({
    userId: state.session.id, 
    type: "new", 
-   questions: state.entities.questions
+   questions: state.entities.questions, 
+   tags: state.entities.tags
 })
 
 const mapDispatchToProps = dispatch => {

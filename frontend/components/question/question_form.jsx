@@ -44,6 +44,7 @@ class QuestionForm extends React.Component {
         this.toggleBlockType = type => this._toggleBlockType(type);
         this.toggleInlineStyle = style => this._toggleInlineStyle(style);
 
+        this.handleDelete = this.handleDelete.bind(this); 
         this.addTag = this.addTag.bind(this); 
         this.handleTag = this.handleTag.bind(this); 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -128,6 +129,16 @@ class QuestionForm extends React.Component {
             tag: query,
             searchedTags: this.props.tags.map(tag => tag.name).slice(0,6) 
         }))
+  }
+
+  handleDelete(e, tag) {
+      e.preventDefault(); 
+      const idx = this.state.tags.indexOf(tag); 
+      const before = this.state.tags.slice(0, idx); 
+      let after = this.state.tags.slice(idx+1); 
+      this.setState({
+          tags: before.concat(after)
+      })
   }
 
   addTag(e) {
@@ -273,7 +284,10 @@ class QuestionForm extends React.Component {
                 </div>
                 <div className="tags">
                     {this.state.tags.map((tag, idx) => 
-                        <div key={idx} className="tag-item">{tag}</div>)
+                        <div key={idx} className="tag-item">
+                            {tag}
+                            <button className="tag-button" onClick={(e) => this.handleDelete(e, tag)}>x</button>
+                        </div>)
                     }
                 </div>
                 <input
