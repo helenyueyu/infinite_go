@@ -25,7 +25,7 @@ class QuestionForm extends React.Component {
             user_id: this.props.userId,
             id: this.props.type === "new" ? "" : this.props.match.params.questionId,
             title: "",
-            tags: "", 
+            tags: this.props.type === "new" ? "" : this.props.tags.join(', '), 
             editorState: EditorState.createEmpty(decorator)
         };
 
