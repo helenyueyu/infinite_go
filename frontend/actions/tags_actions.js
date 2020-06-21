@@ -40,6 +40,7 @@ export const deleteTag = id => dispatch => {
 }
 
 export const searchTags = query => dispatch => {
+    // debugger; 
     return tagAPIUtil.searchTags(query)
         .then(tags => {
             dispatch(receiveTags(tags.tags))

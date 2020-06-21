@@ -21,6 +21,7 @@ export const deleteTag = id => {
 }
 
 export const searchTags = query => {
+    // debugger; 
     return $.ajax({
         method: 'GET',
         url: `/api/tags/search`,

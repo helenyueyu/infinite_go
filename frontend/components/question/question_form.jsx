@@ -16,11 +16,6 @@ import InlineStyleControls from '../editor/inline_style_controls';
 import BlockStyleControls, { getBlockStyle } from '../editor/block_style_controls'; 
 import { nameExtensionURL, removeSpaces } from '../../selectors/display_selectors'; 
 
-const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
-  ];
 
 class QuestionForm extends React.Component {
   constructor(props) {
@@ -31,7 +26,9 @@ class QuestionForm extends React.Component {
             user_id: this.props.userId,
             id: this.props.type === "new" ? "" : this.props.match.params.questionId,
             title: "",
-            tags: "", 
+            tags: [], 
+            tag: "", 
+            searchedTags: [], 
             editorState: EditorState.createEmpty(decorator)
         };
 
@@ -47,18 +44,19 @@ class QuestionForm extends React.Component {
         this.toggleBlockType = type => this._toggleBlockType(type);
         this.toggleInlineStyle = style => this._toggleInlineStyle(style);
 
+        this.handleTag = this.handleTag.bind(this); 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
         if (this.props.type === "edit") {
         this.props.fetchQuestion(this.props.match.params.questionId).then(() =>
-            this.setState({
-            title: this.props.question.title,
-            editorState: EditorState.createWithContent(
-                convertFromRaw(JSON.parse(this.props.question.body))
-            ), 
-            tags: this.props.question.tags.map(tag => tag.name).join(', ')
+                this.setState({
+                title: this.props.question.title,
+                editorState: EditorState.createWithContent(
+                    convertFromRaw(JSON.parse(this.props.question.body))
+                ), 
+                tags: this.props.question.tags.map(tag => tag.name)
             })
         );
         }
@@ -121,11 +119,14 @@ class QuestionForm extends React.Component {
     });
   }
 
-  handleTags(e) {
+  handleTag(e) {
     e.preventDefault();
-    this.setState({
-        tags: e.target.value
-    });
+    const query = e.target.value; 
+    this.props.searchTags(query)
+        .then(() => this.setState({
+            tag: query,
+            searchedTags: this.props.tags.map(tag => tag.name) 
+        }))
   }
 
   handleSubmit(e) {
@@ -258,11 +259,22 @@ class QuestionForm extends React.Component {
                 <div className="question_form-title-desc">
                     Add up to 5 tags to describe what your question is about                
                 </div>
+                <div className="tags">
+                    {this.state.tags.map((tag, idx) => 
+                        <div key={idx} className="tag-item">{tag}</div>)
+                    }
+                </div>
                 <input
                     className="question_form-tags"
-                    onChange={e => this.handleTags(e)}
-                    value={this.state["tags"]}
+                    onChange={e => this.handleTag(e)}
+                    value={this.state.tag}
                 />
+
+                <div className="tags">
+                    {this.state.searchedTags.map((tag, idx) => 
+                        <div key={idx} className="tag-item">{tag}</div>)
+                    }
+                </div>
             </div>
             <button className="question_form-submit" type="submit">Ask Your Question</button>
         </form>
