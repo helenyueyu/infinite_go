@@ -15,3 +15,7 @@
     cursor: pointer; 
     color: $focus-red; 
 }
+
+.delete_button:focus {
+    outline: none; 
+}
