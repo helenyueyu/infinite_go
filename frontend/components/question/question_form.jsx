@@ -141,10 +141,10 @@ class QuestionForm extends React.Component {
       })
   }
 
-  addTag(e) {
+  addTag(e, tag) {
     e.preventDefault(); 
     this.setState({
-        tags: this.state.tags.concat(e.target.innerText), 
+        tags: this.state.tags.concat(tag), 
         tag: "", 
         searchedTags: [] 
     })
@@ -284,9 +284,11 @@ class QuestionForm extends React.Component {
                 </div>
                 <div className="tags">
                     {this.state.tags.map((tag, idx) => 
-                        <div key={idx} className="tag-item">
+                        <div key={idx} className="question_form-tag-item">
                             {tag}
-                            <button className="tag-button" onClick={(e) => this.handleDelete(e, tag)}>x</button>
+                            <button className="question_form-tag-delete" onClick={(e) => this.handleDelete(e, tag)}>
+                                <i className="fas fa-times"></i>
+                            </button>
                         </div>)
                     }
                 </div>
@@ -298,7 +300,7 @@ class QuestionForm extends React.Component {
 
                 <div className="tags-search">
                     {this.state.searchedTags.map((tag, idx) => 
-                        <div key={idx} className="tag-item" onClick={(e) => this.addTag(e)}>{tag}</div>)
+                        <div key={idx} className="tag-item" onClick={(e) => this.addTag(e, tag)}>{tag}</div>)
                     }
                 </div>
             </div>

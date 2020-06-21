@@ -126,3 +126,39 @@ pre {
 .tags-search {
     flex: 1; 
 }
+
+.question_form-tag-item {
+    display: flex; 
+    flex-direction: horizontal; 
+    align-items: center; 
+    background: $tag-red-lite; 
+    color: $red; 
+    margin: 0.25rem; 
+    padding-left: 0.35rem; 
+    padding-top: 0.25rem; 
+    padding-bottom: 0.25rem; 
+    padding-right: 0.25rem; 
+    font-size: $comment-size;
+    border-radius: 2.5px;  
+}
+
+
+.question_form-tag-delete {
+    color: $red; 
+    font-size: $info-size; 
+    background: none; 
+    border: none; 
+    padding: 0.15rem; 
+    margin-left: 0.1rem; 
+}
+
+.question_form-tag-delete:hover {
+    background: $red; 
+    color: $tag-red-lite; 
+    border-radius: 2.5px; 
+    cursor: pointer; 
+}
+
+.question_form-tag-delete:focus {
+    outline: none; 
+}
