@@ -145,7 +145,6 @@ class QuestionForm extends React.Component {
                 user_id: this.state.user_id 
             }))
 
-    // debugger; 
     this.props.action(post).then(() => {
         const highestKey = Math.max(...Object.keys(this.props.questions).map(x => parseInt(x))); 
         const question = this.props.questions[highestKey]; 

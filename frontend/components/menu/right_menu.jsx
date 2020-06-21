@@ -1,4 +1,6 @@
 import React from 'react';
+import { nameExtensionURL } from '../../selectors/display_selectors'; 
+
 import { Link } from 'react-router-dom'; 
 
 class RightMenu extends React.Component {
@@ -6,6 +8,11 @@ class RightMenu extends React.Component {
         this.props.fetchRandomQuestions(); 
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.location.pathname !== this.props.location.pathname) {
+            this.props.fetchQuestion(this.props.match.params.questionId); 
+        }
+    }
     render() {
         let { questions } = this.props; 
         if (Object.keys(questions).length === 0) return null; 
@@ -15,7 +22,9 @@ class RightMenu extends React.Component {
                 <ul>
                     {questions.map((question, idx) =>
                         <li className="right_menu-li" key={idx}>
-                            <Link className="right_menu-link" to={`/questions/${question.id}`}>{question.title}</Link>
+                            <Link className="right_menu-link" 
+                                to={`/questions/${question.id}/${nameExtensionURL(question.title)}`}>{question.title}
+                            </Link>
                         </li>
                     )}
                 </ul>

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import RightMenu from './right_menu';
 
-import { fetchRandomQuestions } from '../../actions/questions_actions';
+import { fetchRandomQuestions, fetchQuestion } from '../../actions/questions_actions';
 
 const mapStateToProps = (state) => {
     return {
@@ -11,6 +11,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
     return {
     fetchRandomQuestions: () => dispatch(fetchRandomQuestions()),
+    fetchQuestion: id => dispatch(fetchQuestion(id))
 }}
 
 export default connect(mapStateToProps, mapDispatchToProps)(RightMenu)
