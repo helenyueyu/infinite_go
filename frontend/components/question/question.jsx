@@ -1,6 +1,8 @@
 import React from 'react'; 
 import moment from 'moment'; 
 
+import { withRouter } from 'react-router-dom'; 
+
 import ProfileSnippet from '../user/profile/profile_snippet'; 
 import DeleteButton from '../buttons/delete_button'; 
 import EditButton from '../buttons/edit_button'; 
@@ -115,4 +117,4 @@ class Question extends React.Component {
     }
 }
 
-export default Question; 
+export default withRouter(Question); 

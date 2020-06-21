@@ -4,6 +4,8 @@ import Draft from "draft-js";
 import PrismDraftDecorator from "draft-js-prism";
 import CodeUtils from "draft-js-code";
 
+import { nameExtensionURL } from "../../selectors/display_selectors"; 
+
 const { Editor, EditorState, RichUtils, convertToRaw, convertFromRaw } = Draft;
 
 import InlineStyleControls from "../editor/inline_style_controls";
@@ -110,7 +112,7 @@ class AnswerForm extends React.Component {
             body: JSON.stringify(convertToRaw(contentState))
         }
         this.props.action(post)
-            .then(() => this.props.history.push(`/questions/${this.state.question_id}`))
+            .then(() => this.props.history.push(`/questions/${this.state.question_id}/${nameExtensionURL(this.props.question.title)}`))
 
     }
 
