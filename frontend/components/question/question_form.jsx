@@ -123,23 +123,17 @@ class QuestionForm extends React.Component {
   }
 
   handleEnter(e) {
-      e.preventDefault(); 
-    //   debugger; 
-      if (e.key === 'Enter') {
-        console.log('dope') 
-      } 
+    if (e.keyCode === 13) {
+        e.preventDefault(); 
+        this.setState({
+            tag: "", 
+            tags: this.state.tags.concat(e.target.value)
+        })
+    } 
   }
 
   handleTag(e) {
-    //   debugger; 
     e.preventDefault();
-    if (e.key === 'Enter') {
-        this.setState({
-            tag: "", 
-            tags: this.state.tags.concat(e.target.value) 
-        })
-        return false; 
-    }
     const query = e.target.value; 
     this.props.searchTags(query)
         .then(() => this.setState({
@@ -169,7 +163,6 @@ class QuestionForm extends React.Component {
 
 
   handleSubmit(e) {
-    //   debugger; 
     e.preventDefault();
     const contentState = this.state.editorState.getCurrentContent();
     const post = {
@@ -197,7 +190,6 @@ class QuestionForm extends React.Component {
     let question; 
 
     this.props.action(post).then(() => {
-        // debugger; 
         if (type === 'new') {
             highestKey = Math.max(...Object.keys(this.props.questions).map(x => parseInt(x))); 
             question = this.props.questions[highestKey]; 
@@ -243,7 +235,6 @@ class QuestionForm extends React.Component {
     if (!this.props.question && this.props.type === "edit") return null;
     const { editorState } = this.state;
     const { type } = this.props; 
-    console.log("state:", this.state); 
     return (
       <div className="question_form">
         <form className="question_form-form" onSubmit={this.handleSubmit}>
@@ -312,9 +303,7 @@ class QuestionForm extends React.Component {
                 <input
                     className="question_form-tags"
                     onChange={e => this.handleTag(e)}
-                    // onKeyPress={e => this.handleEnter(e)}
-
-                    // onKeyDown={e => this.handleEnter(e)}
+                    onKeyDown={e => this.handleEnter(e)}
                     value={this.state.tag}
                 />
 
