@@ -9,8 +9,10 @@
     flex-direction: horizontal; 
     background: $tag-red; 
     color: $red; 
-    margin: 0.2rem 0.25rem 0.2rem 0rem; 
-    padding: 0.3rem; 
+    margin: 0.25rem; 
+    padding: 0.3rem 0.35rem 0.3rem 0.35rem; 
+    font-size: $comment-size;
+    border-radius: 2.5px;  
 }
 
 .tag-item:hover {

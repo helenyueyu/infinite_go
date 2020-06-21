@@ -20,7 +20,7 @@ class Tags extends React.Component {
                 {tags.map((tag, idx) => 
                     <div key={idx} className="tag-item">
                         <div>{tag.name}</div>
-                        {showDelete === true ? <button className="tag-button" onClick={() => this.handleDelete(tag.id)}>x</button> : null}
+                        {/* {showDelete === true ? <button className="tag-button" onClick={() => this.handleDelete(tag.id)}>x</button> : null} */}
                     </div>
                 )}
             </div>
