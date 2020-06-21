@@ -1,17 +1,14 @@
 class Taggable < ApplicationRecord
-    # validate :less_than_5?
-
     belongs_to :taggable, polymorphic: true 
     
     belongs_to :tag, 
         class_name: :Tag, 
         foreign_key: :tag_id  
 
-
-    # def less_than_5
-    #     return true 
-    # end
-
+    def self.exists?(user_id, taggable_id, taggable_type)
+        taggable = where(user_id: user_id, taggable_id: taggable_id, taggable_type: taggable_type)
+        taggable.size == 1 
+    end
 
     def self.question_count(page_number, page_limit)
         Tag.group(:name)

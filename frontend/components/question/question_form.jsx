@@ -145,24 +145,40 @@ class QuestionForm extends React.Component {
                 user_id: this.state.user_id 
             }))
 
+    
+    const { type } = this.props; 
+    let highestKey; 
+    let question; 
+
     this.props.action(post).then(() => {
-        const highestKey = Math.max(...Object.keys(this.props.questions).map(x => parseInt(x))); 
-        const question = this.props.questions[highestKey]; 
-        for (let i = 0; i < tags.length; i++)  {
-            this.props.createTag(tags[i])
-                .then(() => {
-                    taggables[i].taggable_id = question.id; 
-                    this.props.createTaggable(taggables[i])
-                })
+        if (type === 'new') {
+            highestKey = Math.max(...Object.keys(this.props.questions).map(x => parseInt(x))); 
+            question = this.props.questions[highestKey]; 
+            for (let i = 0; i < tags.length; i++)  {
+                this.props.createTag(tags[i])
+                    .then(() => {
+                        taggables[i].taggable_id = question.id; 
+                        this.props.createTaggable(taggables[i])
+                    })
+            }        
+        } else {
+            for (let i = 0; i < tags.length; i++)  {
+                this.props.createTag(tags[i])
+                    .then(() => {
+                        taggables[i].taggable_id = this.state.id; 
+                        this.props.createTaggable(taggables[i])
+                    })
+            }   
         }
     }).then(() => {
-        const highestKey = Math.max(...Object.keys(this.props.questions).map(x => parseInt(x))); 
-        const question = this.props.questions[highestKey]; 
-        this.props.history.push(`/questions/${question.id}/${nameExtensionURL(post.title)}`); 
+        this.props.history.push(`/questions/${type === 'new' ? question.id : this.state.id}/${nameExtensionURL(post.title)}`); 
     }).then(() => {
-        const highestKey = Math.max(...Object.keys(this.props.questions).map(x => parseInt(x))); 
-        const question = this.props.questions[highestKey]; 
-        this.props.fetchQuestion(question.id); 
+        if (type === 'new') {
+            this.props.fetchQuestion(question.id); 
+        } else {
+            this.props.fetchQuestion(this.state.id); 
+        }
+        
     })
     
   }

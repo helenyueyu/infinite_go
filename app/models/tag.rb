@@ -53,8 +53,8 @@ class Tag < ApplicationRecord
         self.tagged_questions.size 
     end
 
-    # def self.exists?(name)
-    #     tag = where('name LIKE ?', "#{name}")
-    #     tag.size == 1 
-    # end
+    def self.exists?(name)
+        tag = where('name LIKE ?', "#{name}")
+        tag.size == 1 
+    end
 end
