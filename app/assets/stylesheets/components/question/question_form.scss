@@ -25,6 +25,10 @@
   font-size: 1rem; 
 }
 
+.question_form-submit:focus {
+    outline: none; 
+}
+
 .question_form-title-text {
   font-size: $info-size; 
   font-weight: bold; 

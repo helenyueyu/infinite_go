@@ -44,7 +44,8 @@ class QuestionForm extends React.Component {
         this.toggleBlockType = type => this._toggleBlockType(type);
         this.toggleInlineStyle = style => this._toggleInlineStyle(style);
 
-        this.handleDelete = this.handleDelete.bind(this); 
+        this.handleEnter = this.handleEnter.bind(this); 
+        this.deleteTag = this.deleteTag.bind(this); 
         this.addTag = this.addTag.bind(this); 
         this.handleTag = this.handleTag.bind(this); 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -121,8 +122,24 @@ class QuestionForm extends React.Component {
     });
   }
 
+  handleEnter(e) {
+      e.preventDefault(); 
+    //   debugger; 
+      if (e.key === 'Enter') {
+        console.log('dope') 
+      } 
+  }
+
   handleTag(e) {
+    //   debugger; 
     e.preventDefault();
+    if (e.key === 'Enter') {
+        this.setState({
+            tag: "", 
+            tags: this.state.tags.concat(e.target.value) 
+        })
+        return false; 
+    }
     const query = e.target.value; 
     this.props.searchTags(query)
         .then(() => this.setState({
@@ -131,7 +148,7 @@ class QuestionForm extends React.Component {
         }))
   }
 
-  handleDelete(e, tag) {
+  deleteTag(e, tag) {
       e.preventDefault(); 
       const idx = this.state.tags.indexOf(tag); 
       const before = this.state.tags.slice(0, idx); 
@@ -150,7 +167,9 @@ class QuestionForm extends React.Component {
     })
   }
 
+
   handleSubmit(e) {
+    //   debugger; 
     e.preventDefault();
     const contentState = this.state.editorState.getCurrentContent();
     const post = {
@@ -159,9 +178,6 @@ class QuestionForm extends React.Component {
         title: this.state.title,
         body: JSON.stringify(convertToRaw(contentState))
     };
-    // const rawTags = this.state.tags
-    //                     .split(',')
-    //                     .map(tag => removeSpaces(tag))
     const rawTags = this.state.tags; 
 
     const tags = rawTags.map(name => ({
@@ -181,6 +197,7 @@ class QuestionForm extends React.Component {
     let question; 
 
     this.props.action(post).then(() => {
+        // debugger; 
         if (type === 'new') {
             highestKey = Math.max(...Object.keys(this.props.questions).map(x => parseInt(x))); 
             question = this.props.questions[highestKey]; 
@@ -225,8 +242,8 @@ class QuestionForm extends React.Component {
   render() {
     if (!this.props.question && this.props.type === "edit") return null;
     const { editorState } = this.state;
-    let className = "RichEditor-editor";
-    console.log(this.state); 
+    const { type } = this.props; 
+    console.log("state:", this.state); 
     return (
       <div className="question_form">
         <form className="question_form-form" onSubmit={this.handleSubmit}>
@@ -261,7 +278,7 @@ class QuestionForm extends React.Component {
                         onToggle={this.toggleBlockType}
                     />
                     </div>
-                    <div className={className} onClick={this.focus}>
+                    <div className="RichEditor-editor" onClick={this.focus}>
                     <Editor
                         blockStyleFn={getBlockStyle}
                         editorState={editorState}
@@ -286,7 +303,7 @@ class QuestionForm extends React.Component {
                     {this.state.tags.map((tag, idx) => 
                         <div key={idx} className="question_form-tag-item">
                             {tag}
-                            <button className="question_form-tag-delete" onClick={(e) => this.handleDelete(e, tag)}>
+                            <button className="question_form-tag-delete" onClick={(e) => this.deleteTag(e, tag)}>
                                 <i className="fas fa-times"></i>
                             </button>
                         </div>)
@@ -295,6 +312,9 @@ class QuestionForm extends React.Component {
                 <input
                     className="question_form-tags"
                     onChange={e => this.handleTag(e)}
+                    // onKeyPress={e => this.handleEnter(e)}
+
+                    // onKeyDown={e => this.handleEnter(e)}
                     value={this.state.tag}
                 />
 
@@ -304,7 +324,9 @@ class QuestionForm extends React.Component {
                     }
                 </div>
             </div>
-            <button className="question_form-submit" type="submit">Ask Your Question</button>
+            <button className="question_form-submit" type="submit">
+                {type === 'new' ? 'Ask' : 'Update'} Your Question
+            </button>
         </form>
       </div>
     );
