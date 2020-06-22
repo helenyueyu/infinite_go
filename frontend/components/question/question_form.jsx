@@ -135,11 +135,12 @@ class QuestionForm extends React.Component {
   handleTag(e) {
     e.preventDefault();
     const query = e.target.value; 
-    this.props.searchTags(query)
-        .then(() => this.setState({
-            tag: query,
-            searchedTags: this.props.tags.map(tag => tag.name).slice(0,6) 
-        }))
+    this.setState({
+        tag: query
+    },  () => this.props.searchTags(query)
+    .then(() => this.setState({
+        searchedTags: this.props.tags.map(tag => tag.name).slice(0,6) 
+    })))
   }
 
   deleteTag(e, tag) {
