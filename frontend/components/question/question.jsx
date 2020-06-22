@@ -19,6 +19,7 @@ import NewAnswerContainer from '../answer/new_answer_container';
 import AnswersContainer from '../answer/answers_container'; 
 
 import { nameExtensionURL } from '../../selectors/display_selectors'; 
+import { displayShortenedDate } from '../../selectors/date_selectors'; 
 
 import { Editor, EditorState, convertFromRaw } from 'draft-js'; 
 
@@ -41,7 +42,7 @@ class Question extends React.Component {
         if (!this.props.question) return null; 
         
         let { currentUser, question } = this.props; 
-        let { id, title, body, user, createdAt, comments, tags, voteCount, currentVote } = question;
+        let { id, title, body, user, createdAt, updatedAt, comments, tags, voteCount, viewCount, currentVote } = question;
         if (!comments || !tags) return null; 
 
         const currentContent = EditorState.createWithContent(
@@ -57,6 +58,21 @@ class Question extends React.Component {
                 <Link to="/questions/new">
                     <button className="question-create-question">Ask Question</button>
                 </Link>
+            </div>
+
+            <div className="question-stats">
+                <div className="question-stat">
+                    <span className="question-stats-label">Asked</span> 
+                    <span className="question-stats-value">{displayShortenedDate(createdAt)}</span>
+                </div>
+                <div className="questions-stat">
+                    <span className="question-stats-label">Active</span> 
+                    <span className="question-stats-value">{displayShortenedDate(updatedAt)}</span>
+                </div>
+                <div className="questions-stat">
+                    <span className="question-stats-label">Viewed</span> 
+                    <span className="question-stats-value">{viewCount} time{viewCount === 1 ? "" : "s"}</span>
+                </div>
             </div>
 
             <div className="question-left">
