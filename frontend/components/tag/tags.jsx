@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom'; 
+
 class Tags extends React.Component {
     constructor(props) {
         super(props); 
@@ -14,14 +16,13 @@ class Tags extends React.Component {
     }
 
     render() {
-        let { tags, showDelete } = this.props;
+        let { tags } = this.props;
         return (
             <div className="tags">
                 {tags.map((tag, idx) => 
-                    <div key={idx} className="tag-item">
-                        <div>{tag.name}</div>
-                        {/* {showDelete === true ? <button className="tag-button" onClick={() => this.handleDelete(tag.id)}>x</button> : null} */}
-                    </div>
+                <Link key={idx} to={`/questions/tagged/${tag.name}`} className="tag-item">
+                        {tag.name}
+                </Link>
                 )}
             </div>
         )

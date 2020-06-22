@@ -9,8 +9,7 @@ import { receiveQuery } from '../../actions/search_actions';
 const mapStateToProps = state => {
     return {
     questions: sortByNewest(Object.values(state.entities.questions)),
-    search: state.entities.search, 
-    metas: state.entities.metas 
+    search: state.entities.search
 }}
 
 const mapDispatchToProps = dispatch => ({

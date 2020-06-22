@@ -71,13 +71,15 @@ class Questions extends React.Component {
             bp1 = 1; 
             bp2 = pageNumber+2; 
         }      
+        console.log('this is what generatepagenumbers is', [arr, bp1, bp2]); 
         return [arr, bp1, bp2]; 
     }
 
     render() {
-        let {questions, search, metas: { stats: {questionCount }}} = this.props; 
+        let {questions, search} = this.props; 
         if (!questions || !search) return null; 
 
+        const questionCount = questions.length; 
         const [pages, bp1, bp2] = this.generatePageNumbers(questionCount, search.pageLimit, search.pageNumber); 
         if (questions) {
             return (
