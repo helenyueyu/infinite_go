@@ -23,7 +23,6 @@ class NewComment extends React.Component {
     }
 
     showCommentForm() {
-        console.log('reached')
         this.setState({
             showCommentForm: !this.state.showCommentForm
         })
@@ -42,13 +41,19 @@ class NewComment extends React.Component {
         const { showCommentForm } = this.state; 
         return (
             <div className="new_comment">
-                <div onClick={this.showCommentForm}>
-                    Comment 
+                <div className="new_comment-label" onClick={this.showCommentForm}>
+                    add a comment  
                 </div>
-                { showCommentForm ? <form className="new_comment_form" onSubmit={this.handleSubmit}>
-                    <input value={this.state.body} onChange={this.handleChange} />
-                    <button className="new_comment_submit" type="submit">Submit</button>
-                </form> : null } 
+                { showCommentForm ? 
+                    <form className="new_comment-form" onSubmit={this.handleSubmit}>
+                        <input className="new_comment-input"
+                            value={this.state.body} 
+                            onChange={this.handleChange} />
+                        {/* <button className="new_comment-submit" type="submit">Submit</button> */}
+                    </form> 
+                    : 
+                    null 
+                } 
             </div>
         )
     }

@@ -2,14 +2,37 @@
     font-size: $comment-size; 
     display: flex; 
     align-items: center; 
+    // justify-content: stretch; 
+    // flex: 1; 
 }
-.new_comment_form {
-    padding-left: 5rem; 
-    padding-bottom: 2rem; 
+.new_comment-label {
+    color: $silver; 
+}
+.new_comment-label:hover {
+    color: $light-silver; 
+    cursor: pointer; 
 }
 
-.new_comment_submit {
+.new_comment-form {
+    padding-left: 1rem; 
+    display: flex; 
+    flex: 1; 
+}
+
+.new_comment-submit {
     background: none; 
     color: $red; 
-    border: none; 
 }
+
+.new_comment-input {
+    outline: none; 
+    border-radius: 5px; 
+    padding: 0.25rem; 
+    border: 1px solid $light-silver;  
+    flex: 1; 
+}
+.new_comment-input:focus { 
+    border: 1px solid $red; 
+    box-shadow: 0 0 0pt 3pt $tag-red-lite; 
+}
+
