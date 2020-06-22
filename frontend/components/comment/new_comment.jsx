@@ -49,7 +49,6 @@ class NewComment extends React.Component {
                         <input className="new_comment-input"
                             value={this.state.body} 
                             onChange={this.handleChange} />
-                        {/* <button className="new_comment-submit" type="submit">Submit</button> */}
                     </form> 
                     : 
                     null 

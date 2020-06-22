@@ -9,6 +9,11 @@ export const createComment = comment => dispatch => (
         .then(comment => dispatch(receiveComment(comment)))
 )
 
+export const updateComment = comment => dispatch => (
+    commentAPIUtil.updateComment(comment)
+        .then(comment => dispatch(receiveComment(comment)))
+)
+
 export const deleteComment = id => dispatch => (
     commentAPIUtil.deleteComment(id)
         .then(comment => dispatch(removeComment(comment)))
