@@ -3,7 +3,7 @@ import React from 'react';
 const AcceptButton = ({ canAccept, action, type }) => {
     return (
         canAccept
-            ? <button onClick={(e) => action(e)}>
+            ? <button className="answer_item-button" onClick={(e) => action(e)}>
                 {type}
                 </button>
             : null

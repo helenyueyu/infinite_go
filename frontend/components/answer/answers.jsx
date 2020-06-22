@@ -16,9 +16,11 @@ class Answers extends React.Component {
 
     render() {
         if (!this.props.answers) return null; 
-        const { question, answers, currentUser } = this.props; 
+        const { question, answers, currentUser } = this.props;
+        const answerCount = answers.length;  
         return (
-            <div>
+            <div className="answers">
+                <div className="answers-count">{answerCount} Answer{answerCount === 1 ? "" : "s"}</div>
                 {answers.map((answer, idx) => {
                     let { id, voteCount, questionId, accepted, currentVote } = answer; 
                     return (<div key={idx} className="answers-item">

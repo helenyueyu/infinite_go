@@ -1,7 +1,7 @@
 import React from 'react'; 
 import moment from 'moment'; 
 
-import { withRouter } from 'react-router-dom'; 
+import { withRouter, Link } from 'react-router-dom'; 
 
 import ProfileSnippet from '../user/profile/profile_snippet'; 
 import DeleteButton from '../buttons/delete_button'; 
@@ -50,7 +50,16 @@ class Question extends React.Component {
 
         return (
           <div className="question">
-            <div className="question-info">
+            <div className="question-header">
+                <div className="question-title">
+                    {title}
+                </div>
+                <Link to="/questions/new">
+                    <button className="question-create-question">Ask Question</button>
+                </Link>
+            </div>
+
+            <div className="question-left">
               <div className="question-vote-bookmark">
                 <VoteContainer
                   voteable_id={id}
@@ -67,8 +76,7 @@ class Question extends React.Component {
               </div>
               
 
-              <div>
-                <div className="question-title">{title}</div>
+              <div className="question-right">
                 <Editor editorState={currentContent} readOnly={true} />
 
                 <TagsContainer

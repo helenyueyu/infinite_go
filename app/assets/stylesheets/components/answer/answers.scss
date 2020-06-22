@@ -1,5 +1,9 @@
+.answers-count {
+    padding-left: 2.5rem; 
+    padding-top: 2.5rem; 
+}
 .answers-item {
-    border-top: 1px solid $lighter-silver;  
+    border-bottom: 1px solid $lighter-silver;  
     display: flex; 
     padding-top: 1rem; 
     padding-bottom: 1rem; 
