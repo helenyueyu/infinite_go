@@ -7,9 +7,11 @@ class NewComment extends React.Component {
             user_id: this.props.user_id, 
             commentable_id: this.props.commentable_id, 
             commentable_type: this.props.commentable_type, 
-            body: "" 
+            body: "", 
+            showCommentForm: false 
         }
 
+        this.showCommentForm = this.showCommentForm.bind(this); 
         this.handleChange = this.handleChange.bind(this); 
         this.handleSubmit = this.handleSubmit.bind(this); 
     }
@@ -20,23 +22,34 @@ class NewComment extends React.Component {
         })
     }
 
+    showCommentForm() {
+        console.log('reached')
+        this.setState({
+            showCommentForm: true 
+        })
+    }
     handleSubmit(e) {
         e.preventDefault(); 
         this.props.createComment(this.state)
             .then(() => this.props.fetchQuestion(this.state.commentable_id))
             .then(() => this.setState({
-                body: ""
+                body: "", 
+                showCommentForm: false 
             }))
     }
 
     render() {
+        const { showCommentForm } = this.state; 
         return (
-            <form className="new_comment" onSubmit={this.handleSubmit}>
-                <label>Add Comment: 
+            <div className="new_comment">
+                <div onClick={this.showCommentForm}>
+                    Comment 
+                </div>
+                { showCommentForm ? <form className="new_comment_form" onSubmit={this.handleSubmit}>
                     <input value={this.state.body} onChange={this.handleChange} />
-                </label>
-                <button type="submit">Submit</button>
-            </form>
+                    <button type="submit">Submit</button>
+                </form> : null } 
+            </div>
         )
     }
 }

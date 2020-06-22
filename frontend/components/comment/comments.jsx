@@ -10,7 +10,7 @@ class Comments extends React.Component {
     render() {
         let { comments } = this.props; 
         return (
-            <div className="comments">
+            <div>
                 {Object.values(comments).map((comment, idx) => 
                     <div key={idx} className="comments-item">
                         <span className="comments-body">{comment.body}</span>

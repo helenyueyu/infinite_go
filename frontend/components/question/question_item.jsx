@@ -15,28 +15,6 @@ class QuestionItem extends React.Component {
                   .map(block => new ContentBlock(block))
                   .map(block => block.getText()).join(' '); 
     }
-
-    // nameExtension(title) {
-    //     let cleanedTitle = ""; 
-    //     let alpha = 'abcdefghijklmnopqrstuvwxyz'; 
-    //     for (let i = 0; i < title.length; i++) {
-    //         if (title[i] === " ") {
-    //             cleanedTitle += "-"; 
-    //         } else if (alpha.includes(title[i].toLowerCase())) {
-    //             cleanedTitle += title[i].toLowerCase(); 
-    //         } else {
-    //             if (cleanedTitle[cleanedTitle.length-1] === '-') {
-    //                 cleanedTitle += ''; 
-    //             } else {
-    //                 cleanedTitle += '-'; 
-    //             }
-    //         } 
-    //     }
-    //     while (cleanedTitle[cleanedTitle.length-1] === '-') {
-    //         cleanedTitle = cleanedTitle.slice(0, cleanedTitle.length-1); 
-    //     }
-    //     return cleanedTitle; 
-    // }
     
     render() {
         let {id, title, body, user, question, tags} = this.props; 

@@ -98,16 +98,20 @@ class Question extends React.Component {
                     timestamp={moment(createdAt).fromNow()}
                   />
                 </div>
+
+                <div className="comments"> 
+                    <CommentsContainer comments={Object.values(comments)} />
+
+                    <NewCommentContainer
+                    fetchQuestion={this.props.fetchQuestion}
+                    commentable_id={question.id}
+                    commentable_type="Question"
+                    />
+                </div>
+
               </div>
             </div>
 
-            <CommentsContainer comments={Object.values(comments)} />
-
-            <NewCommentContainer
-              fetchQuestion={this.props.fetchQuestion}
-              commentable_id={question.id}
-              commentable_type="Question"
-            />
 
             <AnswersContainer question={question} />
             <NewAnswerContainer question={question} />

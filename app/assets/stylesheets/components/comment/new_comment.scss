@@ -1,5 +1,7 @@
 .new_comment {
+    font-size: $comment-size; 
+}
+.new_comment_form {
     padding-left: 5rem; 
     padding-bottom: 2rem; 
-    font-size: $comment-size; 
 }
