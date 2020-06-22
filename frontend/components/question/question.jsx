@@ -65,11 +65,11 @@ class Question extends React.Component {
                     <span className="question-stats-label">Asked</span> 
                     <span className="question-stats-value">{displayShortenedDate(createdAt)}</span>
                 </div>
-                <div className="questions-stat">
+                <div className="question-stat">
                     <span className="question-stats-label">Active</span> 
                     <span className="question-stats-value">{displayShortenedDate(updatedAt)}</span>
                 </div>
-                <div className="questions-stat">
+                <div className="question-stat">
                     <span className="question-stats-label">Viewed</span> 
                     <span className="question-stats-value">{viewCount} time{viewCount === 1 ? "" : "s"}</span>
                 </div>
