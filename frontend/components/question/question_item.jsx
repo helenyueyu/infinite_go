@@ -19,28 +19,32 @@ class QuestionItem extends React.Component {
     render() {
         let {id, title, body, user, question, tags} = this.props; 
         return (
-          <div className="question_item">
-            <div className="question_item-title-div">
-              <Link to={`/questions/${id}/${nameExtensionURL(title)}`} className="question_item-title">
-                {title}
-              </Link>
-            </div>
-            <div className="question_item-body">
-              {displayQuestion(this.renderQuestionSnippet(body), 150)}
-            </div>
+            <div className="question_item">
+                <div className="question_item-title-div">
+                    <Link to={`/questions/${id}/${nameExtensionURL(title)}`} className="question_item-title">
+                        {title}
+                    </Link>
+                </div>
+                
+                <div className="question_item-body">
+                    {displayQuestion(this.renderQuestionSnippet(body), 160)}
+                </div>
 
-            <TagsContainer tags={tags} showDelete={false} />
-            <div className="question_item-profile">
-              <ProfileSnippet
-                id={user.id}
-                username={user.username}
-                type="asked"
-                reputation={user.reputation}
-                medals={user.medals}
-                timestamp={displayDate(question.createdAt)}
-              />
+                <div className="question_item-tags-profile">
+                    <TagsContainer tags={tags} showDelete={false} />
+                    <div className="question_item-profile">
+                    <ProfileSnippet
+                        id={user.id}
+                        username={user.username}
+                        type="asked"
+                        reputation={user.reputation}
+                        medals={user.medals}
+                        timestamp={displayDate(question.createdAt)}
+                    />
+                    </div>
+                </div>
+
             </div>
-          </div>
         );
     }
 }

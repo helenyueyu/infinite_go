@@ -96,19 +96,21 @@ class Questions extends React.Component {
                         let {id, title, body, user, voteCount, viewCount, answerCount, tags, hasAcceptedAnswer } = question; 
                         return (
                             <div key={idx} className="questions-item">
-                                
                                 <div className="questions-statistics">
                                     <div className="questions-statistics-votes">
-                                        <div className="questions-statistics-votes-number">{voteCount}</div>
-                                        <div className="questions-statistics-votes-count">vote{voteCount === 1 ? "" : "s"}</div>
+                                        <div className="questions-stat">{voteCount}</div>
+                                        <div className="questions-stat-count">vote{voteCount === 1 ? "" : "s"}</div>
                                     </div>
+
                                     <div className={answerCount === 0 ? "questions-statistics-answers" : (hasAcceptedAnswer ? "questions-statistics-answers-accepted": "questions-statistics-answers-greater")}>
-                                        <div className="questions-statistics-answers-number">{answerCount}</div>
-                                        <div className="questions-statistics-answers-count">answer{answerCount === 1 ? "" : "s"}</div>
+
+                                    <div className="questions-stat">{answerCount}</div>
+                                        <div className="questions-stat-count">answer{answerCount === 1 ? "" : "s"}</div>
                                     </div>
                                     <div className="questions-statistics-views">
-                                        <div className="questions-statistics-views-number">{viewCount}</div>
-                                        <div className="questions-statistics-views-count">view{viewCount === 1 ? "" : "s"}</div>
+                                        <div className="questions-stat-count">
+                                            {viewCount} view{viewCount === 1 ? "" : "s"}
+                                        </div>
                                     </div>
                                 </div>
                                 

@@ -1,9 +1,6 @@
-
 .question_item {
     padding-right: 0.5rem; 
-    // width: 200px; 
     flex: 1 1 0px; 
-    // justify-content: flex-end; 
 }
 
 .question_item-profile {
@@ -16,7 +13,7 @@
 .question_item-title {
     color: $red; 
     text-decoration: none; 
-    font-size: $title-size; 
+    font-size: $description-size; 
 }
 
 .question_item-title:hover {
@@ -26,4 +23,11 @@
 .question_item-body {
     padding-top: 1rem; 
     padding-bottom: 1rem; 
+    font-size: $info-size; 
+}
+
+.question_item-tags-profile {
+    display: flex; 
+    align-items: flex-start; 
+    justify-content: space-between; 
 }
