@@ -1,6 +1,7 @@
 .question {
     display: flex; 
-    flex-direction: column; 
+    flex-direction: column;
+    padding: 1.5rem;  
 }
 .question-create-question {
     padding: 0.5rem; 
@@ -22,14 +23,12 @@
     flex-direction: row; 
     justify-content: space-between; 
     align-items: center; 
-    padding-left: 2.5rem; 
 }
 
 .question-stats {
     display: flex; 
     padding-bottom: 1rem; 
     margin-bottom: 0.5rem; 
-    margin-left: 2.5rem; 
     border-bottom: 1px solid $lighter-silver; 
     font-size: $comment-size; 
 }
@@ -54,6 +53,7 @@
     display: flex; 
     flex-direction: column; 
     align-items: center; 
+    padding-right: 1rem; 
 }
 
 .question-title {
