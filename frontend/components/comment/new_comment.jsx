@@ -25,7 +25,7 @@ class NewComment extends React.Component {
     showCommentForm() {
         console.log('reached')
         this.setState({
-            showCommentForm: true 
+            showCommentForm: !this.state.showCommentForm
         })
     }
     handleSubmit(e) {
@@ -47,7 +47,7 @@ class NewComment extends React.Component {
                 </div>
                 { showCommentForm ? <form className="new_comment_form" onSubmit={this.handleSubmit}>
                     <input value={this.state.body} onChange={this.handleChange} />
-                    <button type="submit">Submit</button>
+                    <button className="new_comment_submit" type="submit">Submit</button>
                 </form> : null } 
             </div>
         )

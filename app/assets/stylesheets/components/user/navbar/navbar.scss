@@ -20,9 +20,11 @@
 }
 
 .nav-pic {
-    width: 25px; 
-    height: 25px; 
-    transform: translateY(2.5px); 
+    color: $white; 
+}
+
+.nav-pic:hover {
+    color: $red; 
 }
 
 .nav-link-username {

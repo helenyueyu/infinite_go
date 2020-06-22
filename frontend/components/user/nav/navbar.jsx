@@ -10,7 +10,7 @@ const Navbar = ({currentUser, logout}) => {
                 <div className="nav-links">
                     <div className="nav-link">
                         <Link to="/questions">
-                            <img className="nav-pic" src="/assets/bug_mojo.png" />
+                            <i className="fab fa-stack-overflow nav-pic"></i>
                         </Link>
                     </div>
                     <div className="nav-link">
@@ -49,7 +49,7 @@ const Navbar = ({currentUser, logout}) => {
         return (
             <div className="nav">
                 <div className="nav-logo">
-                    <img className="nav-pic" src="/assets/bug_mojo.png" />
+                    <i className="fab fa-stack-overflow nav-pic"></i>
                 </div>
                 <div>
                     <Link to="/login"><button className="nav-login-button">Log In</button></Link>

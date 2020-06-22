@@ -1,7 +1,15 @@
 .new_comment {
     font-size: $comment-size; 
+    display: flex; 
+    align-items: center; 
 }
 .new_comment_form {
     padding-left: 5rem; 
     padding-bottom: 2rem; 
+}
+
+.new_comment_submit {
+    background: none; 
+    color: $red; 
+    border: none; 
 }
