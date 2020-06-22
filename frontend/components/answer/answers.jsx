@@ -20,7 +20,9 @@ class Answers extends React.Component {
         const answerCount = answers.length;  
         return (
             <div className="answers">
-                <div className="answers-count">{answerCount} Answer{answerCount === 1 ? "" : "s"}</div>
+                <div className="answers-count">
+                    {answerCount !== 0 ?  `${answerCount} Answer${answerCount === 1 ? "" : "s"}` : null}
+                </div>
                 {answers.map((answer, idx) => {
                     let { id, voteCount, questionId, accepted, currentVote } = answer; 
                     return (<div key={idx} className="answers-item">
