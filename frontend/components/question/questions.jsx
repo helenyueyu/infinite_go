@@ -112,8 +112,7 @@ class Questions extends React.Component {
                                             {viewCount} view{viewCount === 1 ? "" : "s"}
                                         </div>
                                     </div>
-                                </div>
-                                
+                                </div>     
 
                                 <QuestionItem
                                     idx={idx}
@@ -123,8 +122,6 @@ class Questions extends React.Component {
                                     user={user}
                                     question={question}
                                     tags={tags} />
-                                
-                               
                             </div>
                         )
                     })}

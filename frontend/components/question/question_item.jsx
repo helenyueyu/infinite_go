@@ -33,14 +33,15 @@ class QuestionItem extends React.Component {
                 <div className="question_item-tags-profile">
                     <TagsContainer tags={tags} showDelete={false} />
                     <div className="question_item-profile">
-                    <ProfileSnippet
-                        id={user.id}
-                        username={user.username}
-                        type="asked"
-                        reputation={user.reputation}
-                        medals={user.medals}
-                        timestamp={displayDate(question.createdAt)}
-                    />
+                        <ProfileSnippet
+                            id={user.id}
+                            username={user.username}
+                            type="asked"
+                            reputation={user.reputation}
+                            medals={user.medals}
+                            timestamp={displayDate(question.createdAt)}
+                            color="transparent"
+                        />
                     </div>
                 </div>
 

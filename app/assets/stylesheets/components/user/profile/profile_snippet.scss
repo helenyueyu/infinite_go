@@ -5,6 +5,12 @@
     color: $gray; 
     border-radius: 2.5px; 
 }
+.profile_snippet-transparent {
+    padding: 0.5rem; 
+    font-size: $comment-size; 
+    color: $gray; 
+    border-radius: 2.5px; 
+}
 .profile_snippet-date {
     font-size: $little-size; 
 }
@@ -14,6 +20,7 @@
 .profile_snippet-username {
     color: $red; 
     padding-bottom: 0.2rem; 
+    font-size: $comment-size; 
 }
 
 .profile_snippet-stats {
@@ -24,6 +31,7 @@
 .profile_snippet-stats-rep {
     font-weight: bold; 
     color: $focus-gray; 
+    font-size: $comment-size; 
 }
 
 .profile_snippet-main {
@@ -53,4 +61,8 @@
     color: $bronze; 
     padding-left: 0.3rem; 
     padding-right: 0.1rem;  
+}
+
+.profile_snippets-stats-medal {
+    font-size: $comment-size; 
 }

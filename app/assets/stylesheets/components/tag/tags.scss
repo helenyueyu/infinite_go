@@ -1,5 +1,4 @@
 .tags {
-    // padding-top: 1rem; 
     display: flex; 
     flex-direction: row; 
 }
@@ -9,8 +8,8 @@
     flex-direction: horizontal; 
     background: $tag-red-lite; 
     color: $red; 
-    margin: 0.25rem; 
-    padding: 0.3rem 0.35rem 0.3rem 0.35rem; 
+    margin-right: 0.35rem; 
+    padding: 0.35rem 0.4rem 0.35rem 0.4rem; 
     font-size: $comment-size;
     border-radius: 2.5px;  
     text-decoration: none; 

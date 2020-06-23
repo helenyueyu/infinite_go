@@ -16,6 +16,8 @@ const monthMap = {
 }
 
 export const displayDate = (date) => {
+    // if (isToday(date)) return "today"; 
+
     const chunks = date.split('-'); 
     chunks[2] = chunks[2].slice(0, 2); 
 
@@ -30,8 +32,21 @@ export const displayDate = (date) => {
 }
 
 export const displayShortenedDate = (date) => {
+    if (isToday(date)) return "today"; 
+
     const chunks = date.split('-');
     chunks[2] = chunks[2].slice(0, 2); 
     const [year, month, day] = chunks;
     return `${monthMap[month]} ${day} '${year.slice(2)}`; 
+}
+
+const isToday = (date) => {
+    const inputDate = new Date(date); 
+    const today = new Date(); 
+
+    if (inputDate.setHours(0, 0, 0, 0) === today.setHours(0, 0, 0, 0)) {
+        return true; 
+    } else {
+        return false; 
+    }
 }
