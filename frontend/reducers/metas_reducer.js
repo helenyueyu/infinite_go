@@ -1,10 +1,10 @@
-import statsReducer from './stats_reducer'; 
+import tagStatsReducer from './tag_stats_reducer'; 
 import randomQuestionsReducer from './random_questions_reducer'; 
 
 import { combineReducers } from 'redux';
 
 const metasReducer = combineReducers({
-    stats: statsReducer, 
+    tagStats: tagStatsReducer, 
     randomQuestions: randomQuestionsReducer
 })
 

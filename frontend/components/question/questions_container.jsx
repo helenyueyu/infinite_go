@@ -3,7 +3,6 @@ import Questions from './questions';
 import { fetchFilteredQuestions } from '../../actions/questions_actions';
 import { sortByNewest } from '../../selectors/sort_selectors'; 
 import { changePageNumber, changePageLimit } from '../../actions/search_actions'; 
-import { fetchMetas } from '../../actions/metas_actions'; 
 import { receiveQuery } from '../../actions/search_actions'; 
 
 const mapStateToProps = state => {

@@ -5,6 +5,10 @@ class Taggable < ApplicationRecord
         class_name: :Tag, 
         foreign_key: :tag_id  
 
+    def self.most_popular_tags
+        self.joins(:tag).group(:name).order("count_name desc").count("name").take(10)
+    end
+
     def self.exists?(tag_id, taggable_id, taggable_type)
         taggable = where(tag_id: tag_id, taggable_id: taggable_id, taggable_type: taggable_type)
         taggable.size == 1 

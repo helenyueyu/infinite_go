@@ -24,7 +24,12 @@ class Api::TaggablesController < ApplicationController
         end         
     end
 
-     def destroy 
+    def popular_tags
+        @popular_tags = Taggable.most_popular_tags  
+        render :popular 
+    end
+
+    def destroy 
         @taggable = Taggable.find(params[:id])
         count = Taggable.where(tag_id: @taggable.tag_id).size
         if @taggable.destroy

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get 'questions/random', :to => 'questions#random'
       get 'users/search', :to => 'users#search'
       get 'tags/search', :to => 'tags#search'
+      get 'tags/popular', :to => 'taggables#popular_tags'
 
       resources :users, only: [:index, :create, :show]
       resource :session, only: [:create, :destroy]
