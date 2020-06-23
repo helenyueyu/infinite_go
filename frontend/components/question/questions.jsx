@@ -42,27 +42,42 @@ class Questions extends React.Component {
     }
 
     generatePageNumbers(numQuestions, perPage, pageNumber) {
+        numQuestions = parseInt(numQuestions); 
+        perPage = parseInt(perPage); 
+        pageNumber = parseInt(pageNumber); 
+
         let bp1 = null; 
         let bp2 = null; 
 
-        let max = Math.floor(numQuestions/perPage); 
-        let arr = []; 
+        let max = Math.floor(numQuestions/perPage) + 1; 
+        if (max <= 5) {
+            const temp = []; 
+            for (let i = 1; i <= max; i++) {
+                temp.push(i); 
+            }
+            return [temp, null, null]; 
+        }
+
         if (pageNumber >= 1 && pageNumber <= 4) {
-            arr = []; 
-            for (let i = 1; i <= 5; i++) {
+            const arr = []; 
+            for (let i = 1; i <= 4; i++) {
                 arr.push(i); 
             }
-            bp1 = 5; 
+            arr.push(5); 
             arr.push(max); 
+            bp1 = 5; 
+
+            return [arr, bp1, bp2]; 
         } else if (pageNumber >= max-3 && pageNumber <= max) {
-            arr = []; 
+            const arr = []; 
             arr.push(1); 
             for (let i = max-4; i <= max; i++) {
                 arr.push(i); 
             }
             bp1 = 1; 
+            return [arr, bp1, bp2]; 
         } else {
-            arr = []; 
+            const arr = []; 
             arr.push(1); 
             for (let i = pageNumber-2; i <= pageNumber+2; i++) {
                 arr.push(i); 
@@ -70,9 +85,8 @@ class Questions extends React.Component {
             arr.push(max); 
             bp1 = 1; 
             bp2 = pageNumber+2; 
+            return [arr, bp1, bp2]; 
         }      
-        // console.log('this is what generatepagenumbers is', [arr, bp1, bp2]); 
-        return [arr, bp1, bp2]; 
     }
 
     render() {

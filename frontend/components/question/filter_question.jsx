@@ -13,6 +13,7 @@ class FilterQuestion extends React.Component {
     }
     render() {
         const { type, values, bp1, bp2, action, active } = this.props; 
+        // debugger; 
         return (
             <div className="filter_question-list">
                 {values.map((num, idx) =>
