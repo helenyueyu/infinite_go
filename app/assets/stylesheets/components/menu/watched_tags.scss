@@ -1,0 +1,42 @@
+.watched_tags {
+    border: 1px solid $lighter-silver; 
+    box-shadow: 2px 1px 10px #c9c9c9;
+
+}
+
+.watched_tags-title {
+    background: $lightest-silver; 
+    padding-top: 0.8rem; 
+    padding-bottom: 0.8rem; 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    color: $gray; 
+    border-bottom: 1px solid $lighter-silver; 
+}
+
+.watched_tags-title-text {
+    padding-left: 0.5rem; 
+}
+
+.watched_tags-items {
+    display: flex; 
+    flex-direction: row; 
+    flex-wrap: wrap; 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    padding-bottom: 1.5rem; 
+    padding-top: 1rem; 
+}
+.watched_tags-item {
+    // display: flex; 
+    // flex-direction: horizontal; 
+    background: $tag-red-lite; 
+    color: $red; 
+    margin-right: 0.35rem; 
+    padding: 0.35rem 0.4rem 0.35rem 0.4rem; 
+    font-size: $comment-size;
+    border-radius: 2.5px;  
+    text-decoration: none; 
+    margin-top: 0.5rem; 
+}
+
