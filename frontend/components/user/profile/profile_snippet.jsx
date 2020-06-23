@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const ProfileSnippet = ({username, timestamp, reputation, medals, type, id, color}) => {
     if (!medals) return null; 
     return (
-        <div className={color === "transparent" ? "profile_snippet_transparent" : "profile_snippet"}>
+        <div className={color === "transparent" ? "profile_snippet-transparent" : "profile_snippet"}>
             <div className="profile_snippet-date">{type} {timestamp}</div>
 
             <div className="profile_snippet-main">

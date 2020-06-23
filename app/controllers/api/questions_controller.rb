@@ -6,9 +6,11 @@ class Api::QuestionsController < ApplicationController
     end
 
     def search 
+        # debugger 
         params = ensure_search_params
-        @questions = Question.search(*ensure_search_params)
-        @question_count = @questions.size 
+        res = Question.search(*ensure_search_params)
+        @questions = res[0]
+        @question_count = res[1] 
     end
 
     def random

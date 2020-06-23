@@ -7,8 +7,11 @@ import { fetchMetas } from '../../actions/metas_actions';
 import { receiveQuery } from '../../actions/search_actions'; 
 
 const mapStateToProps = state => {
+    const { questionCount } = state.entities.questions; 
+    delete state.entities.questions['questionCount']; 
     return {
     questions: sortByNewest(Object.values(state.entities.questions)),
+    questionCount, 
     search: state.entities.search
 }}
 

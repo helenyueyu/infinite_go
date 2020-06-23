@@ -73,6 +73,7 @@ class Question < ApplicationRecord
     end
 
     def self.search(page, page_limit, query)
+        # debugger 
         if query.length > 0 
             if query.first == '['
                 query = query[1..query.length-2]
@@ -82,14 +83,13 @@ class Question < ApplicationRecord
             end
 
             if res.length > 0 
-                return res.offset((page-1)*page_limit).limit(page_limit).order(created_at: :desc)
+                return [res.offset((page-1)*page_limit).limit(page_limit).order(created_at: :desc), res.size]
             else
                 return [] 
             end
         end
-        self.all.offset((page-1)*page_limit).limit(page_limit).order(created_at: :desc)
+        [self.all.offset((page-1)*page_limit).limit(page_limit).order(created_at: :desc), self.all.size] 
     end
-    
- 
+
 end
 

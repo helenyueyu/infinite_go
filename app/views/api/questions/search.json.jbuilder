@@ -2,6 +2,8 @@ json.key_format! ->(key) {
     key.to_s.chomp('?').camelize(:lower)
 }
 
+json.question_count @question_count 
+
 @questions.each do |question|
     json.set! question.id do 
         json.extract! question, :id, 
