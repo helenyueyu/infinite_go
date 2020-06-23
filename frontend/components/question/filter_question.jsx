@@ -6,7 +6,7 @@ class FilterQuestion extends React.Component {
         return (
             <button key={num}
                 onClick={() => action(num)}
-                className={num === active ? "filter_question filter_question-active" : "filter_question filter_question-non_active"}
+                className={parseInt(num) === parseInt(active) ? "filter_question filter_question-active" : "filter_question filter_question-non_active"}
                 disabled={num === active ? true : false}>
                 {num}
             </button> 
@@ -27,7 +27,8 @@ class FilterQuestion extends React.Component {
                     <div key={idx}>
                         {this.generateButton(num, action, active)}
                     </div>
-            )} {type}
+            )} 
+                <span className="filter_question-type">{type}</span>
             </div>
         )
     }
