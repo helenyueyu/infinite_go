@@ -29,11 +29,18 @@ class Questions extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
+        const oldTag = prevProps.match.params.tagName; 
+        const currTag = this.props.match.params.tagName; 
+        let url = this.props.history.location.pathname; 
+        if (url.includes('tagged') && oldTag !== currTag) {
+            let query = '[' + currTag + ']'; 
+            dispatch({
+                type: 'RECEIVE_QUERY', 
+                query: query 
+            })
+        }
         if (this.newSearchParams(prevProps.search, this.props.search)) {
             this.fetchQuestions(this.props.search)
-            // .then(() => this.setState({
-            //     questionCount: this.props.questionCount 
-            // }))
         }
     }
 
@@ -47,6 +54,10 @@ class Questions extends React.Component {
             h1.query !== h2.query 
     }
 
+    newTag(oldTag, currTag) {
+        return oldTag !== currTag; 
+    }
+
     generatePageNumbers(numQuestions, perPage, pageNumber) {
         numQuestions = parseInt(numQuestions); 
         perPage = parseInt(perPage); 
@@ -56,7 +67,7 @@ class Questions extends React.Component {
         let breakPoint2 = null; 
 
         let max = Math.floor(numQuestions/perPage) + 1; 
-        if (max <= 5) {
+        if (max <= 8) {
             const temp = []; 
             for (let i = 1; i <= max; i++) {
                 temp.push(i); 

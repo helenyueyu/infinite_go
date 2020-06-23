@@ -93,7 +93,9 @@ class Question extends React.Component {
               
 
               <div className="question-right">
-                <Editor editorState={currentContent} readOnly={true} />
+                    <div className="question-body">
+                        <Editor editorState={currentContent} readOnly={true} />
+                    </div>
 
                 <TagsContainer
                   fetchQuestion={this.props.fetchQuestion}

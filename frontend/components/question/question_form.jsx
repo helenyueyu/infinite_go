@@ -220,13 +220,13 @@ class QuestionForm extends React.Component {
             }
         }
     }).then(() => {
-        this.props.history.push(`/questions/${type === 'new' ? question.id : this.state.id}/${nameExtensionURL(post.title)}`); 
-    }).then(() => {
         if (type === 'new') {
             this.props.fetchQuestion(question.id); 
         } else {
             this.props.fetchQuestion(this.state.id); 
         }
+    }).then(() => {
+        this.props.history.push(`/questions/${type === 'new' ? question.id : this.state.id}/${nameExtensionURL(post.title)}`); 
     })
     
 
