@@ -1,0 +1,2 @@
+class WatchedTag < ApplicationRecord
+end
