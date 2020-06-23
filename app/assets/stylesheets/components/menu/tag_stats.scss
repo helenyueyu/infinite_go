@@ -1,0 +1,23 @@
+.tag_stats {
+    display: flex; 
+    align-items: center; 
+}
+
+.tag_stats-item {
+    display: flex; 
+    flex-direction: horizontal; 
+    background: $tag-red-lite; 
+    color: $red; 
+    margin-right: 0.35rem; 
+    padding: 0.35rem 0.4rem 0.35rem 0.4rem; 
+    font-size: $comment-size;
+    border-radius: 2.5px;  
+    text-decoration: none; 
+    margin-bottom: 0.25rem; 
+    margin-top: 0.25rem; 
+}
+
+.tag_stats-freq {
+    color: $gray; 
+    font-size: $little-size; 
+}

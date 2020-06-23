@@ -15,7 +15,6 @@ const mapStateToProps = state => {
 }}
 
 const mapDispatchToProps = dispatch => ({
-    fetchMetas: () => dispatch(fetchMetas()), 
     receiveQuery: query => dispatch(receiveQuery(query)), 
     fetchFilteredQuestions: (page, perPage, query) => dispatch(fetchFilteredQuestions(page, perPage, query)), 
     changePageNumber: num => dispatch(changePageNumber(num)),
