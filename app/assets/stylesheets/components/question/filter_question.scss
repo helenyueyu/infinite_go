@@ -9,7 +9,9 @@
     background: $red; 
     color: $white; 
     border: none;   
-    
+}
+.filter_question-active:hover {
+    cursor: auto; 
 }
 
 .filter_question-non_active {
