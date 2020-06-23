@@ -1,6 +1,7 @@
 import React from 'react'; 
 
 import { Link } from 'react-router-dom'; 
+import { isQuestionWatched } from '../../selectors/display_selectors'; 
 
 import FilterQuestion from './filter_question'; 
 import QuestionItem from './question_item'; 
@@ -14,6 +15,7 @@ class Questions extends React.Component {
         }
 
     }
+
     componentDidMount() {
         let url = this.props.history.location.pathname;
         if (url.includes('tagged')) {
@@ -106,7 +108,7 @@ class Questions extends React.Component {
     }
 
     render() {
-        let {questions, search, questionCount} = this.props; 
+        let {questions, search, questionCount, watchedTags} = this.props; 
         if (!questions || !search) return null; 
 
         const [pages, bp1, bp2] = this.generatePageNumbers(questionCount, search.pageLimit, search.pageNumber); 
@@ -124,9 +126,13 @@ class Questions extends React.Component {
                     
                     
                     {questions.map((question, idx) => {
-                        let {id, title, body, user, voteCount, viewCount, answerCount, tags, hasAcceptedAnswer } = question; 
+                        let {id, title, body, user, voteCount, 
+                            viewCount, answerCount, tags, hasAcceptedAnswer } = question; 
+                        const questionTagIds = tags.map(tag => tag.id); 
+                        const isWatched = isQuestionWatched(questionTagIds, watchedTags); 
+                        
                         return (
-                            <div key={idx} className="questions-item">
+                            <div key={idx} className={isWatched ? "questions-item-watched" : "questions-item"}>
                                 <div className="questions-statistics">
                                     <div className="questions-statistics-votes">
                                         <div className="questions-stat">{voteCount}</div>

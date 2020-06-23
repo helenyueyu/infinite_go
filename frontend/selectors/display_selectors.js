@@ -34,6 +34,15 @@ export const nameExtensionURL = (title) => {
     return cleanedTitle; 
 }
 
+export const isQuestionWatched = (questionTagIds, watchedTags) => {
+    for (let i = 0; i < questionTagIds.length; i++) {
+        if (watchedTags[questionTagIds[i]] !== undefined) {
+            return true; 
+        }
+    }
+    return false; 
+}
+
 export const removeSpaces = str => {
     let res = ""; 
     for (let i = 0; i < str.length; i++) {

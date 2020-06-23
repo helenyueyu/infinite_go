@@ -112,3 +112,10 @@
     font-size: $little-size; 
     padding-top: 0.5rem;  
 }
+
+.questions-item-watched {
+    background: $watched; 
+    border-top: 1px solid $lighter-silver;  
+    display: flex; 
+    align-items: flex-start; 
+}
