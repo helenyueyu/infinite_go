@@ -9,6 +9,9 @@ class Questions extends React.Component {
     constructor(props) {
         super(props); 
         this.fetchQuestions = this.fetchQuestions.bind(this); 
+        this.state = {
+            questionCount: this.props.questionCount 
+        }
 
     }
     componentDidMount() {
@@ -27,7 +30,10 @@ class Questions extends React.Component {
 
     componentDidUpdate(prevProps) {
         if (this.newSearchParams(prevProps.search, this.props.search)) {
-            this.fetchQuestions(this.props.search); 
+            this.fetchQuestions(this.props.search)
+            // .then(() => this.setState({
+            //     questionCount: this.props.questionCount 
+            // }))
         }
     }
 
@@ -46,8 +52,8 @@ class Questions extends React.Component {
         perPage = parseInt(perPage); 
         pageNumber = parseInt(pageNumber); 
 
-        let bp1 = null; 
-        let bp2 = null; 
+        let breakPoint1 = null; 
+        let breakPoint2 = null; 
 
         let max = Math.floor(numQuestions/perPage) + 1; 
         if (max <= 5) {
@@ -65,17 +71,17 @@ class Questions extends React.Component {
             }
             arr.push(5); 
             arr.push(max); 
-            bp1 = 5; 
+            breakPoint1 = 5; 
 
-            return [arr, bp1, bp2]; 
+            return [arr, breakPoint1, breakPoint2]; 
         } else if (pageNumber >= max-3 && pageNumber <= max) {
             const arr = []; 
             arr.push(1); 
             for (let i = max-4; i <= max; i++) {
                 arr.push(i); 
             }
-            bp1 = 1; 
-            return [arr, bp1, bp2]; 
+            breakPoint1 = 1; 
+            return [arr, breakPoint1, breakPoint2]; 
         } else {
             const arr = []; 
             arr.push(1); 
@@ -83,9 +89,9 @@ class Questions extends React.Component {
                 arr.push(i); 
             }
             arr.push(max); 
-            bp1 = 1; 
-            bp2 = pageNumber+2; 
-            return [arr, bp1, bp2]; 
+            breakPoint1 = 1; 
+            breakPoint2 = pageNumber+2; 
+            return [arr, breakPoint1, breakPoint2]; 
         }      
     }
 
@@ -101,7 +107,9 @@ class Questions extends React.Component {
                         <div className="questions-title">
                             {questionCount} question{questionCount === 1 ? '' : 's'}
                         </div>
-                        <Link to="/questions/new"><button className="questions-create-question">Create Question</button></Link>
+                        <Link to="/questions/new">
+                            <button className="questions-create-question">Create Question</button>
+                        </Link>
                     </div>
                     
                     
@@ -142,7 +150,7 @@ class Questions extends React.Component {
                     <div className="questions-filter">
                         <FilterQuestion
                             type="next"
-                            values={pages.slice(0)}
+                            values={pages}
                             action={this.props.changePageNumber}
                             active={search.pageNumber} 
                             bp1 = {bp1} 
