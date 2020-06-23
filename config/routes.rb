@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 
       resources :bookmarks, only: [:create, :destroy]
 
-      resources :watched_tags, only: [:create, :destroy]
+      resources :watched_tags, only: [:index, :create, :destroy]
 
       resources :metas, only: [:index]
     end

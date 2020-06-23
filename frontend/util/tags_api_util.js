@@ -21,7 +21,6 @@ export const deleteTag = id => {
 }
 
 export const searchTags = query => {
-    // debugger; 
     return $.ajax({
         method: 'GET',
         url: `/api/tags/search`,
@@ -33,3 +32,12 @@ export const searchTags = query => {
     })
 }
 
+export const createWatchTag = watchTag => {
+    return $.ajax({
+        method: 'POST', 
+        url: '/api/watched_tags', 
+        data: { 
+            watched_tag: watchTag 
+        }
+    })
+}

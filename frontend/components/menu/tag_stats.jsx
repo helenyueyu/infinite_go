@@ -16,7 +16,7 @@ class TagStats extends React.Component {
     }
     render() {
         const { tagStats } = this.props;
-        if (!tagStats) return null; 
+        if (Object.keys(tagStats).length === 0) return null; 
  
         const { showMore } = this.state; 
         return (

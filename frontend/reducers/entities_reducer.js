@@ -9,6 +9,7 @@ import tagsReducer from './tags_reducer';
 import votesReducer from './votes_reducer'; 
 import metasReducer from './metas_reducer'; 
 import badgesReducer from './badges_reducer'; 
+import watchedTagsReducer from './watched_tags_reducer'; 
 import bookmarksReducer from './bookmarks_reducer'; 
 
 const entitiesReducer = combineReducers({
@@ -22,6 +23,7 @@ const entitiesReducer = combineReducers({
     search: searchReducer, 
     metas: metasReducer, 
     badges: badgesReducer, 
+    watchedTags: watchedTagsReducer
     // bookmarks: bookmarksReducer  
 })
 

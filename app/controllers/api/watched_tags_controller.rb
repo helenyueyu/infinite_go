@@ -1,6 +1,10 @@
 class Api::WatchedTagsController < ApplicationController
+    def index 
+    end
+    
     def create
         @watched_tag = WatchedTag.new(watched_tag_params)
+        # debugger 
         if @watched_tag.save 
             render :show 
         else 

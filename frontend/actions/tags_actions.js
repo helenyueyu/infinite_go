@@ -3,6 +3,7 @@ import * as tagAPIUtil from '../util/tags_api_util';
 export const RECEIVE_TAGS = 'RECEIVE_TAGS'; 
 export const RECEIVE_TAG = 'RECEIVE_TAG';
 export const REMOVE_TAG = 'REMOVE_TAG'; 
+export const RECEIVE_WATCH_TAG = 'RECEIVE_WATCH_TAG'; 
 
 const receiveTags = tags => ({
     type: RECEIVE_TAGS, 
@@ -12,6 +13,11 @@ const receiveTags = tags => ({
 const receiveTag = tag => ({
     type: RECEIVE_TAG,
     tag
+})
+
+const receiveWatchTag = watchTag => ({
+    type: RECEIVE_WATCH_TAG, 
+    watchTag 
 })
 
 const removeTag = tag => ({
@@ -44,5 +50,12 @@ export const searchTags = query => dispatch => {
     return tagAPIUtil.searchTags(query)
         .then(tags => {
             dispatch(receiveTags(tags.tags))
+        })
+}
+
+export const createWatchTag = watchTag => dispatch => {
+    return tagAPIUtil.createWatchTag(watchTag)
+        .then(tag => {
+            dispatch(receiveWatchTag(tag))
         })
 }
