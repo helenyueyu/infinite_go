@@ -31,8 +31,13 @@ class Tag < ApplicationRecord
     attr_reader :question_count 
     
     has_many :taggables, 
-        foreign_key: :tag_id, 
         class_name: :Taggable, 
+        foreign_key: :tag_id, 
+        dependent: :destroy 
+
+    has_many :watched_tags, 
+        class_name: :WatchedTag, 
+        foreign_key: :tag_id, 
         dependent: :destroy 
 
     has_many :tagged_questions, 
@@ -40,6 +45,7 @@ class Tag < ApplicationRecord
         source: :taggable, 
         source_type: :Question, 
         dependent: :destroy 
+
 
     def weekly_question_count
         self.tagged_questions.where('questions.created_at BETWEEN ? AND ?', 1.week.ago, Time.now).size 

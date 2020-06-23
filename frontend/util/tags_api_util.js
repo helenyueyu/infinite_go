@@ -32,12 +32,19 @@ export const searchTags = query => {
     })
 }
 
-export const createWatchTag = watchTag => {
+export const createWatchedTag = watchedTag => {
     return $.ajax({
         method: 'POST', 
         url: '/api/watched_tags', 
         data: { 
-            watched_tag: watchTag 
+            watched_tag: watchedTag 
         }
+    })
+}
+
+export const getWatchedTags = () => {
+    return $.ajax({
+        method: 'GET', 
+        url: '/api/watched_tags'
     })
 }

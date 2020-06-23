@@ -75,6 +75,15 @@ class User < ApplicationRecord
         foreign_key: :user_id, 
         dependent: :destroy 
 
+    has_many :watched_tags, 
+        class_name: :WatchedTag, 
+        foreign_key: :user_id, 
+        dependent: :destroy
+        
+    has_many :watched_tag_names, 
+        through: :watched_tags, 
+        source: :tag 
+
     def change_reputation(num)
         self.reputation += num 
         self.save!

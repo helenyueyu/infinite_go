@@ -1,7 +1,8 @@
 class Api::WatchedTagsController < ApplicationController
-    def index 
+    def index
+        @watched_tags = current_user.watched_tag_names 
     end
-    
+
     def create
         @watched_tag = WatchedTag.new(watched_tag_params)
         # debugger 

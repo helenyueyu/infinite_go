@@ -7,6 +7,7 @@ class RightMenu extends React.Component {
     componentDidMount() {
         this.props.fetchRandomQuestions(); 
         this.props.fetchTagStats(); 
+        this.props.fetchWatchedTags(); 
     }
 
     handleChange(e) {
@@ -21,15 +22,14 @@ class RightMenu extends React.Component {
     }
 
     addToWatchTags(tagId, userId) {
-        // debugger; 
-        this.props.createWatchTag({
+        this.props.createWatchedTag({
             tag_id: tagId, 
             user_id: userId 
         })
     }
 
     render() {
-        let { questions, tagStats, tags, userId } = this.props; 
+        let { questions, tagStats, tags, userId, watchedTags } = this.props; 
         if (Object.keys(questions).length === 0) return null; 
         return (
             <div className="right_menu">
@@ -44,6 +44,9 @@ class RightMenu extends React.Component {
                                 {tag.name}
                             </div>) : 
                             null}
+                    </div>
+                    <div>
+                        {watchedTags.map((tag, idx) => <div key={idx}>{tag.name}</div>)}
                     </div>
                 </div>
                 <TagStats tagStats={tagStats} />
