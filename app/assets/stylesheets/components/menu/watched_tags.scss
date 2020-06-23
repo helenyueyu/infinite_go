@@ -12,6 +12,15 @@
     padding-right: 1rem; 
     color: $gray; 
     border-bottom: 1px solid $lighter-silver; 
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.watched_tags-left {
+    display: flex; 
+    align-items: center; 
 }
 
 .watched_tags-title-text {
@@ -28,15 +37,74 @@
     padding-top: 1rem; 
 }
 .watched_tags-item {
-    // display: flex; 
-    // flex-direction: horizontal; 
     background: $tag-red-lite; 
     color: $red; 
-    margin-right: 0.35rem; 
     padding: 0.35rem 0.4rem 0.35rem 0.4rem; 
     font-size: $comment-size;
     border-radius: 2.5px;  
     text-decoration: none; 
     margin-top: 0.5rem; 
+    margin-right: 0.35rem; 
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
 }
 
+.watched_tags-search {
+    margin-left: 1rem; 
+    margin-right: 1rem; 
+    margin-bottom: 1rem; 
+    padding: 0.1rem; 
+    font-size: 1rem;
+    height: 1.5rem; 
+    border-radius: 5px; 
+    border: 1px solid $red; 
+}
+
+.watched_tags-search:focus {
+    outline: none; 
+    border-radius: 5px; 
+    border: 1px solid $red; 
+    box-shadow: 0 0 0pt 3pt $tag-red-lite; 
+}
+
+.watched_tags-search-results {
+    display: flex; 
+    flex-direction: column; 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background: $tag-red-lite; 
+    color: $red; 
+}
+.watched_tag-search-result {
+    margin-top: 0.1rem; 
+    margin-bottom: 0.1rem; 
+}
+
+.watched_tags-delete-button {
+    color: $white; 
+    font-size: $comment-size; 
+    background: none; 
+    border: none; 
+    padding-top: 0rem; 
+    padding-bottom: 0rem; 
+    padding-left: 0.2rem; 
+    padding-right: 0rem; 
+    margin-left: 0.15rem; 
+}
+
+.watched_tags.fa-times {
+    background: $silver; 
+    border-radius: 50%; 
+    border: none; 
+    box-shadow: none; 
+    padding: 0.3rem; 
+    padding-top: 0.25rem; 
+    padding-bottom: 0.25rem; 
+    display: inline-block; 
+    font-size: $tiny-size; 
+}
+
+.watched_tags.fa-times:hover {
+    background: $red; 
+}

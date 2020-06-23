@@ -9,7 +9,11 @@ class RightMenu extends React.Component {
         super(props); 
         this.addToWatchTags = this.addToWatchTags.bind(this); 
         this.handleChange = this.handleChange.bind(this); 
+        this.state = {
+            watchedTagQuery: "" 
+        }
     }
+
     componentDidMount() {
         this.props.fetchRandomQuestions(); 
         this.props.fetchTagStats(); 
@@ -17,9 +21,11 @@ class RightMenu extends React.Component {
     }
 
     handleChange(e) {
-        // debugger; 
         e.preventDefault();
-        this.props.searchTags(e.target.value);
+        const query = e.target.value; 
+        this.setState({
+            watchedTagQuery: query 
+        }, () => this.props.searchTags(query))
     }
 
     componentDidUpdate(prevProps) {
@@ -44,7 +50,8 @@ class RightMenu extends React.Component {
                             userId={userId} 
                             watchedTags={watchedTags} 
                             addToWatchTags={this.addToWatchTags} 
-                            handleChange={this.handleChange} />
+                            handleChange={this.handleChange} 
+                            watchedTagQuery={this.state.watchedTagQuery} />
                 <TagStats tagStats={tagStats} />
                 <RandomQuestions questions={questions} />
             </div>
