@@ -2,8 +2,14 @@ import React from 'react';
 
 import RandomQuestions from './random_questions'; 
 import TagStats from './tag_stats'; 
+import WatchedTags from './watched_tags'; 
 
 class RightMenu extends React.Component {
+    constructor(props) {
+        super(props); 
+        this.addToWatchTags = this.addToWatchTags.bind(this); 
+        this.handleChange = this.handleChange.bind(this); 
+    }
     componentDidMount() {
         this.props.fetchRandomQuestions(); 
         this.props.fetchTagStats(); 
@@ -11,6 +17,7 @@ class RightMenu extends React.Component {
     }
 
     handleChange(e) {
+        // debugger; 
         e.preventDefault();
         this.props.searchTags(e.target.value);
     }
@@ -33,22 +40,11 @@ class RightMenu extends React.Component {
         if (Object.keys(questions).length === 0) return null; 
         return (
             <div className="right_menu">
-                <div>
-                    <input className="tags_index-search"
-                        onChange={(e) => this.handleChange(e)}>
-                    </input>
-                    <div>
-                        {Object.keys(tags).length > 0 ? tags.slice(0, 5).map((tag, idx) => 
-                            <div key={idx} 
-                                onClick={() => this.addToWatchTags(tag.id, userId)}>
-                                {tag.name}
-                            </div>) : 
-                            null}
-                    </div>
-                    <div>
-                        {watchedTags.map((tag, idx) => <div key={idx}>{tag.name}</div>)}
-                    </div>
-                </div>
+                <WatchedTags tags={tags} 
+                            userId={userId} 
+                            watchedTags={watchedTags} 
+                            addToWatchTags={this.addToWatchTags} 
+                            handleChange={this.handleChange} />
                 <TagStats tagStats={tagStats} />
                 <RandomQuestions questions={questions} />
             </div>
