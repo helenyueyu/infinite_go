@@ -1,17 +1,17 @@
 import * as metasAPIUtil from '../util/metas_api_util';
 
-// export const RECEIVE_METAS = 'RECEIVE_METAS';
+export const RECEIVE_TAG_STATS = 'RECEIVE_TAG_STATS';
 
-// const receiveMetas = metas => {
-//     return ({
-//         type: RECEIVE_METAS,
-//         metas
-//     })
-// }
+const receiveTagStats = tagStats => {
+    return ({
+        type: RECEIVE_TAG_STATS,
+        tagStats
+    })
+}
 
-// export const fetchMetas = () => dispatch => {
-//     return metasAPIUtil.getMetas()
-//         .then(metas => {
-//             dispatch(receiveMetas(metas))
-//         });
-// }
+export const fetchTagStats = () => dispatch => {
+    return metasAPIUtil.getTagStats()
+        .then(tagStats => {
+            dispatch(receiveTagStats(tagStats))
+        })
+}

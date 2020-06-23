@@ -1,10 +1,12 @@
 import React from 'react';
 
 import RandomQuestions from './random_questions'; 
+import TagStats from './tag_stats'; 
 
 class RightMenu extends React.Component {
     componentDidMount() {
         this.props.fetchRandomQuestions(); 
+        this.props.fetchTagStats(); 
     }
 
     componentDidUpdate(prevProps) {
@@ -13,12 +15,12 @@ class RightMenu extends React.Component {
         }
     }
     render() {
-        let { questions } = this.props; 
+        let { questions, tagStats } = this.props; 
         if (Object.keys(questions).length === 0) return null; 
         return (
             <div className="right_menu">
+                <TagStats tagStats={tagStats} />
                 <RandomQuestions questions={questions} />
-
             </div>
         )
     }
