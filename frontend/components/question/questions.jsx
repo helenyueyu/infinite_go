@@ -158,7 +158,7 @@ class Questions extends React.Component {
 
                         <FilterQuestion
                             type="per page"
-                            values={[5, 10, 15]}
+                            values={[15, 30, 45]}
                             action={this.props.changePageLimit}
                             active={search.pageLimit} />
                     </div>

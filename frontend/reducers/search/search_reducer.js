@@ -1,6 +1,6 @@
 import { CHANGE_PAGE_LIMIT, CHANGE_PAGE_NUMBER, RECEIVE_QUERY } from '../../actions/search_actions';
 
-const searchReducer = (state = {query: "", pageLimit: 5, pageNumber: 1}, action) => {
+const searchReducer = (state = {query: "", pageLimit: 15, pageNumber: 1}, action) => {
     Object.freeze(state); 
 
     let newState = Object.assign({}, state);
