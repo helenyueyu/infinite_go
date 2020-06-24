@@ -27,7 +27,7 @@ class Api::TagsController < ApplicationController
         if @tag.destroy 
             render :show 
         else
-            render json: @tag.errors.full_messages 
+            render json: @tag.errors.full_messages, status: 401 
         end
     end
 

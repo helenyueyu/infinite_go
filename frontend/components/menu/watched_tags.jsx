@@ -1,4 +1,5 @@
 import React from 'react'; 
+// import { withRouter } from 'react-router-dom'; 
 
 class WatchedTags extends React.Component {
     constructor(props) {
@@ -7,10 +8,17 @@ class WatchedTags extends React.Component {
             watchedTagFormShown: false 
         }
         this.handleClick = this.handleClick.bind(this); 
+        this.handleDelete = this.handleDelete.bind(this); 
+    }
+
+    handleDelete(e, id) {
+        e.preventDefault(); 
+        this.props.deleteWatchedTag(id)
+            // .then(() => this.props.fetchQuestion(this.props.match.params.questionId))
+            // .then(() => this.props.fetchTags())
     }
 
     handleClick() {
-        console.log('handle clicking')
         this.setState({
             watchedTagFormShown: !this.state.watchedTagFormShown 
         })
@@ -41,9 +49,11 @@ class WatchedTags extends React.Component {
                         <div key={idx}
                             className="watched_tags-item">
                             <div>{tag.name}</div>
-                            {watchedTagFormShown ? <button className="watched_tags-delete-button">
-                                <i className="fas fa-times watched_tags"></i>
-                            </button> : null}
+                            {watchedTagFormShown ? 
+                                <button onClick={(e) => this.handleDelete(e, tag.id)}
+                                    className="watched_tags-delete-button">
+                                    <i className="fas fa-times watched_tags"></i>
+                                </button> : null}
                         </div>)}
                 </div>
                 

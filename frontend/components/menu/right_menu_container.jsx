@@ -3,7 +3,7 @@ import RightMenu from './right_menu';
 
 import { fetchRandomQuestions, fetchQuestion } from '../../actions/questions_actions';
 import { fetchTagStats } from '../../actions/metas_actions'; 
-import { searchTags, createWatchedTag, fetchWatchedTags } from '../../actions/tags_actions'; 
+import { searchTags, fetchWatchedTags, createWatchedTag, deleteWatchedTag } from '../../actions/tags_actions'; 
 
 const mapStateToProps = (state) => {
     return {
@@ -21,7 +21,8 @@ const mapDispatchToProps = dispatch => {
     fetchTagStats: () => dispatch(fetchTagStats()), 
     searchTags: (query) => dispatch(searchTags(query)), 
     fetchWatchedTags: () => dispatch(fetchWatchedTags()), 
-    createWatchedTag: (tag) => dispatch(createWatchedTag(tag))
+    createWatchedTag: (tag) => dispatch(createWatchedTag(tag)), 
+    deleteWatchedTag: (id) => dispatch(deleteWatchedTag(id))
 }}
 
 export default connect(mapStateToProps, mapDispatchToProps)(RightMenu)

@@ -3,8 +3,9 @@ import * as tagAPIUtil from '../util/tags_api_util';
 export const RECEIVE_TAGS = 'RECEIVE_TAGS'; 
 export const RECEIVE_TAG = 'RECEIVE_TAG';
 export const REMOVE_TAG = 'REMOVE_TAG'; 
-export const RECEIVE_WATCHED_TAG = 'RECEIVE_WATCH_TAG'; 
-export const RECEIVE_WATCHED_TAGS = 'RECEIVE_WATCH_TAGS'; 
+export const RECEIVE_WATCHED_TAGS = 'RECEIVE_WATCHED_TAGS'; 
+export const RECEIVE_WATCHED_TAG = 'RECEIVE_WATCHED_TAG'; 
+export const REMOVE_WATCHED_TAG = 'REMOVE_WATCHED_TAG'; 
 
 const receiveTags = tags => ({
     type: RECEIVE_TAGS, 
@@ -16,9 +17,9 @@ const receiveTag = tag => ({
     tag
 })
 
-const receiveWatchedTag = watchedTag => ({
-    type: RECEIVE_WATCHED_TAG, 
-    watchedTag 
+const removeTag = tag => ({
+    type: REMOVE_TAG, 
+    tag 
 })
 
 const receiveWatchedTags = watchedTags => ({
@@ -26,9 +27,14 @@ const receiveWatchedTags = watchedTags => ({
     watchedTags 
 })
 
-const removeTag = tag => ({
-    type: REMOVE_TAG, 
-    tag 
+const receiveWatchedTag = watchedTag => ({
+    type: RECEIVE_WATCHED_TAG, 
+    watchedTag 
+})
+
+const removeWatchedTag = watchedTags => ({
+    type: REMOVE_WATCHED_TAG, 
+    watchedTags 
 })
 
 export const fetchTags = () => dispatch => {
@@ -68,6 +74,13 @@ export const createWatchedTag = watchTag => dispatch => {
     return tagAPIUtil.createWatchedTag(watchTag)
         .then(watchedTag => {
             dispatch(receiveWatchedTag(watchedTag))
+        })
+}
+
+export const deleteWatchedTag = id => dispatch => {
+    return tagAPIUtil.deleteWatchedTag(id)
+        .then(watchedTag => {
+            dispatch(removeWatchedTag(watchedTag))
         })
 }
 

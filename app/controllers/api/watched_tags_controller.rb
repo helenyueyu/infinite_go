@@ -5,11 +5,19 @@ class Api::WatchedTagsController < ApplicationController
 
     def create
         @watched_tag = WatchedTag.new(watched_tag_params)
-        # debugger 
         if @watched_tag.save 
             render :show 
         else 
             render @watched_tag.errors.full_messages, status: 401 
+        end 
+    end
+
+    def destroy
+        @watched_tag = WatchedTag.find_by(tag_id: params[:id])
+        if @watched_tag.destroy 
+            render :show 
+        else 
+            render json: @watched_tag.errors.full_messages 
         end 
     end
 
