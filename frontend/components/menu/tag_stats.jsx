@@ -1,5 +1,7 @@
 import React from 'react'; 
 
+import { Link } from 'react-router-dom'; 
+
 class TagStats extends React.Component {
     constructor(props) {
         super(props); 
@@ -24,9 +26,9 @@ class TagStats extends React.Component {
                 <h1 className="right_menu-title">Related Tags</h1>
                 {tagStats.slice(0, 10).map((tagStat, idx) => 
                     <div key={idx} className="tag_stats">
-                        <div className="tag_stats-item">
+                        <Link className="tag_stats-item" to={`/questions/tagged/${tagStat.name}`}>
                             {tagStat.name}
-                        </div>
+                        </Link>
                         <div className="tag_stats-freq">
                             x {tagStat.frequency}
                         </div>
@@ -39,9 +41,9 @@ class TagStats extends React.Component {
                     </button>}
                 {showMore ? tagStats.slice(10).map((tagStat, idx) => 
                     <div key={idx} className="tag_stats">
-                        <div className="tag_stats-item">
-                            {tagStat.name}
-                        </div>
+                        <Link className="tag_stats-item" to={`/questions/tagged/${tagStat.name}`}>
+                                {tagStat.name}
+                        </Link>
                         <div className="tag_stats-freq">
                             x {tagStat.frequency}
                         </div>
