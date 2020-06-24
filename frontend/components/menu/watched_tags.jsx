@@ -14,7 +14,6 @@ class WatchedTags extends React.Component {
     handleDelete(e, id) {
         e.preventDefault(); 
         this.props.deleteWatchedTag(id)
-            // .then(() => this.props.fetchQuestion(this.props.match.params.questionId))
             // .then(() => this.props.fetchTags())
     }
 

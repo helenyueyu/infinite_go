@@ -32,9 +32,9 @@ const receiveWatchedTag = watchedTag => ({
     watchedTag 
 })
 
-const removeWatchedTag = watchedTags => ({
+const removeWatchedTag = watchedTag => ({
     type: REMOVE_WATCHED_TAG, 
-    watchedTags 
+    watchedTag
 })
 
 export const fetchTags = () => dispatch => {

@@ -42,7 +42,7 @@ class RightMenu extends React.Component {
     }
 
     render() {
-        let { questions, tagStats, tags, userId, watchedTags, deleteWatchedTag } = this.props; 
+        let { questions, tagStats, tags, userId, watchedTags, deleteWatchedTag, fetchWatchedTags } = this.props; 
         let { fetchQuestion } = this.props; 
 
         if (Object.keys(questions).length === 0) return null; 

@@ -12,7 +12,7 @@ const watchedTagsReducer = (state = {}, action) => {
             newState[action.watchedTag.id] = action.watchedTag; 
             return newState; 
         case REMOVE_WATCHED_TAG: 
-            delete newState[action.watchedTag.id]; 
+            delete newState[action.watchedTag.tagId]; 
             return newState; 
         default:
             return state;
