@@ -49,6 +49,13 @@
     flex-direction: row; 
     align-items: center; 
 }
+.watched_tags-item:hover {
+    background: $tag-red; 
+}
+.watched_tags-item-link {
+    text-decoration: none; 
+    color: $red; 
+}
 
 .watched_tags-tag-search {
     display: flex; 

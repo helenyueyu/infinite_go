@@ -1,4 +1,5 @@
 import React from 'react'; 
+import { Link } from 'react-router-dom'; 
 
 class IgnoredTags extends React.Component {
     constructor(props) {
@@ -45,7 +46,9 @@ class IgnoredTags extends React.Component {
                         {ignoredTags.map((tag, idx) => 
                             <div key={idx}
                                 className="watched_tags-item">
-                                <div>{tag.name}</div>
+                                <Link className="watched_tags-item-link" to={`/questions/tagged/${tag.name}`}>
+                                    {tag.name}
+                                </Link>
                                 {ignoredTagFormShown ? 
                                     <button onClick={(e) => this.handleDelete(e, tag.id)}
                                         className="watched_tags-delete-button">
