@@ -6,6 +6,9 @@ export const REMOVE_TAG = 'REMOVE_TAG';
 export const RECEIVE_WATCHED_TAGS = 'RECEIVE_WATCHED_TAGS'; 
 export const RECEIVE_WATCHED_TAG = 'RECEIVE_WATCHED_TAG'; 
 export const REMOVE_WATCHED_TAG = 'REMOVE_WATCHED_TAG'; 
+export const RECEIVE_IGNORED_TAGS = 'RECEIVE_IGNORED_TAGS'; 
+export const RECEIVE_IGNORED_TAG = 'RECEIVE_IGNORED_TAG'; 
+export const REMOVE_IGNORED_TAG = 'REMOVE_IGNORED_TAG'; 
 
 const receiveTags = tags => ({
     type: RECEIVE_TAGS, 
@@ -37,6 +40,21 @@ const removeWatchedTag = watchedTag => ({
     watchedTag
 })
 
+const receiveIgnoredTags = ignoredTags => ({
+    type: RECEIVE_IGNORED_TAGS, 
+    ignoredTags 
+})
+
+const receiveIgnoredTag = ignoredTag => ({
+    type: RECEIVE_IGNORED_TAG, 
+    ignoredTag 
+})
+
+const removeIgnoredTag = ignoredTag => ({
+    type: REMOVE_Ignored_TAG, 
+    ignoredTag
+})
+
 export const fetchTags = () => dispatch => {
     return tagAPIUtil.fetchTags()
                 .then(tags => {
@@ -64,14 +82,15 @@ export const searchTags = query => dispatch => {
         })
 }
 
+
 export const fetchWatchedTags = () => dispatch => {
     return tagAPIUtil.getWatchedTags()
         .then(watchedTags => {
             dispatch(receiveWatchedTags(watchedTags))
         })
 }
-export const createWatchedTag = watchTag => dispatch => {
-    return tagAPIUtil.createWatchedTag(watchTag)
+export const createWatchedTag = watchedTag => dispatch => {
+    return tagAPIUtil.createWatchedTag(watchedTag)
         .then(watchedTag => {
             dispatch(receiveWatchedTag(watchedTag))
         })
@@ -81,6 +100,28 @@ export const deleteWatchedTag = id => dispatch => {
     return tagAPIUtil.deleteWatchedTag(id)
         .then(watchedTag => {
             dispatch(removeWatchedTag(watchedTag))
+        })
+}
+
+
+export const fetchIgnoredTags = () => dispatch => {
+    return tagAPIUtil.getIgnoredTags()
+        .then(ignoredTags => {
+            dispatch(receiveIgnoredTags(ignoredTags))
+        })
+}
+export const createIgnoredTag = IgnoredTag => dispatch => {
+    return tagAPIUtil.createIgnoredTag(IgnoredTag)
+        .then(IgnoredTag => {
+            debugger; 
+            dispatch(receiveIgnoredTag(IgnoredTag))
+        })
+}
+
+export const deleteIgnoredTag = id => dispatch => {
+    return tagAPIUtil.deleteIgnoredTag(id)
+        .then(IgnoredTag => {
+            dispatch(removeIgnoredTag(IgnoredTag))
         })
 }
 

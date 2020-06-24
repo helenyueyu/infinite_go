@@ -22,9 +22,8 @@ class WatchedTags extends React.Component {
     }
 
     render() {
-        const { tags, watchedTags, userId, addToWatchTags, handleChange, watchedTagQuery } = this.props; 
+        const { tags, watchedTags, userId, addToWatchedTags, handleChange, watchedTagQuery } = this.props; 
         const { watchedTagFormShown } = this.state;  
-        console.log('here is', watchedTagQuery)
         return (
             <div className="watched_tags">
                 <div className="watched_tags-title">
@@ -66,7 +65,7 @@ class WatchedTags extends React.Component {
                     <div className="watched_tags-search-results">
                         {Object.keys(tags).length > 0 ? tags.slice(0, 5).map((tag, idx) => 
                             <div key={idx} 
-                                onClick={() => addToWatchTags(tag.id, userId)}
+                                onClick={() => addToWatchedTags(tag.id, userId)}
                                 className="watched_tag-search-result">
                                     {tag.name}
                             </div>) 

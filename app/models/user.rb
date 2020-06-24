@@ -89,6 +89,15 @@ class User < ApplicationRecord
         through: :watched_tags, 
         source: :tag 
 
+    has_many :ignored_tags, 
+        class_name: :IgnoredTag, 
+        foreign_key: :user_id, 
+        dependent: :destroy 
+
+    has_many :ignored_tag_names, 
+        through: :ignored_tags, 
+        source: :tag 
+
     def change_reputation(num)
         self.reputation += num 
         self.save!

@@ -30,7 +30,8 @@ Rails.application.routes.draw do
       resources :bookmarks, only: [:index, :create, :destroy]
 
       resources :watched_tags, only: [:index, :create, :destroy]
-
+      resources :ignored_tags, only: [:index, :create, :destroy]
+      
       resources :metas, only: [:index]
     end
     
