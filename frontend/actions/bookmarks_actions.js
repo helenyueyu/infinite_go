@@ -1,6 +1,6 @@
 import * as bookmarkAPIUtil from "../util/bookmarks_api_util";
 
-export const RECEIVE_BOOKMARK = "RECEIVE_TAG";
+export const RECEIVE_BOOKMARK = "RECEIVE_BOOKMARK";
 
 const receiveBookmark = bookmark => ({
   type: RECEIVE_BOOKMARK,
@@ -8,4 +8,8 @@ const receiveBookmark = bookmark => ({
 });
 
 export const createBookmark = bookmark => dispatch =>
-  bookmarkAPIUtil.createBookmark(bookmark).then(bookmark => dispatch(receiveBookmark(bookmark)));
+  bookmarkAPIUtil.createBookmark(bookmark)
+    .then(bookmark => {
+        debugger; 
+        dispatch(receiveBookmark(bookmark))
+    });

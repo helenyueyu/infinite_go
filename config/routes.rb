@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     namespace :api, defaults: {format: :json} do 
       get 'questions(search/:search)', to: 'questions#search', search: /.*/
       get 'questions/random', :to => 'questions#random'
+      
       get 'users/search', :to => 'users#search'
       get 'tags/search', :to => 'tags#search'
       get 'tags/popular', :to => 'taggables#popular_tags'
