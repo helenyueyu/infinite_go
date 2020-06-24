@@ -1,9 +1,11 @@
 class Api::BookmarksController < ApplicationController
+    def index
+        @bookmarks = current_user.bookmarked_questions  
+    end
+
     def create
         @bookmark = Bookmark.new(bookmark_params)
-        # debugger 
         if @bookmark.save 
-            # debugger 
             render :show 
         else
             render json: @bookmark.errors.full_messages 

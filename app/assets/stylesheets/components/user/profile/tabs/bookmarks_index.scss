@@ -1,0 +1,13 @@
+.bookmarks_index {
+    display: flex; 
+    flex-direction: column; 
+}
+
+.bookmarks_index-item {
+    display: flex; 
+    justify-content: space-between; 
+}
+
+.bookmarks_index-left {
+    display: flex; 
+}

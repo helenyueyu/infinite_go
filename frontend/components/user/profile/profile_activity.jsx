@@ -1,5 +1,6 @@
 import React from 'react'; 
 
+import { Link } from 'react-router-dom'; 
 import ProfileButtons from '../../buttons/profile_buttons'; 
 
 class ProfileActivity extends React.Component {
@@ -40,7 +41,9 @@ class ProfileActivity extends React.Component {
                 </div>
 
                 <div>
-                    
+                    <Link to={`/users/${user.id}/activity/bookmarks`}>
+                        <div>Bookmarks</div>
+                    </Link>
                 </div>
             </div>
         )

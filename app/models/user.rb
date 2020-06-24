@@ -73,7 +73,12 @@ class User < ApplicationRecord
     has_many :bookmarks, 
         class_name: :Bookmark, 
         foreign_key: :user_id, 
-        dependent: :destroy 
+        dependent: :destroy
+
+    has_many :bookmarked_questions, 
+        through: :bookmarks, 
+        source_type: :Question, 
+        source: :bookmarkable
 
     has_many :watched_tags, 
         class_name: :WatchedTag, 

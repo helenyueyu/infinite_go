@@ -34,6 +34,10 @@ class Question < ApplicationRecord
         source: :tag, 
         dependent: :destroy 
 
+    has_many :bookmarks, 
+        as: :bookmarkable, 
+        dependent: :destroy 
+
     def current_user_vote(current_user)
         vote = self.votes.where('user_id = ?', current_user.id).first
         return 0 if vote.nil? 
