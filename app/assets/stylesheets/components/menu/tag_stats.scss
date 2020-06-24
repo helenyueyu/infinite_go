@@ -17,6 +17,10 @@
     margin-top: 0.25rem; 
 }
 
+.tag_stats-item:hover {
+    background: $tag-red; 
+}
+
 .tag_stats-freq {
     color: $gray; 
     font-size: $little-size; 
