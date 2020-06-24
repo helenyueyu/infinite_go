@@ -44,9 +44,7 @@ class WatchedTags extends React.Component {
                 <div className="watched_tags-tag-search">
                     <div className="watched_tags-items">
                         {watchedTags.map((tag, idx) => 
-                            <div key={idx}
-                                className="watched_tags-item">
-     
+                            <div key={idx} className="watched_tags-item">
                                 <Link className="watched_tags-item-link" to={`/questions/tagged/${tag.name}`}>
                                     {tag.name}
                                 </Link>
@@ -54,7 +52,7 @@ class WatchedTags extends React.Component {
                                 {watchedTagFormShown ? 
                                     <button onClick={(e) => this.handleDelete(e, tag.id)}
                                         className="watched_tags-delete-button">
-                                        <i className="fas fa-times watched_tags"></i>
+                                            x
                                     </button> : null}
                             </div>)}
                     </div>

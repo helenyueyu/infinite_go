@@ -52,6 +52,8 @@
     display: flex; 
     flex-direction: row; 
     align-items: center; 
+    white-space: nowrap; 
+
 }
 .watched_tags-item:hover {
     background: $tag-red; 
@@ -109,18 +111,3 @@
     margin-left: 0.15rem; 
 }
 
-.watched_tags.fa-times {
-    background: $silver; 
-    border-radius: 50%; 
-    border: none; 
-    box-shadow: none; 
-    padding: 0.3rem; 
-    padding-top: 0.25rem; 
-    padding-bottom: 0.25rem; 
-    display: inline-block; 
-    font-size: $tiny-size; 
-}
-
-.watched_tags.fa-times:hover {
-    background: $red; 
-}
