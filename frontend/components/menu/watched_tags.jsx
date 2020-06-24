@@ -47,9 +47,9 @@ class WatchedTags extends React.Component {
                             <div key={idx}
                                 className="watched_tags-item">
      
-                                    <Link className="watched_tags-item-link" to={`/questions/tagged/${tag.name}`}>
-                                        {tag.name}
-                                    </Link>
+                                <Link className="watched_tags-item-link" to={`/questions/tagged/${tag.name}`}>
+                                    {tag.name}
+                                </Link>
                                 
                                 {watchedTagFormShown ? 
                                     <button onClick={(e) => this.handleDelete(e, tag.id)}

@@ -26,6 +26,10 @@
 .watched_tags-title-text {
     padding-left: 0.5rem; 
 }
+.watched_tags-title-text:hover {
+    cursor: pointer; 
+    color: $focus-gray; 
+}
 
 .watched_tags-items {
     display: flex; 
