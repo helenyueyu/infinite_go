@@ -113,9 +113,16 @@
     padding-top: 0.5rem;  
 }
 
-.questions-item-watched {
+.questions-item.watched {
     background: $watched; 
     border-top: 1px solid $lighter-silver;  
     display: flex; 
     align-items: flex-start; 
+}
+.questions-item.ignored {
+    opacity: 35%; 
+}
+.questions-item.watched.ignored {
+    background: $watched; 
+    opacity: 35%; 
 }

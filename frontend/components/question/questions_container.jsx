@@ -12,7 +12,8 @@ const mapStateToProps = state => {
     questions: sortByNewest(Object.values(state.entities.questions)),
     questionCount: questionCount, 
     search: state.entities.search, 
-    watchedTags: state.entities.watchedTags
+    watchedTags: state.entities.watchedTags, 
+    ignoredTags: state.entities.ignoredTags 
 }}
 
 const mapDispatchToProps = dispatch => ({

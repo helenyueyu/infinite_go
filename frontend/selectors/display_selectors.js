@@ -43,6 +43,15 @@ export const isQuestionWatched = (questionTagIds, watchedTags) => {
     return false; 
 }
 
+export const isQuestionIgnored = (questionTagIds, ignoredTags) => {
+    for (let i = 0; i < questionTagIds.length; i++) {
+        if (ignoredTags[questionTagIds[i]] !== undefined) {
+            return true; 
+        }
+    }
+    return false; 
+}
+
 export const removeSpaces = str => {
     let res = ""; 
     for (let i = 0; i < str.length; i++) {

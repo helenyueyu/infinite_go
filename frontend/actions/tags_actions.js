@@ -51,7 +51,7 @@ const receiveIgnoredTag = ignoredTag => ({
 })
 
 const removeIgnoredTag = ignoredTag => ({
-    type: REMOVE_Ignored_TAG, 
+    type: REMOVE_IGNORED_TAG, 
     ignoredTag
 })
 
