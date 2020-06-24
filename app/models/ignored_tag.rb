@@ -1,0 +1,2 @@
+class IgnoredTag < ApplicationRecord
+end
