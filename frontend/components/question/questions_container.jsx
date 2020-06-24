@@ -10,7 +10,7 @@ const mapStateToProps = state => {
     delete state.entities.questions['questionCount']; 
     return {
     questions: sortByNewest(Object.values(state.entities.questions)),
-    questionCount, 
+    questionCount: questionCount, 
     search: state.entities.search, 
     watchedTags: state.entities.watchedTags
 }}

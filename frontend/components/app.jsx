@@ -36,7 +36,7 @@ const routes = [
     createRoute('/questions', QuestionsContainer), 
     createRoute('/questions/new', NewQuestionContainer), 
     createRoute('/questions/tagged/:tagName', QuestionsContainer, true, null, null), 
-    createRoute('/questions/:questionId/:title', QuestionContainer), 
+    createRoute('/questions/:questionId/:title', QuestionContainer, true), 
     createRoute('/questions/:questionId/:title/edit', EditQuestionContainer, true), 
     createRoute('/questions/:questionId/answers/:answerId/edit', EditAnswerContainer), 
     createRoute('/users', ProfileIndexContainer, true, Menu, null), 

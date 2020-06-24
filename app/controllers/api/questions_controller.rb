@@ -28,10 +28,11 @@ class Api::QuestionsController < ApplicationController
     end
 
     def show 
-        if params[:id] != nil 
+        # debugger 
+        if params[:id] != nil && params[:id] != 'tagged'
             @question = Question.find(params[:id]) 
+            @question.current_vote = @question.current_user_vote(current_user)
         end
-        @question.current_vote = @question.current_user_vote(current_user)
     end
 
     def update 
