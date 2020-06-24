@@ -22,7 +22,7 @@ class WatchedTags extends React.Component {
     }
 
     render() {
-        const { tags, watchedTags, userId, addToWatchedTags, handleChange, watchedTagQuery } = this.props; 
+        const { tags, watchedTags, userId, addToWatchedTags, handleWatchedTagChange, watchedTagQuery } = this.props; 
         const { watchedTagFormShown } = this.state;  
         return (
             <div className="watched_tags">
@@ -57,7 +57,7 @@ class WatchedTags extends React.Component {
                     {watchedTagFormShown ? 
                         <input className="watched_tags-search"
                                 value={watchedTagQuery}
-                                onChange={(e) => handleChange(e)}>
+                                onChange={(e) => handleWatchedTagChange(e)}>
                     </input> : null}
                 </div>
 

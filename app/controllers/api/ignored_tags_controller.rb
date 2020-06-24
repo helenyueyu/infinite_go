@@ -4,7 +4,7 @@ class Api::IgnoredTagsController < ApplicationController
     end
 
     def create
-        @ignored_tag = WatchedTag.new(watched_tag_params)
+        @ignored_tag = IgnoredTag.new(ignored_tag_params)
         if @ignored_tag.save 
             render :show 
         else 
@@ -13,7 +13,7 @@ class Api::IgnoredTagsController < ApplicationController
     end
 
     def destroy
-        @ignored_tag = WatchedTag.find_by(tag_id: params[:id])
+        @ignored_tag = IgnoredTag.find_by(tag_id: params[:id])
         if @ignored_tag.destroy 
             render :show 
         else 
@@ -23,6 +23,6 @@ class Api::IgnoredTagsController < ApplicationController
 
     private 
     def ignored_tag_params
-        params.require(:ignored).permit(:user_id, :tag_id)
+        params.require(:ignored_tag).permit(:user_id, :tag_id)
     end
 end

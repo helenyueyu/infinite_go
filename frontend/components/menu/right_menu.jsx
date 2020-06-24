@@ -10,9 +10,11 @@ class RightMenu extends React.Component {
         super(props); 
         this.addToWatchedTags = this.addToWatchedTags.bind(this); 
         this.addToIgnoredTags = this.addToIgnoredTags.bind(this); 
-        this.handleChange = this.handleChange.bind(this); 
+        this.handleWatchedTagChange = this.handleWatchedTagChange.bind(this); 
+        this.handleIgnoredTagChange = this.handleIgnoredTagChange.bind(this); 
         this.state = {
-            watchedTagQuery: "" 
+            watchedTagQuery: "", 
+            ignoredTagQuery: "" 
         }
     }
 
@@ -20,13 +22,22 @@ class RightMenu extends React.Component {
         this.props.fetchRandomQuestions(); 
         this.props.fetchTagStats(); 
         this.props.fetchWatchedTags(); 
+        this.props.fetchIgnoredTags(); 
     }
 
-    handleChange(e) {
+    handleWatchedTagChange(e) {
         e.preventDefault();
         const query = e.target.value; 
         this.setState({
             watchedTagQuery: query 
+        }, () => this.props.searchTags(query))
+    }
+
+    handleIgnoredTagChange(e) {
+        e.preventDefault();
+        const query = e.target.value; 
+        this.setState({
+            ignoredTagQuery: query 
         }, () => this.props.searchTags(query))
     }
 
@@ -44,7 +55,6 @@ class RightMenu extends React.Component {
     }
 
     addToIgnoredTags(tagId, userId) {
-        debugger; 
         this.props.createIgnoredTag({
             tag_id: tagId, 
             user_id: userId
@@ -62,7 +72,7 @@ class RightMenu extends React.Component {
                             userId={userId} 
                             watchedTags={watchedTags} 
                             addToWatchedTags={this.addToWatchedTags} 
-                            handleChange={this.handleChange} 
+                            handleWatchedTagChange={this.handleWatchedTagChange} 
                             watchedTagQuery={this.state.watchedTagQuery}
                             deleteWatchedTag={deleteWatchedTag} 
                             fetchQuestion={fetchQuestion} />
@@ -71,7 +81,7 @@ class RightMenu extends React.Component {
                             userId={userId} 
                             ignoredTags={ignoredTags} 
                             addToIgnoredTags={this.addToIgnoredTags} 
-                            handleChange={this.handleChange} 
+                            handleIgnoredTagChange={this.handleIgnoredTagChange} 
                             ignoredTagQuery={this.state.ignoredTagQuery}
                             deleteIgnoredTag={deleteIgnoredTag} 
                             fetchQuestion={fetchQuestion} />

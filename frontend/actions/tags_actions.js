@@ -110,18 +110,18 @@ export const fetchIgnoredTags = () => dispatch => {
             dispatch(receiveIgnoredTags(ignoredTags))
         })
 }
-export const createIgnoredTag = IgnoredTag => dispatch => {
-    return tagAPIUtil.createIgnoredTag(IgnoredTag)
-        .then(IgnoredTag => {
-            debugger; 
-            dispatch(receiveIgnoredTag(IgnoredTag))
+export const createIgnoredTag = ignoredTag => dispatch => {
+    return tagAPIUtil.createIgnoredTag(ignoredTag)
+        .then(ignoredTag => {
+            // debugger; 
+            dispatch(receiveIgnoredTag(ignoredTag))
         })
 }
 
 export const deleteIgnoredTag = id => dispatch => {
     return tagAPIUtil.deleteIgnoredTag(id)
-        .then(IgnoredTag => {
-            dispatch(removeIgnoredTag(IgnoredTag))
+        .then(ignoredTag => {
+            dispatch(removeIgnoredTag(ignoredTag))
         })
 }
 

@@ -22,14 +22,13 @@ class IgnoredTags extends React.Component {
     }
 
     render() {
-        const { tags, ignoredTags, userId, addToIgnoredTags, handleChange, ignoredTagQuery } = this.props; 
+        const { tags, ignoredTags, userId, addToIgnoredTags, handleIgnoredTagChange, ignoredTagQuery } = this.props; 
         const { ignoredTagFormShown } = this.state;  
-        console.log('here is', ignoredTagQuery)
         return (
             <div className="watched_tags">
                 <div className="watched_tags-title">
                     <div className="watched_tags-left">
-                        <i className="fas fa-eye"></i>
+                        <i className="fas fa-ban"></i>
                         <div className="watched_tags-title-text">
                             Ignored Tags
                         </div>
@@ -58,7 +57,7 @@ class IgnoredTags extends React.Component {
                     {ignoredTagFormShown ? 
                         <input className="watched_tags-search"
                                 value={ignoredTagQuery}
-                                onChange={(e) => handleChange(e)}>
+                                onChange={(e) => handleIgnoredTagChange(e)}>
                     </input> : null}
                 </div>
 
@@ -66,7 +65,7 @@ class IgnoredTags extends React.Component {
                     <div className="watched_tags-search-results">
                         {Object.keys(tags).length > 0 ? tags.slice(0, 5).map((tag, idx) => 
                             <div key={idx} 
-                                onClick={() => console.log('hi')}
+                                onClick={() => addToIgnoredTags(tag.id, userId)}
                                 className="watched_tag-search-result">
                                     {tag.name}
                             </div>) 
