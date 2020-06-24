@@ -63,4 +63,8 @@ class Tag < ApplicationRecord
         tag = where('name LIKE ?', "#{name}")
         tag.size == 1 
     end
+
+    def self.search(page, page_limit)
+        [self.all.offset((page-1)*page_limit).limit(page_limit).order(created_at: :desc), self.all.size] 
+    end
 end

@@ -2,8 +2,7 @@ import { connect } from 'react-redux';
 import Questions from './questions';
 import { fetchFilteredQuestions } from '../../actions/questions_actions';
 import { sortByNewest } from '../../selectors/sort_selectors'; 
-import { changePageNumber, changePageLimit } from '../../actions/search_actions'; 
-import { receiveQuery } from '../../actions/search_actions'; 
+import { changeQuestionPageNumber, changeQuestionPageLimit, receiveQuery } from '../../actions/question_search_actions'; 
 
 const mapStateToProps = state => {
     const { questionCount } = state.entities.questions; 
@@ -19,8 +18,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
     receiveQuery: query => dispatch(receiveQuery(query)), 
     fetchFilteredQuestions: (page, perPage, query) => dispatch(fetchFilteredQuestions(page, perPage, query)), 
-    changePageNumber: num => dispatch(changePageNumber(num)),
-    changePageLimit: num => dispatch(changePageLimit(num))
+    changePageNumber: num => dispatch(changeQuestionPageNumber(num)),
+    changePageLimit: num => dispatch(changeQuestionPageLimit(num))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Questions)

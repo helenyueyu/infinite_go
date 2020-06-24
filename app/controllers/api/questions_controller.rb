@@ -6,7 +6,6 @@ class Api::QuestionsController < ApplicationController
     end
 
     def search 
-        # debugger 
         params = ensure_search_params
         res = Question.search(*ensure_search_params)
         @questions = res[0]
@@ -28,7 +27,6 @@ class Api::QuestionsController < ApplicationController
     end
 
     def show 
-        # debugger 
         if params[:id] != nil && params[:id] != 'tagged'
             @question = Question.find(params[:id]) 
             @question.current_vote = @question.current_user_vote(current_user)

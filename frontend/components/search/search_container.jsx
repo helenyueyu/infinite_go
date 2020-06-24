@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Search from './search';
 import { fetchFilteredQuestions, fetchAllQuestions } from '../../actions/questions_actions';
-import { receiveQuery } from '../../actions/search_actions'; 
+import { receiveQuery } from '../../actions/question_search_actions'; 
 
 const mapStateToProps = (state, ownProps) => ({
     questions: Object.values(state.entities.questions),
