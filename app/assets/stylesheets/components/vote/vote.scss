@@ -52,11 +52,13 @@
 }
 .comment-vote-symbol.up {
     padding: 0; 
-    transform: translateY(-5px); 
+    transform: translateY(-7px); 
+    font-size: 1rem; 
 }
 .comment-vote-symbol.down {
     padding: 0; 
-    transform: translateY(5px); 
+    transform: translateY(7px); 
+    font-size: 1rem; 
 }
 .comment-vote-symbol:hover {
     cursor: pointer; 
