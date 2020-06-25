@@ -9,3 +9,7 @@ export const sortByUpvotes = posts => {
 export const sortByQuestionCount = tags => {
     return tags.sort((a,b) => a.questionCount - b.questionCount < 0 ? 1 : -1); 
 }
+
+export const sortByName = tags => {
+    return tags.sort((a,b) => a.name < b.name ? -1 : 1); 
+}
