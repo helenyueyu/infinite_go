@@ -15,7 +15,6 @@ class TagsIndexItem extends React.Component {
     }
 
     handleSubmit(e, tag_id) {
-        // debugger; 
         e.preventDefault(); 
         this.props.updateTagDescription({
             tag_id: tag_id, 
@@ -55,8 +54,10 @@ class TagsIndexItem extends React.Component {
 
                 <div className="tags_index-item-description">
                     {this.state.showForm ? 
-                    <form onSubmit={(e) => this.handleSubmit(e, tag.id)}>
-                        <input onChange={(e) => this.handleForm(e)} value={this.state.description}></input>
+                    <form className="tags_index-item-form" onSubmit={(e) => this.handleSubmit(e, tag.id)}>
+                        <input className="tags_index-item-form-input"
+                            onChange={(e) => this.handleForm(e)} 
+                        value={this.state.description}></input>
                     </form> : tag.description}                
                 </div>
 
