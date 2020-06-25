@@ -28,6 +28,7 @@
 .tags_index-item {
     display: flex; 
     flex: 0 0 22%; 
+    // flex-wrap: wrap; 
     flex-direction: column;
     justify-content: space-between; 
     margin-right: 1rem; 
@@ -112,4 +113,22 @@
     border-radius: 5px; 
     border: 1px solid $focus-red; 
     box-shadow: 0 0 0pt 3pt $tag-red-lite; 
+}
+
+.tags_index-filter-group {
+    margin-right: 0.4rem; 
+}
+
+.tags_index-filter {
+    padding: 0.5rem; 
+    color: $gray; 
+    background: none; 
+    border: 1px solid $silver; 
+}
+
+.tags_index-filter-active {
+    padding: 0.5rem; 
+    color: $gray; 
+    background: $lighter-silver; 
+    border: 1px solid $silver; 
 }

@@ -8,6 +8,13 @@ import { generatePageNumbers } from '../../selectors/pagination_selectors';
 import FilterTag from './filter_tag'; 
 
 class TagIndex extends React.Component {
+    constructor(props) {
+        super(props); 
+        this.state = {
+            activeTag: 1 
+        }
+        this.handleFilter = this.handleFilter.bind(this); 
+    }
     componentDidMount() {
         this.props.fetchStats()
             .then(() => this.props.fetchPaginatedTags(this.props.search.pageNumber, this.props.search.pageLimit, this.props.search.filter))
@@ -35,6 +42,12 @@ class TagIndex extends React.Component {
         return arr; 
     }
 
+    handleFilter(filter, idx) {
+        this.setState({
+            activeTag: idx + 1
+        }, () =>  this.props.changeTagFilter(filter)); 
+    }
+
     render() {
         const { tags, search, tagCount, updateTagDescription } = this.props;
         const rowifiedTags = search.filter === "popular" 
@@ -42,7 +55,7 @@ class TagIndex extends React.Component {
                     : this.rowify(sortByName(tags), 4); 
 
         const [pages, bp1, bp2] = generatePageNumbers(tagCount, search.pageLimit, search.pageNumber); 
-  
+        const { activeTag } = this.state; 
         return (
             <div className="tags_index">
                 <h1 className="tags_index-title">Tags</h1>
@@ -55,10 +68,14 @@ class TagIndex extends React.Component {
                     </div> */}
                     <input className="tags_index-search"
                         onChange={(e) => this.handleChange(e)}></input>
-                    <div>
-                        <button onClick={() => this.props.changeTagFilter('popular')}>Popular</button>
-                        <button onClick={() => this.props.changeTagFilter('name')}>Name</button>
-                        <button onClick={() => this.props.changeTagFilter('new')}>New</button>
+                    <div className="tags_index-filter-group">
+                        {['popular', 'name', 'new'].map((filter, idx) => 
+                            <button key={idx}
+                                    className={activeTag === idx + 1 ? "tags_index-filter-active" : "tags_index-filter"} 
+                                    onClick={() => this.handleFilter(filter, idx)}>
+                                    {filter[0].toUpperCase() + filter.slice(1)}
+                            </button>
+                            )}
                     </div>
                 </div>
                 {rowifiedTags.map((row, idx) => (
