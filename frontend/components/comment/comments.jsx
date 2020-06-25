@@ -5,7 +5,11 @@ import CommentItem from './comment_item';
 class Comments extends React.Component {
     constructor(props) {
         super(props); 
+        this.state = {
+            showCommentForm: false 
+        }
         this.handleDelete = this.handleDelete.bind(this); 
+        this.revealCommentForm = this.revealCommentForm.bind(this); 
     }
 
     componentDidMount() {
@@ -18,6 +22,12 @@ class Comments extends React.Component {
             .then(() => this.props.fetchQuestion(questionId))
     }
 
+    revealCommentForm() {
+        this.setState({
+            showCommentForm: !this.state.showCommentForm 
+        })
+    }
+
     render() {
         let { comments, fetchComments } = this.props; 
         return (
@@ -28,6 +38,14 @@ class Comments extends React.Component {
                             handleDelete={this.handleDelete} 
                             fetchComments={fetchComments} />
                     )}
+                
+                
+                <div className="new_comment">
+                    <div className="new_comment-label" 
+                        onClick={this.revealCommentForm}>
+                        add a comment  
+                    </div>
+                </div> 
             </div>
         )
     }

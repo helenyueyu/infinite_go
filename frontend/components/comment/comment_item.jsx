@@ -9,7 +9,7 @@ class CommentItem extends React.Component {
     constructor(props) {
         super(props); 
         this.state = {
-            showEditForm: false 
+            showEditForm: false, 
         }
         this.revealEditForm = this.revealEditForm.bind(this); 
     }
@@ -22,7 +22,7 @@ class CommentItem extends React.Component {
 
     render() {
         const { comment, handleDelete } = this.props; 
-        console.log('this.state.showEditForm', this.state.showEditForm)
+        // console.log('this.state.showEditForm', this.state.showEditForm)
         return (
             <div className="comments-item">
                         

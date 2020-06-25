@@ -9,7 +9,7 @@ class NewComment extends React.Component {
             commentable_id: this.props.commentable_id, 
             commentable_type: this.props.commentable_type, 
             body: this.props.type === "new" ? "" : this.props.body, 
-            showCommentForm: false, 
+            showCommentForm: this.props.showCommentForm, 
             showEditForm: this.props.showEditForm  
         }
 
@@ -20,7 +20,6 @@ class NewComment extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        // debugger; 
         if (prevProps.showEditForm !== this.props.showEditForm) {
             this.setState({
                 showEditForm: this.props.showEditForm 
@@ -54,14 +53,11 @@ class NewComment extends React.Component {
     render() {
         const { type } = this.state; 
         const { showCommentForm, showEditForm } = this.state; 
-        console.log('from new comment', showEditForm); 
+        // console.log('from new comment', showEditForm); 
         return (
             <>
                 {type === "new" ? 
-                <div className="new_comment">
-                    <div className="new_comment-label" onClick={this.showCommentForm}>
-                        add a comment  
-                    </div>
+                <>
                     { showCommentForm ? 
                         <form className="new_comment-form" onSubmit={this.handleSubmit}>
                             <input className="new_comment-input"
@@ -71,7 +67,7 @@ class NewComment extends React.Component {
                         : 
                         null 
                     } 
-                </div> : 
+                </> : 
                 <>
                     {showEditForm ? <form className="new_comment-form" onSubmit={this.handleSubmit}>
                         <input className="new_comment-input"
