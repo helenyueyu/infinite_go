@@ -75,6 +75,7 @@ class Tag < ApplicationRecord
             .order('tag_freq DESC')
             .offset((page-1)*page_limit)
             .limit(page_limit)
+            .order(created_at: :desc)
     end
 end
 
