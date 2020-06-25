@@ -9,10 +9,16 @@ export const REMOVE_WATCHED_TAG = 'REMOVE_WATCHED_TAG';
 export const RECEIVE_IGNORED_TAGS = 'RECEIVE_IGNORED_TAGS'; 
 export const RECEIVE_IGNORED_TAG = 'RECEIVE_IGNORED_TAG'; 
 export const REMOVE_IGNORED_TAG = 'REMOVE_IGNORED_TAG'; 
+export const RECEIVE_TAG_DESCRIPTION = 'RECEIVE_TAG_DESCRIPTION'; 
 
 const receiveTags = tags => ({
     type: RECEIVE_TAGS, 
     tags 
+})
+
+const receiveTagDescription = tag => ({
+    type: RECEIVE_TAG_DESCRIPTION, 
+    tag 
 })
 
 const receiveTag = tag => ({
@@ -62,11 +68,15 @@ export const fetchTags = () => dispatch => {
                     dispatch(receiveTags(tagsDestructured)); 
                 })
 }
-
+// {tag_id, description}
+export const updateTagDescription = (tag) => dispatch => {
+    // debugger; 
+    return tagAPIUtil.updateTagDescription(tag)
+                .then(tag => receiveTagDescription(tag))
+}
 export const fetchPaginatedTags = (pageNumber, pageLimit) => dispatch => {
     return tagAPIUtil.getPaginatedTags(pageNumber, pageLimit)
         .then(tags => {
-            // debugger 
             dispatch(receiveTags(tags)); 
         })
 }

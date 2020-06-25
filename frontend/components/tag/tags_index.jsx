@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; 
+
+import TagsIndexItem from './tags_index_item'; 
 
 import { sortByQuestionCount } from '../../selectors/sort_selectors'; 
 
@@ -82,7 +83,7 @@ class TagIndex extends React.Component {
     }
 
     render() {
-        const { tags, search, tagCount } = this.props;
+        const { tags, search, tagCount, updateTagDescription } = this.props;
         const rowifiedTags = this.rowify(sortByQuestionCount(tags), 3); 
 
         const [pages, bp1, bp2] = this.generatePageNumbers(tagCount, search.pageLimit, search.pageNumber); 
@@ -100,20 +101,9 @@ class TagIndex extends React.Component {
                 {rowifiedTags.map((row, idx) => (
                     <div key={idx} className="tags_index-row">
                         {row.map((tag, idx) => (
-                            <div key={idx} className="tags_index-item">
-                                <div className="tags_index_item-name-container">
-                                    <div className="tags_index-item-name">
-                                        <Link className="tags_index-item-name-link" to={`/questions/tagged/${tag.name}`}>{tag.name}</Link>
-                                    </div>
-                                </div>
-                                <div className="tags_index-item-description">{tag.description}</div>
-                                <div className="tags_index-item-details">
-                                    <div>{tag.questionCount} question{tag.questionCount == 1 ? "" : "s"}</div>
-                                    <div>{tag.dailyQuestionCount} asked today,</div>
-                                    <div>{tag.weeklyQuestionCount} this week</div>
-                                </div>
-                                
-                            </div>
+                            <TagsIndexItem key={idx}
+                                    tag={tag}
+                                    updateTagDescription={updateTagDescription}/>
                         ))}
                     </div>
                 ))}

@@ -23,6 +23,16 @@ class Api::TagsController < ApplicationController
         @tags = Tag.search(search_params)
     end
 
+    def add_description
+        @tag = Tag.find(params[:tag][:tag_id])
+        @tag.description = params[:tag][:description]
+        if @tag.save 
+            render :show 
+        else 
+            render json: @tag.errors.full_messages, status: 401 
+        end 
+    end
+
     def destroy 
         @tag = Tag.find(params[:id])
         if @tag.destroy 
@@ -39,5 +49,9 @@ class Api::TagsController < ApplicationController
  
     def tag_params
         params.require(:tag).permit(:name, :description, :user_id)
+    end
+
+    def update_description_params 
+        params.require(:tag).permit(:tag_id, :description)
     end
 end

@@ -5,6 +5,15 @@ export const fetchTags = () => {
     })
 }
 
+export const updateTagDescription = tag => {
+    // debugger; 
+    return $.ajax({
+        method: 'POST', 
+        url: '/api/tags/update_tag_description', 
+        data: { tag }
+    })
+}
+
 export const getPaginatedTags = (page, pageLimit) => {
     return $.ajax({
         method: 'GET', 

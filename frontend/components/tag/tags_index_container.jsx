@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import TagIndex from './tags_index';
 import { fetchTags, searchTags } from '../../actions/tags_actions'; 
 import { changeTagPageNumber } from '../../actions/tag_search_actions';
-import { fetchPaginatedTags } from '../../actions/tags_actions'; 
+import { fetchPaginatedTags, updateTagDescription } from '../../actions/tags_actions'; 
 import { fetchStats } from '../../actions/metas_actions'; 
 
 const mapStateToProps = (state) => ({
@@ -17,7 +17,8 @@ const mapDispatchToProps = dispatch => ({
     searchTags: query => dispatch(searchTags(query)), 
     fetchPaginatedTags: (pageNumber, pageLimit) => dispatch(fetchPaginatedTags(pageNumber, pageLimit)), 
     changeTagPageNumber: pageNumber => dispatch(changeTagPageNumber(pageNumber)), 
-    fetchStats: () => dispatch(fetchStats())
+    fetchStats: () => dispatch(fetchStats()), 
+    updateTagDescription: tag => dispatch(updateTagDescription(tag))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TagIndex); 

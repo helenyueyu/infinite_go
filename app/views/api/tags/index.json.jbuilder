@@ -2,7 +2,8 @@ json.key_format! camelize: :lower
 
 @tags.each do |tag|
     json.set! tag.id do 
-        json.extract! tag, :name, 
+        json.extract! tag, :id, 
+                        :name, 
                         :description, 
                         :question_count, 
                         :weekly_question_count, 
