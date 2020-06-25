@@ -4,10 +4,11 @@ class NewComment extends React.Component {
     constructor(props) {
         super(props); 
         this.state = {
+            id: this.props.type === "new" ? "" : this.props.id, 
             user_id: this.props.user_id, 
             commentable_id: this.props.commentable_id, 
             commentable_type: this.props.commentable_type, 
-            body: "", 
+            body: this.props.type === "new" ? "" : this.props.body, 
             showCommentForm: false 
         }
 
@@ -27,6 +28,7 @@ class NewComment extends React.Component {
             showCommentForm: !this.state.showCommentForm
         })
     }
+    
     handleSubmit(e) {
         e.preventDefault(); 
         this.props.createComment(this.state)

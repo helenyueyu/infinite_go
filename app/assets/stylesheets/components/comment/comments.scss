@@ -25,14 +25,30 @@
     color: $gray; 
 }
 
-.comments-delete-button {
+.comments-edit-button {
     color: $gray; 
+    margin: 0; 
+    padding: 0; 
     background: none; 
     border: none; 
 }
 
-.comments-delete-button:hover {
+.comments-delete-button {
+    color: $red; 
+    margin: 0; 
+    padding: 0; 
+    margin-left: 0.5rem; 
+    margin-right: 0.25rem; 
+    background: none; 
+    border: none; 
+}
+
+.comments-edit-button:hover {
     color: $focus-gray; 
     cursor: pointer; 
 }
 
+.comments-delete-button:hover {
+    color: $focus-red; 
+    cursor: pointer; 
+}

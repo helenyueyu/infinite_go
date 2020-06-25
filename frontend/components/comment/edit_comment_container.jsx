@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import NewComment from './new_comment';
 
-import { createComment } from '../../actions/comments_actions';
+import { updateComment } from '../../actions/comments_actions';
 
 const mapStateToProps = (state, {commentable_id, commentable_type}) => {
     return {
@@ -12,7 +12,7 @@ const mapStateToProps = (state, {commentable_id, commentable_type}) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    action: comment => dispatch(createComment(comment))
+    action: comment => dispatch(updateComment(comment))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewComment)
