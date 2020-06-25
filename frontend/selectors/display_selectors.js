@@ -1,14 +1,14 @@
-export const displayQuestion = (question, limit) => {
-    if (question.length <= limit) return question; 
-    if (!question.includes(" ")) return question; 
-    if (question[limit] === ' ') {
-        return question.slice(0, limit) + ' ...'; 
+export const displayPost = (post, limit) => {
+    if (post.length <= limit) return post; 
+    if (!post.includes(" ")) return post; 
+    if (post[limit] === ' ') {
+        return post.slice(0, limit) + ' ...'; 
     } else {
         let i = limit; 
-        while (question[i] !== ' ') {
+        while (post[i] !== ' ') {
             i--; 
         }
-        return question.slice(0, i) + ' ...'; 
+        return post.slice(0, i) + ' ...'; 
     }
 }
 
