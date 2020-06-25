@@ -45,7 +45,7 @@ class NewComment extends React.Component {
         this.props.action(this.state)
             .then(() => this.props.fetchQuestion(this.state.commentable_id))
             .then(() => this.setState({
-                body: "", 
+                body: this.props.type === "new" ? "" : this.props.body, 
                 showCommentForm: false, 
                 showEditForm: false  
             }))
