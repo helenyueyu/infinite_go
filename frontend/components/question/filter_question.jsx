@@ -13,7 +13,7 @@ class FilterQuestion extends React.Component {
         )
     }
     render() {
-        const { values, bp1, bp2, action, active } = this.props; 
+        const { type, values, bp1, bp2, action, active } = this.props; 
         if (!Number.isInteger(values[values.length-1])) return null; 
         return (
             <div className="filter_question-list">

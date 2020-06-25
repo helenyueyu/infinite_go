@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; 
 
+import { sortByQuestionCount } from '../../selectors/sort_selectors'; 
+
 import FilterTag from './filter_tag'; 
 
 class TagIndex extends React.Component {
@@ -81,7 +83,7 @@ class TagIndex extends React.Component {
 
     render() {
         const { tags, search, tagCount } = this.props;
-        const rowifiedTags = this.rowify(tags, 3); 
+        const rowifiedTags = this.rowify(sortByQuestionCount(tags), 3); 
 
         const [pages, bp1, bp2] = this.generatePageNumbers(tagCount, search.pageLimit, search.pageNumber); 
   
