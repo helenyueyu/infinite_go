@@ -37,7 +37,8 @@ class CommentItem extends React.Component {
 
                 <div className="comment-item">
                     {showEditForm ? 
-                        <EditCommentContainer id={comment.id} />
+                        <EditCommentContainer id={comment.id}
+                                            body={comment.body} />
                         : <>
                         <span className="comments-body">{comment.body}</span>
                         <span className="comments-dash">&mdash;</span>
