@@ -30,6 +30,8 @@ import EditAnswerContainer from './answer/edit_answer_container';
 
 import BookmarksIndexContainer from './user/profile/tabs/bookmarks_index_container'; 
 
+import JobsContainer from './job/jobs_container'; 
+
 const createRoute = (path, main, exact=true, leftSideBar=Menu, rightSideBar=RightMenuContainer) => {
     return ({ path, exact, leftSideBar, main,  rightSideBar })
 }
@@ -47,7 +49,8 @@ const routes = [
     createRoute('/users/:userId/activity/bookmarks', BookmarksIndexContainer, true, Menu, null), 
     createRoute('/tags', TagsIndexContainer, true, Menu, null), 
     createRoute('/badges', BadgesIndexContainer, true, Menu, null), 
-    createRoute('/login', LoginFormContainer, true, null, null)
+    createRoute('/login', LoginFormContainer, true, null, null), 
+    createRoute('/jobs', JobsContainer, true, Menu, null)
 ] 
 
 const App = () => {

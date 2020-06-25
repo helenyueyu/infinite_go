@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_24_175730) do
+ActiveRecord::Schema.define(version: 2020_06_25_062738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 2020_06_24_175730) do
     t.text "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "company_size", null: false
+    t.string "company_type", null: false
   end
 
   create_table "ignored_tags", force: :cascade do |t|
@@ -102,8 +104,6 @@ ActiveRecord::Schema.define(version: 2020_06_24_175730) do
     t.string "experience_level", default: [], null: false, array: true
     t.string "industry", default: [], null: false, array: true
     t.string "job_type", null: false
-    t.string "company_size", null: false
-    t.string "company_type", null: false
     t.integer "company_id", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", null: false

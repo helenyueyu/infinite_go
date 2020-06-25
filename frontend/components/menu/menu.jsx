@@ -22,8 +22,8 @@ class Menu extends React.Component {
                 <li className={pathname === "/tags" ? "menu-item-link-active" : "menu-item-link"}>
                     <Link className="menu-item-link types" to='/tags'>Tags</Link>
                 </li>
-                <li className={pathname === "/tags" ? "menu-item-link-active" : "menu-item-link"}>
-                    <Link className="menu-item-link types" to='/tags'>Jobs</Link>
+                <li className={pathname === "/jobs" ? "menu-item-link-active" : "menu-item-link"}>
+                    <Link className="menu-item-link types" to='/jobs'>Jobs</Link>
                 </li>
             </ul>
         )

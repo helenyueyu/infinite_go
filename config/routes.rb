@@ -36,6 +36,8 @@ Rails.application.routes.draw do
       resources :watched_tags, only: [:index, :create, :destroy]
       resources :ignored_tags, only: [:index, :create, :destroy]
       
+      resources :companies, only: [:create]
+      
       resources :metas, only: [:index]
     end
     
