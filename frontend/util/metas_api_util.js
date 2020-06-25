@@ -4,3 +4,10 @@ export const getTagStats = () => {
         url: '/api/tags/popular'
     })
 }
+
+export const getStats = () => {
+    return $.ajax({
+        method: 'GET',
+        url: '/api/metas'
+    })
+}

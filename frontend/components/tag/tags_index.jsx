@@ -5,7 +5,8 @@ import FilterTag from './filter_tag';
 
 class TagIndex extends React.Component {
     componentDidMount() {
-        this.props.fetchPaginatedTags(this.props.search.pageNumber, this.props.search.pageLimit)
+        this.props.fetchStats()
+            .then(() => this.props.fetchPaginatedTags(this.props.search.pageNumber, this.props.search.pageLimit))
     }
 
     componentDidUpdate(prevProps) {
@@ -79,10 +80,10 @@ class TagIndex extends React.Component {
     }
 
     render() {
-        const { tags, search } = this.props;
+        const { tags, search, tagCount } = this.props;
         const rowifiedTags = this.rowify(tags, 3); 
 
-        const [pages, bp1, bp2] = this.generatePageNumbers(96, search.pageLimit, search.pageNumber); 
+        const [pages, bp1, bp2] = this.generatePageNumbers(tagCount, search.pageLimit, search.pageNumber); 
   
         return (
             <div className="tags_index">

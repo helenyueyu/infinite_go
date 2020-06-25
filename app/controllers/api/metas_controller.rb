@@ -1,5 +1,5 @@
 class Api::MetasController < ApplicationController
     def index
-        @question_count = Question.all.size 
+        @tag_count = Tag.all.size 
     end
 end
