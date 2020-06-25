@@ -126,7 +126,8 @@ class Question extends React.Component {
                 </div>
 
                 <div className="comments"> 
-                    <CommentsContainer comments={Object.values(comments)} />
+                    <CommentsContainer 
+                        question={question} />
 
                     <NewCommentContainer
                     fetchQuestion={this.props.fetchQuestion}

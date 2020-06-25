@@ -1,6 +1,9 @@
 class Api::CommentsController < ApplicationController
     def index 
         @comments = Question.find(params[:question_id]).comments
+        @comments.each do |comment|
+            comment.current_vote = comment.current_user_vote(current_user)
+        end 
     end
 
     def create 

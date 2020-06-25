@@ -5,7 +5,7 @@ import { fetchQuestion } from '../../actions/questions_actions';
 import { deleteComment, fetchComments } from '../../actions/comments_actions'; 
 
 const mapStateToProps = (state) => ({
-
+    comments: state.entities.comments 
 })
 
 const mapDispatchToProps = dispatch => ({

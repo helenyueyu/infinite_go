@@ -12,6 +12,10 @@
 .vote-count.active {
     color: $red; 
 }
+.vote-count.comment {
+    font-size: $info-size; 
+}
+
 .vote-symbol {
     font-size: 3rem; 
 }
@@ -39,4 +43,29 @@
 .vote-symbol:hover {
     color: $red; 
     cursor: pointer; 
+}
+
+.comment-vote {
+    display: flex; 
+    align-items: center; 
+    padding-right: 0.5rem; 
+}
+.comment-vote-symbol.up {
+    padding: 0; 
+    transform: translateY(-5px); 
+}
+.comment-vote-symbol.down {
+    padding: 0; 
+    transform: translateY(5px); 
+}
+.comment-vote-symbol:hover {
+    cursor: pointer; 
+    color: $red; 
+}
+.comment-vote-symbols {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    margin-right: 0.5rem; 
+    color: $gray; 
 }
