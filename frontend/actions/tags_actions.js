@@ -16,10 +16,12 @@ const receiveTags = tags => ({
     tags 
 })
 
-const receiveTagDescription = tag => ({
+const receiveTagDescription = tag => {
+    // debugger; 
+    return {
     type: RECEIVE_TAG_DESCRIPTION, 
     tag 
-})
+}}
 
 const receiveTag = tag => ({
     type: RECEIVE_TAG,
@@ -72,7 +74,10 @@ export const fetchTags = () => dispatch => {
 export const updateTagDescription = (tag) => dispatch => {
     // debugger; 
     return tagAPIUtil.updateTagDescription(tag)
-                .then(tag => receiveTagDescription(tag))
+                .then(tag => {
+                    // debugger; 
+                    dispatch(receiveTagDescription(tag))
+                })
 }
 export const fetchPaginatedTags = (pageNumber, pageLimit) => dispatch => {
     return tagAPIUtil.getPaginatedTags(pageNumber, pageLimit)

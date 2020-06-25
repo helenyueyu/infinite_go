@@ -15,7 +15,9 @@ const tagsReducer = (state = {}, action) => {
             delete newState[action.tag.id]
             return newState;
         case RECEIVE_TAG_DESCRIPTION: 
-            newState[action.tag_id]['description'] = action.description; 
+            // debugger; 
+            newState[action.tag.id]['description'] = action.tag.description; 
+            // debugger; 
             return newState;  
         default:
             return state;
