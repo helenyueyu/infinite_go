@@ -10,7 +10,7 @@ const mapStateToProps = state => {
     return {
     questions: sortByNewest(Object.values(state.entities.questions)),
     questionCount: questionCount, 
-    search: state.entities.search, 
+    search: state.entities.search.question, 
     watchedTags: state.entities.watchedTags, 
     ignoredTags: state.entities.ignoredTags 
 }}

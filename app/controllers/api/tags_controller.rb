@@ -1,6 +1,7 @@
 class Api::TagsController < ApplicationController
     def index 
         @tags = Tag.paginate(params[:page], params[:page_limit])
+        # debugger 
     end
 
     def create

@@ -1,11 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; 
 
+import FilterTag from './filter_tag'; 
+
 class TagIndex extends React.Component {
     componentDidMount() {
-        this.props.fetchTags()
+        this.props.fetchPaginatedTags(this.props.search.pageNumber, this.props.search.pageLimit)
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.search.pageNumber !== this.props.search.pageNumber) {
+            this.props.fetchPaginatedTags(this.props.search.pageNumber, this.props.search.pageLimit)
+        }
+    }
     handleChange(e) {
         e.preventDefault();
         this.props.searchTags(e.target.value);
@@ -23,9 +30,60 @@ class TagIndex extends React.Component {
         return arr; 
     }
 
+    generatePageNumbers(numQuestions, perPage, pageNumber) {
+        numQuestions = parseInt(numQuestions); 
+        perPage = parseInt(perPage); 
+        pageNumber = parseInt(pageNumber); 
+
+        let breakPoint1 = null; 
+        let breakPoint2 = null; 
+
+        let max = Math.floor(numQuestions/perPage) + 1; 
+        if (max <= 8) {
+            const temp = []; 
+            for (let i = 1; i <= max; i++) {
+                temp.push(i); 
+            }
+            return [temp, null, null]; 
+        }
+
+        if (pageNumber >= 1 && pageNumber <= 4) {
+            const arr = []; 
+            for (let i = 1; i <= 4; i++) {
+                arr.push(i); 
+            }
+            arr.push(5); 
+            arr.push(max); 
+            breakPoint1 = 5; 
+
+            return [arr, breakPoint1, breakPoint2]; 
+        } else if (pageNumber >= max-3 && pageNumber <= max) {
+            const arr = []; 
+            arr.push(1); 
+            for (let i = max-4; i <= max; i++) {
+                arr.push(i); 
+            }
+            breakPoint1 = 1; 
+            return [arr, breakPoint1, breakPoint2]; 
+        } else {
+            const arr = []; 
+            arr.push(1); 
+            for (let i = pageNumber-2; i <= pageNumber+2; i++) {
+                arr.push(i); 
+            }
+            arr.push(max); 
+            breakPoint1 = 1; 
+            breakPoint2 = pageNumber+2; 
+            return [arr, breakPoint1, breakPoint2]; 
+        }      
+    }
+
     render() {
-        const { tags } = this.props;
+        const { tags, search } = this.props;
         const rowifiedTags = this.rowify(tags, 3); 
+
+        const [pages, bp1, bp2] = this.generatePageNumbers(96, search.pageLimit, search.pageNumber); 
+  
         return (
             <div className="tags_index">
                 <h1 className="tags_index-title">Tags</h1>
@@ -56,6 +114,15 @@ class TagIndex extends React.Component {
                         ))}
                     </div>
                 ))}
+
+                    <div className="questions-filter">
+                        <FilterTag
+                            values={pages}
+                            action={this.props.changeTagPageNumber}
+                            active={search.pageNumber} 
+                            bp1 = {bp1} 
+                            bp2 = {bp2} />
+                    </div>
             </div>
         )
     }

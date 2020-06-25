@@ -5,6 +5,13 @@ export const fetchTags = () => {
     })
 }
 
+export const getPaginatedTags = (page, pageLimit) => {
+    return $.ajax({
+        method: 'GET', 
+        url: `/api/tags/?page=${page}&page_limit=${pageLimit}`
+    })
+}
+
 export const createTag = tag => {
     return $.ajax({
         method: 'POST',
