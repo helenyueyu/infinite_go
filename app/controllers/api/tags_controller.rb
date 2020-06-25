@@ -1,9 +1,6 @@
 class Api::TagsController < ApplicationController
     def index 
-        # @posts = Post.all.order(created_at: :desc).paginate(page:  params[:page], per_page: 2)
-
-        @tags = Tag.all
-        # .order(created_at: :desc).paginate(page: params[:page], per_page: 3)
+        @tags = Tag.paginate(params[:page], params[:page_limit])
     end
 
     def create

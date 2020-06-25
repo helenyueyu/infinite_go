@@ -8,7 +8,9 @@ Rails.application.routes.draw do
       
       get 'users/search', :to => 'users#search'
       get 'tags/search', :to => 'tags#search'
+
       get 'tags/popular', :to => 'taggables#popular_tags'
+      get 'tags(paginate/:paginate)', to: 'tags#index'
 
       resources :users, only: [:index, :create, :show]
       resource :session, only: [:create, :destroy]
