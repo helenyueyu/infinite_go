@@ -6,6 +6,7 @@ import { changeTagPageNumber, changeTagFilter } from '../../actions/tag_search_a
 import { fetchPaginatedTags, updateTagDescription } from '../../actions/tags_actions'; 
 import { fetchStats } from '../../actions/metas_actions'; 
 
+
 const mapStateToProps = (state) => ({
     tags: Object.values(state.entities.tags), 
     search: state.entities.search.tag, 

@@ -37,7 +37,8 @@ class TagIndex extends React.Component {
 
     render() {
         const { tags, search, tagCount, updateTagDescription } = this.props;
-        const rowifiedTags = search.filter === "popular" ? this.rowify(sortByQuestionCount(tags), 4)
+        const rowifiedTags = search.filter === "popular" 
+                    ? this.rowify(sortByQuestionCount(tags), 4)
                     : this.rowify(sortByName(tags), 4); 
 
         const [pages, bp1, bp2] = generatePageNumbers(tagCount, search.pageLimit, search.pageNumber); 
@@ -57,6 +58,7 @@ class TagIndex extends React.Component {
                     <div>
                         <button onClick={() => this.props.changeTagFilter('popular')}>Popular</button>
                         <button onClick={() => this.props.changeTagFilter('name')}>Name</button>
+                        <button onClick={() => this.props.changeTagFilter('new')}>New</button>
                     </div>
                 </div>
                 {rowifiedTags.map((row, idx) => (

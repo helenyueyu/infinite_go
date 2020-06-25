@@ -68,8 +68,9 @@ class Tag < ApplicationRecord
         page = page.to_i 
         page_limit = page_limit.to_i 
         if filter == 'name' 
-            # debugger 
             return self.all.offset((page-1)*page_limit).limit(page_limit).order(name: :asc)
+        elsif filter == 'new'
+            return self.all.offset((page-1)*page_limit).limit(page_limit).order(created_at: :desc)
         else 
             return self.select('tags.*, COUNT(taggables.tag_id) tag_freq')
             .joins(:taggables)
@@ -78,11 +79,7 @@ class Tag < ApplicationRecord
             .offset((page-1)*page_limit)
             .limit(page_limit)
             .order(created_at: :desc)
-        end 
-        # self.all.offset((page-1)*page_limit).limit(page_limit).order(created_at: :desc)
-
-        
-        
+        end         
     end
 end
 
