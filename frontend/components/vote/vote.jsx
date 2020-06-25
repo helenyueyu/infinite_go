@@ -37,14 +37,14 @@ class Vote extends React.Component {
                             <i className={currentVote === 1 ? "fas fa-sort-up active" : "fas fa-sort-up"}></i>
                         </div>
                         <div className="comment-vote-symbol down" onClick={this.downVote}>
-                            <i className={currentVote === 1 ? "fas fa-sort-down active" : "fas fa-sort-down"}></i>
+                            <i className={currentVote === -1 ? "fas fa-sort-down active" : "fas fa-sort-down"}></i>
                         </div>
                     </div>
                     <div className={(currentVote === 1 || currentVote === -1) ? 
                         "comment vote-count active" : " comment vote-count"}>
                         {count}
                     </div>
-                    
+
                 </div> 
                 : 
                 <div className="vote">
