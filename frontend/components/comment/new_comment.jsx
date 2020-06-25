@@ -9,12 +9,23 @@ class NewComment extends React.Component {
             commentable_id: this.props.commentable_id, 
             commentable_type: this.props.commentable_type, 
             body: this.props.type === "new" ? "" : this.props.body, 
-            showCommentForm: false 
+            showCommentForm: false, 
+            showEditForm: this.props.showEditForm  
         }
 
         this.showCommentForm = this.showCommentForm.bind(this); 
+
         this.handleChange = this.handleChange.bind(this); 
         this.handleSubmit = this.handleSubmit.bind(this); 
+    }
+
+    componentDidUpdate(prevProps) {
+        // debugger; 
+        if (prevProps.showEditForm !== this.props.showEditForm) {
+            this.setState({
+                showEditForm: this.props.showEditForm 
+            })
+        }
     }
 
     handleChange(e) {
@@ -35,13 +46,15 @@ class NewComment extends React.Component {
             .then(() => this.props.fetchQuestion(this.state.commentable_id))
             .then(() => this.setState({
                 body: "", 
-                showCommentForm: false 
+                showCommentForm: false, 
+                showEditForm: false  
             }))
     }
 
     render() {
-        const { type } = this.props; 
-        const { showCommentForm } = this.state; 
+        const { type } = this.state; 
+        const { showCommentForm, showEditForm } = this.state; 
+        console.log('from new comment', showEditForm); 
         return (
             <>
                 {type === "new" ? 
@@ -59,11 +72,13 @@ class NewComment extends React.Component {
                         null 
                     } 
                 </div> : 
-                <form className="new_comment-form" onSubmit={this.handleSubmit}>
-                    <input className="new_comment-input"
-                        value={this.state.body} 
-                        onChange={this.handleChange} />
-                </form> 
+                <>
+                    {showEditForm ? <form className="new_comment-form" onSubmit={this.handleSubmit}>
+                        <input className="new_comment-input"
+                            value={this.state.body} 
+                            onChange={this.handleChange} />
+                    </form>  : null}
+                </>
                 }
             </>
         )

@@ -11,18 +11,18 @@ class CommentItem extends React.Component {
         this.state = {
             showEditForm: false 
         }
-        this.showEditForm = this.showEditForm.bind(this); 
+        this.revealEditForm = this.revealEditForm.bind(this); 
     }
 
-    showEditForm() {
+    revealEditForm() {
         this.setState({
-            showEditForm: !this.state.showEditForm
+            showEditForm: !this.state.showEditForm 
         })
     }
 
     render() {
         const { comment, handleDelete } = this.props; 
-        const { showEditForm } = this.state; 
+        console.log('this.state.showEditForm', this.state.showEditForm)
         return (
             <div className="comments-item">
                         
@@ -36,17 +36,18 @@ class CommentItem extends React.Component {
                         />
 
                 <div className="comment-item">
-                    {showEditForm ? 
-                        <EditCommentContainer id={comment.id}
-                                            body={comment.body} />
-                        : <>
-                        <span className="comments-body">{comment.body}</span>
-                        <span className="comments-dash">&mdash;</span>
-                        <span className="comments-username">{comment.username}</span>
-                        <span className="comments-date">
-                            {displayDate(comment.createdAt)}
-                        </span>
-                        </>}
+                    <EditCommentContainer id={comment.id}
+                                        body={comment.body}
+                                        commentable_id={comment.commentableId}
+                                        commentable_type={comment.commentableType} 
+                                        showEditForm={this.state.showEditForm} />
+        
+                    <span className="comments-body">{comment.body}</span>
+                    <span className="comments-dash">&mdash;</span>
+                    <span className="comments-username">{comment.username}</span>
+                    <span className="comments-date">
+                        {displayDate(comment.createdAt)}
+                    </span>
 
                     <button 
                         className="comments-delete-button"
@@ -56,7 +57,7 @@ class CommentItem extends React.Component {
 
                     <button 
                         className="comments-edit-button"
-                        onClick={this.showEditForm}>
+                        onClick={this.revealEditForm}>
                             edit
                     </button>
 
