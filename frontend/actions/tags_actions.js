@@ -72,24 +72,15 @@ export const fetchTags = () => dispatch => {
 }
 // {tag_id, description}
 export const updateTagDescription = (tag) => dispatch => {
-    // debugger; 
     return tagAPIUtil.updateTagDescription(tag)
                 .then(tag => {
-                    // debugger; 
                     dispatch(receiveTagDescription(tag))
                 })
 }
-export const fetchPaginatedTags = (pageNumber, pageLimit) => dispatch => {
-    return tagAPIUtil.getPaginatedTags(pageNumber, pageLimit)
+export const fetchPaginatedTags = (pageNumber, pageLimit, filter) => dispatch => {
+    return tagAPIUtil.getPaginatedTags(pageNumber, pageLimit, filter)
         .then(tags => {
             dispatch(receiveTags(tags)); 
-        })
-}
-
-export const fetchFilteredQuestions = (pageNumber, pageLimit, query) => dispatch => {
-    return questionAPIUtil.getFilteredQuestions(pageNumber, pageLimit, query)
-        .then(questions => {
-            dispatch(receiveAllQuestions(questions))
         })
 }
 

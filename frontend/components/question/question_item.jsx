@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'; 
 
 import { displayDate } from '../../selectors/date_selectors'; 
-import { nameExtensionURL, displayPost } from '../../selectors/display_selectors'; 
+import { nameExtensionURL, displayShortenedPost } from '../../selectors/display_selectors'; 
 
 import TagsContainer from '../tag/tags_container'; 
 import ProfileSnippet from '../user/profile/profile_snippet'; 
@@ -27,7 +27,7 @@ class QuestionItem extends React.Component {
                 </div>
                 
                 <div className="question_item-body">
-                    {displayPost(this.renderQuestionSnippet(body), 200)}
+                    {displayShortenedPost(this.renderQuestionSnippet(body), 200)}
                 </div>
 
                 <div className="question_item-tags-profile">

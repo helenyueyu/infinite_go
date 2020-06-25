@@ -1,7 +1,7 @@
 import React from 'react'; 
 import { Link } from 'react-router-dom'; 
 
-import { displayPost } from '../../selectors/display_selectors'; 
+import { displayShortenedPost } from '../../selectors/display_selectors'; 
 
 class TagsIndexItem extends React.Component {
     constructor(props) {
@@ -60,7 +60,7 @@ class TagsIndexItem extends React.Component {
                         <input className="tags_index-item-form-input"
                             onChange={(e) => this.handleForm(e)} 
                         value={this.state.description}></input>
-                    </form> : tag.description === null ? "" : displayPost(tag.description, 190)}                
+                    </form> : tag.description === null ? "" : displayShortenedPost(tag.description, 190)}                
                 </div>
 
                 <div className="tags_index-item-details">

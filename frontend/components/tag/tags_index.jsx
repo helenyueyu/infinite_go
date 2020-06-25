@@ -9,12 +9,12 @@ import FilterTag from './filter_tag';
 class TagIndex extends React.Component {
     componentDidMount() {
         this.props.fetchStats()
-            .then(() => this.props.fetchPaginatedTags(this.props.search.pageNumber, this.props.search.pageLimit))
+            .then(() => this.props.fetchPaginatedTags(this.props.search.pageNumber, this.props.search.pageLimit, this.props.search.filter))
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.search.pageNumber !== this.props.search.pageNumber) {
-            this.props.fetchPaginatedTags(this.props.search.pageNumber, this.props.search.pageLimit)
+        if (prevProps.search.pageNumber !== this.props.search.pageNumber || prevProps.search.filter !== this.props.search.filter) {
+            this.props.fetchPaginatedTags(this.props.search.pageNumber, this.props.search.pageLimit, this.props.search.filter)
         }
     }
     handleChange(e) {
@@ -100,6 +100,10 @@ class TagIndex extends React.Component {
                     </div> */}
                     <input className="tags_index-search"
                         onChange={(e) => this.handleChange(e)}></input>
+                    <div>
+                        <button onClick={() => this.props.changeTagFilter('popular')}>Popular</button>
+                        <button onClick={() => this.props.changeTagFilter('name')}>Name</button>
+                    </div>
                 </div>
                 {rowifiedTags.map((row, idx) => (
                     <div key={idx} className="tags_index-row">

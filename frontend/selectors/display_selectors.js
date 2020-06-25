@@ -1,4 +1,4 @@
-export const displayPost = (post, limit) => {
+export const displayShortenedPost = (post, limit) => {
     if (post.length <= limit) return post; 
     if (!post.includes(" ")) return post; 
     if (post[limit] === ' ') {

@@ -14,10 +14,11 @@ export const updateTagDescription = tag => {
     })
 }
 
-export const getPaginatedTags = (page, pageLimit) => {
+export const getPaginatedTags = (page, pageLimit, filter) => {
+    // debugger 
     return $.ajax({
         method: 'GET', 
-        url: `/api/tags/?page=${page}&page_limit=${pageLimit}`
+        url: `/api/tags/?page=${page}&page_limit=${pageLimit}&filter=${filter}`
     })
 }
 

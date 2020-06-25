@@ -64,18 +64,25 @@ class Tag < ApplicationRecord
         tag.size == 1 
     end
 
-    def self.paginate(page, page_limit)
+    def self.paginate(page, page_limit, filter)
         page = page.to_i 
         page_limit = page_limit.to_i 
-        # self.all.offset((page-1)*page_limit).limit(page_limit).order(created_at: :desc)
-
-        self.select('tags.*, COUNT(taggables.tag_id) tag_freq')
+        if filter == 'name' 
+            # debugger 
+            return self.all.offset((page-1)*page_limit).limit(page_limit).order(name: :asc)
+        else 
+            return self.select('tags.*, COUNT(taggables.tag_id) tag_freq')
             .joins(:taggables)
             .group('tags.id')
             .order('tag_freq DESC')
             .offset((page-1)*page_limit)
             .limit(page_limit)
             .order(created_at: :desc)
+        end 
+        # self.all.offset((page-1)*page_limit).limit(page_limit).order(created_at: :desc)
+
+        
+        
     end
 end
 
