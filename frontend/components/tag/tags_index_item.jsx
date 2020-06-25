@@ -41,6 +41,7 @@ class TagsIndexItem extends React.Component {
         const { tag } = this.props; 
         return (
             <div className="tags_index-item">
+                
                 <div className="tags_index_item-name-container">
                     <div className="tags_index-item-name">
                         <Link className="tags_index-item-name-link" to={`/questions/tagged/${tag.name}`}>
