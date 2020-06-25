@@ -10,7 +10,9 @@
     font-size: $comment-size; 
     line-height: $small-line-height; 
     display: flex; 
-    align-items: center; 
+    align-items: flex-start; 
+    padding-top: 0.25rem; 
+    padding-bottom: 0.25rem; 
 }
 
 .comments-username {
