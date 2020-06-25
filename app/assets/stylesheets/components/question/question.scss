@@ -61,13 +61,15 @@
 .question-title {
     color: $red; 
     font-size: $big-title-size; 
-    padding-top: 2rem; 
+    line-height: 2rem; 
+    padding-top: 0.5rem; 
     padding-bottom: 1rem; 
     padding-right: 3rem; 
 }
 
 .question-body {
     padding-bottom: 1rem; 
+    line-height: $small-line-height; 
 }
 
 .question-footer {
