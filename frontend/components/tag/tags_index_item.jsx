@@ -6,8 +6,10 @@ class TagsIndexItem extends React.Component {
     constructor(props) {
         super(props); 
         this.state = {
-            description: ""
+            description: "", 
+            showForm: false 
         }
+        this.toggleForm = this.toggleForm.bind(this); 
         this.handleForm = this.handleForm.bind(this); 
         this.handleSubmit = this.handleSubmit.bind(this); 
     }
@@ -18,8 +20,17 @@ class TagsIndexItem extends React.Component {
         this.props.updateTagDescription({
             tag_id: tag_id, 
             description: this.state.description 
+        }).then(() => this.setState({
+            showForm: false 
+        }))
+    }
+
+    toggleForm() {
+        this.setState({
+            showForm: !this.state.showForm
         })
     }
+
     handleForm(e) {
         e.preventDefault(); 
         this.setState({
@@ -37,13 +48,18 @@ class TagsIndexItem extends React.Component {
                             {tag.name}
                         </Link>
                     </div>
+                    <div className="tags_index-item-edit" onClick={this.toggleForm}>
+                        edit
+                    </div>
+                </div>
+
+                <div className="tags_index-item-description">
+                    {this.state.showForm ? 
                     <form onSubmit={(e) => this.handleSubmit(e, tag.id)}>
                         <input onChange={(e) => this.handleForm(e)} value={this.state.description}></input>
-                    </form>
+                    </form> : tag.description}                
                 </div>
-                <div className="tags_index-item-description">
-                    {tag.description}
-                </div>
+
                 <div className="tags_index-item-details">
                     <div>{tag.questionCount} question{tag.questionCount == 1 ? "" : "s"}</div>
                     <div>{tag.dailyQuestionCount} asked today,</div>

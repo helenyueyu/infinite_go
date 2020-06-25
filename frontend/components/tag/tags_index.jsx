@@ -84,7 +84,7 @@ class TagIndex extends React.Component {
 
     render() {
         const { tags, search, tagCount, updateTagDescription } = this.props;
-        const rowifiedTags = this.rowify(sortByQuestionCount(tags), 3); 
+        const rowifiedTags = this.rowify(sortByQuestionCount(tags), 4); 
 
         const [pages, bp1, bp2] = this.generatePageNumbers(tagCount, search.pageLimit, search.pageNumber); 
   
