@@ -13,6 +13,7 @@
     color: $red; 
     text-decoration: none; 
     font-size: $description-size; 
+    line-height: $big-line-height; 
 }
 
 .question_item-title:hover {
@@ -20,9 +21,10 @@
 }
 
 .question_item-body {
-    padding-top: 1rem; 
+    padding-top: 0.65rem; 
     padding-bottom: 0.65rem; 
     font-size: $info-size; 
+    line-height: $small-line-height; 
 }
 
 .question_item-tags-profile {

@@ -31,7 +31,7 @@ class NewComment extends React.Component {
     
     handleSubmit(e) {
         e.preventDefault(); 
-        this.props.createComment(this.state)
+        this.props.action(this.state)
             .then(() => this.props.fetchQuestion(this.state.commentable_id))
             .then(() => this.setState({
                 body: "", 
@@ -40,22 +40,32 @@ class NewComment extends React.Component {
     }
 
     render() {
+        const { type } = this.props; 
         const { showCommentForm } = this.state; 
         return (
-            <div className="new_comment">
-                <div className="new_comment-label" onClick={this.showCommentForm}>
-                    add a comment  
-                </div>
-                { showCommentForm ? 
-                    <form className="new_comment-form" onSubmit={this.handleSubmit}>
-                        <input className="new_comment-input"
-                            value={this.state.body} 
-                            onChange={this.handleChange} />
-                    </form> 
-                    : 
-                    null 
-                } 
-            </div>
+            <>
+                {type === "new" ? 
+                <div className="new_comment">
+                    <div className="new_comment-label" onClick={this.showCommentForm}>
+                        add a comment  
+                    </div>
+                    { showCommentForm ? 
+                        <form className="new_comment-form" onSubmit={this.handleSubmit}>
+                            <input className="new_comment-input"
+                                value={this.state.body} 
+                                onChange={this.handleChange} />
+                        </form> 
+                        : 
+                        null 
+                    } 
+                </div> : 
+                <form className="new_comment-form" onSubmit={this.handleSubmit}>
+                    <input className="new_comment-input"
+                        value={this.state.body} 
+                        onChange={this.handleChange} />
+                </form> 
+                }
+            </>
         )
     }
 }
