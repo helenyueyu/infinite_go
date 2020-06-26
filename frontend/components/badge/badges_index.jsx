@@ -1,5 +1,7 @@
 import React from 'react'; 
 
+import BadgesInfo from './badges_info'; 
+
 class BadgesIndex extends React.Component {
     constructor(props) {
         super(props); 
@@ -117,49 +119,9 @@ class BadgesIndex extends React.Component {
                         )}
                         
                     </div>
-                    <div className="badges_index-right">
-                        <div className="badges_index-bronze">
-                            <div className="badges_index-item-name"> 
-                                <div className="badges_index-bronze-coin">
-                                    &#x25cf;
-                                </div>
-                                <div className="badges_index-item-name-name">
-                                    Bronze Badge
-                                </div>
-                            </div>
-                            <div className="badges_index-item-description-sidebar">
-                                Bronze badges encourage users to try out new features on the site. They are easy to get if you try!
-                            </div>
-                        </div>
+                    
+                    <BadgesInfo />
 
-                        <div className="badges_index-silver">
-                            <div className="badges_index-item-name">
-                                <div className="badges_index-silver-coin">
-                                    &#x25cf;
-                                </div> 
-                                <div className="badges_index-item-name-name">
-                                    Silver Badge
-                                </div>
-                            </div>
-                            <div className="badges_index-item-description-sidebar">
-                                Silver badges are less common than bronze ones. You'll need to plan your strategy to get one of these.
-                            </div>
-                        </div>
-
-                        <div className="badges_index-gold">
-                            <div className="badges_index-item-name">
-                                <div className="badges_index-gold-coin">
-                                    &#x25cf;
-                                </div>
-                                <div className="badges_index-item-name-name">
-                                    Gold Badge
-                                </div>
-                            </div>
-                            <div className="badges_index-item-description-sidebar">
-                                Gold badges recognize important contributions from members of the community. They are rarely awarded.
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 
 
