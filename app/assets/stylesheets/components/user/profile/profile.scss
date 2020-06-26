@@ -124,6 +124,7 @@
 }
 .profile_middle-post {
     display: flex; 
+    align-items: center; 
     justify-content: space-between; 
     padding-top: 0.8rem; 
     padding-bottom: 0.8rem; 
@@ -181,4 +182,7 @@
 }
 .profile-middle-post-left-date {
     color: $gray; 
+    font-size: $small-size; 
+    padding-left: 2rem; 
+    white-space: nowrap;  
 }
