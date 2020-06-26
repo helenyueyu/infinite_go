@@ -36,6 +36,8 @@ import JobsContainer from './job/jobs_container';
 import InfoIndex from './info/info_index'; 
 import InfoRightMenu from './info/info_right_menu'; 
 
+import ErrorsPage from './error/errors_page'; 
+
 const createRoute = (status, path, main, exact=true, leftSideBar=Menu, rightSideBar=RightMenuContainer) => {
     return ({ status, path, exact, leftSideBar, main,  rightSideBar })
 }
@@ -59,6 +61,7 @@ const routes = [
     createRoute("auth", '/signup', SignUpFormContainer, true, null, null), 
     createRoute("auth", '/login/demo', DemoContainer, true, null, null), 
     createRoute("normal", '/jobs', JobsContainer, true, Menu, null), 
+    createRoute("normal", "*", ErrorsPage, true, null, null)
     // createRoute("normal", '/jobs', JobsContainer, true, Menu, null)
 ] 
 
