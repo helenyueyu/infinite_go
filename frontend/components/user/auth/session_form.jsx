@@ -1,12 +1,18 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom'; 
+
 class SessionForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            username: "",
-            email: "",
-            password: "" 
+        if (this.props.type === 'Demo') {
+            this.state = this.props.user; 
+        } else {
+            this.state = {
+                username: "",
+                email: "",
+                password: "" 
+            }
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -30,7 +36,18 @@ class SessionForm extends React.Component {
         return (
             <div className="session_form-container">
                 <div className="session_form">
-                    <h1 className="session_form-title">{type}</h1>
+                    {type === "Demo" ? null : <h1 className="session_form-title">
+                        {type}
+                    </h1>}
+
+                    {type === 'Log In' ? 
+                    <Link to="/login/demo">
+                        <button className="session_form-button">Demo</button>
+                    </Link> : 
+                    <Link to="/login/">
+                        <button className="session_form-button">Log In</button>
+                    </Link>}
+                    
                     <form className="session_form-form" onSubmit={this.handleSubmit}>
                         {["username", "email", "password"].map(type => 
                             <label className="session_form-label" key={type}>{type}

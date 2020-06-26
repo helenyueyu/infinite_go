@@ -12,6 +12,7 @@ import RightMenuContainer from './menu/right_menu_container';
 
 import SignUpFormContainer from './user/auth/sign_up_form_container';
 import LoginFormContainer from './user/auth/login_form_container';
+import DemoContainer from './user/auth/demo_container'; 
 
 import ProfileIndexContainer from './user/profile/profile_index_container'; 
 import BadgesIndexContainer from './badge/badges_index_container'; 
@@ -53,6 +54,7 @@ const routes = [
     createRoute("normal", '/badges', BadgesIndexContainer, true, Menu, null), 
     createRoute("auth", '/login', LoginFormContainer, true, null, null), 
     createRoute("auth", '/signup', SignUpFormContainer, true, null, null), 
+    createRoute("auth", '/login/demo', DemoContainer, true, null, null), 
     createRoute("normal", '/jobs', JobsContainer, true, Menu, null)
 ] 
 

@@ -75,3 +75,19 @@
 .session_form-submit:focus {
     outline: none; 
 }
+
+.session_form-button {
+    margin: 0rem 0.25rem 0rem 0.25rem; 
+    padding: 0.5rem; 
+    background-color: $black; 
+    color: $white; 
+    border: 1px solid $white; 
+    border-radius: 5px; 
+    font-size: 1rem; 
+    margin-bottom: 2rem; 
+}
+
+.session_form-button:hover {
+    background-color: $white; 
+    color: $black; 
+}
