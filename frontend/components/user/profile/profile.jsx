@@ -9,6 +9,7 @@ import { sortByUpvotes, sortByNewest } from '../../../selectors/sort_selectors';
 import { filterByType } from '../../../selectors/filter_selectors'; 
 
 import { displayShortenedDate } from '../../../selectors/date_selectors'; 
+import { nameExtensionURL } from '../../../selectors/display_selectors'; 
 
 class Profile extends React.Component {
     constructor(props) {
@@ -150,7 +151,7 @@ class Profile extends React.Component {
                                     <div className={post.hasAcceptedAnswer === true ? "profile-middle-post-left-vote" : "profile-middle-post-left-vote-empty"}>
                                         {post.voteCount}
                                     </div>
-                                    <Link to={`/questions/${post.id}`} className="profile-middle-post-left-title">{post.title}</Link>
+                                    <Link to={`/questions/${post.id}/${nameExtensionURL(post.title)}`} className="profile-middle-post-left-title">{post.title}</Link>
                                 </div>
                                 
 
