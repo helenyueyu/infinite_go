@@ -20,7 +20,6 @@ import TagsIndexContainer from './tag/tags_index_container';
 
 import NavbarContainer from './user/nav/navbar_container'; 
 import ProfileContainer from './user/profile/profile_container'; 
-import ProfileActivityContainer from './user/profile/profile_activity_container'; 
 
 import QuestionsContainer from './question/questions_container'; 
 import NewQuestionContainer from './question/new_question_container';
@@ -33,6 +32,9 @@ import BookmarksIndexContainer from './user/profile/tabs/bookmarks_index_contain
 import SummaryIndexContainer from './user/profile/tabs/summary_index_container'; 
 
 import JobsContainer from './job/jobs_container'; 
+
+import InfoIndex from './info/info_index'; 
+import InfoRightMenu from './info/info_right_menu'; 
 
 const createRoute = (status, path, main, exact=true, leftSideBar=Menu, rightSideBar=RightMenuContainer) => {
     return ({ status, path, exact, leftSideBar, main,  rightSideBar })
@@ -51,11 +53,13 @@ const routes = [
     createRoute("normal", '/users/:userId/activity/bookmarks', BookmarksIndexContainer, true, Menu, null), 
     createRoute("normal", '/users/:userId/activity/summary', SummaryIndexContainer, true, Menu, null), 
     createRoute("normal", '/tags', TagsIndexContainer, true, Menu, null), 
-    createRoute("normal", '/badges', BadgesIndexContainer, true, Menu, null), 
+    createRoute("normal", '/info', InfoIndex, true, Menu, InfoRightMenu), 
+    createRoute("normal", '/info/badges', BadgesIndexContainer, true, Menu, null), 
     createRoute("auth", '/login', LoginFormContainer, true, null, null), 
     createRoute("auth", '/signup', SignUpFormContainer, true, null, null), 
     createRoute("auth", '/login/demo', DemoContainer, true, null, null), 
-    createRoute("normal", '/jobs', JobsContainer, true, Menu, null)
+    createRoute("normal", '/jobs', JobsContainer, true, Menu, null), 
+    // createRoute("normal", '/jobs', JobsContainer, true, Menu, null)
 ] 
 
 const App = () => {

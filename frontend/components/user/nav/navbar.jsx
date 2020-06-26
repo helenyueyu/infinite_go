@@ -48,7 +48,7 @@ class Navbar extends React.Component {
                             {currentUser.username}
                         </Link>
                         <div className="nav-link">
-                            <Link to="/badges">
+                            <Link to="/info">
                                 <i className="fas fa-question-circle"></i>
                             </Link>
                         </div>
