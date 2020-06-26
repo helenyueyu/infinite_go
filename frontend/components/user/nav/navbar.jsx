@@ -49,7 +49,7 @@ const Navbar = ({currentUser, logout}) => {
         return (
             <div className="nav">
                 <div className="nav-logo">
-                    <i className="fab fa-stack-overflow nav-pic"></i>
+                    <i className="fab fa-stack-overflow nav-pic-logged-out"></i>
                 </div>
                 <div>
                     <Link to="/login"><button className="nav-login-button">Log In</button></Link>

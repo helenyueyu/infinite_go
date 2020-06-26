@@ -32,25 +32,27 @@ import BookmarksIndexContainer from './user/profile/tabs/bookmarks_index_contain
 
 import JobsContainer from './job/jobs_container'; 
 
-const createRoute = (path, main, exact=true, leftSideBar=Menu, rightSideBar=RightMenuContainer) => {
-    return ({ path, exact, leftSideBar, main,  rightSideBar })
+const createRoute = (status, path, main, exact=true, leftSideBar=Menu, rightSideBar=RightMenuContainer) => {
+    return ({ status, path, exact, leftSideBar, main,  rightSideBar })
 }
+
 const routes = [
-    createRoute('/', Splash, true, null, null), 
-    createRoute('/questions', QuestionsContainer), 
-    createRoute('/questions/new', NewQuestionContainer), 
-    createRoute('/questions/tagged/:tagName', QuestionsContainer, true, null, null), 
-    createRoute('/questions/:questionId/:title', QuestionContainer, true), 
-    createRoute('/questions/:questionId/:title/edit', EditQuestionContainer, true), 
-    createRoute('/questions/:questionId/answers/:answerId/edit', EditAnswerContainer), 
-    createRoute('/users', ProfileIndexContainer, true, Menu, null), 
-    createRoute('/users/:userId', ProfileContainer, true, Menu, null), 
-    createRoute('/users/:userId/activity', ProfileActivityContainer, true, Menu, null), 
-    createRoute('/users/:userId/activity/bookmarks', BookmarksIndexContainer, true, Menu, null), 
-    createRoute('/tags', TagsIndexContainer, true, Menu, null), 
-    createRoute('/badges', BadgesIndexContainer, true, Menu, null), 
-    createRoute('/login', LoginFormContainer, true, null, null), 
-    createRoute('/jobs', JobsContainer, true, Menu, null)
+    createRoute("normal", '/', Splash, true, null, null), 
+    createRoute("normal", '/questions', QuestionsContainer), 
+    createRoute("protected", '/questions/new', NewQuestionContainer), 
+    createRoute("normal", '/questions/tagged/:tagName', QuestionsContainer, true, null, null), 
+    createRoute("normal", '/questions/:questionId/:title', QuestionContainer, true), 
+    createRoute("protected", '/questions/:questionId/:title/edit', EditQuestionContainer, true), 
+    createRoute("protected", '/questions/:questionId/answers/:answerId/edit', EditAnswerContainer), 
+    createRoute("normal", '/users', ProfileIndexContainer, true, Menu, null), 
+    createRoute("normal", '/users/:userId', ProfileContainer, true, Menu, null), 
+    createRoute("normal", '/users/:userId/activity', ProfileActivityContainer, true, Menu, null), 
+    createRoute("normal", '/users/:userId/activity/bookmarks', BookmarksIndexContainer, true, Menu, null), 
+    createRoute("normal", '/tags', TagsIndexContainer, true, Menu, null), 
+    createRoute("normal", '/badges', BadgesIndexContainer, true, Menu, null), 
+    createRoute("auth", '/login', LoginFormContainer, true, null, null), 
+    createRoute("auth", '/signup', SignUpFormContainer, true, null, null), 
+    createRoute("normal", '/jobs', JobsContainer, true, Menu, null)
 ] 
 
 const App = () => {
@@ -60,29 +62,38 @@ const App = () => {
 
         <div className="app">
           <Switch>
-            <>
-                {routes.map((route, index) => (
-                <Route key={index} path={route.path} exact={route.exact} component={route.leftSideBar} />
-                ))}
-            </>
+            {routes.map((route, index) => (
+            route.status === 'normal' ? 
+            <Route key={index} path={route.path} exact={route.exact} component={route.leftSideBar} /> : route.status === 'auth' ? 
+            <AuthRoute key={index} path={route.path} exact={route.exact} component={route.leftSideBar} /> : 
+            <ProtectedRoute key={index} path={route.path} exact={route.exact} component={route.leftSideBar} />
+            ))}
           </Switch>
+
           <Switch>
-            <>
-                <div className="app-middle">
-                    {routes.map((route, index) => (
-                        <Route key={index} path={route.path} exact={route.exact} component={route.main} />
-                    ))}
-                </div>
-            </>
+                <>
+                    <div className="app-middle">
+                        {routes.map((route, index) => {
+                            return (
+                        route.status === 'normal' ? 
+                        <Route key={index} path={route.path} exact={route.exact} component={route.main} /> : route.status === 'auth' ? 
+                        <AuthRoute key={index} path={route.path} exact={route.exact} component={route.main} /> : 
+                        <ProtectedRoute key={index} path={route.path} exact={route.exact} component={route.main} />
+                            )
+                        })}
+                    </div>
+                </>
           </Switch>
          
           <Switch>
-            <>
-                {routes.map((route, index) => (
-                    <Route key={index} path={route.path} exact={route.exact} component={route.rightSideBar} />
-                ))}
-            </>
+            {routes.map((route, index) => (
+            route.status === 'normal' ? 
+            <Route key={index} path={route.path} exact={route.exact} component={route.rightSideBar} /> : route.status === 'auth' ? 
+            <AuthRoute key={index} path={route.path} exact={route.exact} component={route.rightSideBar} /> : 
+            <ProtectedRoute key={index} path={route.path} exact={route.exact} component={route.rightsideBar} />
+            ))} 
           </Switch>
+
           {/* <Switch>
                     <ProtectedRoute path="/questions" component={Menu} />
                     <ProtectedRoute path="/badges" component={Menu} />
