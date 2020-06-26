@@ -12,9 +12,6 @@ class NewComment extends React.Component {
             showCommentForm: this.props.showCommentForm, 
             showEditForm: this.props.showEditForm  
         }
-
-        // this.showCommentForm = this.showCommentForm.bind(this); 
-
         this.handleChange = this.handleChange.bind(this); 
         this.handleSubmit = this.handleSubmit.bind(this); 
     }
@@ -37,12 +34,6 @@ class NewComment extends React.Component {
             body: e.target.value 
         })
     }
-
-    // showCommentForm() {
-    //     this.setState({
-    //         showCommentForm: !this.state.showCommentForm
-    //     })
-    // }
     
     handleSubmit(e) {
         e.preventDefault(); 
@@ -58,8 +49,6 @@ class NewComment extends React.Component {
     render() {
         const { type } = this.props; 
         const { showCommentForm, showEditForm } = this.state; 
-        console.log('showCommentForm', showCommentForm); 
-        console.log('type', type); 
         return (
             <>
                 {type === "new" ? 

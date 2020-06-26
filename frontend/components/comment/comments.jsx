@@ -17,6 +17,14 @@ class Comments extends React.Component {
         this.props.fetchComments(this.props.question.id); 
     }
 
+    componentDidUpdate(prevProps) {
+        if (Object.values(prevProps.comments).length !== Object.values(this.props.comments).length) {
+            this.setState({
+                showCommentForm: false 
+            })
+        }
+    }
+
     handleDelete(id, questionId) {
         this.props.deleteComment(id)
             .then(() => this.props.fetchComments(questionId))
@@ -30,6 +38,7 @@ class Comments extends React.Component {
     }
 
     render() {
+        let { showCommentForm } = this.state; 
         let { comments, fetchComments, question } = this.props; 
         return (
             <div>

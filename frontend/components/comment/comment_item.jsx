@@ -14,6 +14,14 @@ class CommentItem extends React.Component {
         this.revealEditForm = this.revealEditForm.bind(this); 
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.comment.body !== this.props.comment.body) {
+            this.setState({
+                showEditForm: false 
+            })
+        }
+    }
+
     revealEditForm() {
         this.setState({
             showEditForm: !this.state.showEditForm 
@@ -27,13 +35,13 @@ class CommentItem extends React.Component {
             <div className="comments-item">
                         
                 <VoteContainer
-                        voteable_id={comment.id}
-                        voteable_type="Comment"
-                        count={comment.voteCount}
-                        action={this.props.fetchComments}
-                        type="comment"
-                        currentVote={comment.currentVote}
-                        />
+                    voteable_id={comment.id}
+                    voteable_type="Comment"
+                    count={comment.voteCount}
+                    action={this.props.fetchComments}
+                    type="comment"
+                    currentVote={comment.currentVote}
+                    />
 
                 <div className="comment-item">
                     <EditCommentContainer id={comment.id}
