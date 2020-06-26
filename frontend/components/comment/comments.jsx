@@ -1,5 +1,6 @@
 import React from 'react'; 
 
+import NewCommentContainer from './new_comment_container'; 
 import CommentItem from './comment_item'; 
 
 class Comments extends React.Component {
@@ -29,7 +30,7 @@ class Comments extends React.Component {
     }
 
     render() {
-        let { comments, fetchComments } = this.props; 
+        let { comments, fetchComments, question } = this.props; 
         return (
             <div>
                 {Object.values(comments).map((comment, idx) => 
@@ -45,7 +46,14 @@ class Comments extends React.Component {
                         onClick={this.revealCommentForm}>
                         add a comment  
                     </div>
-                </div> 
+                </div>
+
+                <NewCommentContainer
+                    fetchQuestion={this.props.fetchQuestion}
+                    commentable_id={question.id}
+                    commentable_type="Question"
+                    showCommentForm={this.state.showCommentForm}
+                    />
             </div>
         )
     }

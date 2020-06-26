@@ -129,11 +129,11 @@ class Question extends React.Component {
                     <CommentsContainer 
                         question={question} />
 
-                    <NewCommentContainer
+                    {/* <NewCommentContainer
                     fetchQuestion={this.props.fetchQuestion}
                     commentable_id={question.id}
                     commentable_type="Question"
-                    />
+                    /> */}
                 </div>
 
               </div>
