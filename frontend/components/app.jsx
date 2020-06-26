@@ -29,6 +29,7 @@ import EditQuestionContainer from './question/edit_question_container';
 import EditAnswerContainer from './answer/edit_answer_container';
 
 import BookmarksIndexContainer from './user/profile/tabs/bookmarks_index_container'; 
+import SummaryIndexContainer from './user/profile/tabs/summary_index_container'; 
 
 import JobsContainer from './job/jobs_container'; 
 
@@ -46,8 +47,8 @@ const routes = [
     createRoute("protected", '/questions/:questionId/answers/:answerId/edit', EditAnswerContainer, true, null, null), 
     createRoute("normal", '/users', ProfileIndexContainer, true, Menu, null), 
     createRoute("normal", '/users/:userId', ProfileContainer, true, Menu, null), 
-    createRoute("normal", '/users/:userId/activity', ProfileActivityContainer, false, Menu, null), 
     createRoute("normal", '/users/:userId/activity/bookmarks', BookmarksIndexContainer, true, Menu, null), 
+    createRoute("normal", '/users/:userId/activity/summary', SummaryIndexContainer, true, Menu, null), 
     createRoute("normal", '/tags', TagsIndexContainer, true, Menu, null), 
     createRoute("normal", '/badges', BadgesIndexContainer, true, Menu, null), 
     createRoute("auth", '/login', LoginFormContainer, true, null, null), 

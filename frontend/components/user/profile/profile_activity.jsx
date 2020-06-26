@@ -1,6 +1,6 @@
 import React from 'react'; 
 
-import { Link } from 'react-router-dom'; 
+import { Link, withRouter } from 'react-router-dom'; 
 import ProfileButtons from '../../buttons/profile_buttons'; 
 
 class ProfileActivity extends React.Component {
@@ -15,6 +15,7 @@ class ProfileActivity extends React.Component {
         } 
 
         let { id, medals } = user;  
+        console.log("props", this.props); 
         return (
             <div className="profile_activity">
                 <ProfileButtons id={id}
@@ -40,9 +41,14 @@ class ProfileActivity extends React.Component {
                     </div>
                 </div>
 
-                <div>
-                    <Link to={`/users/${user.id}/activity/bookmarks`}>
-                        <div>Bookmarks</div>
+                <div className="profile_activity-tabs">
+                    <Link className="profile_activity-tab"
+                        to={`/users/${user.id}/activity/bookmarks`}>
+                        Bookmarks
+                    </Link>
+                    <Link className="profile_activity-tab"
+                        to={`/users/${user.id}/activity/summary`}>
+                        Summary
                     </Link>
                 </div>
             </div>
@@ -50,4 +56,4 @@ class ProfileActivity extends React.Component {
     }
 }
 
-export default ProfileActivity; 
+export default withRouter(ProfileActivity); 

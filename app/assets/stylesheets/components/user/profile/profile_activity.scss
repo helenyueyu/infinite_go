@@ -1,7 +1,18 @@
 .profile_activity {
     display: flex; 
     flex-direction: column; 
-    margin: 1.5rem; 
+}
+
+.profile_activity-tabs {
+    margin-top: 2rem; 
+    margin-bottom: 1rem;  
+}
+
+.profile_activity-tab {
+    padding: 1rem; 
+    font-size: $comment-size; 
+    color: $gray; 
+    text-decoration: none; 
 }
 
 .profile_activity-boxes {

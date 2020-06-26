@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import Bookmarks from './bookmarks_index'; 
+import BookmarksIndex from './bookmarks_index'; 
 import { fetchBookmarks } from '../../../../actions/bookmarks_actions'; 
 
 const mapStateToProps = (state, ownProps) => ({
@@ -12,4 +12,4 @@ const mapDispatchToProps = dispatch => ({
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Bookmarks); 
+export default connect(mapStateToProps, mapDispatchToProps)(BookmarksIndex); 
