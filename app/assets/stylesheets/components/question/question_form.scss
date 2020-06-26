@@ -34,6 +34,12 @@
     outline: none; 
 }
 
+.question_form-title {
+    padding: 0.25rem; 
+    padding-left: 0.5rem; 
+    padding-right: 0.5rem; 
+}
+
 .question_form-title-text {
   font-size: $info-size; 
   font-weight: bold; 
@@ -143,7 +149,7 @@ pre {
     align-items: center; 
     background: $tag-red-lite; 
     color: $red; 
-    margin: 0.15rem; 
+    margin-right: 0.25rem; 
     padding-left: 0.35rem; 
     padding-top: 0.15rem; 
     padding-bottom: 0.15rem; 
@@ -179,5 +185,13 @@ pre {
 .question_form-tags {
     display: flex; 
     flex-direction: row; 
-    padding-bottom: 0.35rem; 
+    padding: 0.25rem; 
+    padding-left: 0.5rem; 
+    padding-right: 0.5rem; 
+}
+
+.question_form-tags-display {
+    display: flex; 
+    flex-direction: row; 
+    padding-bottom: 0.5rem; 
 }
