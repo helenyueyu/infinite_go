@@ -16,8 +16,6 @@ class BadgesIndex extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        console.log(prevProps.badges); 
-        console.log(this.props.badges); 
         if (Object.values(prevProps.badges).length !== Object.values(this.props.badges).length) {
             this.setState({
                 badges: Object.values(this.props.badges)
@@ -67,8 +65,6 @@ class BadgesIndex extends React.Component {
     }
 
     render() {
-        // const { badges } = this.props; 
-        // console.log('state', this.state)
         const badgeGroups = this.groupBadges(Object.values(this.state.badges)); 
         if (Object.keys(badgeGroups).length === 0) return null;  
         return (
@@ -111,7 +107,7 @@ class BadgesIndex extends React.Component {
 
                                                 <div className="badges_index-item-description">{description}</div>
                                                 <div className="badges_index-item-awarded">0 awarded
-                                        <button className="badges_index-item-delete" onClick={(e) => this.handleDelete(e, id)}>X</button>
+                                                {/* <button className="badges_index-item-delete" onClick={(e) => this.handleDelete(e, id)}>X</button> */}
                                                 </div>
                                             </div>
                                         )
@@ -167,7 +163,7 @@ class BadgesIndex extends React.Component {
                 </div>
                 
 
-                <form onSubmit={(e) => this.handleSubmit(e)}>
+                {/* <form onSubmit={(e) => this.handleSubmit(e)}>
                     <label>
                         Name 
                         <input value={this.state.name} onChange={(e) => this.handleChange(e, 'name')} />
@@ -189,8 +185,7 @@ class BadgesIndex extends React.Component {
                     </label>
                     <br />
                     <button type="submit">Submit</button>
-
-                </form>
+                </form> */}
             </div>
         )
     }
