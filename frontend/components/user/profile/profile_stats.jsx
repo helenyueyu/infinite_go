@@ -4,7 +4,6 @@ import moment from 'moment';
 import { Link } from 'react-router-dom'; 
 
 const ProfileStats = ({questionCount, answerCount, viewCount, numberOfPeopleReached, location, lastSeenAt, createdAt, id, matchUrl}) => {
-    console.log('location', location); 
     return (
         <div>
             <div className="profile_top-stats">
