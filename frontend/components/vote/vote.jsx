@@ -26,7 +26,6 @@ class Vote extends React.Component {
 
     render() {
         const { currentVote, count, type } = this.props; 
-        console.log('type and vote count', type, count); 
         return (
             <>
             {type === "comment" ? 

@@ -43,7 +43,7 @@ const routes = [
     createRoute("normal", '/questions/tagged/:tagName', QuestionsContainer, true, null, null), 
     createRoute("normal", '/questions/:questionId/:title', QuestionContainer, true), 
     createRoute("protected", '/questions/:questionId/:title/edit', EditQuestionContainer, true), 
-    createRoute("protected", '/questions/:questionId/answers/:answerId/edit', EditAnswerContainer), 
+    createRoute("protected", '/questions/:questionId/answers/:answerId/edit', EditAnswerContainer, true, null, null), 
     createRoute("normal", '/users', ProfileIndexContainer, true, Menu, null), 
     createRoute("normal", '/users/:userId', ProfileContainer, true, Menu, null), 
     createRoute("normal", '/users/:userId/activity', ProfileActivityContainer, true, Menu, null), 
