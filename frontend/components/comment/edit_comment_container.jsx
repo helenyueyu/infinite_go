@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import NewComment from './new_comment';
+import CommentForm from './comment_form';
 
 import { fetchQuestion } from '../../actions/questions_actions'; 
 import { updateComment } from '../../actions/comments_actions';
@@ -19,4 +19,4 @@ const mapDispatchToProps = dispatch => ({
     fetchQuestion: id => dispatch(fetchQuestion(id))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewComment)
+export default connect(mapStateToProps, mapDispatchToProps)(CommentForm)

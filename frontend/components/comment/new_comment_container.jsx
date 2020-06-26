@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import NewComment from './new_comment';
+import CommentForm from './comment_form';
 
 import { createComment } from '../../actions/comments_actions';
 
@@ -16,4 +16,4 @@ const mapDispatchToProps = dispatch => ({
     action: comment => dispatch(createComment(comment))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewComment)
+export default connect(mapStateToProps, mapDispatchToProps)(CommentForm)
