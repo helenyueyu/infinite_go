@@ -22,7 +22,6 @@ class Profile extends React.Component {
         }
     }
     componentDidMount() {
-        // don't want to execute this all the time, especially 
         this.props.fetchUser(this.props.match.params.userId)
             .then(() => this.setState({
                 posts: this.props.users[this.props.match.params.userId].posts 

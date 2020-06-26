@@ -40,8 +40,8 @@ const createRoute = (status, path, main, exact=true, leftSideBar=Menu, rightSide
 const routes = [
     createRoute("normal", '/', Splash, true, null, null), 
     createRoute("normal", '/questions', QuestionsContainer), 
-    createRoute("protected", '/questions/new', NewQuestionContainer), 
-    createRoute("normal", '/questions/tagged/:tagName', QuestionsContainer, true, null, null), 
+    createRoute("protected", '/questions/new', NewQuestionContainer, true), 
+    createRoute("normal", '/questions/tagged/:tagName', QuestionsContainer), 
     createRoute("normal", '/questions/:questionId/:title', QuestionContainer, true), 
     createRoute("protected", '/questions/:questionId/:title/edit', EditQuestionContainer, true), 
     createRoute("protected", '/questions/:questionId/answers/:answerId/edit', EditAnswerContainer, true, null, null), 

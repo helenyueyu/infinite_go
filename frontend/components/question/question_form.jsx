@@ -308,11 +308,11 @@ class QuestionForm extends React.Component {
                     value={this.state.tag}
                 />
 
-                <div className="question_form-tags-search">
+                {this.state.tag.length > 0 ? <div className="question_form-tags-search">
                     {this.state.searchedTags.map((tag, idx) => 
                         <div key={idx} className="tag-item" onClick={(e) => this.addTag(e, tag)}>{tag}</div>)
                     }
-                </div>
+                </div> : null}
             </div>
             <button className="question_form-submit" type="submit">
                 {type === 'new' ? 'Ask' : 'Update'} Your Question
