@@ -19,6 +19,7 @@ class ProfileActivity extends React.Component {
             <div className="profile_activity">
                 <ProfileButtons id={id}
                         activeIdx={1} />
+                        
                 <div className="profile_activity-boxes">
                     <div className="profile_activity-box_1">
                         <div className="activity_box_title">Reputation</div>

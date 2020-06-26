@@ -3,7 +3,7 @@ import NavBar from './navbar';
 
 import { logout } from '../../../actions/session_actions';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, ownProps) => ({
     currentUser: state.entities.currentUser 
 });
 
