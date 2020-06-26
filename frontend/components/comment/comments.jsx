@@ -55,14 +55,15 @@ class Comments extends React.Component {
                         onClick={this.revealCommentForm}>
                         add a comment  
                     </div>
-                </div>
-
-                <NewCommentContainer
+                    <NewCommentContainer
                     fetchQuestion={this.props.fetchQuestion}
                     commentable_id={question.id}
                     commentable_type="Question"
                     showCommentForm={this.state.showCommentForm}
                     />
+                </div>
+
+               
             </div>
         )
     }
