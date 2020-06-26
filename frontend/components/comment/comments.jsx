@@ -38,7 +38,6 @@ class Comments extends React.Component {
     }
 
     render() {
-        let { showCommentForm } = this.state; 
         let { comments, fetchComments, question } = this.props; 
         return (
             <div>
@@ -55,6 +54,7 @@ class Comments extends React.Component {
                         onClick={this.revealCommentForm}>
                         add a comment  
                     </div>
+
                     <NewCommentContainer
                     fetchQuestion={this.props.fetchQuestion}
                     commentable_id={question.id}

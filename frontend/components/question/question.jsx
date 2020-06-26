@@ -43,7 +43,7 @@ class Question extends React.Component {
         
         let { currentUser, question } = this.props; 
         let { id, title, body, user, createdAt, updatedAt, comments, tags, voteCount, viewCount, currentVote } = question;
-        if (!comments || !tags) return null; 
+        if (!tags) return null; 
 
         const currentContent = EditorState.createWithContent(
           convertFromRaw(JSON.parse(body))
@@ -115,6 +115,7 @@ class Question extends React.Component {
                       link={`/questions/${id}/${nameExtensionURL(title)}/edit`}
                     />
                   </div>
+
                   <ProfileSnippet
                     id={user.id}
                     username={user.username}
@@ -128,12 +129,6 @@ class Question extends React.Component {
                 <div className="comments"> 
                     <CommentsContainer 
                         question={question} />
-
-                    {/* <NewCommentContainer
-                    fetchQuestion={this.props.fetchQuestion}
-                    commentable_id={question.id}
-                    commentable_type="Question"
-                    /> */}
                 </div>
 
               </div>

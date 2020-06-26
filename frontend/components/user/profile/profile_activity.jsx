@@ -15,7 +15,6 @@ class ProfileActivity extends React.Component {
         } 
 
         let { id, medals } = user;  
-        console.log('user', user); 
         return (
             <div className="profile_activity">
                 <ProfileButtons id={id}

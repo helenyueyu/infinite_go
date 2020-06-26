@@ -5,7 +5,6 @@ import { fetchQuestion } from '../../actions/questions_actions';
 import { updateComment } from '../../actions/comments_actions';
 
 const mapStateToProps = (state, {commentable_id, commentable_type}) => {
-    // debugger; 
     return {
         type: 'edit', 
         user_id: state.session.id,
