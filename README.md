@@ -4,20 +4,19 @@
 
 This is a clone of Stack Overflow. Primarily, in this application users can ask questions and reply with answers. They can also search via question (or tag name), vote, and bookmark questions. The production version of this app is hosted on **Heroku**, and can be found with this url ([link to Infinite Go!](https://infinite-go.herokuapp.com/)). 
 
-# Technology Stack 
-1. Database: PostgreSQL
-2. Backend: Ruby-on-Rails 
-3. Frontend: React + Redux 
+## Technology Stack 
+1. Database: **PostgreSQL**
+2. Backend: **Ruby-on-Rails**
+3. Frontend: **React**, **Redux**
 
 ## Highlight Features 
 
-A handful of 
-A few highlights 
-
-
-
-
 ![alt text](https://github.com/helenyueyu/infinite_go/blob/master/app/assets/images/pic1.png?raw=true)
+
+
+### I. Implementing Rich Text Editing 
+
+Used
 
 
 # All Features 
