@@ -52,8 +52,9 @@
 .badges_index-item-name-container {
     display: flex; 
     flex-direction: row; 
-    justify-content: flex-start; 
-    flex: 1 1 0px; 
+    // justify-content: flex-start; 
+    flex: 0.3 0 0px; 
+    // margin-right: 2rem; 
 }
 .badges_index-item-name {
     color: $white; 
@@ -63,12 +64,13 @@
     padding-right: 0.5rem;  
     padding-top: 0.4rem; 
     padding-bottom: 0.4rem; 
-    font-size: $comment-size; 
+    font-size: $small-size; 
     display: flex; 
     align-items: center; 
+    white-space: nowrap; 
 }
 .badges_index-item-description {
-    flex: 3 1 0px; 
+    flex: 0.7 1 0px; 
     font-size: $comment-size; 
     line-height: $small-line-height;
 }
@@ -81,6 +83,7 @@
 }
 .badges_index-item-awarded {
     color: $focus-gray; 
+    padding-left: 0.75rem;  
 }
 .badges_index-bronze, .badges_index-silver, .badges_index-gold {
     display: flex; 
