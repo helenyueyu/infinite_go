@@ -16,13 +16,14 @@ class BadgesIndex extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (Object.values(prevProps.badges).length !== Object.values(this.props.badges).length) {
+        const prevBadgeLength = Object.values(prevProps.badges).length; 
+        const currBadgeLength = Object.values(this.props.badges).length; 
+        if (prevBadgeLength !== currBadgeLength) {
             this.setState({
                 badges: Object.values(this.props.badges)
             })
         }
     }
-
 
     handleDelete(e, id) {
         e.preventDefault(); 
@@ -60,10 +61,11 @@ class BadgesIndex extends React.Component {
                             Besides gaining reputation with your questions and answers, you receive badges for being especially helpful. Badges appear on your profile page, flair, and your posts.
                         </div>
                         <div>
-                            <button onClick={() => this.filterBadges('')}>All</button>
-                            <button onClick={() => this.filterBadges('gold')}>Gold</button>
-                            <button onClick={() => this.filterBadges('silver')}>Silver</button>
-                            <button onClick={() => this.filterBadges('bronze')}>Bronze</button>
+                            {['all', 'gold', 'silver', 'bronze'].map(medal => 
+                                <button onClick={() => this.filterBadges(medal === 'all' ? '' : medal)}>
+                                    {medal[0].toUpperCase() + medal.slice(1)}
+                                </button>
+                            )}
                         </div>
                         {Object.keys(badgeGroups).map((group, idx) => 
                             <div key={idx}>
@@ -85,10 +87,8 @@ class BadgesIndex extends React.Component {
                         )}
                         
                     </div>
-    
                 </div>
-                
-
+    
                 <BadgesForm createBadge={this.props.createBadge} />
             </div>
         )
