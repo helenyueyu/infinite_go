@@ -1,6 +1,6 @@
 import React from 'react'; 
 
-import BadgesInfo from './badges_info'; 
+import BadgesIndexItem from './badges_index_item'; 
 
 class BadgesIndex extends React.Component {
     constructor(props) {
@@ -10,11 +10,12 @@ class BadgesIndex extends React.Component {
             description: "",
             category: "",
             medal_type: "", 
-            badges: []  
+            badges: Object.values(this.props.badges) 
         }
+        this.handleDelete = this.handleDelete.bind(this); 
     }
     componentDidMount() {
-        this.props.fetchBadges()
+        this.props.fetchBadges(); 
     }
 
     componentDidUpdate(prevProps) {
@@ -68,7 +69,6 @@ class BadgesIndex extends React.Component {
 
     render() {
         const badgeGroups = this.groupBadges(Object.values(this.state.badges)); 
-        if (Object.keys(badgeGroups).length === 0) return null;  
         return (
             <div className="badges_index">
                 <h1 className="badges_index-title">Badges</h1>
@@ -91,41 +91,23 @@ class BadgesIndex extends React.Component {
                                 <div>
                                     {Object.values(badgeGroups[group]).map((badge, idx) => {
                                         const { name, description, medalType, id } = badge;
-                                        return (
-                                            <div className="badges_index-item" key={idx}>
-                                                <div className="badges_index-item-name-container">
-                                                    <div className="badges_index-item-name">
-                                                        <div className={medalType === "gold"
-                                                            ? "badges_index-gold-coin" :
-                                                            medalType === "silver"
-                                                                ? "badges_index-silver-coin" : "badges_index-bronze-coin"}>
-                                                            &#x25cf;
-                                            </div>
-                                                        <div className="badges_index-item-name-name">
-                                                            {name}
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div className="badges_index-item-description">{description}</div>
-                                                <div className="badges_index-item-awarded">0 awarded
-                                                {/* <button className="badges_index-item-delete" onClick={(e) => this.handleDelete(e, id)}>X</button> */}
-                                                </div>
-                                            </div>
-                                        )
+                                        return <BadgesIndexItem key={idx}
+                                                        name={name}
+                                                        description={description}
+                                                        medalType={medalType}
+                                                        id={id} 
+                                                        handleDelete={this.handleDelete} />
                                     })}
                                 </div>
                             </div>
                         )}
                         
                     </div>
-                    
-                    <BadgesInfo />
-
+    
                 </div>
                 
 
-                {/* <form onSubmit={(e) => this.handleSubmit(e)}>
+                <form onSubmit={(e) => this.handleSubmit(e)}>
                     <label>
                         Name 
                         <input value={this.state.name} onChange={(e) => this.handleChange(e, 'name')} />
@@ -147,7 +129,7 @@ class BadgesIndex extends React.Component {
                     </label>
                     <br />
                     <button type="submit">Submit</button>
-                </form> */}
+                </form>
             </div>
         )
     }

@@ -56,7 +56,7 @@ const routes = [
     createRoute("normal", '/users/:userId/activity/summary', SummaryIndexContainer, true, Menu, null), 
     createRoute("normal", '/tags', TagsIndexContainer, true, Menu, null), 
     createRoute("normal", '/info', InfoIndex, true, Menu, InfoRightMenu), 
-    createRoute("normal", '/info/badges', BadgesIndexContainer, true, Menu, null), 
+    createRoute("normal", '/info/badges', BadgesIndexContainer, true, Menu, InfoRightMenu), 
     createRoute("auth", '/login', LoginFormContainer, true, null, null), 
     createRoute("auth", '/signup', SignUpFormContainer, true, null, null), 
     createRoute("auth", '/login/demo', DemoContainer, true, null, null), 
