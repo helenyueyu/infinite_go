@@ -2,7 +2,7 @@
 
 # Overview 
 
-This is a clone of Stack Overflow. Primarily, in this application users can ask questions and reply with answers. They can also search via question (or tag name), vote, and bookmark questions. The production version of this app is hosted on **Heroku**, and can be found with this url ([link to Infinite Go!](https://infinite-go.herokuapp.com/)). 
+This is a clone of Stack Overflow. Primarily, in this application users can ask questions and reply with answers. They can also search via question (or tag name), vote, and bookmark questions. The production version of this app is hosted on **Heroku**, and can be found with this url - Infinite Go!(https://infinite-go.herokuapp.com/)). 
 
 ## Technology Stack 
 1. Database: **PostgreSQL**
@@ -16,8 +16,27 @@ This is a clone of Stack Overflow. Primarily, in this application users can ask 
 
 ### I. Implementing Rich Text Editing 
 
-Used
+Figuring out how to integrate the DraftJS editor 
 
+## Other Features
+
+### I. Integrated SCSS stylesheets into application. 
+
+To keep the theme, consistent I created a master 
+
+```scss
+$black: #1F2020;
+$white: #F9F6EF;
+$red: #BA0C2E;
+
+$gray: rgb(80, 79, 79); 
+
+
+$focus-red: rgb(250, 40, 82); 
+$light-red: rgb(252, 161, 179); 
+$tag-red: rgb(250, 189, 202); 
+$tag-red-lite: rgb(252, 210, 219); 
+```
 
 # All Features 
 
