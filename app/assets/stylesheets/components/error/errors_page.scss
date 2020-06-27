@@ -1,0 +1,18 @@
+.errors_page {
+    display: flex; 
+    align-items: center; 
+}
+
+.errors_page-bug {
+    color: $red; 
+    padding: 4rem; 
+}
+
+.errors_page-link {
+    text-decoration: none; 
+    color: $red; 
+}
+
+.fa-bug {
+    font-size: $massive-size; 
+}

@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 import AnswerForm from './answer_form';
-// import EditAnswer from './edit_answer'; 
 
 import { fetchQuestion } from '../../actions/questions_actions'; 
 import { fetchAnswer, fetchAnswers, updateAnswer } from '../../actions/answers_actions';
 
 const mapStateToProps = (state, ownProps) => {
+    // debugger 
     return {
     userId: state.session.id,
     question: state.entities.questions[ownProps.match.params.questionId], 

@@ -49,7 +49,7 @@ const routes = [
     createRoute("normal", '/questions/tagged/:tagName', QuestionsContainer), 
     createRoute("normal", '/questions/:questionId/:title', QuestionContainer, true), 
     createRoute("protected", '/questions/:questionId/:title/edit', EditQuestionContainer, true), 
-    createRoute("protected", '/questions/:questionId/answers/:answerId/edit', EditAnswerContainer, true, null, null), 
+    createRoute("protected", '/questions/:questionId/answers/:answerId/edit', EditAnswerContainer, true), 
     createRoute("normal", '/users', ProfileIndexContainer, true, Menu, null), 
     createRoute("normal", '/users/:userId', ProfileContainer, true, Menu, null), 
     createRoute("normal", '/users/:userId/activity/bookmarks', BookmarksIndexContainer, true, Menu, null), 
@@ -60,9 +60,7 @@ const routes = [
     createRoute("auth", '/login', LoginFormContainer, true, null, null), 
     createRoute("auth", '/signup', SignUpFormContainer, true, null, null), 
     createRoute("auth", '/login/demo', DemoContainer, true, null, null), 
-    createRoute("normal", '/jobs', JobsContainer, true, Menu, null), 
-    createRoute("normal", "*", ErrorsPage, true, null, null)
-    // createRoute("normal", '/jobs', JobsContainer, true, Menu, null)
+    createRoute("normal", '/jobs', JobsContainer, true, Menu, null) 
 ] 
 
 const App = () => {
@@ -72,36 +70,33 @@ const App = () => {
 
         <div className="app">
           <Switch>
-            {routes.map((route, index) => (
-            route.status === 'normal' ? 
-            <Route key={index} path={route.path} exact={route.exact} component={route.leftSideBar} /> : route.status === 'auth' ? 
-            <AuthRoute key={index} path={route.path} exact={route.exact} component={route.leftSideBar} /> : 
-            <ProtectedRoute key={index} path={route.path} exact={route.exact} component={route.leftSideBar} />
-            ))}
+                {routes.map((route, index) => (
+                route.status === 'normal' ? 
+                <Route key={index} path={route.path} exact={route.exact} component={route.leftSideBar} /> : route.status === 'auth' ? 
+                <AuthRoute key={index} path={route.path} exact={route.exact} component={route.leftSideBar} /> : 
+                <ProtectedRoute key={index} path={route.path} exact={route.exact} component={route.leftSideBar} />
+                ))}
           </Switch>
 
           <Switch>
-                <>
-                    <div className="app-middle">
-                        {routes.map((route, index) => {
-                            return (
-                        route.status === 'normal' ? 
-                        <Route key={index} path={route.path} exact={route.exact} component={route.main} /> : route.status === 'auth' ? 
-                        <AuthRoute key={index} path={route.path} exact={route.exact} component={route.main} /> : 
-                        <ProtectedRoute key={index} path={route.path} exact={route.exact} component={route.main} />
-                            )
-                        })}
-                    </div>
-                </>
+                {routes.map((route, index) => {
+                    return (
+                route.status === 'normal' ? 
+                <Route key={index} path={route.path} exact={route.exact} component={route.main} /> : route.status === 'auth' ? 
+                <AuthRoute key={index} path={route.path} exact={route.exact} component={route.main} /> : 
+                <ProtectedRoute key={index} path={route.path} exact={route.exact} component={route.main} />
+                    )
+                })}
+                <Route component={ErrorsPage} />
           </Switch>
          
           <Switch>
-            {routes.map((route, index) => (
-            route.status === 'normal' ? 
-            <Route key={index} path={route.path} exact={route.exact} component={route.rightSideBar} /> : route.status === 'auth' ? 
-            <AuthRoute key={index} path={route.path} exact={route.exact} component={route.rightSideBar} /> : 
-            <ProtectedRoute key={index} path={route.path} exact={route.exact} component={route.rightsideBar} />
-            ))} 
+                {routes.map((route, index) => (
+                route.status === 'normal' ? 
+                <Route key={index} path={route.path} exact={route.exact} component={route.rightSideBar} /> : route.status === 'auth' ? 
+                <AuthRoute key={index} path={route.path} exact={route.exact} component={route.rightSideBar} /> : 
+                <ProtectedRoute key={index} path={route.path} exact={route.exact} component={route.rightsideBar} />
+                ))} 
           </Switch>
         </div>
 

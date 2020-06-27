@@ -95,6 +95,7 @@ class Profile extends React.Component {
         let shownPosts = sortByUpvotes(posts).slice(0, 10); 
    
         return (
+
             <div className="profile">
                 <ProfileButtons id={id}
                         activeIdx={0} />
@@ -164,6 +165,7 @@ class Profile extends React.Component {
                 </div>
                 
             </div>
+
         )
     }
 }

@@ -19,11 +19,12 @@ class AnswerForm extends React.Component {
     constructor(props) {
         super(props);
         const decorator = new PrismDraftDecorator();
+        // debugger; 
 
         this.state = {
             id: this.props.type === "new" ? "" : this.props.match.params.answerId, 
             user_id: this.props.userId,
-            question_id: this.props.question.id, 
+            question_id: this.props.type === "edit" ? "" : this.props.question.id, 
             editorState: EditorState.createEmpty(decorator)
         }; 
 
