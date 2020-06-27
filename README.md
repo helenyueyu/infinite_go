@@ -3,4 +3,4 @@
 This is a clone of Stack Overflow. 
 
 
-![Screenshot](./app/assets/images "pic1")
+![Screenshot](./app/assets/images "pic1.png")
