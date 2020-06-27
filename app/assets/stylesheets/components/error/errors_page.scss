@@ -1,16 +1,32 @@
 .errors_page {
     display: flex; 
     align-items: center; 
+    justify-content: flex-start; 
+    flex: 1; 
+}
+
+.errors_page-description {
+    font-weight: normal; 
 }
 
 .errors_page-bug {
     color: $red; 
-    padding: 4rem; 
+    padding-left: 9rem; 
+    padding-right: 3rem; 
+}
+
+.errors_page-redirect {
+    padding-top: 0.15rem; 
+    padding-bottom: 0.15rem; 
 }
 
 .errors_page-link {
     text-decoration: none; 
     color: $red; 
+}
+
+.errors_page-link:hover {
+    color: $focus-red; 
 }
 
 .fa-bug {

@@ -76,6 +76,8 @@ const App = () => {
                 <AuthRoute key={index} path={route.path} exact={route.exact} component={route.leftSideBar} /> : 
                 <ProtectedRoute key={index} path={route.path} exact={route.exact} component={route.leftSideBar} />
                 ))}
+                <Route component={Menu} />
+
           </Switch>
 
           <Switch>
