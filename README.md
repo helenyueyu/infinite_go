@@ -111,7 +111,25 @@ class Vote extends React.Component {
 }
 ```
 
-### III. Pagination (coupled with Search) 
+The total number of upvotes displayed for a particular question is calculated with the following instance method: 
+
+```rb
+   def vote_count  
+        self.votes.where('value = 1').count - self.votes.where('value = -1').count
+   end
+```
+
+Determining whether the current user has already upvoted or downvoted is given by the following logic: 
+
+```rb
+def current_user_vote(current_user)
+    vote = self.votes.where('user_id = ?', current_user.id).first
+    return 0 if vote.nil? 
+    vote.value 
+end
+```
+
+### III. Pagination + Search 
 
 <img src="https://github.com/helenyueyu/infinite_go/blob/master/app/assets/images/pic5.png?raw=true)" />
 
@@ -123,45 +141,153 @@ Pagination is coupled tightly with search, as the number of results depends on t
 2. Page number you are currently on 
 3. How many results are on a page 
 
-These 
+First thing I did was to create a custom search route. 
+
+```rb
+    get 'questions(search/:search)', to: 'questions#search', search: /.*/
+```
+
+ 
+This route would be taken care of my a `search` method I put on my questions controller:
+
+```rb
+    def search 
+        params = ensure_search_params
+        res = Question.search(*ensure_search_params)
+        @questions = res[0]
+        @question_count = res[1] 
+    end
+```
+
+This would invoke a private method in the question model: 
+
+```rb
+    def self.search(page, page_limit, query)
+        if query.length > 0 
+            if query.first == '['
+                query = query[1..query.length-2]
+                res = Question.joins(:tags).where(tags: {name: query})
+            else
+                res = where('title LIKE ?', "%#{query}%")
+            end
+
+            if res.length > 0 
+                return [res.offset((page-1)*page_limit).limit(page_limit).order(created_at: :desc), res.size]
+            else
+                return [] 
+            end
+        end
+        [self.all.offset((page-1)*page_limit).limit(page_limit).order(created_at: :desc), self.all.size] 
+    end
+```
+
+Notice that if the query comes in, in the following manner: `[some_query]`, that the function processes the input as the user search **via tag**, and joins the question and tags table together, retrieving only questions in which have at least one tag whose name matches the query. Otherwise, if the query comes in bracket-less `some_query`, the function processes the input like a normal search, and invokes the Active Record method `where('title LIKE ?', "%#{query}%")` to find all questions in the table that match what the user input into the search field. 
+
+Whatever the result is, the output is truncated by the `page` and `page_limit` parameters, using the Active Record `.offset` and `.limit` methods. This method formally returns a tuple `[res.offset((page-1)*page_limit).limit(page_limit).order(created_at: :desc), res.size]`, a.k.a. the list of results for that specific page number and number of questions per page combo and the total number of queries returned. In the frontend, we have the following AJAX request: 
+
+```js
+export const getFilteredQuestions = (page, pageLimit, query) => {
+    return $.ajax({
+        method: 'GET', 
+        url: `/api/questions/?page=${page}&page_limit=${pageLimit}&query=${query}`
+    })
+}
+```
+One of the trickiest things that I've actually had to implement in the project is the **pagination buttons themselves**. Since, potentially, a website could have hundreds of pagination buttons, depending on quantity of the total number of questions. If I had a thousand questions on my site, and each page hosted 10 questions, that could be 100 pagination buttons! I don't want to list all 100 buttons on my site. So a good idea would be to do something like this. If the user is in the beginning of the pagination list, we want to show something like: 
+
+```
+[1], [2], [3], [4], [5], ..., [100]
+```
+
+If the user is in one of those middle pages, we would like the pagination buttons to look something like this: 
+
+```
+[1], ..., [77], [78], [79], [80], [81], ..., [100]
+```
+
+And if the user is at one of the last pages, we would like the pagination buttons to look like this: 
+
+```
+[1], ..., [96], [97], [98], [99], [100]
+```
+
+To achieve this dynamic component, I ended implementing a function that spit out an array of numbers (where each number represents a pagination button) along with (potentially up to) two break points, which rrepresent when I need to put three elipses `...` in the pagination buttons (`breakPoint2` could potentially be null, in the case where there is only one break point. 
+
+```js
+export const generatePageNumbers = (numQuestions, perPage, pageNumber) =>  ... return [arr, breakPoint1, breakPoint2] 
+```
 
 ## Minor Features 
 
 ### I. Display Selectors 
-On the questions index page, the entire length 
+On the questions index page, the entire length of the question is not displayed, rather only a snippet of the first `X words` are (the output is also in plain-text format, not with rich-text). One thing to note is that the question snippets always end on a word, they never finish in the middle of a word. 
 
-**Fun Fact**: While I was developing this 
+I wrote a function `displayShortenedPost`, which takes in the original, stringified post and a character count maximum. If the original post doesn't have any spaces at all, or the original post's length is shorter than the limit, than we return the original post. Otherwise: 
+
+1. If the character at the limit is a space (`" "`), then we truncate at that limit. 
+2. Otherwise, we iterate backwards to find the closest character that is a space, and truncate at that index. 
+
+```js
+    export const displayShortenedPost = (post, limit) => {
+        if (post.length <= limit || !post.includes(" ")) return post; 
+        if (post[limit] === ' ') {
+            return post.slice(0, limit) + ' ...'; 
+        } else {
+            let i = limit; 
+            while (post[i] !== ' ') {
+                i--; 
+            }
+            return post.slice(0, i) + ' ...'; 
+        }
+    }
+```
+
+**Fun Fact**: While I was developing this application, I forgot to think of the edge case where the content of the post **wouldn't have any white spaces at all**, and so I did not include the condition `!post.includes(" ")`. As a result, when I one time I manually entered a question with a body of just a single word, and when I went to refresh the questions index page, what I saw was just a plain white screen, and what appeared to me the browser hanging for a long time. I checked the browser for error messages. Nothing. I checked my rails console and my webpack. Nada. Growing panicked, I ended up wiping my database and trying again. Finally, I realized this might have been due to a while loop running amok. So always make sure your while loops have proper conditions to exit out of!
 
 ### II. Sorting Tags 
+
+I implemented sorting tags via three different parameters: 
+
+    1. Popularity (based on the number of questions with this particular tag) 
+    2. Name (alphabetically in ascending order) 
+    3. By creation date (with newest first)
+    
+Out of the 3 ways to sort, sorting by popularity was the trickiest. I have a `taggables` join table that (currently) connects the tags table to the questions one (jobs, another model that has associated tags, hasn't been implemented yet). Here, we count the number of tags with a specific `tag_id`, getting this aggregate statistic by grouping by `taag.id`, and then getting the correct number of tags with our `.offset` and `.limit` methods. 
+
+```rb
+self.select('tags.*, COUNT(taggables.tag_id) tag_freq')
+            .joins(:taggables)
+            .group('tags.id')
+            .order('tag_freq DESC')
+            .offset((page-1)*page_limit)
+            .limit(page_limit)
+            .order(created_at: :desc)
+```
+
+More straightforwardly, we can grab tags alphabetically: 
+
+```rb
+self.all.offset((page-1)*page_limit).limit(page_limit).order(name: :asc)
+```
+
+Or by creation date: 
+
+```rb
+self.all.offset((page-1)*page_limit).limit(page_limit).order(created_at: :desc)
+```
 
 <img src="https://github.com/helenyueyu/infinite_go/blob/master/app/assets/images/pic3.png?raw=true)" />
 
 ### III. Calculating "People Reached" 
 
+The way I calculated this is different than the way Stack Overflow does it, but essentially, my statistic is calculated using the following formula: 
+
 ```rb
-    def number_of_people_reached
-        question_ids = self.questions.map{|question| question.id}.to_set 
-        question_view_count = self.questions.map{|question| question.view_count}.reduce(0){|a,b| a + b}
-
-        answer_view_count = 0
-        self.answers.each do |answer|
-            if !question_ids.include?(answer.question_id)
-                question_ids.add(answer.question_id)
-                answer_view_count += 1
-            end
-        end
-
-        comment_view_count = 0 
-        self.comments.each do |comment|
-            if comment.commentable_type == 'Question' && !question_ids.include?(comment.commentable_id)
-                question_ids.add(comment.commentable_id)
-                comment_view_count += 1 
-            end
-        end
-
-        question_view_count + answer_view_count + comment_view_count
-    end
+number_of_people_reached = questions_viewed + answers_viewed + comments_viewed
 ```
+
+In other words, a player's "person reached" statistic is calculated by the number of times a person has viewed their question + the number of times someone has viewed a question with their answer on it + the number of times a person has viewed a question with their comment on it (code deals with potential overlap in this questions - each unique question + view combination is only counted once). 
+
 
 ### IV. Calculating Number of Times a Tag is Used in One Day and One Week 
 
@@ -174,9 +300,26 @@ On the questions index page, the entire length
       self.tagged_questions.where('questions.created_at BETWEEN ? AND ?', 1.day.ago.beginning_of_day, Time.now).size 
   end
 ```
+
 ### V. Calculating Number of Times a Question/User Profile is Viewed
 
-### 
+I used the **Impressionist Library** to help me calculate page views. 
+
+Firstly, I migrated an **impressions** table. Then I added the following to my `question.rb` model: 
+
+```rb
+    is_impressionable 
+
+    def impression_count 
+        impressions.size 
+    end
+```
+
+And in my `questions_controller.rb`, I add: 
+
+```rb
+    impressionist actions: [:show]
+```
 
 ## Overall Comments
 
