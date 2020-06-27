@@ -35,6 +35,7 @@ import JobsContainer from './job/jobs_container';
 
 import InfoIndex from './info/info_index'; 
 import InfoRightMenu from './info/info_right_menu'; 
+import Author from './info/author'; 
 
 import ErrorsPage from './error/errors_page'; 
 
@@ -57,6 +58,7 @@ const routes = [
     createRoute("normal", '/tags', TagsIndexContainer, true, Menu, null), 
     createRoute("normal", '/info', InfoIndex, true, Menu, InfoRightMenu), 
     createRoute("normal", '/info/badges', BadgesIndexContainer, true, Menu, InfoRightMenu), 
+    createRoute("normal", '/info/about', Author, true, Menu, InfoRightMenu), 
     createRoute("auth", '/login', LoginFormContainer, true, null, null), 
     createRoute("auth", '/signup', SignUpFormContainer, true, null, null), 
     createRoute("auth", '/login/demo', DemoContainer, true, null, null), 

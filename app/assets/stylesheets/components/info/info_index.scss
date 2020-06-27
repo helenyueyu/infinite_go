@@ -1,0 +1,36 @@
+.info_index {
+    display: flex; 
+    flex-direction: column; 
+    align-items: stretch; 
+    justify-content: stretch; 
+    margin: 0.5rem 2rem 0.5rem 2rem;  
+    flex: 1; 
+}
+
+.info_index-title {
+    font-size: $big-title-size; 
+    padding-top: 2rem; 
+    padding-bottom: 2rem; 
+}
+
+.info_index-div {
+    margin-bottom: 1rem; 
+}
+.info_index-list {
+    margin-top: 1rem; 
+    margin-bottom: 1rem; 
+}
+
+.info_index-complete {
+    display: flex; 
+    flex-direction: column; 
+    color: $success;
+    padding-bottom: 1rem; 
+}
+
+.info_index-incomplete {
+    display: flex; 
+    flex-direction: column; 
+    color: $gray;  
+    padding-bottom: 1rem; 
+}

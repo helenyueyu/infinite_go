@@ -8,9 +8,7 @@ class SummaryIndex extends React.Component {
             <div className="profile_activity_container">
                 <ProfileActivityContainer />
 
-                <div className="summary_index">
-                    This is the summary index 
-                </div>
+                Summary Index 
             </div>
         )
     }

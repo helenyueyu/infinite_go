@@ -14,6 +14,9 @@ const InfoRightMenu = (props) => {
             <div>
                 <Link to="/info/badges">Badges</Link>
             </div>
+            <div>
+                <Link to="/info/about">About Me</Link>
+            </div>
             {path === "/info/badges" ? <BadgesInfo /> : null}
         </div>
     )
