@@ -11,12 +11,19 @@ This is a clone of Stack Overflow. Primarily, in this application users can ask 
 
 ## Highlight Features 
 
-![alt text](https://github.com/helenyueyu/infinite_go/blob/master/app/assets/images/pic1.png?raw=true)
+![Main Screenshot](https://github.com/helenyueyu/infinite_go/blob/master/app/assets/images/pic1.png?raw=true)
 
 
 ### I. Implementing Rich Text Editing 
 
-Figuring out how to integrate the DraftJS editor 
+Figuring out how to integrate the DraftJS editor. 
+
+<p align="center">
+  <img width="500px"
+   src="https://github.com/helenyueyu/infinite_go/blob/master/app/assets/images/pic6.png?raw=true)" />
+</p>
+
+
 
 ## Other Features
 
