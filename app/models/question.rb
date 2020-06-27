@@ -77,7 +77,6 @@ class Question < ApplicationRecord
     end
 
     def self.search(page, page_limit, query)
-        # debugger 
         if query.length > 0 
             if query.first == '['
                 query = query[1..query.length-2]
