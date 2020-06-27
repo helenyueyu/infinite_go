@@ -12,7 +12,7 @@ const InfoRightMenu = (props) => {
                 <Link to="/info">Main</Link>
             </div>
             <div>
-                <Link to="/info/badges">badges</Link>
+                <Link to="/info/badges">Badges</Link>
             </div>
             {path === "/info/badges" ? <BadgesInfo /> : null}
         </div>

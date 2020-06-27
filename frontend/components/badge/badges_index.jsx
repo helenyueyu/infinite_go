@@ -60,9 +60,11 @@ class BadgesIndex extends React.Component {
                         <div className="badges_index-description">
                             Besides gaining reputation with your questions and answers, you receive badges for being especially helpful. Badges appear on your profile page, flair, and your posts.
                         </div>
-                        <div>
-                            {['all', 'gold', 'silver', 'bronze'].map(medal => 
-                                <button onClick={() => this.filterBadges(medal === 'all' ? '' : medal)}>
+                        <div className="badges_medals">
+                            {['all', 'gold', 'silver', 'bronze'].map((medal, idx) => 
+                                <button key={idx} 
+                                    className={idx === 0 ? "badges_medal start" : idx === 3 ? "badges_medal end" : "badges_medal"}
+                                    onClick={() => this.filterBadges(medal === 'all' ? '' : medal)}>
                                     {medal[0].toUpperCase() + medal.slice(1)}
                                 </button>
                             )}

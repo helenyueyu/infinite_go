@@ -20,7 +20,7 @@ const BadgesIndexItem = ({ name, description, medalType, id, handleDelete }) => 
 
         <div className="badges_index-item-description">{description}</div>
         <div className="badges_index-item-awarded">0 awarded
-            <button className="badges_index-item-delete" onClick={(e) => handleDelete(e, id)}>X</button>
+            {/* <button className="badges_index-item-delete" onClick={(e) => handleDelete(e, id)}>X</button> */}
         </div>
     </div>
 )

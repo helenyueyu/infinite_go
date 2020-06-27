@@ -17,7 +17,7 @@ class BadgesForm extends React.Component {
             [field]: e.target.value 
         })
     }
-    
+
     handleSubmit(e) {
         e.preventDefault(); 
         this.props.createBadge(this.state)
@@ -31,29 +31,30 @@ class BadgesForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={(e) => this.handleSubmit(e)}>
-                <label>
-                    Name 
-                    <input value={this.state.name} onChange={(e) => this.handleChange(e, 'name')} />
-                </label>
-                <br />
-                <label>
-                    Description 
-                    <input value={this.state.description} onChange={(e) => this.handleChange(e, 'description')} />
-                </label>
-                <br />
-                <label>
-                    Medal Type 
-                    <input value={this.state.medal_type} onChange={(e) => this.handleChange(e, 'medal_type')} />
-                </label>
-                <br />
-                <label>
-                    Category
-                    <input value={this.state.category} onChange={(e) => this.handleChange(e, 'category')} />
-                </label>
-                <br />
-                <button type="submit">Submit</button>
-            </form>
+            <></>
+            // <form onSubmit={(e) => this.handleSubmit(e)}>
+            //     <label>
+            //         Name 
+            //         <input value={this.state.name} onChange={(e) => this.handleChange(e, 'name')} />
+            //     </label>
+            //     <br />
+            //     <label>
+            //         Description 
+            //         <input value={this.state.description} onChange={(e) => this.handleChange(e, 'description')} />
+            //     </label>
+            //     <br />
+            //     <label>
+            //         Medal Type 
+            //         <input value={this.state.medal_type} onChange={(e) => this.handleChange(e, 'medal_type')} />
+            //     </label>
+            //     <br />
+            //     <label>
+            //         Category
+            //         <input value={this.state.category} onChange={(e) => this.handleChange(e, 'category')} />
+            //     </label>
+            //     <br />
+            //     <button type="submit">Submit</button>
+            // </form>
         )
     }
 }; 
