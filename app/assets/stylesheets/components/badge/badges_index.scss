@@ -42,6 +42,9 @@
     border: 1px solid $gray; 
     color: $gray; 
 }
+.badges_medal.active {
+    background: $light-gray; 
+}
 .badges_medal.start {
     border-top-left-radius: 5px; 
     border-bottom-left-radius: 5px; 

@@ -3,11 +3,14 @@ import React from 'react';
 import BadgesIndexItem from './badges_index_item'; 
 import BadgesForm from './/badges_form'; 
 
+import { computeBadgeClassName } from '../../selectors/css_selectors'; 
+
 class BadgesIndex extends React.Component {
     constructor(props) {
         super(props); 
         this.state = {
-            badges: Object.values(this.props.badges) 
+            badges: Object.values(this.props.badges), 
+            activeIdx: 0 
         }
         this.handleDelete = this.handleDelete.bind(this); 
     }
@@ -45,13 +48,16 @@ class BadgesIndex extends React.Component {
     }
 
     filterBadges(type) {
+        const badges = Object.values(this.props.badges); 
         this.setState({
-            badges: type === "" ? Object.values(this.props.badges) : Object.values(this.props.badges).filter(badge => badge.medalType === type)
+            badges: type === "" ? badges : badges.filter(badge => badge.medalType === type), 
+            activeIdx: type === '' ? 0 : type === 'gold' ? 1 : type === 'silver' ? 2 : 3 
         })
     }
 
     render() {
         const badgeGroups = this.groupBadges(Object.values(this.state.badges)); 
+        const { activeIdx } = this.state; 
         return (
             <div className="badges_index">
                 <h1 className="badges_index-title">Badges</h1>
@@ -63,7 +69,7 @@ class BadgesIndex extends React.Component {
                         <div className="badges_medals">
                             {['all', 'gold', 'silver', 'bronze'].map((medal, idx) => 
                                 <button key={idx} 
-                                    className={idx === 0 ? "badges_medal start" : idx === 3 ? "badges_medal end" : "badges_medal"}
+                                    className={computeBadgeClassName(idx, activeIdx)}
                                     onClick={() => this.filterBadges(medal === 'all' ? '' : medal)}>
                                     {medal[0].toUpperCase() + medal.slice(1)}
                                 </button>
