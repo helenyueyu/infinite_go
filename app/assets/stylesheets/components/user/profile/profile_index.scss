@@ -12,7 +12,8 @@
 }
 .profile_index-item {
     display: flex; 
-    flex: 1 1 0px; 
+    flex: 0 0 21%; 
+    max-width: 21%; 
     flex-direction: row; 
     align-items: center; 
     margin: 0.5rem; 

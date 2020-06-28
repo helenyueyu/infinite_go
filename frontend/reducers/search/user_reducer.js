@@ -1,6 +1,6 @@
 import { CHANGE_USER_PAGE_NUMBER, CHANGE_USER_FILTER } from '../../actions/user_search_actions';
 
-const userReducer = (state = {pageLimit: 20, pageNumber: 1, filter: 'reputation'}, action) => {
+const userReducer = (state = {pageLimit: 36, pageNumber: 1, filter: 'reputation'}, action) => {
     Object.freeze(state); 
 
     let newState = Object.assign({}, state);
