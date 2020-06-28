@@ -1,8 +1,10 @@
 import React from 'react'; 
 
-const ProfileImage = ({reputation, medals}) => (
+const ProfileImage = ({reputation, medals, profilePhotoUrl}) => (
     <div className="profile_top-image-container">
-        <img className="profile_top-image" src="/assets/bug_mojo.png" />
+        {/* <img className="profile_top-image" src="/assets/bug_mojo.png" /> */}
+        <img className="profile_top-image" src={profilePhotoUrl} />
+
         <div className="profile-reputation">
             <div className="profile-reputation-number">{reputation}</div>
             <div className="profile-reputation-text">reputation</div>

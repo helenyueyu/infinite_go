@@ -19,6 +19,7 @@ json.extract! user, :id,
                     :created_at, 
                     :updated_at
 
+json.profilePhotoUrl url_for(user.profile_photo)
 
 json.set! 'posts' do 
     json.array! user.questions.each do |question|

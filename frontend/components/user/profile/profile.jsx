@@ -77,6 +77,7 @@ class Profile extends React.Component {
             return null; 
         } 
         let { createdAt, 
+                profilePhotoUrl, 
                 username, 
                 description,
                 location, 
@@ -101,7 +102,9 @@ class Profile extends React.Component {
                         activeIdx={0} />
 
                 <div className="profile_top">
-                    <ProfileImage reputation={reputation} medals={medals}/>
+                    <ProfileImage profilePhotoUrl={profilePhotoUrl}
+                        reputation={reputation} 
+                        medals={medals}/>
                     
                     <div className="profile_top-snippet">
                         <div className="profile_top-snippet-username">{username}</div>

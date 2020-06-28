@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+    has_one_attached :profile_photo 
+
     is_impressionable 
     
     attr_reader :password 
