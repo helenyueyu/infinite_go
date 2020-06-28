@@ -28,8 +28,16 @@ import EditQuestionContainer from './question/edit_question_container';
 
 import EditAnswerContainer from './answer/edit_answer_container';
 
-import BookmarksIndexContainer from './user/profile/tabs/bookmarks_index_container'; 
-import SummaryIndexContainer from './user/profile/tabs/summary_index_container'; 
+import TabsSummaryIndexContainer from './user/profile/tabs/tabs_summary_index_container'; 
+import TabsAnswersIndexContainer from './user/profile/tabs/tabs_answers_index_container'; 
+import TabsQuestionsIndexContainer from './user/profile/tabs/tabs_questions_index_container'; 
+import TabsTagsIndexContainer from './user/profile/tabs/tabs_tags_index_container'; 
+import TabsBadgesIndexContainer from './user/profile/tabs/tabs_badges_index_container'; 
+import TabsBookmarksIndexContainer from './user/profile/tabs/tabs_bookmarks_index_container'; 
+import TabsBountiesIndexContainer from './user/profile/tabs/tabs_bounties_index_container'; 
+import TabsReputationIndexContainer from './user/profile/tabs/tabs_reptutation_index_container'; 
+
+
 
 import JobsContainer from './job/jobs_container'; 
 
@@ -53,8 +61,6 @@ const routes = [
     createRoute("protected", '/questions/:questionId/answers/:answerId/edit', EditAnswerContainer, true), 
     createRoute("normal", '/users', ProfileIndexContainer, true, Menu, null), 
     createRoute("normal", '/users/:userId', ProfileContainer, true, Menu, null), 
-    createRoute("normal", '/users/:userId/activity/bookmarks', BookmarksIndexContainer, true, Menu, null), 
-    createRoute("normal", '/users/:userId/activity/summary', SummaryIndexContainer, true, Menu, null), 
     createRoute("normal", '/tags', TagsIndexContainer, true, Menu, null), 
     createRoute("normal", '/info', InfoIndex, true, Menu, InfoRightMenu), 
     createRoute("normal", '/info/badges', BadgesIndexContainer, true, Menu, InfoRightMenu), 
@@ -62,7 +68,16 @@ const routes = [
     createRoute("auth", '/login', LoginFormContainer, true, null, null), 
     createRoute("auth", '/signup', SignUpFormContainer, true, null, null), 
     createRoute("auth", '/login/demo', DemoContainer, true, null, null), 
-    createRoute("normal", '/jobs', JobsContainer, true, Menu, null) 
+    createRoute("normal", '/jobs', JobsContainer, true, Menu, null), 
+
+    createRoute("normal", '/users/:userId/activity/summary', TabsSummaryIndexContainer, true, Menu, null), 
+    createRoute("normal", '/users/:userId/activity/answers', TabsAnswersIndexContainer, true, Menu, null), 
+    createRoute("normal", '/users/:userId/activity/questions', TabsQuestionsIndexContainer, true, Menu, null), 
+    createRoute("normal", '/users/:userId/activity/tags', TabsTagsIndexContainer, true, Menu, null), 
+    createRoute("normal", '/users/:userId/activity/badges', TabsBadgesIndexContainer, true, Menu, null), 
+    createRoute("normal", '/users/:userId/activity/bookmarks', TabsBookmarksIndexContainer, true, Menu, null), 
+    createRoute("normal", '/users/:userId/activity/bounties', TabsBountiesIndexContainer, true, Menu, null), 
+    createRoute("normal", '/users/:userId/activity/reputation', TabsReputationIndexContainer, true, Menu, null), 
 ] 
 
 const App = () => {

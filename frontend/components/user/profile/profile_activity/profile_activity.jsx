@@ -31,14 +31,22 @@ class ProfileActivity extends React.Component {
                 </div>
 
                 <div className="profile_activity-tabs">
-                    <Link className="profile_activity-tab"
+                    {["summary", "answers", "questions", "tags", "badges", "bookmarks", "bounties", "reputation"]
+                    .map((tab, idx) => 
+                    <Link key={idx}
+                        className="profile_activity-tab"
+                        to={`/users/${user.id}/activity/${tab}`}>
+                        {tab[0].toUpperCase() + tab.slice(1)}
+                    </Link>
+                    )}
+                    {/* <Link className="profile_activity-tab"
                         to={`/users/${user.id}/activity/summary`}>
                         Summary
                     </Link>
                     <Link className="profile_activity-tab"
                         to={`/users/${user.id}/activity/bookmarks`}>
                         Bookmarks
-                    </Link>
+                    </Link> */}
 
                 </div>
             </div>
