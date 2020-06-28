@@ -109,6 +109,7 @@ class Profile extends React.Component {
                     <div className="profile_top-snippet">
                         <div className="profile_top-snippet-username">{username}</div>
                         <div>{description}</div>
+                        <Link to={`/users/${id}/edit`}>edit</Link>
                     </div>
 
                     <ProfileStats id={id}

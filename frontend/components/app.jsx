@@ -15,6 +15,7 @@ import LoginFormContainer from './user/auth/login_form_container';
 import DemoContainer from './user/auth/demo_container'; 
 
 import ProfileIndexContainer from './user/profile/profile_index_container'; 
+import EditProfileContainer from './user/profile/edit_profile_container'; 
 import BadgesIndexContainer from './badge/badges_index_container'; 
 import TagsIndexContainer from './tag/tags_index_container'; 
 
@@ -59,8 +60,11 @@ const routes = [
     createRoute("normal", '/questions/:questionId/:title', QuestionContainer, true), 
     createRoute("protected", '/questions/:questionId/:title/edit', EditQuestionContainer, true), 
     createRoute("protected", '/questions/:questionId/answers/:answerId/edit', EditAnswerContainer, true), 
+
     createRoute("normal", '/users', ProfileIndexContainer, true, Menu, null), 
-    createRoute("normal", '/users/:userId', ProfileContainer, true, Menu, null), 
+    createRoute("normal", '/users/:userId', ProfileContainer, true, Menu, null),
+    createRoute("protected", '/users/:userId/edit', EditProfileContainer, true, Menu, null),
+    
     createRoute("normal", '/tags', TagsIndexContainer, true, Menu, null), 
     createRoute("normal", '/info', InfoIndex, true, Menu, InfoRightMenu), 
     createRoute("normal", '/info/badges', BadgesIndexContainer, true, Menu, InfoRightMenu), 

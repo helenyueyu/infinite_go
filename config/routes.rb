@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
       post 'tags/update_tag_description', :to => 'tags#add_description'
 
-      resources :users, only: [:index, :create, :show]
+      resources :users, only: [:index, :create, :update, :show]
       resource :session, only: [:create, :destroy]
 
       resources :questions, only: [:index, :create, :show, :update, :destroy] do 
