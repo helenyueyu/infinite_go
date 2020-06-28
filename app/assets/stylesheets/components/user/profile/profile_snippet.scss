@@ -23,6 +23,9 @@
     color: $red; 
     padding-bottom: 0.2rem; 
 }
+.profile_snippet-username:hover {
+    color: $focus-red; 
+}
 
 .profile_snippet-stats {
     display: flex; 
