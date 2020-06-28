@@ -2,9 +2,7 @@ class Api::UsersController < ApplicationController
     impressionist actions: [:show]
 
     def index 
-        # @users = User.all 
         @users = User.paginate(params[:page], params[:page_limit], params[:filter])
-        # debugger 
     end
 
     def create 
