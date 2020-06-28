@@ -13,3 +13,7 @@ export const sortByQuestionCount = tags => {
 export const sortByName = tags => {
     return tags.sort((a,b) => a.name < b.name ? -1 : 1); 
 }
+
+export const sortByReputation = users => {
+    return users.sort((a,b) => a.reputation < b.reputation ? 1 : -1); 
+}

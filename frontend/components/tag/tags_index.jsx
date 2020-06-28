@@ -15,6 +15,7 @@ class TagIndex extends React.Component {
         }
         this.handleFilter = this.handleFilter.bind(this); 
     }
+
     componentDidMount() {
         this.props.fetchStats()
             .then(() => this.props.fetchPaginatedTags(this.props.search.pageNumber, this.props.search.pageLimit, this.props.search.filter))
