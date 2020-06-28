@@ -2,8 +2,6 @@ class Answer < ApplicationRecord
     belongs_to :question
     belongs_to :user 
 
-    attr_accessor :current_vote 
-
     has_many :votes, 
         as: :voteable, 
         dependent: :destroy 

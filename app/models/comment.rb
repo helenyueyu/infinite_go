@@ -2,7 +2,6 @@ class Comment < ApplicationRecord
     validates :body, presence: true
     
     attr_accessor :username 
-    attr_accessor :current_vote 
 
     has_many :votes, 
         as: :voteable, 

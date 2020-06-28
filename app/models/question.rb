@@ -5,8 +5,6 @@ class Question < ApplicationRecord
         impressions.size 
     end
 
-    attr_accessor :current_vote 
-
     validates :title, presence: true 
     validates :body, presence: true 
 

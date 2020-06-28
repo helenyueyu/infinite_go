@@ -7,10 +7,11 @@ json.key_format! camelize: :lower
                                 :user, 
                                 :username, 
                                 :vote_count, 
-                                :current_vote, 
                                 :commentable_id, 
                                 :commentable_type, 
                                 :created_at, 
                                 :updated_at
+                                
+        json.current_vote comment.current_user_vote(current_user)
     end 
 end

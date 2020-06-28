@@ -8,10 +8,11 @@ json.key_format! camelize: :lower
                                 :question_id, 
                                 :accepted, 
                                 :vote_count, 
-                                :current_vote, 
                                 :created_at, 
                                 :updated_at
         
+        json.current_vote answer.current_user_vote(current_user)
+
         json.set! 'user' do
             json.extract! answer.user, :id, 
                                         :created_at, 
@@ -22,7 +23,7 @@ json.key_format! camelize: :lower
                                         :reputation, 
                                         :username, 
                                         :medals
-                                        
+                                   
             json.profilePhotoUrl "https://picsum.photos/id/#{answer.user.id}/200"
         end
     end 

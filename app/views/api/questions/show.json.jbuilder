@@ -8,10 +8,10 @@ json.extract! @question,
     :body, 
     :vote_count,
     :view_count, 
-    :current_vote, 
     :created_at, 
     :updated_at
 
+json.current_vote @question.current_user_vote(current_user)
 json.set! 'user' do 
     json.extract! @question.user, :id, 
                                 :created_at, 
