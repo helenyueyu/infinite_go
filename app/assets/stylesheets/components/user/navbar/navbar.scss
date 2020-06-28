@@ -1,15 +1,19 @@
 .nav {
     background: $black; 
-    padding: 0.75rem 0.5rem 0.75rem 0.5rem; 
+    padding-left: 0.5rem; 
+    padding-right: 0.5rem; 
     display: flex; 
     align-items: center; 
     justify-content: space-between; 
+    border-top: 3px solid $red; 
 }
 
 .navbar-profile-photo {
     width: 2rem; 
     height: 2rem; 
     border-radius: 5px; 
+    padding-top: 0.75rem; 
+    padding-bottom: 0.75rem; 
 }
 
 .nav-links {
@@ -41,6 +45,11 @@
     align-items: center; 
 }
 
+.nav-link-username:hover {
+    cursor: pointer; 
+    background: $focus-black; 
+}
+
 .navbar-rep {
     margin-left: 0.35rem; 
     margin-right: 0.35rem; 
@@ -57,7 +66,7 @@
 }
 
 .nav-logout-button {
-    margin: 0rem 0.25rem 0rem 0.25rem; 
+    margin: 0rem 0.25rem 0rem 1rem; 
     padding: 0.5rem; 
     background-color: $red; 
     color: $white; 
