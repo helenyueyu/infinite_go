@@ -4,7 +4,6 @@ const userReducer = (state = {pageLimit: 36, pageNumber: 1, filter: 'reputation'
     Object.freeze(state); 
 
     let newState = Object.assign({}, state);
-
     switch (action.type) {
         case CHANGE_USER_PAGE_NUMBER: 
             newState['pageNumber'] = action.pageNumber; 

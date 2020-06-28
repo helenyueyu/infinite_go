@@ -3,6 +3,8 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom'; 
 import ProfileButtons from '../../../buttons/profile_buttons'; 
 
+import Impact from './impact'; 
+
 class ProfileActivity extends React.Component {
     componentDidMount() {
         this.props.fetchUser(this.props.match.params.userId)
@@ -35,10 +37,7 @@ class ProfileActivity extends React.Component {
                                 </div>)}
                         </div>
                     </div>
-                    <div className="profile_activity-box_3">
-                        <div className="activity_box_title">Impact</div>
-                        <div>{numberOfPeopleReached}</div>
-                    </div>
+                    <Impact numberOfPeopleReached={numberOfPeopleReached} />
                 </div>
 
                 <div className="profile_activity-tabs">

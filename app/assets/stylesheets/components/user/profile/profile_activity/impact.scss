@@ -1,0 +1,39 @@
+.impact-no-people {
+    font-size: $title-size; 
+}
+
+.impact-top {
+    display: flex; 
+    flex-direction: column; 
+}
+
+.impact-bottom {
+    margin-top: 2rem; 
+    display: flex; 
+    flex-direction: column; 
+    font-size: $small-size; 
+    color: $silver; 
+}
+
+.impact-bottom > * {
+    margin-top: 0.2rem; 
+    margin-bottom: 0.2rem; 
+}
+
+.impact.fa-sort-up {
+    font-size: 1.8rem; 
+    transform: translateY(-0rem); 
+}
+
+.impact-bottom-item {
+    display: flex; 
+    flex-direction: row; 
+}
+
+.impact-bottom-item > i {
+    margin-right: 0.5rem; 
+}
+
+.impact-bottom-item-edit {
+    color: $gray; 
+}
