@@ -1,7 +1,7 @@
 import React from 'react'; 
 
 import { displayShortenedDate } from '../../../../selectors/date_selectors'; 
-import ProfileActivityContainer from '../profile_activity_container'; 
+import ProfileActivityContainer from '../profile_activity/profile_activity_container'; 
 
 
 class BookmarksIndex extends React.Component {

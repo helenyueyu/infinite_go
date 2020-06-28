@@ -4,6 +4,7 @@ import TagsIndexItem from './tags_index_item';
 
 import { sortByQuestionCount, sortByName } from '../../selectors/sort_selectors'; 
 import { generatePageNumbers } from '../../selectors/pagination_selectors'; 
+import { rowify } from '../../selectors/display_selectors'; 
 
 import FilterTag from './filter_tag'; 
 
@@ -32,18 +33,6 @@ class TagIndex extends React.Component {
         this.props.searchTags(e.target.value);
     }
 
-    rowify(items, perRow) {
-        let arr = []; 
-        for (let i = 0; i < items.length; i+= perRow) {
-            let row = []; 
-            for (let j = i; j < i + perRow; j++) {
-                if (items[j]) row.push(items[j]); 
-            }
-            arr.push(row); 
-        }
-        return arr; 
-    }
-
     handleFilter(filter, idx) {
         this.setState({
             activeTag: idx + 1
@@ -53,8 +42,8 @@ class TagIndex extends React.Component {
     render() {
         const { tags, search, tagCount, updateTagDescription } = this.props;
         const rowifiedTags = search.filter === "popular" 
-                    ? this.rowify(sortByQuestionCount(tags), 4)
-                    : this.rowify(sortByName(tags), 4); 
+                    ? rowify(sortByQuestionCount(tags), 4)
+                    : rowify(sortByName(tags), 4); 
 
         const [pages, bp1, bp2] = generatePageNumbers(tagCount, search.pageLimit, search.pageNumber); 
         const { activeTag } = this.state; 
@@ -87,14 +76,14 @@ class TagIndex extends React.Component {
                     </div>
                 ))}
 
-                    <div className="questions-filter">
-                        <FilterTag
-                            values={pages}
-                            action={this.props.changeTagPageNumber}
-                            active={search.pageNumber} 
-                            bp1 = {bp1} 
-                            bp2 = {bp2} />
-                    </div>
+                <div className="questions-filter">
+                    <FilterTag
+                        values={pages}
+                        action={this.props.changeTagPageNumber}
+                        active={search.pageNumber} 
+                        bp1 = {bp1} 
+                        bp2 = {bp2} />
+                </div>
             </div>
         )
     }

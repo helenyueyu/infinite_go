@@ -5,6 +5,7 @@ import { generatePageNumbers } from '../../../selectors/pagination_selectors';
 import FilterTag from '../../tag/filter_tag'; 
 import ProfileIndexItem from './profile_index_item'; 
 import { sortByNewest, sortByReputation } from '../../../selectors/sort_selectors'; 
+import { rowify } from '../../../selectors/display_selectors'; 
 
 class ProfileIndex extends React.Component {
     constructor(props) {
@@ -31,37 +32,22 @@ class ProfileIndex extends React.Component {
         this.props.searchUsers(e.target.value); 
     }
 
-    rowify(items, perRow) {
-        let arr = [];
-        for (let i = 0; i < items.length; i += perRow) {
-            let row = [];
-            for (let j = i; j < i + perRow; j++) {
-                if (items[j]) row.push(items[j]);
-            }
-            arr.push(row);
-        }
-        return arr;
-    }
-
     handleFilter(filter, idx) {
         this.setState({
             activeTag: idx + 1
         }, () =>  this.props.changeUserFilter(filter)); 
     }
 
-
     render() {
         if (!this.props.users) return null; 
         const { users, search, userCount } = this.props; 
 
         const rowifiedUsers = search.filter === "reputation" 
-                    ? this.rowify(sortByReputation(users), 4)
-                    : this.rowify(sortByNewest(users), 4); 
+                    ? rowify(sortByReputation(users), 4)
+                    : rowify(sortByNewest(users), 4); 
 
         const [pages, bp1, bp2] = generatePageNumbers(userCount, search.pageLimit, search.pageNumber); 
         const { activeTag } = this.state; 
-
-        
 
         return (
             <div className="profile_index">

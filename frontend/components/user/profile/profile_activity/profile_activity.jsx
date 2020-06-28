@@ -1,7 +1,7 @@
 import React from 'react'; 
 
 import { Link, withRouter } from 'react-router-dom'; 
-import ProfileButtons from '../../buttons/profile_buttons'; 
+import ProfileButtons from '../../../buttons/profile_buttons'; 
 
 class ProfileActivity extends React.Component {
     componentDidMount() {
@@ -14,8 +14,7 @@ class ProfileActivity extends React.Component {
             return null;
         } 
 
-        let { id, medals } = user;  
-        console.log("props", this.props); 
+        let { id, medals, numberOfPeopleReached } = user;  
         return (
             <div className="profile_activity">
                 <ProfileButtons id={id}
@@ -38,18 +37,20 @@ class ProfileActivity extends React.Component {
                     </div>
                     <div className="profile_activity-box_3">
                         <div className="activity_box_title">Impact</div>
+                        <div>{numberOfPeopleReached}</div>
                     </div>
                 </div>
 
                 <div className="profile_activity-tabs">
                     <Link className="profile_activity-tab"
-                        to={`/users/${user.id}/activity/bookmarks`}>
-                        Bookmarks
-                    </Link>
-                    <Link className="profile_activity-tab"
                         to={`/users/${user.id}/activity/summary`}>
                         Summary
                     </Link>
+                    <Link className="profile_activity-tab"
+                        to={`/users/${user.id}/activity/bookmarks`}>
+                        Bookmarks
+                    </Link>
+
                 </div>
             </div>
         )
