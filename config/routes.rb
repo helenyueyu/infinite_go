@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
       get 'tags/popular', :to => 'taggables#popular_tags'
       get 'tags(paginate/:paginate)', to: 'tags#index'
+      get 'users(paginate/:paginate)', to: 'users#index'
 
       post 'tags/update_tag_description', :to => 'tags#add_description'
 

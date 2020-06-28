@@ -9,14 +9,14 @@ This is a clone of Stack Overflow. Primarily, in this application users can ask 
 2. Backend: **Ruby-on-Rails**
 3. Frontend: **React**, **Redux**
 
-## Highlight Features 
+## Features 
 
 ![Main Screenshot](https://github.com/helenyueyu/infinite_go/blob/master/app/assets/images/pic1.png?raw=true)
 
 
 ### I. Implementing Rich Text Editing 
 
-Figuring out how to integrate the DraftJS editor was tricky, since rich text is still stored as plain text in the database (the datatype of the `body` field in my questions table is `:string`. An example of what 
+Figuring out how to integrate the DraftJS editor was tricky, since rich text is still stored as plain text in the database (the datatype of the `body` field in my questions table is `:string`. An example of what the plain text looks like is shown below: 
 
 <img src="https://github.com/helenyueyu/infinite_go/blob/master/app/assets/images/pic8.png?raw=true)" />
 

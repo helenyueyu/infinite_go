@@ -6,7 +6,6 @@ export const fetchTags = () => {
 }
 
 export const updateTagDescription = tag => {
-    // debugger; 
     return $.ajax({
         method: 'POST', 
         url: '/api/tags/update_tag_description', 
@@ -15,7 +14,6 @@ export const updateTagDescription = tag => {
 }
 
 export const getPaginatedTags = (page, pageLimit, filter) => {
-    // debugger 
     return $.ajax({
         method: 'GET', 
         url: `/api/tags/?page=${page}&page_limit=${pageLimit}&filter=${filter}`

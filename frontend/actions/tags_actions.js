@@ -17,7 +17,6 @@ const receiveTags = tags => ({
 })
 
 const receiveTagDescription = tag => {
-    // debugger; 
     return {
     type: RECEIVE_TAG_DESCRIPTION, 
     tag 
@@ -70,7 +69,7 @@ export const fetchTags = () => dispatch => {
                     dispatch(receiveTags(tagsDestructured)); 
                 })
 }
-// {tag_id, description}
+
 export const updateTagDescription = (tag) => dispatch => {
     return tagAPIUtil.updateTagDescription(tag)
                 .then(tag => {

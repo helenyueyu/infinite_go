@@ -1,10 +1,20 @@
 import React from 'react'; 
 
 import { Link } from 'react-router-dom'; 
+import { generatePageNumbers } from '../../../selectors/pagination_selectors'; 
+
+import FilterTag from '../../tag/filter_tag'; 
 
 class ProfileIndex extends React.Component {
     componentDidMount() {
-        this.props.fetchUsers()
+        this.props.fetchStats()
+            .then(() => this.props.fetchPaginatedUsers(this.props.search.pageNumber, this.props.search.pageLimit, this.props.search.filter))
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.search.pageNumber !== this.props.search.pageNumber || prevProps.search.filter !== this.props.search.filter) {
+            this.props.fetchPaginatedUsers(this.props.search.pageNumber, this.props.search.pageLimit, this.props.search.filter)
+        }
     }
 
     handleChange(e) {
@@ -26,9 +36,10 @@ class ProfileIndex extends React.Component {
 
     render() {
         if (!this.props.users) return null; 
-        const { users } = this.props; 
+        const { users, search, userCount } = this.props; 
 
-        const rowifiedUsers = this.rowify(users, 3); 
+        const rowifiedUsers = this.rowify(users, 4); 
+        const [pages, bp1, bp2] = generatePageNumbers(userCount, search.pageLimit, search.pageNumber); 
 
         return (
             <div className="profile_index">
@@ -68,8 +79,16 @@ class ProfileIndex extends React.Component {
                                 </div>
                             ))}
                         </div>
-                    ))
-                }
+                    ))}
+
+                    <div className="questions-filter">
+                        <FilterTag
+                            values={pages}
+                            action={this.props.changeUserPageNumber}
+                            active={search.pageNumber} 
+                            bp1 = {bp1} 
+                            bp2 = {bp2} />
+                    </div>
             </div>
         )
     }

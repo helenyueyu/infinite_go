@@ -5,6 +5,14 @@ export const getUsers = () => {
     })
 }
 
+export const getPaginatedUsers = (page, pageLimit, filter) => {
+    return $.ajax({
+        method: 'GET', 
+        url: `/api/users/?page=${page}&page_limit=${pageLimit}&filter=${filter}`
+    })
+}
+
+
 export const getUser = id => {
     return $.ajax({
         method: 'GET', 

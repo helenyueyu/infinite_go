@@ -31,9 +31,18 @@ export const fetchUsers = () => dispatch => {
         });
 }
 
+export const fetchPaginatedUsers = (pageNumber, pageLimit, filter) => dispatch => {
+    return userAPIUtil.getPaginatedUsers(pageNumber, pageLimit, filter)
+        .then(users => {
+            dispatch(receiveUsers(users)); 
+        })
+}
+
 export const searchUsers = query => dispatch => {
     return userAPIUtil.searchUsers(query)
         .then(users => {
             dispatch(receiveUsers(users))
         })
 }
+
+

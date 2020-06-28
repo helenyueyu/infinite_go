@@ -1,8 +1,10 @@
 class User < ApplicationRecord
     is_impressionable 
+    
     attr_reader :password 
     attr_accessor :view_count 
     attr_reader :medals
+
     def impression_count 
         impressions.size 
     end
@@ -10,8 +12,6 @@ class User < ApplicationRecord
     def view_count
         self.impressionist_count  
     end
-
-    
 
     validates :username, :email, :password_digest, :session_token, presence: true 
     validates :username, :email, :session_token, uniqueness: true 
@@ -113,6 +113,16 @@ class User < ApplicationRecord
 
     def answer_count 
         self.answers.size 
+    end
+
+    def self.paginate(page, page_limit, filter)
+        page = page.to_i 
+        page_limit = page_limit.to_i 
+        if filter == 'reputation' 
+            return self.all.offset((page-1)*page_limit).limit(page_limit).order(reputation: :desc)
+        else 
+            return self.all.offset((page-1)*page_limit).limit(page_limit).order(created_at: :desc)
+        end        
     end
 
     def number_of_people_reached
