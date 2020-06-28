@@ -3,6 +3,8 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom'; 
 import ProfileButtons from '../../../buttons/profile_buttons'; 
 
+import Reputation from './reputation'; 
+import Medals from './medals'; 
 import Impact from './impact'; 
 
 class ProfileActivity extends React.Component {
@@ -23,20 +25,8 @@ class ProfileActivity extends React.Component {
                         activeIdx={1} />
                         
                 <div className="profile_activity-boxes">
-                    <div className="profile_activity-box_1">
-                        <div className="activity_box_title">Reputation</div>
-                    </div>
-                    <div className="profile_activity-box_2">
-                        <div className="activity_box_title">Badges</div>
-                        <div className="profile_top-medals">
-                            {medals.map((medal, idx) =>
-                                <div key={idx} className={idx === 0 ? "profile_top-medal-gold" : idx === 1 ? "profile_top-medal-silver" : "profile_top-medal-bronze"}>
-                                    <div>
-                                        &#x25cf;<span className="profile_top-medal-count">{medal}</span>
-                                    </div>
-                                </div>)}
-                        </div>
-                    </div>
+                    <Reputation />
+                    <Medals medals={medals} />
                     <Impact numberOfPeopleReached={numberOfPeopleReached} />
                 </div>
 
