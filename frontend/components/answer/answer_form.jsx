@@ -19,7 +19,6 @@ class AnswerForm extends React.Component {
     constructor(props) {
         super(props);
         const decorator = new PrismDraftDecorator();
-        // debugger; 
 
         this.state = {
             id: this.props.type === "new" ? "" : this.props.match.params.answerId, 
@@ -120,6 +119,7 @@ class AnswerForm extends React.Component {
                 this.setState({ editorState });
             })
             .then(() => this.props.history.push(`/questions/${this.state.question_id}/${nameExtensionURL(this.props.question.title)}`))
+            .then(() => this.props.fetchAnswers(post.question_id))
 
     }
 
