@@ -6,10 +6,12 @@ class EditProfile extends React.Component {
         this.state = {
             id: this.props.match.params.userId, 
             description: "", 
-            location: "" 
+            location: "", 
+            photoFile: null 
         }
 
         this.onChange = this.onChange.bind(this); 
+        this.handleFile = this.handleFile.bind(this); 
         this.handleSubmit = this.handleSubmit.bind(this); 
     }
 
@@ -31,24 +33,47 @@ class EditProfile extends React.Component {
         })
     }
 
+    handleFile(e) {
+        this.setState({
+            photoFile: e.currentTarget.files[0]
+        })
+    }
+
     handleSubmit(e) {
         e.preventDefault(); 
-        this.props.updateUser(this.state); 
+        const formData = new FormData(); 
+        formData.append('user[description]', this.state.description); 
+        formData.append('user[location]', this.state.location); 
+        formData.append('user[profile_photo]', this.state.photoFile); 
+
+        $.ajax({
+            url: `/api/users/${this.state.id}`, 
+            method: 'PATCH', 
+            data: formData, 
+            contentType: false, 
+            processData: false 
+        }).then(() => this.props.history.push(`/users/${this.state.id}`)); 
     }
 
     render() {
+        console.log('state', this.state); 
+
         const { description, location } = this.state; 
         return (
-            <div>
+            <div className="edit_profile">
                 Edit User Profile 
-                <form onSubmit={this.handleSubmit}>
+                <form className="edit_profile-form"
+                    onSubmit={this.handleSubmit}>
                     <input type="text" 
                         value={description} 
-                        onChange={(e) => this.onChange(e, 'description')}></input>
+                        onChange={(e) => this.onChange(e, 'description')} />
 
                     <input type="text" 
                         value={location}
-                        onChange={(e) => this.onChange(e, 'location')}></input>
+                        onChange={(e) => this.onChange(e, 'location')} />
+
+                    <input type="file" 
+                        onChange={this.handleFile} />
 
                     <button type="submit">Submit</button>
                 </form>

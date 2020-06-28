@@ -20,13 +20,15 @@ export const getUser = id => {
     })
 }
 
-export const updateUser = user => {
-    return $.ajax({
-        method: 'PATCH', 
-        url: `/api/users/${user.id}`, 
-        data: { user }
-    })
-}
+// export const updateUser = user => {
+//     return $.ajax({
+//         method: 'PATCH', 
+//         url: `/api/users/${user.id}`, 
+//         data: { user }, 
+//         contentType: false, 
+//         processData: false 
+//     })
+// }
 
 export const searchUsers = query => {
     return $.ajax({
