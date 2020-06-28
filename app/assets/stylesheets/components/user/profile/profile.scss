@@ -5,6 +5,19 @@
     margin: 1.5rem; 
 }
 
+.profile-edit {
+    color: $gray; 
+    text-decoration: none; 
+}
+
+.profile-edit-div {
+    margin-top: 1rem; 
+}
+
+.profile-edit-div:hover {
+    color: $focus-gray; 
+}
+
 .profile_top {
     display: flex; 
     flex-direction: row; 
