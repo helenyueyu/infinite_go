@@ -18,14 +18,14 @@ class ProfileActivity extends React.Component {
             return null;
         } 
 
-        let { id, medals, numberOfPeopleReached } = user;  
+        let { id, medals, numberOfPeopleReached, reputation } = user;  
         return (
             <div className="profile_activity">
                 <ProfileButtons id={id}
                         activeIdx={1} />
                         
                 <div className="profile_activity-boxes">
-                    <Reputation />
+                    <Reputation reputation={reputation}/>
                     <Medals medals={medals} />
                     <Impact numberOfPeopleReached={numberOfPeopleReached} />
                 </div>
@@ -39,15 +39,6 @@ class ProfileActivity extends React.Component {
                         {tab[0].toUpperCase() + tab.slice(1)}
                     </Link>
                     )}
-                    {/* <Link className="profile_activity-tab"
-                        to={`/users/${user.id}/activity/summary`}>
-                        Summary
-                    </Link>
-                    <Link className="profile_activity-tab"
-                        to={`/users/${user.id}/activity/bookmarks`}>
-                        Bookmarks
-                    </Link> */}
-
                 </div>
             </div>
         )
