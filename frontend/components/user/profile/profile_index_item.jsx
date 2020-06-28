@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const ProfileIndexItem = ({user}) => (
     <div className="profile_index-item">
         <div>
-            <img className="profile_index-image" src="/assets/bug_mojo.png" />
+            <img className="profile_index-image" src={user.profilePhotoUrl} />
         </div>
 
         <div className="profile_index-item-detail">

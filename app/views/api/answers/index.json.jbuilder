@@ -22,7 +22,8 @@ json.key_format! camelize: :lower
                                         :reputation, 
                                         :username, 
                                         :medals
-                            
+                                        
+            json.profilePhotoUrl "https://picsum.photos/id/#{answer.user.id}/200"
         end
     end 
 end

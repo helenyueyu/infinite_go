@@ -60,6 +60,7 @@ class AnswerItem extends React.Component {
                         <EditButton authorized={authorized} link={`/questions/${questionId}/answers/${answerId}/edit`} />
                     </div>
                     <ProfileSnippet id={user.id}
+                                profilePhotoUrl={user.profilePhotoUrl}
                                 username={username} 
                                 type="answered"
                                 medals={medals}

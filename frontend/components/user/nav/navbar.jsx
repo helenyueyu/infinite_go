@@ -44,8 +44,15 @@ class Navbar extends React.Component {
                     <SearchContainer />
 
                     <div className="nav-links">
-                        <Link to={`/users/${currentUser.id}`} className="nav-link-username">                        
-                            {currentUser.username}
+                        <Link to={`/users/${currentUser.id}`} className="nav-link-username">   
+                            <img className="navbar-profile-photo" 
+                                src={currentUser.profilePhotoUrl}></img>    
+                            <div className="navbar-rep">{currentUser.reputation}</div> 
+                            <div>
+                                {currentUser.medals.map((medal, idx) => 
+                                    <div key={idx}>{medal === 0 ? "" : medal}</div>
+                                )}
+                            </div>                
                         </Link>
                         <div className="nav-link">
                             <Link to="/info">

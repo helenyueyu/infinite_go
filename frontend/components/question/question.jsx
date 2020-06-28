@@ -118,6 +118,7 @@ class Question extends React.Component {
 
                   <ProfileSnippet
                     id={user.id}
+                    profilePhotoUrl={user.profilePhotoUrl}
                     username={user.username}
                     type="asked"
                     reputation={user.reputation}

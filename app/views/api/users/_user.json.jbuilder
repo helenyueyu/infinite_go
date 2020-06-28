@@ -19,7 +19,8 @@ json.extract! user, :id,
                     :created_at, 
                     :updated_at
 
-json.profilePhotoUrl url_for(user.profile_photo)
+# json.profilePhotoUrl url_for(user.profile_photo)
+json.profilePhotoUrl "https://picsum.photos/id/#{user.id}/200"
 
 json.set! 'posts' do 
     json.array! user.questions.each do |question|

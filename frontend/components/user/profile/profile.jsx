@@ -111,9 +111,9 @@ class Profile extends React.Component {
                         <div>{description}</div>
                         
                         <Link className="profile-edit" to={`/users/${id}/edit`}>
-                            <div className="profile-edit-div">
+                            {/* <div className="profile-edit-div">
                                 edit 
-                            </div>
+                            </div> */}
                         </Link>
                         
                     </div>

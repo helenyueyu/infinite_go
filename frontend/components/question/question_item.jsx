@@ -35,6 +35,7 @@ class QuestionItem extends React.Component {
                     <div className="question_item-profile">
                         <ProfileSnippet
                             id={user.id}
+                            profilePhotoUrl={user.profilePhotoUrl}
                             username={user.username}
                             type="asked"
                             reputation={user.reputation}

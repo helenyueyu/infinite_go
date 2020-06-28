@@ -6,6 +6,12 @@
     justify-content: space-between; 
 }
 
+.navbar-profile-photo {
+    width: 2rem; 
+    height: 2rem; 
+    border-radius: 5px; 
+}
+
 .nav-links {
     display: flex; 
     justify-content: space-between; 
@@ -31,6 +37,14 @@
     color: $white; 
     text-decoration: none; 
     padding: 0 0.5rem 0 0.5rem; 
+    display: flex; 
+    align-items: center; 
+}
+
+.navbar-rep {
+    margin-left: 0.35rem; 
+    margin-right: 0.35rem; 
+    font-weight: bold; 
 }
 
 .fa-github-square, .fa-linkedin, .fa-angellist, .fa-question-circle {

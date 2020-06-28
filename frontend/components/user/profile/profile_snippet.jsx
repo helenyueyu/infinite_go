@@ -2,14 +2,14 @@ import React from 'react';
 
 import { Link } from 'react-router-dom'; 
 
-const ProfileSnippet = ({username, timestamp, reputation, medals, type, id, color}) => {
+const ProfileSnippet = ({username, timestamp, reputation, medals, type, id, color, profilePhotoUrl}) => {
     if (!medals) return null; 
     return (
         <div className={color === "transparent" ? "profile_snippet-transparent" : "profile_snippet"}>
             <div className="profile_snippet-date">{type} {timestamp}</div>
 
             <div className="profile_snippet-main">
-                <img className="profile_snippet-pic" src="/assets/bug_mojo.png"></img>
+                <img className="profile_snippet-pic" src={profilePhotoUrl}></img>
                 <div>
                     <Link className="profile_snippet-username-link" to={`/users/${id}`}>
                         <div className="profile_snippet-username">{username}</div>

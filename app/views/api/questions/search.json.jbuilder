@@ -25,7 +25,8 @@ json.question_count @question_count
                                         :location, 
                                         :reputation, 
                                         :username, 
-                                        :medals 
+                                        :medals
+            json.profilePhotoUrl "https://picsum.photos/id/#{question.user.id}/200"
         end
 
         json.set! 'tags', {} 
