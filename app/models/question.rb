@@ -36,12 +36,6 @@ class Question < ApplicationRecord
         as: :bookmarkable, 
         dependent: :destroy 
 
-    def current_user_vote(current_user)
-        vote = self.votes.where('user_id = ?', current_user.id).first
-        return 0 if vote.nil? 
-        vote.value 
-    end
-
     def view_count
         self.impressionist_count  
     end
