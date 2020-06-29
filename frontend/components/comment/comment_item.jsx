@@ -29,6 +29,7 @@ class CommentItem extends React.Component {
     }
 
     render() {
+        const { showEditForm } = this.state; 
         const { comment, handleDelete } = this.props; 
         return (
             <div className="comments-item">
@@ -49,7 +50,9 @@ class CommentItem extends React.Component {
                                         commentable_type={comment.commentableType} 
                                         showEditForm={this.state.showEditForm} />
         
-                    <span className="comments-body">{comment.body}</span>
+                    <span className="comments-body">
+                        {showEditForm ? null : comment.body}
+                    </span>
                     <span className="comments-dash">&mdash;</span>
                     <span className="comments-username">{comment.username}</span>
                     <span className="comments-date">
