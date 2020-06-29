@@ -5,6 +5,7 @@
     justify-content: flex-start; 
     margin: 0.5rem 2rem 0.5rem 2rem;  
     flex: 1; 
+    font-size: $comment-size; 
 }
 .profile_index-row {
     display: flex; 
@@ -79,7 +80,7 @@
 
 .profile_index-location {
     color: $gray; 
-    font-size: $comment-size; 
+    font-size: $little-size; 
     padding-top: 0.1rem; 
     padding-bottom: 0.1rem; 
 }
@@ -87,7 +88,7 @@
 .profile_index-reputation {
     color: $gray; 
     font-weight: bold; 
-    font-size: $comment-size; 
+    font-size: $little-size; 
     padding-top: 0.1rem; 
     padding-bottom: 0.4rem; 
 }
@@ -96,15 +97,15 @@
 .profile_index-tags {
     display: flex; 
     flex-direction: row; 
-    font-size: $comment-size; 
+    font-size: $little-size; 
+    flex-wrap: wrap; 
 }
 
 .profile_index-tag {
     padding-left: 0.1rem; 
     padding-right: 0.1rem; 
-    color: $red; 
-    white-space: nowrap; 
     text-decoration: none; 
+    color: $red; 
 }
 
 .profile_index-tag:hover {
