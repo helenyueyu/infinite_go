@@ -36,6 +36,12 @@ class Question < ApplicationRecord
         as: :bookmarkable, 
         dependent: :destroy 
 
+    def current_user_bookmark(current_user)
+        bookmark = self.bookmarks.where('user_id = ?', current_user.id).first 
+        return 0 if bookmark.nil? 
+        1
+    end
+
     def view_count
         self.impressionist_count  
     end

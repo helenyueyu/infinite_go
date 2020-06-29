@@ -42,7 +42,8 @@ class Question extends React.Component {
         if (!this.props.question) return null; 
         
         let { currentUser, question } = this.props; 
-        let { id, title, body, user, createdAt, updatedAt, comments, tags, voteCount, viewCount, currentVote } = question;
+        let { id, title, body, user, createdAt, updatedAt, tags, voteCount, viewCount, 
+            currentVote, currentBookmark } = question;
         if (!tags) return null; 
 
         const currentContent = EditorState.createWithContent(
@@ -88,6 +89,7 @@ class Question extends React.Component {
                 <BookmarkContainer 
                   bookmarkable_id={id}
                   bookmarkable_type="Question"
+                  currentBookmark={currentBookmark}
                 />
               </div>
               

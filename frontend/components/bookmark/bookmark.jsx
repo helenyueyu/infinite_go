@@ -16,8 +16,9 @@ class Bookmark extends React.Component {
         this.props.createBookmark(bookmark)
     }
     render() {
+        const { currentBookmark } = this.props; 
         return (
-            <div onClick={this.addBookmark} className="bookmark">
+            <div onClick={this.addBookmark} className={currentBookmark === 1 ? "bookmark-active" : "bookmark"}>
                 <i className="fas fa-bookmark"></i>
             </div>
         );

@@ -12,6 +12,8 @@ json.extract! @question,
     :updated_at
 
 json.current_vote @question.current_user_vote(current_user)
+json.current_bookmark @question.current_user_bookmark(current_user)
+
 json.set! 'user' do 
     json.extract! @question.user, :id, 
                                 :created_at, 
