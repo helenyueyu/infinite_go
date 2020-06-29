@@ -106,21 +106,24 @@ class AnswerForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const contentState = this.state.editorState.getCurrentContent(); 
-        let post = {
-            user_id: this.state.user_id, 
-            id: this.state.id, 
-            question_id: this.state.question_id, 
-            body: JSON.stringify(convertToRaw(contentState))
+        if (!this.props.userId) {
+            this.props.history.push('/login'); 
+        } else {
+            const contentState = this.state.editorState.getCurrentContent(); 
+            let post = {
+                user_id: this.state.user_id, 
+                id: this.state.id, 
+                question_id: this.state.question_id, 
+                body: JSON.stringify(convertToRaw(contentState))
+            }
+            this.props.action(post)
+                .then(() => {
+                    const editorState = EditorState.push(this.state.editorState, ContentState.createFromText(''));
+                    this.setState({ editorState });
+                })
+                .then(() => this.props.history.push(`/questions/${this.state.question_id}/${nameExtensionURL(this.props.question.title)}`))
+                .then(() => this.props.fetchAnswers(post.question_id))
         }
-        this.props.action(post)
-            .then(() => {
-                const editorState = EditorState.push(this.state.editorState, ContentState.createFromText(''));
-                this.setState({ editorState });
-            })
-            .then(() => this.props.history.push(`/questions/${this.state.question_id}/${nameExtensionURL(this.props.question.title)}`))
-            .then(() => this.props.fetchAnswers(post.question_id))
-
     }
 
     render() {

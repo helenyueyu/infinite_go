@@ -4,7 +4,6 @@ import AnswerForm from './answer_form';
 import { createAnswer, fetchAnswers } from '../../actions/answers_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    // debugger; 
     return {
     userId: state.session.id,
     type: "new", 

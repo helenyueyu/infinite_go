@@ -59,19 +59,27 @@ class Navbar extends React.Component {
                                 <i className="fas fa-question-circle"></i>
                             </Link>
                         </div>
-                        <button className="nav-logout-button" onClick={this.logout}>Logout</button>
+                        <button className="nav-logout-button" onClick={this.logout}>
+                            Logout
+                        </button>
                     </div>
                 </div>
             )
         } else {
             return (
                 <div className="nav">
-                    <div className="nav-logo">
-                        <i className="fab fa-stack-overflow nav-pic-logged-out"></i>
-                    </div>
+                    <Link to="/questions">
+                        <div className="nav-logo">
+                            <i className="fab fa-stack-overflow nav-pic-logged-out"></i>
+                        </div>
+                    </Link>
                     <div>
-                        <Link to="/login"><button className="nav-login-button">Log In</button></Link>
-                        <Link to="/signup" ><button className="nav-signup-button">Sign Up </button></Link>
+                        <Link to="/login">
+                            <button className="nav-login-button">Log In</button>
+                        </Link>
+                        <Link to="/signup" >
+                            <button className="nav-signup-button">Sign Up</button>
+                        </Link>
                     </div>
                 </div>
             )
