@@ -38,9 +38,9 @@ import TabsBookmarksIndexContainer from './user/profile/tabs/tabs_bookmarks_inde
 import TabsBountiesIndexContainer from './user/profile/tabs/tabs_bounties_index_container'; 
 import TabsReputationIndexContainer from './user/profile/tabs/tabs_reptutation_index_container'; 
 
-
-
 import JobsContainer from './job/jobs_container'; 
+import CompaniesContainer from './company/companies_container'; 
+import NewCompanyContainer from './company/new_company_container'; 
 
 import InfoIndex from './info/info_index'; 
 import InfoRightMenu from './info/info_right_menu'; 
@@ -72,7 +72,10 @@ const routes = [
     createRoute("auth", '/login', LoginFormContainer, true, null, null), 
     createRoute("auth", '/signup', SignUpFormContainer, true, null, null), 
     createRoute("auth", '/login/demo', DemoContainer, true, null, null), 
+
     createRoute("normal", '/jobs', JobsContainer, true, Menu, null), 
+    createRoute("normal", '/jobs/companies', CompaniesContainer, true, Menu, null), 
+    createRoute("normal", '/jobs/companies/new', NewCompanyContainer, true, Menu, null), 
 
     createRoute("normal", '/users/:userId/activity/summary', TabsSummaryIndexContainer, true, Menu, null), 
     createRoute("normal", '/users/:userId/activity/answers', TabsAnswersIndexContainer, true, Menu, null), 

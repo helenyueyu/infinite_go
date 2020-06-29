@@ -1,13 +1,13 @@
 import React from 'react'; 
-import { Link } from 'react-router-dom'; 
+
+import JobsHeader from './jobs_header'; 
 
 class Jobs extends React.Component {
     render() {
         return (
-            <div>
-                <Link to="/jobs">Jobs</Link>
-                <Link to="/jobs/companies">Companies</Link>
-                Jobs
+            <div className="jobs">
+                <JobsHeader />
+                jobs 
             </div>
         )
     }
