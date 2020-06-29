@@ -7,6 +7,8 @@ import DeleteButton from '../buttons/delete_button';
 import EditButton from '../buttons/edit_button'; 
 import AcceptButton from '../buttons/accept_button'; 
 
+import CommentsContainer from '../comment/comments_container'; 
+
 import { Editor, EditorState, convertFromRaw } from 'draft-js'; 
 
 class AnswerItem extends React.Component {
@@ -66,6 +68,9 @@ class AnswerItem extends React.Component {
                                 medals={medals}
                                 reputation={reputation}
                                 timestamp={displayShortenedDate(createdAt)} />
+
+                    {/* <CommentsContainer 
+                        question={question} /> */}
                 </div>
             </div>
         )

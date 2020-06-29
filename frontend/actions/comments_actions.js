@@ -22,7 +22,6 @@ export const deleteComment = id => dispatch => (
 export const fetchComments = questionId => dispatch => {
     return commentAPIUtil.getComments(questionId)
         .then(comments => {
-            // debugger; 
             dispatch(receiveComments(comments))
         });
 }

@@ -26,6 +26,24 @@ json.key_format! camelize: :lower
                                    
             json.profilePhotoUrl "https://picsum.photos/id/#{answer.user.id}/200"
         end
-    end 
+
+        json.set! 'comments', {} 
+
+        json.set! 'comments' do 
+            answer.comments.each do |comment|
+                json.set! comment.id do 
+                    json.extract! comment, 
+                        :id, 
+                        :commentable_id, 
+                        :commentable_type, 
+                        :body, 
+                        :username,
+                        :created_at, 
+                        :updated_at
+                end
+            end
+        end 
+    end
+    
 end
 

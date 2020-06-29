@@ -39,9 +39,6 @@ json.set! 'tags' do
 end 
 
 
-
-
-
 json.set! 'comments', {} 
 
 json.set! 'comments' do 
