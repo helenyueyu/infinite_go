@@ -2,6 +2,7 @@ import React from 'react';
 
 import VoteContainer from '../vote/vote_container'; 
 import AnswerItem from './answer_item'; 
+import { pluralize } from '../../selectors/display_selectors'; 
 
 class Answers extends React.Component {
     componentDidMount() { 
@@ -21,7 +22,7 @@ class Answers extends React.Component {
         return (
             <div className="answers">
                 <div className="answers-count">
-                    {answerCount !== 0 ?  `${answerCount} Answer${answerCount === 1 ? "" : "s"}` : null}
+                    {answerCount !== 0 ?  pluralize(answerCount, "Answer") : null}
                 </div>
                 {answers.map((answer, idx) => {
                     let { id, voteCount, questionId, accepted, currentVote } = answer; 

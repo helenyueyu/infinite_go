@@ -72,3 +72,7 @@ export const rowify = (items, perRow) => {
     }
     return arr; 
 }
+
+export const pluralize = (quantity, term) => {
+    return `${quantity} ${term}${quantity === 1 ? "" : "s"}`
+}

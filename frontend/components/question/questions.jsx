@@ -1,10 +1,11 @@
 import React from 'react'; 
 
 import { Link } from 'react-router-dom'; 
-import { isQuestionWatched, isQuestionIgnored } from '../../selectors/display_selectors'; 
+import { isQuestionWatched, isQuestionIgnored, pluralize } from '../../selectors/display_selectors'; 
 import { generatePageNumbers } from '../../selectors/pagination_selectors'; 
 
 import FilterQuestion from './filter_question'; 
+import QuestionStats from './question_stats'; 
 import QuestionItem from './question_item'; 
 
 class Questions extends React.Component {
@@ -14,7 +15,6 @@ class Questions extends React.Component {
         this.state = {
             questionCount: this.props.questionCount 
         }
-
     }
 
     componentDidMount() {
@@ -70,7 +70,7 @@ class Questions extends React.Component {
                 <div className="questions">
                     <div className="questions-header">
                         <div className="questions-title">
-                            {questionCount} question{questionCount === 1 ? '' : 's'}
+                            {pluralize(questionCount, "question")}
                         </div>
                         <Link to="/questions/new">
                             <button className="questions-create-question">Create Question</button>
@@ -92,23 +92,12 @@ class Questions extends React.Component {
                                             isWatched ? "questions-item watched" : 
                                             isIgnored ? "questions-item ignored" : 
                                             "questions-item"}>
-                                <div className="questions-statistics">
-                                    <div className="questions-statistics-votes">
-                                        <div className="questions-stat">{voteCount}</div>
-                                        <div className="questions-stat-count">vote{voteCount === 1 ? "" : "s"}</div>
-                                    </div>
 
-                                    <div className={answerCount === 0 ? "questions-statistics-answers" : (hasAcceptedAnswer ? "questions-statistics-answers-accepted": "questions-statistics-answers-greater")}>
-
-                                    <div className="questions-stat">{answerCount}</div>
-                                        <div className="questions-stat-count">answer{answerCount === 1 ? "" : "s"}</div>
-                                    </div>
-                                    <div className="questions-statistics-views">
-                                        <div className="questions-stat-count">
-                                            {viewCount} view{viewCount === 1 ? "" : "s"}
-                                        </div>
-                                    </div>
-                                </div>     
+                                <QuestionStats 
+                                    voteCount={voteCount} 
+                                    answerCount={answerCount}
+                                    viewCount={viewCount} 
+                                    hasAcceptedAnswer={hasAcceptedAnswer} />
 
                                 <QuestionItem
                                     idx={idx}
