@@ -162,7 +162,9 @@ class AnswerForm extends React.Component {
                         </div>
                     </div>
 
-                    <button className="answer_form-submit" type="submit">Post Your Answer</button>
+                    <button className="answer_form-submit" type="submit">
+                        Post Your Answer
+                    </button>
                 </form>
             </div>
         )
