@@ -19,6 +19,13 @@ class SessionForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount() {
+        if (this.props.type === 'Demo') {
+            this.props.action(this.state)
+            .then(() => this.props.history.push(`/questions`));
+        }
+    }
+
     handleChange(e, field) {
         this.setState({
             [field]: e.target.value
