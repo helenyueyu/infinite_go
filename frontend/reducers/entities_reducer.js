@@ -12,6 +12,7 @@ import badgesReducer from './badges_reducer';
 import watchedTagsReducer from './watched_tags_reducer'; 
 import ignoredTagsReducer from './ignored_tags_reducer'; 
 import bookmarksReducer from './bookmarks_reducer'; 
+import companiesReducer from './companies_reducer'; 
 
 const entitiesReducer = combineReducers({
     currentUser: currentUserReducer, 
@@ -26,7 +27,8 @@ const entitiesReducer = combineReducers({
     badges: badgesReducer, 
     watchedTags: watchedTagsReducer, 
     ignoredTags: ignoredTagsReducer, 
-    bookmarks: bookmarksReducer  
+    bookmarks: bookmarksReducer, 
+    companies: companiesReducer 
 })
 
 export default entitiesReducer; 

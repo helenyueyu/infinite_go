@@ -1,5 +1,5 @@
 class Company < ApplicationRecord
-    validates :name, :description, :company_size, :company_type, :date_founded, :industry, presence: true 
+    validates :name, :description, :company_size, :company_type, :date_founded, :industries, presence: true 
 
     has_many :jobs, 
         class_name: :Job, 
