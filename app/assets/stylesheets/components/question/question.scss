@@ -27,22 +27,22 @@
     align-items: center; 
 }
 
-.question-stats {
+.question-info {
     display: flex; 
     padding-bottom: 1rem; 
     margin-bottom: 0.5rem; 
     border-bottom: 1px solid $lighter-silver; 
     font-size: $comment-size; 
 }
-.question-stat {
+.question-info-item {
     padding-left: 0.2rem; 
     padding-right: 0.2rem; 
 }
-.question-stats-label {
+.question-info-label {
     color: $gray; 
     margin-right: 0.25rem; 
 }
-.question-stats-value {
+.question-info-value {
     margin-right: 0.6rem; 
 }
 

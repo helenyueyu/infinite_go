@@ -64,7 +64,7 @@ class CommentForm extends React.Component {
                     } 
                 </> : 
                 <>
-                    {showEditForm ? <form className="new_comment-form" onSubmit={this.handleSubmit}>
+                    {showEditForm ? <form className="edit_comment-form" onSubmit={this.handleSubmit}>
                         <input className="new_comment-input"
                             value={this.state.body} 
                             onChange={this.handleChange} />

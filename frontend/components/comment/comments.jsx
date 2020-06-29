@@ -40,7 +40,7 @@ class Comments extends React.Component {
     render() {
         let { comments, fetchComments, question } = this.props; 
         return (
-            <div>
+            <div className="comments">
                 {Object.values(comments).map((comment, idx) => 
                     <CommentItem key={idx}
                             comment={comment} 

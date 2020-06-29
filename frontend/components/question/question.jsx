@@ -8,7 +8,6 @@ import DeleteButton from '../buttons/delete_button';
 import EditButton from '../buttons/edit_button'; 
 
 import CommentsContainer from '../comment/comments_container'; 
-import NewCommentContainer from '../comment/new_comment_container'; 
 
 import VoteContainer from '../vote/vote_container'; 
 import BookmarkContainer from '../bookmark/bookmark_container'; 
@@ -18,7 +17,7 @@ import TagsContainer from '../tag/tags_container';
 import NewAnswerContainer from '../answer/new_answer_container'; 
 import AnswersContainer from '../answer/answers_container'; 
 
-import { nameExtensionURL } from '../../selectors/display_selectors'; 
+import { nameExtensionURL, pluralize } from '../../selectors/display_selectors'; 
 import { displayShortenedDate } from '../../selectors/date_selectors'; 
 
 import { Editor, EditorState, convertFromRaw } from 'draft-js'; 
@@ -61,19 +60,15 @@ class Question extends React.Component {
                 </Link>
             </div>
 
-            <div className="question-stats">
-                <div className="question-stat">
-                    <span className="question-stats-label">Asked</span> 
-                    <span className="question-stats-value">{displayShortenedDate(createdAt)}</span>
-                </div>
-                <div className="question-stat">
-                    <span className="question-stats-label">Active</span> 
-                    <span className="question-stats-value">{displayShortenedDate(updatedAt)}</span>
-                </div>
-                <div className="question-stat">
-                    <span className="question-stats-label">Viewed</span> 
-                    <span className="question-stats-value">{viewCount} time{viewCount === 1 ? "" : "s"}</span>
-                </div>
+            <div className="question-info">
+                {[["Asked", displayShortenedDate(createdAt)], 
+                    ["Active", displayShortenedDate(updatedAt)], 
+                    ["Viewed", pluralize(viewCount, "time")]].map((item, idx) => 
+                    <div key={idx} className="question-info-item">
+                        <span className="question-info-label">{item[0]}</span> 
+                        <span className="question-info-value">{item[1]}</span> 
+                    </div>
+                )}
             </div>
 
             <div className="question-left">
@@ -130,10 +125,8 @@ class Question extends React.Component {
                   />
                 </div>
 
-                <div className="comments"> 
-                    <CommentsContainer 
-                        question={question} />
-                </div>
+                <CommentsContainer 
+                    question={question} />
 
               </div>
             </div>
