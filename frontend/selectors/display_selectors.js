@@ -74,5 +74,9 @@ export const rowify = (items, perRow) => {
 }
 
 export const pluralize = (quantity, term) => {
-    return `${quantity} ${term}${quantity === 1 ? "" : "s"}`
+    return `${quantity} ${term}${quantity === 1 ? "" : "s"}`; 
+}
+
+export const pluralizeWordOnly = (quantity, term) => {
+    return `${term}${quantity === 1 ? "" : "s"}`; 
 }

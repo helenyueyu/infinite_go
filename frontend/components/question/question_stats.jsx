@@ -1,6 +1,6 @@
 import React from 'react'; 
 
-import { pluralize } from '../../selectors/display_selectors'; 
+import { pluralize, pluralizeWordOnly } from '../../selectors/display_selectors'; 
 
 const QuestionStats = ({voteCount, answerCount, viewCount, hasAcceptedAnswer}) => (
     <div className="questions-statistics">
@@ -8,14 +8,14 @@ const QuestionStats = ({voteCount, answerCount, viewCount, hasAcceptedAnswer}) =
         <div className="questions-statistics-votes">
             <div className="questions-stat">{voteCount}</div>
             <div className="questions-stat-count">
-                {pluralize(voteCount, "vote")}
+                {pluralizeWordOnly(voteCount, "vote")}
             </div>
         </div>
 
         <div className={answerCount === 0 ? "questions-statistics-answers" : (hasAcceptedAnswer ? "questions-statistics-answers-accepted": "questions-statistics-answers-greater")}>
             <div className="questions-stat">{answerCount}</div>
             <div className="questions-stat-count">
-                {pluralize(answerCount, "answer")}
+                {pluralizeWordOnly(answerCount, "answer")}
             </div>
         </div>
 
