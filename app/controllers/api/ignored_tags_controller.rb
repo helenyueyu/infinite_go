@@ -1,6 +1,6 @@
 class Api::IgnoredTagsController < ApplicationController
     def index
-        @ignored_tags = current_user.ignored_tag_names 
+        @ignored_tags = current_user ? current_user.ignored_tag_names : []
     end
 
     def create

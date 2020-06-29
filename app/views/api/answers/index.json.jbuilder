@@ -11,7 +11,7 @@ json.key_format! camelize: :lower
                                 :created_at, 
                                 :updated_at
         
-        json.current_vote answer.current_user_vote(current_user)
+        json.current_vote current_user ? answer.current_user_vote(current_user) : 0 
 
         json.set! 'user' do
             json.extract! answer.user, :id, 

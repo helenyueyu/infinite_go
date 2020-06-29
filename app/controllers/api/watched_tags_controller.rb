@@ -1,6 +1,6 @@
 class Api::WatchedTagsController < ApplicationController
     def index
-        @watched_tags = current_user.watched_tag_names 
+        @watched_tags = current_user ? current_user.watched_tag_names : [] 
     end
 
     def create
