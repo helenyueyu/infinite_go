@@ -5,11 +5,10 @@ import { sortByNewest } from '../../selectors/sort_selectors';
 import { changeQuestionPageNumber, changeQuestionPageLimit, receiveQuery } from '../../actions/question_search_actions'; 
 
 const mapStateToProps = state => {
-    const { questionCount } = state.entities.questions; 
-    delete state.entities.questions['questionCount']; 
+    const questions = Object.values(state.entities.questions); 
     return {
-    questions: sortByNewest(Object.values(state.entities.questions)),
-    questionCount: questionCount, 
+    questions: sortByNewest(questions),
+    questionCount: questions.length > 0 ? questions[0].questionCount : 0,  
     search: state.entities.search.question, 
     watchedTags: state.entities.watchedTags, 
     ignoredTags: state.entities.ignoredTags 

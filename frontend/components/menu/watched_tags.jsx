@@ -64,7 +64,7 @@ class WatchedTags extends React.Component {
                     </input> : null}
                 </div>
 
-                {watchedTagQuery && watchedTagQuery.length > 0 ? 
+                {watchedTagFormShown && watchedTagQuery && watchedTagQuery.length > 0 ? 
                     <div className="watched_tags-search-results">
                         {Object.keys(tags).length > 0 ? tags.slice(0, 5).map((tag, idx) => 
                             <div key={idx} 

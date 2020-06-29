@@ -62,10 +62,10 @@ class Questions extends React.Component {
 
     render() {
         let { questions, search, questionCount, watchedTags, ignoredTags } = this.props; 
-        if (!questions || !search) return null; 
+        if (!questions || !search || questions.length === 0) return null; 
 
         const [pages, bp1, bp2] = generatePageNumbers(questionCount, search.pageLimit, search.pageNumber); 
-        if (questions) {
+        if (questions.length > 0) {
             return (
                 <div className="questions">
                     <div className="questions-header">
