@@ -64,7 +64,7 @@ class IgnoredTags extends React.Component {
                     </input> : null}
                 </div>
 
-                {ignoredTagQuery && ignoredTagQuery.length > 0 ? 
+                {ignoredTagFormShown && ignoredTagQuery && ignoredTagQuery.length > 0 ? 
                     <div className="watched_tags-search-results">
                         {Object.keys(tags).length > 0 ? tags.slice(0, 5).map((tag, idx) => 
                             <div key={idx} 
