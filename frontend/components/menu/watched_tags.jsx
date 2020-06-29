@@ -1,5 +1,5 @@
 import React from 'react'; 
-import { Link } from 'react-router-dom'; 
+import { Link, withRouter } from 'react-router-dom'; 
 
 class WatchedTags extends React.Component {
     constructor(props) {
@@ -17,9 +17,13 @@ class WatchedTags extends React.Component {
     }
 
     handleClick() {
-        this.setState({
-            watchedTagFormShown: !this.state.watchedTagFormShown 
-        })
+        if (!this.props.userId) {
+            this.props.history.push('/login'); 
+        } else {
+            this.setState({
+                watchedTagFormShown: !this.state.watchedTagFormShown 
+            })
+        }
     }
 
     render() {
@@ -83,4 +87,4 @@ class WatchedTags extends React.Component {
     }
 }
 
-export default WatchedTags; 
+export default withRouter(WatchedTags); 

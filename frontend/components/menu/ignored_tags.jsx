@@ -1,5 +1,5 @@
 import React from 'react'; 
-import { Link } from 'react-router-dom'; 
+import { Link, withRouter } from 'react-router-dom'; 
 
 class IgnoredTags extends React.Component {
     constructor(props) {
@@ -17,9 +17,13 @@ class IgnoredTags extends React.Component {
     }
 
     handleClick() {
-        this.setState({
-            ignoredTagFormShown: !this.state.ignoredTagFormShown 
-        })
+        if (!this.props.userId) {
+            this.props.history.push('/login'); 
+        } else {
+            this.setState({
+                ignoredTagFormShown: !this.state.ignoredTagFormShown 
+            })
+        }
     }
 
     render() {
@@ -83,4 +87,4 @@ class IgnoredTags extends React.Component {
     }
 }
 
-export default IgnoredTags; 
+export default withRouter(IgnoredTags); 
