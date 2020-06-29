@@ -1,9 +1,13 @@
 class Api::CompaniesController < ApplicationController
+    def index
+        @companies = Company.all 
+    end
+
     def create 
         @company = Company.new(company_params)
         @company.user_id = current_user.id 
         @company.industries = params[:company][:industries]
-        
+
         if @company.save 
             render :show 
         else 
