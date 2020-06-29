@@ -6,3 +6,8 @@
 .bookmark-active {
     color: $red; 
 }
+
+.bookmark-active:hover {
+    cursor: pointer; 
+    color: $focus-red; 
+}

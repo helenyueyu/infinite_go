@@ -13,7 +13,7 @@ class Bookmark extends React.Component {
             bookmarkable_id: this.props.bookmarkable_id, 
             bookmarkable_type: this.props.bookmarkable_type 
         }
-        this.props.createBookmark(bookmark)
+        this.props.createBookmark(bookmark).then(() => this.props.action(this.props.bookmarkable_id))
     }
     render() {
         const { currentBookmark } = this.props; 

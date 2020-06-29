@@ -90,6 +90,7 @@ class Question extends React.Component {
                   bookmarkable_id={id}
                   bookmarkable_type="Question"
                   currentBookmark={currentBookmark}
+                  action={this.props.fetchQuestion}
                 />
               </div>
               
