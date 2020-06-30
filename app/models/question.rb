@@ -109,7 +109,7 @@ class Question < ApplicationRecord
         else
             if filter == 'upvote'
                 return [self.all.select('questions.*, COUNT(votes.voteable_id) upvotes')
-                .joins(:votes)
+                .left_outer_joins(:votes)
                 .group('questions.id')
                 .order('upvotes DESC')
                 .offset((page-1)*page_limit)

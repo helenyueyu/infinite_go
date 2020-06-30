@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'; 
 import { isQuestionWatched, isQuestionIgnored, pluralize, createButtonStyle } from '../../selectors/display_selectors'; 
 import { generatePageNumbers } from '../../selectors/pagination_selectors'; 
+import { sortByNewest, sortByUpvotes } from '../../selectors/sort_selectors'; 
 
 import FilterQuestion from './filter_question'; 
 import QuestionStats from './question_stats'; 
@@ -11,11 +12,12 @@ import QuestionItem from './question_item';
 class Questions extends React.Component {
     constructor(props) {
         super(props); 
-        this.fetchQuestions = this.fetchQuestions.bind(this); 
         this.state = {
             questionCount: this.props.questionCount, 
             activeIdx: 0 
         }
+        this.fetchQuestions = this.fetchQuestions.bind(this); 
+        this.handleFilter = this.handleFilter.bind(this); 
     }
 
     componentDidMount() {
@@ -49,7 +51,6 @@ class Questions extends React.Component {
     }
 
     fetchQuestions({pageNumber, pageLimit, query, filter}) {
-        // debugger; 
         this.props.fetchFilteredQuestions(pageNumber, pageLimit, query, filter); 
     }
 
@@ -64,12 +65,21 @@ class Questions extends React.Component {
     }
 
     handleFilter(filter, idx) {
-        console.log('hi'); 
+        // debugger; 
+        this.setState({
+            activeIdx: idx, 
+        }, () => this.props.changeQuestionFilter(filter)); 
     }
 
     render() {
         let { questions, search, questionCount, watchedTags, ignoredTags } = this.props; 
         if (!questions || !search || questions.length === 0) return null; 
+
+        if (search.filter === 'upvote') {
+            questions = sortByUpvotes(questions); 
+        } else {
+            questions = sortByNewest(questions); 
+        }
 
         const [pages, bp1, bp2] = generatePageNumbers(questionCount, search.pageLimit, search.pageNumber); 
         const { activeIdx } = this.state; 
@@ -93,7 +103,7 @@ class Questions extends React.Component {
                             {questionCount ? pluralize(questionCount, "question") : null}
                         </div>
                         <div className="tags_index-filter-group">
-                            {['votes', 'newest', 'unanswered'].map((filter, idx) => 
+                            {['upvote', 'newest', 'unanswered'].map((filter, idx) => 
                                 <button key={idx}
                                         className={createButtonStyle(activeIdx, idx, 2)} 
                                         onClick={() => this.handleFilter(filter, idx)}>

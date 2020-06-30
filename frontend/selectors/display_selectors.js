@@ -82,6 +82,7 @@ export const pluralizeWordOnly = (quantity, term) => {
 }
 
 export const createButtonStyle = (activeTag, idx, endIdx) => {
+    // debugger; 
     let className = ""; 
     if (activeTag === idx) {
         className += "tags_index-filter-active"; 
