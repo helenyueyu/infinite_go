@@ -1,5 +1,5 @@
 {
-  "name": "bug_mojo_2",
+  "name": "infinite_go",
   "private": true,
   "dependencies": {
     "@babel/core": "^7.4.5",
