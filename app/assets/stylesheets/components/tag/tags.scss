@@ -1,6 +1,7 @@
 .tags {
     display: flex; 
-    flex-direction: row; 
+    flex-direction: row;
+    flex-wrap: wrap;  
 }
 
 .tag-item {
@@ -8,9 +9,10 @@
     flex-direction: horizontal; 
     background: $tag-red-lite; 
     color: $red; 
+    margin-bottom: 0.25rem; 
     margin-right: 0.35rem; 
     padding: 0.35rem 0.4rem 0.35rem 0.4rem; 
-    font-size: $comment-size;
+    font-size: $small-size;
     border-radius: 2.5px;  
     text-decoration: none; 
 }
