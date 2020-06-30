@@ -1,6 +1,6 @@
 const path = require("path");
 module.exports = {
-    entry: "./frontend/bug_mojo.jsx",
+    entry: "./frontend/infinite_go.jsx",
     output: {
         path: path.resolve(__dirname),
         filename: "./app/assets/javascripts/bundle.js"
