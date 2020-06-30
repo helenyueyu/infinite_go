@@ -28,7 +28,6 @@
 .tags_index-item {
     display: flex; 
     flex: 0 0 22%; 
-    // flex-wrap: wrap; 
     flex-direction: column;
     justify-content: space-between; 
     margin-right: 1rem; 
@@ -123,12 +122,22 @@
     padding: 0.5rem; 
     color: $gray; 
     background: none; 
-    border: 1px solid $silver; 
+    border: 1px solid $gray; 
 }
 
 .tags_index-filter-active {
     padding: 0.5rem; 
     color: $gray; 
     background: $lighter-silver; 
-    border: 1px solid $silver; 
+    border: 1px solid $gray; 
+}
+
+.tags_index-filter.start, .tags_index-filter-active.start {
+    border-top-left-radius: 5px; 
+    border-bottom-left-radius: 5px; 
+}
+
+.tags_index-filter.end, .tags_index-filter-active.end {
+    border-top-right-radius: 5px; 
+    border-bottom-right-radius: 5px; 
 }

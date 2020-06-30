@@ -4,7 +4,7 @@ import TagsIndexItem from './tags_index_item';
 
 import { sortByQuestionCount, sortByName } from '../../selectors/sort_selectors'; 
 import { generatePageNumbers } from '../../selectors/pagination_selectors'; 
-import { rowify } from '../../selectors/display_selectors'; 
+import { rowify, createButtonStyle } from '../../selectors/display_selectors'; 
 
 import FilterTag from './filter_tag'; 
 
@@ -12,7 +12,7 @@ class TagIndex extends React.Component {
     constructor(props) {
         super(props); 
         this.state = {
-            activeTag: 1 
+            activeTagIdx: 0
         }
         this.handleFilter = this.handleFilter.bind(this); 
     }
@@ -35,7 +35,7 @@ class TagIndex extends React.Component {
 
     handleFilter(filter, idx) {
         this.setState({
-            activeTag: idx + 1
+            activeTagIdx: idx
         }, () =>  this.props.changeTagFilter(filter)); 
     }
 
@@ -46,7 +46,7 @@ class TagIndex extends React.Component {
                     : rowify(sortByName(tags), 4); 
 
         const [pages, bp1, bp2] = generatePageNumbers(tagCount, search.pageLimit, search.pageNumber); 
-        const { activeTag } = this.state; 
+        const { activeTagIdx } = this.state; 
         return (
             <div className="tags_index">
                 <h1 className="tags_index-title">Tags</h1>
@@ -59,7 +59,7 @@ class TagIndex extends React.Component {
                     <div className="tags_index-filter-group">
                         {['popular', 'name', 'new'].map((filter, idx) => 
                             <button key={idx}
-                                    className={activeTag === idx + 1 ? "tags_index-filter-active" : "tags_index-filter"} 
+                                    className={createButtonStyle(activeTagIdx, idx, 2)} 
                                     onClick={() => this.handleFilter(filter, idx)}>
                                     {filter[0].toUpperCase() + filter.slice(1)}
                             </button>

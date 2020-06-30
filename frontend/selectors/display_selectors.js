@@ -80,3 +80,15 @@ export const pluralize = (quantity, term) => {
 export const pluralizeWordOnly = (quantity, term) => {
     return `${term}${quantity === 1 ? "" : "s"}`; 
 }
+
+export const createButtonStyle = (activeTag, idx, endIdx) => {
+    let className = ""; 
+    if (activeTag === idx) {
+        className += "tags_index-filter-active"; 
+    } else {
+        className += "tags_index-filter"; 
+    }
+    if (idx === 0) className += " start"; 
+    if (idx === endIdx) className += " end"; 
+    return className; 
+}
