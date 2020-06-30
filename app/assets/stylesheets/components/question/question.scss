@@ -4,21 +4,6 @@
     padding: 1.5rem;  
     flex: 1; 
 }
-.question-create-question {
-    padding: 0.5rem; 
-    background-color: $red; 
-    color: $white; 
-    border: none; 
-    border-radius: 5px; 
-    font-size: 1rem; 
-    flex: 1; 
-    white-space: nowrap; 
-    box-shadow: 2px 1px 10px $box-shadow;
-}
-
-.question-create-question:hover {
-    background: $focus-red; 
-}
 
 .question-header {
     display: flex; 

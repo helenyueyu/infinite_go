@@ -20,7 +20,7 @@ class Tags extends React.Component {
         return (
             <div className="tags">
                 {tags.map((tag, idx) => 
-                <Link key={idx} to={`/questions/tagged/${tag.name}`} className="tag-item">
+                <Link key={idx} to={`/questions/tagged/${tag.name}`} className="tag">
                         {tag.name}
                 </Link>
                 )}

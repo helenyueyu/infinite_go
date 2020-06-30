@@ -314,7 +314,8 @@ class QuestionForm extends React.Component {
                     }
                 </div> : null}
             </div>
-            <button className="question_form-submit" type="submit">
+            
+            <button className="focus-button shadow" type="submit">
                 {type === 'new' ? 'Ask' : 'Update'} Your Question
             </button>
         </form>

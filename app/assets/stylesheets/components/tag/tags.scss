@@ -4,31 +4,3 @@
     flex-wrap: wrap;  
 }
 
-.tag-item {
-    display: flex; 
-    flex-direction: horizontal; 
-    background: $tag-red-lite; 
-    color: $red; 
-    margin-bottom: 0.25rem; 
-    margin-right: 0.35rem; 
-    padding: 0.35rem 0.4rem 0.35rem 0.4rem; 
-    font-size: $small-size;
-    border-radius: 2.5px;  
-    text-decoration: none; 
-}
-
-.tag-item:hover {
-    background: $tag-red; 
-    cursor: pointer; 
-}
-
-.tag-button {
-    background: $red; 
-    color: $white; 
-    border-radius: 25%; 
-    border: none; 
-}
-
-.tag-button:hover {
-    cursor: pointer; 
-}

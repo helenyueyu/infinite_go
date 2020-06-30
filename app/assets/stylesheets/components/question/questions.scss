@@ -14,8 +14,12 @@
     justify-content: space-between; 
     align-items: center; 
 }
+
 .questions-title {
     font-size: $title-size; 
+}
+.questions-title-count {
+    font-size: $vote-size; 
     color: $red; 
 }
 
@@ -25,26 +29,6 @@
     padding-top: 1rem; 
     padding-left: 1.5rem; 
     padding-bottom: 2rem; 
-}
-
-.questions-create-question {
-    margin: 0rem 0.25rem 0rem 0.25rem; 
-    padding: 0.5rem; 
-    background-color: $red; 
-    color: $white; 
-    border: none; 
-    border-radius: 5px; 
-    font-size: 1rem; 
-    box-shadow: 2px 1px 10px $box-shadow;
-}
-
-.questions-create-question:hover {
-    background-color: $focus-red; 
-    cursor: pointer; 
-}
-
-.questions-create-question:focus {
-    outline: none; 
 }
 
 .questions-statistics {

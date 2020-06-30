@@ -70,11 +70,19 @@ class Questions extends React.Component {
                 <div className="questions">
                     <div className="questions-header">
                         <div className="questions-title">
-                            {questionCount ? pluralize(questionCount, "question") : null}
+                            All Questions 
                         </div>
                         <Link to="/questions/new">
-                            <button className="questions-create-question">Create Question</button>
+                            <button className="focus-button shadow">
+                                Ask Question
+                            </button>
                         </Link>
+                    </div>
+
+                    <div className="questions-header">
+                        <div className="questions-title-count">
+                            {questionCount ? pluralize(questionCount, "question") : null}
+                        </div>
                     </div>
                     
                     

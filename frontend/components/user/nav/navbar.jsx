@@ -59,7 +59,7 @@ class Navbar extends React.Component {
                                 <i className="fas fa-question-circle"></i>
                             </Link>
                         </div>
-                        <button className="nav-logout-button" onClick={this.logout}>
+                        <button className="focus-button" onClick={this.logout}>
                             Logout
                         </button>
                     </div>

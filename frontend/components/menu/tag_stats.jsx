@@ -26,7 +26,7 @@ class TagStats extends React.Component {
                 <h1 className="right_menu-title">Related Tags</h1>
                 {tagStats.slice(0, 10).map((tagStat, idx) => 
                     <div key={idx} className="tag_stats">
-                        <Link className="tag_stats-item" to={`/questions/tagged/${tagStat.name}`}>
+                        <Link className="tag" to={`/questions/tagged/${tagStat.name}`}>
                             {tagStat.name}
                         </Link>
                         <div className="tag_stats-freq">

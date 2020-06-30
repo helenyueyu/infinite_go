@@ -8,18 +8,3 @@
     font-size: $description-size; 
 }
 
-.answer_form-submit {
-    margin-top: 1rem; 
-    padding: 0.5rem; 
-    background-color: $red; 
-    color: $white; 
-    border: none; 
-    border-radius: 5px; 
-    font-size: 1rem; 
-    box-shadow: 2px 1px 10px $box-shadow;
-}
-
-.answer_form-submit:hover {
-    cursor: pointer; 
-    background: $focus-red; 
-}

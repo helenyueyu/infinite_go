@@ -1,0 +1,47 @@
+// Submit buttons 
+.focus-button {
+    margin: 0rem 0.25rem 0rem 0.25rem; 
+    padding: 0.5rem; 
+    background-color: $red; 
+    color: $white; 
+    border: none; 
+    border-radius: 5px; 
+}
+
+.focus-button.shadow {
+    margin: 0rem 0.25rem 0rem 0.25rem; 
+    padding: 0.5rem; 
+    background-color: $red; 
+    color: $white; 
+    border: none; 
+    border-radius: 5px; 
+    box-shadow: 2px 1px 10px $box-shadow;
+}
+
+.focus-button:hover {
+    background-color: $focus-red; 
+}
+
+.focus-button:focus {
+    outline: none; 
+}
+
+// Tag styling 
+.tag {
+    display: flex; 
+    flex-direction: horizontal; 
+    background: $tag-red-lite; 
+    color: $red; 
+    margin-top: 0.25rem; 
+    margin-bottom: 0.25rem; 
+    margin-right: 0.35rem; 
+    padding: 0.35rem 0.4rem 0.35rem 0.4rem; 
+    font-size: $small-size;
+    border-radius: 2.5px;  
+    text-decoration: none; 
+}
+
+.tag:hover {
+    background: $tag-red; 
+    cursor: pointer; 
+}

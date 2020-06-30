@@ -13,26 +13,7 @@
 .question_form-section {
     display: flex; 
     flex-direction: column; 
-}
-
-.question_form-submit {
-  margin-top: 2rem; 
-  padding: 0.5rem; 
-  background-color: $red; 
-  color: $white; 
-  border: none; 
-  border-radius: 5px; 
-  font-size: 1rem; 
-  box-shadow: 2px 1px 10px $box-shadow;
-}
-
-.question_form-submit:hover {
-    cursor: pointer; 
-    background: $focus-red; 
-}
-
-.question_form-submit:focus {
-    outline: none; 
+    margin-bottom: 1rem; 
 }
 
 .question_form-title {
@@ -78,6 +59,7 @@
   font-size: 1rem;
   overflow-x: hidden; 
   overflow-y: auto; 
+  margin-bottom: 1rem; 
 }
 
 .RichEditor-editor {

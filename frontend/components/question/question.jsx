@@ -56,7 +56,7 @@ class Question extends React.Component {
                     {title}
                 </div>
                 <Link to="/questions/new">
-                    <button className="question-create-question">Ask Question</button>
+                    <button className="focus-button shadow">Ask Question</button>
                 </Link>
             </div>
 

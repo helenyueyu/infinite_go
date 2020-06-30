@@ -65,19 +65,6 @@
     cursor: pointer; 
 }
 
-.nav-logout-button {
-    margin: 0rem 0.25rem 0rem 1rem; 
-    padding: 0.5rem; 
-    background-color: $red; 
-    color: $white; 
-    border: none; 
-    border-radius: 5px; 
-}
-
-.nav-logout-button:focus {
-    outline: none; 
-}
-
 .nav-signup-button, .nav-login-button {
     margin: 0.75rem 0.25rem 0.75rem 0.25rem; 
     padding: 0.5rem; 
@@ -95,12 +82,6 @@
 
 .nav-signup-button:focus, .nav-login-button:focus {
     outline: none; 
-}
-
-
-.nav-logout-button:hover {
-    background-color: $focus-red; 
-    cursor: pointer; 
 }
 
 .nav-logo {
