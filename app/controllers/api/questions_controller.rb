@@ -6,7 +6,6 @@ class Api::QuestionsController < ApplicationController
     end
 
     def search 
-        params = ensure_search_params
         res = Question.search(*ensure_search_params)
         @questions = res[0]
         @question_count = res[1] 
@@ -57,10 +56,11 @@ class Api::QuestionsController < ApplicationController
 
     def ensure_search_params
         page = params[:page].to_i 
-        page_limit = params[:page_limit] ? params[:page_limit].to_i : 2 
+        page_limit = params[:page_limit] ? params[:page_limit].to_i : 15 
         query = params[:query] ? params[:query] : "" 
+        filter = params[:filter] ? params[:filter] : "upvote"
 
-        [page, page_limit, query]
+        [page, page_limit, query, filter]
     end
 end
 

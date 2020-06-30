@@ -19,6 +19,7 @@ class Questions extends React.Component {
     }
 
     componentDidMount() {
+        // debugger; 
         let url = this.props.history.location.pathname;
         if (url.includes('tagged')) {
             let query = '[' + url.slice(url.lastIndexOf('/') + 1) + ']'; 
@@ -47,8 +48,9 @@ class Questions extends React.Component {
         }
     }
 
-    fetchQuestions({pageNumber, pageLimit, query}) {
-        this.props.fetchFilteredQuestions(pageNumber, pageLimit, query); 
+    fetchQuestions({pageNumber, pageLimit, query, filter}) {
+        // debugger; 
+        this.props.fetchFilteredQuestions(pageNumber, pageLimit, query, filter); 
     }
 
     newSearchParams(h1, h2) {

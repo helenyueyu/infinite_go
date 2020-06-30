@@ -74,7 +74,15 @@ class Question < ApplicationRecord
         res 
     end
 
-    def self.search(page, page_limit, query)
+    # return self.select('tags.*, COUNT(taggables.tag_id) tag_freq')
+    # .joins(:taggables)
+    # .group('tags.id')
+    # .order('tag_freq DESC')
+    # .offset((page-1)*page_limit)
+    # .limit(page_limit)
+    # .order(created_at: :desc)
+
+    def self.search(page, page_limit, query, filter)
         if query.length > 0 
             if query.first == '['
                 query = query[1..query.length-2]
@@ -84,12 +92,33 @@ class Question < ApplicationRecord
             end
 
             if res.length > 0 
-                return [res.offset((page-1)*page_limit).limit(page_limit).order(created_at: :desc), res.size]
+                if filter == 'upvote'
+                    return [res.select('questions.*, COUNT(votes.voteable_id) upvotes')
+                            .joins(:votes)
+                            .group('questions.id')
+                            .order('upvotes DESC')
+                            .offset((page-1)*page_limit)
+                            .limit(page_limit)
+                            .order('created_at DESC'), res.size]
+                else 
+                    return [res.offset((page-1)*page_limit).limit(page_limit).order(created_at: :desc), res.size]
+                end 
             else
                 return [] 
             end
+        else
+            if filter == 'upvote'
+                return [self.all.select('questions.*, COUNT(votes.voteable_id) upvotes')
+                .joins(:votes)
+                .group('questions.id')
+                .order('upvotes DESC')
+                .offset((page-1)*page_limit)
+                .limit(page_limit)
+                .order('created_at DESC'), self.all.size]
+            else 
+                return [self.all.offset((page-1)*page_limit).limit(page_limit).order(created_at: :desc), self.all.size]
+            end 
         end
-        [self.all.offset((page-1)*page_limit).limit(page_limit).order(created_at: :desc), self.all.size] 
     end
 
 end

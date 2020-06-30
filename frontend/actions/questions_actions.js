@@ -36,8 +36,9 @@ export const fetchRandomQuestions = () => dispatch => (
         .then(questions => dispatch(receiveRandomQuestions(questions)))
 )
 
-export const fetchFilteredQuestions = (pageNumber, pageLimit, query) => dispatch => {
-    return questionAPIUtil.getFilteredQuestions(pageNumber, pageLimit, query)
+export const fetchFilteredQuestions = (pageNumber, pageLimit, query, filter) => dispatch => {
+    // debugger; 
+    return questionAPIUtil.getFilteredQuestions(pageNumber, pageLimit, query, filter)
         .then(questions => {
             dispatch(receiveAllQuestions(questions))
         })

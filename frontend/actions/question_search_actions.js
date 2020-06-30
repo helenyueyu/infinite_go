@@ -1,6 +1,7 @@
 export const CHANGE_QUESTION_PAGE_NUMBER = 'CHANGE_QUESTION_PAGE_NUMBER'; 
 export const CHANGE_QUESTION_PAGE_LIMIT = 'CHANGE_QUESTION_PAGE_LIMIT'; 
 export const RECEIVE_QUERY = 'RECEIVE_QUERY'; 
+export const CHANGE_QUESTION_FILTER = 'CHANGE_QUESTION_FILTER'; 
 
 export const changeQuestionPageNumber = pageNumber => ({
     type: CHANGE_QUESTION_PAGE_NUMBER,
@@ -19,6 +20,12 @@ export const receiveQuery = query => {
     query 
 }}
 
+export const changeQuestionFilter = filter => {
+    return {
+        type: CHANGE_QUESTION_FILTER, 
+        filter 
+    }
+}
 
 
 

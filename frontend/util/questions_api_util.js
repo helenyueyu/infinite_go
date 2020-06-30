@@ -5,10 +5,11 @@ export const getQuestions = () => (
     })
 )
 
-export const getFilteredQuestions = (page, pageLimit, query) => {
+export const getFilteredQuestions = (page, pageLimit, query, filter) => {
+    // debugger; 
     return $.ajax({
         method: 'GET', 
-        url: `/api/questions/?page=${page}&page_limit=${pageLimit}&query=${query}`
+        url: `/api/questions/?page=${page}&page_limit=${pageLimit}&query=${query}&filter=${filter}`
     })
 }
 
