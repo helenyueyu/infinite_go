@@ -8,19 +8,27 @@
 }
 .questions-header {
     margin-left: 2rem; 
-    margin-top: 1rem; 
-    margin-bottom: 2rem; 
+    margin-top: 1.5rem; 
+    margin-bottom: 1rem; 
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
+}
+
+.questions-subheader {
+    margin-left: 2rem; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 1rem; 
 }
 
 .questions-title {
     font-size: $title-size; 
 }
 .questions-title-count {
-    font-size: $vote-size; 
     color: $red; 
+    font-size: $description-size; 
 }
 
 .questions-filter {

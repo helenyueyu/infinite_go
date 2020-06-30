@@ -1,7 +1,7 @@
 import React from 'react'; 
 
 import { Link } from 'react-router-dom'; 
-import { isQuestionWatched, isQuestionIgnored, pluralize } from '../../selectors/display_selectors'; 
+import { isQuestionWatched, isQuestionIgnored, pluralize, createButtonStyle } from '../../selectors/display_selectors'; 
 import { generatePageNumbers } from '../../selectors/pagination_selectors'; 
 
 import FilterQuestion from './filter_question'; 
@@ -13,7 +13,8 @@ class Questions extends React.Component {
         super(props); 
         this.fetchQuestions = this.fetchQuestions.bind(this); 
         this.state = {
-            questionCount: this.props.questionCount 
+            questionCount: this.props.questionCount, 
+            activeIdx: 0 
         }
     }
 
@@ -60,11 +61,17 @@ class Questions extends React.Component {
         return oldTag !== currTag; 
     }
 
+    handleFilter(filter, idx) {
+        console.log('hi'); 
+    }
+
     render() {
         let { questions, search, questionCount, watchedTags, ignoredTags } = this.props; 
         if (!questions || !search || questions.length === 0) return null; 
 
         const [pages, bp1, bp2] = generatePageNumbers(questionCount, search.pageLimit, search.pageNumber); 
+        const { activeIdx } = this.state; 
+        
         if (questions.length > 0) {
             return (
                 <div className="questions">
@@ -79,9 +86,18 @@ class Questions extends React.Component {
                         </Link>
                     </div>
 
-                    <div className="questions-header">
+                    <div className="questions-subheader">
                         <div className="questions-title-count">
                             {questionCount ? pluralize(questionCount, "question") : null}
+                        </div>
+                        <div className="tags_index-filter-group">
+                            {['votes', 'newest', 'unanswered'].map((filter, idx) => 
+                                <button key={idx}
+                                        className={createButtonStyle(activeIdx, idx, 2)} 
+                                        onClick={() => this.handleFilter(filter, idx)}>
+                                        {filter[0].toUpperCase() + filter.slice(1)}
+                                </button>
+                                )}
                         </div>
                     </div>
                     
