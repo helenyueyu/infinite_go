@@ -57,7 +57,8 @@ class Questions extends React.Component {
     newSearchParams(h1, h2) {
         return h1.pageNumber !== h2.pageNumber || 
             h1.pageLimit !== h2.pageLimit || 
-            h1.query !== h2.query 
+            h1.query !== h2.query ||
+            h1.filter !== h2.filter 
     }
 
     newTag(oldTag, currTag) {
