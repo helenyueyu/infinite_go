@@ -1,6 +1,12 @@
 import { CHANGE_QUESTION_PAGE_LIMIT, CHANGE_QUESTION_PAGE_NUMBER, RECEIVE_QUERY } from '../../actions/question_search_actions';
 
-const questionReducer = (state = {query: "", pageLimit: 15, pageNumber: 1}, action) => {
+const defaultState = {
+    query: "", 
+    pageLimit: 15, 
+    pageNumber: 1
+}
+
+const questionReducer = (state = defaultState, action) => {
     Object.freeze(state); 
 
     let newState = Object.assign({}, state);
