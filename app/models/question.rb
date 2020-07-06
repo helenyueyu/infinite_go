@@ -79,10 +79,11 @@ class Question < ApplicationRecord
             query = query[1..query.length-2]
             res = Question.joins(:tags).where(tags: { name: query})
         else  
-            res = where('title LIKE ?', "%#{query}")
+            res = where('title LIKE ?', "%#{query}%")
         end 
 
         if filter == 'upvote'
+            # debugger 
             return [res.select('questions.*, COUNT(votes.voteable_id) upvotes')
             .left_outer_joins(:votes)
             .group('questions.id')
