@@ -6,8 +6,8 @@ class Menu extends React.Component {
         const { location: {pathname} } = this.props; 
         return (
             <ul className="menu">
-                <li className={pathname === "/" ? "menu-item-link-active" : "menu-item-link"}>
-                    <Link className="menu-item-link" to='/'>Home</Link>
+                <li className={pathname === "/splash" ? "menu-item-link-active" : "menu-item-link"}>
+                    <Link className="menu-item-link" to='/splash'>Home</Link>
                 </li>
                 <li className="menu-public">PUBLIC</li>
        
